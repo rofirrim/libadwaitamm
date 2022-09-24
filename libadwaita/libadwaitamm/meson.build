@@ -2,7 +2,7 @@
 
 # Input: libadwaitamm_build_dep, libadwaitamm_pcname, maintainer_mode, project_source_root,
 #        generate_binding, m4_files, libadwaitamm_libversion, install_includedir,
-#        macos_darwin_versions, python3, can_add_dist_script
+#        macos_darwin_versions, python3, can_add_dist_script, gmmproc_extra_m4_dirs
 # Output: hg_ccg_basenames, extra_h_files, built_h_file_targets, built_files_root,
 #         libadwaitamm_own_dep
 
@@ -84,6 +84,7 @@ if maintainer_mode
         file,
         meson.current_source_dir() / '..' / 'src',
         project_source_root / 'tools' / 'm4',
+        gmmproc_extra_m4_dirs
       ],
       depend_files: defs_files + m4_files,
       build_by_default: maintainer_mode,

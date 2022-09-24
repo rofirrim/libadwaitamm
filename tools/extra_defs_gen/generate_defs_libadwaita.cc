@@ -27,7 +27,7 @@
 
 int main(int, char**)
 {
-  // libadwaita_init();
+  adw_init ();
 
   std::cout << get_defs(ADW_TYPE_WINDOW);
 

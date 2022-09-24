@@ -95,6 +95,8 @@ install_pkgconfigdir = install_libdir / 'pkgconfig'
 glibmm_req = '>= 2.68.0' # E.g. >= 2.66.0 if the dependency is glibmm-2.4
 libadwaita_req = '>= 1.0.0'
 gtkmm_req = '>= 4.6.1'
+pangomm_req = '>= 2.50.0'
+pangomm_dep = dependency('pangomm-2.48', version: pangomm_req)
 glibmm_dep = dependency('glibmm-2.68', version: glibmm_req)
 gtkmm_dep = dependency('gtkmm-4.0', version: gtkmm_req)
 libadwaita_dep = dependency('libadwaita-1', version: libadwaita_req)
@@ -104,6 +106,10 @@ libadwaitamm_requires = ' '.join([
 # or:  'glibmm-2.4', glibmm_req,
   'libadwaita-1', libadwaita_req,
 ])
+
+gmmproc_extra_m4_dirs = [pangomm_dep.get_variable(pkgconfig: 'gmmprocm4dir', internal: 'gmmprocm4dir')] \
++ [gtkmm_dep.get_variable(pkgconfig: 'gmmprocm4dir', internal: 'gmmprocm4dir')]
+
 gnome = import('gnome')
 
 # Some dependencies are required only in maintainer mode and/or if

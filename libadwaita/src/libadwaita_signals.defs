@@ -1,1 +1,11 @@
-;; Signals and properties
+;; From AdwWindow
+
+(define-property content
+  (of-object "AdwWindow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
