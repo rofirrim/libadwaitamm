@@ -38,7 +38,7 @@
  */
 
 #include <libadwaitammconfig.h>
-#include <libadwaitamm/libadwaita.h>
+#include <libadwaitamm/window.h>
 
 /** @example example/example.cc
  * A libadwaitamm example program.

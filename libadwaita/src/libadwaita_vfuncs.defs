@@ -1,10 +1,10 @@
 ; Virtual functions
 ; Hand-written file
 
-; SkeletonSomeType
+; AdwSomeType
 
 ;(define-vfunc some_vfunc
-;  (of-object "SkeletonSomeType")
+;  (of-object "AdwSomeType")
 ;  (return-type "void")
 ;  (parameters
 ;    '("GObject*" "some_object")

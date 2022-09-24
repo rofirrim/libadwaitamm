@@ -94,14 +94,15 @@ install_pkgconfigdir = install_libdir / 'pkgconfig'
 #   Dependencies when using the libadwaitamm library.
 glibmm_req = '>= 2.68.0' # E.g. >= 2.66.0 if the dependency is glibmm-2.4
 libadwaita_req = '>= 1.0.0'
+gtkmm_req = '>= 4.6.1'
 glibmm_dep = dependency('glibmm-2.68', version: glibmm_req)
-# or: glibmm_dep = dependency('glibmm-2.4', version: glibmm_req)
-libadwaita_dep = dependency('libadwaita-1.0', version: libadwaita_req)
-libadwaitamm_build_dep = [glibmm_dep, libadwaita_dep]
+gtkmm_dep = dependency('gtkmm-4.0', version: gtkmm_req)
+libadwaita_dep = dependency('libadwaita-1', version: libadwaita_req)
+libadwaitamm_build_dep = [glibmm_dep, gtkmm_dep, libadwaita_dep]
 libadwaitamm_requires = ' '.join([
   'glibmm-2.68', glibmm_req,
 # or:  'glibmm-2.4', glibmm_req,
-  'libadwaita-1.0', libadwaita_req,
+  'libadwaita-1', libadwaita_req,
 ])
 gnome = import('gnome')
 

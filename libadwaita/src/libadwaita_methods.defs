@@ -5321,6 +5321,11 @@
 
 ;; From adw-window.h
 
+(define-function adw_window_get_type
+  (c-name "adw_window_get_type")
+  (return-type "GType")
+)
+
 (define-function adw_window_new
   (c-name "adw_window_new")
   (is-constructor-of "AdwWindow")

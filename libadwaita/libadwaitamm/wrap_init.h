@@ -19,7 +19,7 @@
 #ifndef LIBADWAITAMM_WRAP_INIT_H_INCLUDED
 #define LIBADWAITAMM_WRAP_INIT_H_INCLUDED
 
-namespace Skeleton
+namespace Adw
 {
   void wrap_init();
 }

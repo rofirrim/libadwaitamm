@@ -21,7 +21,7 @@ foreach file : defs_basefiles
 endforeach
 
 hg_ccg_basenames = [
-  'libadwaita',
+  'window',
 ]
 
 extra_cc_files = [
@@ -63,7 +63,7 @@ if maintainer_mode
       python3, generate_binding, 'generate_wrap_init',
       gmmproc_dir,
       '@OUTPUT@',
-      'Skeleton', # namespace
+      'Adw', # namespace
       '@INPUT@',
     ],
     build_by_default: maintainer_mode,

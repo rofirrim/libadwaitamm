@@ -22,14 +22,14 @@
 #undef LIBADWAITA_DISABLE_DEPRECATED
 
 #include <glibmm_generate_extra_defs/generate_extra_defs.h>
-#include <libadwaita/libadwaita.h>
+#include <libadwaita-1/adwaita.h>
 #include <iostream>
 
 int main(int, char**)
 {
-  libadwaita_init();
+  // libadwaita_init();
 
-  std::cout << get_defs(LIBADWAITA_TYPE_SOME_TYPE);
+  std::cout << get_defs(ADW_TYPE_WINDOW);
 
   return 0;
 }

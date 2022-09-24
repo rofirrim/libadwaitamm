@@ -18,16 +18,15 @@
 
 _DEFS(libadwaitamm,libadwaita)
 _CONFIGINCLUDE(libadwaitammconfig.h)
-_PINCLUDE(glibmm/private/object_p.h)
+_PINCLUDE(gtkmm/private/window_p.h)
 
-#include <glibmm.h>
+#include <gtkmm.h>
 
-namespace Skeleton
+namespace Adw
 {
 
-class SomeType : public Glib::Object
-{
-  _CLASS_GOBJECT(SomeType, SkeletonSomeType, LIBADWAITA_SOME_TYPE, Glib::Object, GObject)
+class Window : public Gtk::Window {
+  _CLASS_GOBJECT(Window, AdwWindow, ADW_WINDOW, Gtk::Window, GtkWindow)
 
 protected:
   _CTOR_DEFAULT
@@ -36,4 +35,4 @@ public:
   _WRAP_CREATE()
 };
 
-} // namespace Skeleton
+} // namespace Adw
