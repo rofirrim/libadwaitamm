@@ -258,3 +258,60 @@
   (default-value "TRUE")
 )
 
+;; From AdwActionRow
+
+(define-signal activated
+  (of-object "AdwActionRow")
+  (return-type "void")
+  (flags "Run Last")
+)
+
+(define-property subtitle
+  (of-object "AdwActionRow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property icon-name
+  (of-object "AdwActionRow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property activatable-widget
+  (of-object "AdwActionRow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property title-lines
+  (of-object "AdwActionRow")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property subtitle-lines
+  (of-object "AdwActionRow")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
+)
+

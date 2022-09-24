@@ -1,0 +1,70 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libadwaitamm/preferencesrow.h>
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/preferencesrow_p.h)
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class ActionRow : public Adw::PreferencesRow {
+  _CLASS_GTKOBJECT(ActionRow, AdwActionRow, ADW_ACTION_ROW, Adw::PreferencesRow, AdwPreferencesRow)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+#m4 _CONVERSION(`const char* const*',`std::vector<Glib::ustring>',`Glib::ArrayHandler<Glib::ustring>::array_to_vector($3, Glib::OWNERSHIP_DEEP)')
+#m4 _CONVERSION(`const std::vector<Glib::ustring>&',`const char**',`Glib::ArrayHandler<Glib::ustring>::vector_to_array($3).data ()')
+
+  _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_action_row_get_icon_name)
+  _WRAP_METHOD(Glib::ustring get_subtitle() const, adw_action_row_get_subtitle)
+  _WRAP_METHOD(Gtk::Widget* get_activatable_widget() const, adw_action_row_get_activatable_widget)
+  _WRAP_METHOD(int get_subtitle_lines() const, adw_action_row_get_subtitle_lines)
+  _WRAP_METHOD(int get_title_lines() const, adw_action_row_get_title_lines)
+  _WRAP_METHOD(void activate(), adw_action_row_activate)
+  _WRAP_METHOD(void add_prefix(Gtk::Widget& widget), adw_action_row_add_prefix)
+  _WRAP_METHOD(void add_suffix(Gtk::Widget& widget), adw_action_row_add_suffix)
+  _WRAP_METHOD(void set_activatable_widget(Gtk::Widget* widget) const, adw_action_row_set_activatable_widget)
+  _WRAP_METHOD(void set_icon_name(const Glib::ustring& icon_name), adw_action_row_set_icon_name)
+  _WRAP_METHOD(void set_subtitle(const Glib::ustring& subtitle), adw_action_row_set_subtitle)
+  _WRAP_METHOD(void set_subtitle_lines(int subtitle_lines), adw_action_row_set_subtitle_lines)
+  _WRAP_METHOD(void set_title_lines(int title_lines), adw_action_row_set_title_lines)
+  _WRAP_METHOD(void remove(Gtk::Widget& widget), adw_action_row_remove)
+
+  _WRAP_PROPERTY("icon_name", Glib::ustring)
+  _WRAP_PROPERTY("subtitle", Glib::ustring)
+  _WRAP_PROPERTY("activatable_widget", Gtk::Widget*)
+  _WRAP_PROPERTY("subtitle_lines", int)
+  _WRAP_PROPERTY("title_lines", int)
+
+  _WRAP_SIGNAL(void activated(), "activated", no_default_handler)
+};
+
+} // namespace Adw

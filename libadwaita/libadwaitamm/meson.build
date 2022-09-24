@@ -24,6 +24,7 @@ hg_ccg_basenames = [
   'window',
   'aboutwindow',
   'preferencesrow',
+  'actionrow',
 ]
 
 extra_cc_files = [
