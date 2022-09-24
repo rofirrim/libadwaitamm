@@ -2,7 +2,7 @@
 
 # Input: cpp_compiler, libadwaitamm_build_dep, install_libdir, libadwaitamm_pcname,
 #        glibmm_dep
-# Output: m4_files, install_m4dir
+# Output: m4_files, install_m4dir, generate_defs_exe
 
 glibmm_generate_extra_defs_dep = cpp_compiler.find_library(
   'glibmm_generate_extra_defs-2.68',
@@ -16,7 +16,7 @@ if not glibmm_generate_extra_defs_dep.found()
   )
 endif
 
-executable('generate_defs_libadwaita', 'generate_defs_libadwaita.cc',
+generate_defs_exe = executable('generate_defs_libadwaita', 'generate_defs_libadwaita.cc',
   dependencies: [libadwaitamm_build_dep, glibmm_generate_extra_defs_dep],
   implicit_include_directories: false,
   install: false,

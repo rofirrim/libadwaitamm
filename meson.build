@@ -247,6 +247,12 @@ if meson.is_subproject()
 endif
 
 
+if maintainer_mode
+    run_target('gen-signals',
+               command: ['tools' / 'generate_signals.sh', generate_defs_exe ],
+               depends: [generate_defs_exe])
+endif
+
 # Print a summary.
 real_maintainer_mode = ''
 if maintainer_mode_opt == 'if-git-build'
