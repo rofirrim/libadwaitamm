@@ -22,6 +22,7 @@ endforeach
 
 hg_ccg_basenames = [
   'window',
+  'aboutwindow',
 ]
 
 extra_cc_files = [

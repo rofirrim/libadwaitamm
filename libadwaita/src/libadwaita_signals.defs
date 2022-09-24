@@ -9,3 +9,210 @@
   (construct-only #f)
 )
 
+;; From AdwAboutWindow
+
+(define-signal activate-link
+  (of-object "AdwAboutWindow")
+  (return-type "gboolean")
+  (flags "Run Last")
+  (parameters
+    '("const-gchar*" "p0")
+  )
+)
+
+(define-property application-icon
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property application-name
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property developer-name
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property version
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property release-notes-version
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property release-notes
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property comments
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property website
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property support-url
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property issue-url
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property debug-info
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property debug-info-filename
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property developers
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property designers
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property artists
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property documenters
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property translator-credits
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property copyright
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property license-type
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "GTK_LICENSE_UNKNOWN")
+)
+
+(define-property license
+  (of-object "AdwAboutWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+

@@ -1,0 +1,115 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libadwaitamm/window.h>
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/window_p.h)
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class AboutWindow : public Adw::Window {
+  _CLASS_GTKOBJECT(AboutWindow, AdwAboutWindow, ADW_ABOUT_WINDOW, Adw::Window, AdwWindow)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+#m4 _CONVERSION(`const char* const*',`std::vector<Glib::ustring>',`Glib::ArrayHandler<Glib::ustring>::array_to_vector($3, Glib::OWNERSHIP_DEEP)')
+#m4 _CONVERSION(`const std::vector<Glib::ustring>&',`const char**',`Glib::ArrayHandler<Glib::ustring>::vector_to_array($3).data ()')
+
+  _WRAP_METHOD(Glib::ustring get_application_icon() const, adw_about_window_get_application_icon)
+  _WRAP_METHOD(Glib::ustring get_application_name() const, adw_about_window_get_application_name)
+  _WRAP_METHOD(Glib::ustring get_comments() const, adw_about_window_get_comments)
+  _WRAP_METHOD(Glib::ustring get_copyright() const, adw_about_window_get_copyright)
+  _WRAP_METHOD(Glib::ustring get_debug_info() const, adw_about_window_get_debug_info)
+  _WRAP_METHOD(Glib::ustring get_debug_info_filename() const, adw_about_window_get_debug_info_filename)
+  _WRAP_METHOD(Glib::ustring get_developer_name() const, adw_about_window_get_developer_name)
+  _WRAP_METHOD(Glib::ustring get_issue_url() const, adw_about_window_get_issue_url)
+  _WRAP_METHOD(Glib::ustring get_license() const, adw_about_window_get_license)
+  _WRAP_METHOD(Glib::ustring get_release_notes() const, adw_about_window_get_release_notes)
+  _WRAP_METHOD(Glib::ustring get_release_notes_version() const, adw_about_window_get_release_notes_version)
+  _WRAP_METHOD(Glib::ustring get_support_url() const, adw_about_window_get_support_url)
+  _WRAP_METHOD(Glib::ustring get_translator_credits() const, adw_about_window_get_translator_credits)
+  _WRAP_METHOD(Glib::ustring get_version() const, adw_about_window_get_version)
+  _WRAP_METHOD(Glib::ustring get_website() const, adw_about_window_get_website)
+  _WRAP_METHOD(Gtk::License get_license_type() const, adw_about_window_get_license_type)
+  _WRAP_METHOD(std::vector<Glib::ustring> get_artists() const, adw_about_window_get_artists)
+  _WRAP_METHOD(std::vector<Glib::ustring> get_designers() const, adw_about_window_get_designers)
+  _WRAP_METHOD(std::vector<Glib::ustring> get_developers() const, adw_about_window_get_developers)
+  _WRAP_METHOD(std::vector<Glib::ustring> get_documenters() const, adw_about_window_get_documenters)
+  _WRAP_METHOD(void add_acknowledgement_section(const Glib::ustring &name, const std::vector<Glib::ustring>& people), adw_about_window_add_acknowledgement_section)
+  _WRAP_METHOD(void add_credit_section(const Glib::ustring &name, const std::vector<Glib::ustring>& people), adw_about_window_add_credit_section)
+  _WRAP_METHOD(void add_legal_section(const Glib::ustring& title, const Glib::ustring& copyright, Gtk::License license_type, const Glib::ustring& license), adw_about_window_add_legal_section)
+  _WRAP_METHOD(void add_link(const Glib::ustring& title, const Glib::ustring& url), adw_about_window_add_link)
+  _WRAP_METHOD(void set_application_icon(const Glib::ustring& application_icon), adw_about_window_set_application_icon)
+  _WRAP_METHOD(void set_application_name(const Glib::ustring& application_name), adw_about_window_set_application_name)
+  _WRAP_METHOD(void set_artists(const std::vector<Glib::ustring>& artists), adw_about_window_set_artists)
+  _WRAP_METHOD(void set_comments(const Glib::ustring& comments), adw_about_window_set_comments)
+  _WRAP_METHOD(void set_copyright(const Glib::ustring& copyright), adw_about_window_set_copyright)
+  _WRAP_METHOD(void set_debug_info(const Glib::ustring& debug_info), adw_about_window_set_debug_info)
+  _WRAP_METHOD(void set_debug_info_filename(const Glib::ustring& filename), adw_about_window_set_debug_info_filename)
+  _WRAP_METHOD(void set_designers(const std::vector<Glib::ustring>& designers), adw_about_window_set_designers)
+  _WRAP_METHOD(void set_developer_name(const Glib::ustring &developer_name), adw_about_window_set_developer_name)
+  _WRAP_METHOD(void set_developers(const std::vector<Glib::ustring>& developers), adw_about_window_set_developers)
+  _WRAP_METHOD(void set_documenters(const std::vector<Glib::ustring>& documenters), adw_about_window_set_documenters)
+  _WRAP_METHOD(void set_issue_url(const Glib::ustring &issue_url), adw_about_window_set_issue_url)
+  _WRAP_METHOD(void set_license(const Glib::ustring &license), adw_about_window_set_license)
+  _WRAP_METHOD(void set_license_type(Gtk::License license_type), adw_about_window_set_license_type)
+  _WRAP_METHOD(void set_release_notes(const Glib::ustring &release_notes), adw_about_window_set_release_notes)
+  _WRAP_METHOD(void set_release_notes_version(const Glib::ustring &version), adw_about_window_set_release_notes_version)
+  _WRAP_METHOD(void set_support_url(const Glib::ustring &support_url), adw_about_window_set_support_url)
+  _WRAP_METHOD(void set_translator_credits(const Glib::ustring &translator_credits), adw_about_window_set_translator_credits)
+  _WRAP_METHOD(void set_version(const Glib::ustring &version), adw_about_window_set_version)
+  _WRAP_METHOD(void set_website(const Glib::ustring& website), adw_about_window_set_website)
+
+  _WRAP_PROPERTY("support_url", Glib::ustring)
+  _WRAP_PROPERTY("application_icon", Glib::ustring)
+  _WRAP_PROPERTY("translator_credits", Glib::ustring)
+  _WRAP_PROPERTY("copyright", Glib::ustring)
+  _WRAP_PROPERTY("release_notes", Glib::ustring)
+  _WRAP_PROPERTY("designers", std::vector<Glib::ustring>)
+  _WRAP_PROPERTY("application_name", Glib::ustring)
+  _WRAP_PROPERTY("developer_name", Glib::ustring)
+  _WRAP_PROPERTY("documenters", std::vector<Glib::ustring>)
+  _WRAP_PROPERTY("debug_info", Glib::ustring)
+  _WRAP_PROPERTY("website", Glib::ustring)
+  _WRAP_PROPERTY("version", Glib::ustring)
+  _WRAP_PROPERTY("comments", Glib::ustring)
+  _WRAP_PROPERTY("release_notes_version", Glib::ustring)
+  _WRAP_PROPERTY("license", Glib::ustring)
+  _WRAP_PROPERTY("license_type", Glib::ustring)
+  _WRAP_PROPERTY("developers", std::vector<Glib::ustring>)
+  _WRAP_PROPERTY("issue_url", Glib::ustring)
+  _WRAP_PROPERTY("artists", std::vector<Glib::ustring>)
+  _WRAP_PROPERTY("debug_info_filename", Glib::ustring)
+
+  _WRAP_SIGNAL(bool activate_link(const Glib::ustring& url), "activate-link", no_default_handler)
+};
+
+} // namespace Adw
