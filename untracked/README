@@ -1,0 +1,37 @@
+untracked/README
+
+This directory contains files not tracked by a source code control program,
+such as git. (This README file is the exception.)
+
+The files can have one of two origins.
+
+1. Copied by the mm-common-get command.
+2. Generated when libadwaitamm is built.
+
+Files of type 2 exist here only if libadwaitamm is built with maintainer-mode=false,
+or the directory comes from a tarball.
+Files of both types exist here only if libadwaitamm is built with Meson,
+or the tarball is created with Meson.
+
+1. Files copied by mm-common-get
+--------------------------------
+untracked/doc/doc_install.py
+              doc_postprocess.py
+              doxygen-extra.css
+              tagfile-to-devhelp2.xsl
+untracked/build_scripts/check-dllexport-usage.py
+                        dist-build-scripts.py
+                        dist-changelog.py
+                        doc-reference.py
+                        generate-binding.py
+
+mm-common-get may copy more files, but they are not used by libadwaitamm.
+
+2. Generated files
+------------------
+untracked/libadwaita/libadwaitamm/*.h
+                              *.cc
+                              private/*_p.h
+untracked/doc/reference/libadwaitamm-1.0.devhelp2
+                        libadwaitamm-1.0.tag
+                        html/*

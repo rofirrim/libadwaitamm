@@ -1,0 +1,19 @@
+/* This file is part of libadwaitamm. */
+#ifndef LIBADWAITAMMCONFIG_H_INCLUDED
+#define LIBADWAITAMMCONFIG_H_INCLUDED
+
+#include <glibmmconfig.h>
+
+/* Define to omit deprecated API from the library. */
+#mesondefine LIBADWAITAMM_DISABLE_DEPRECATED
+
+/* Major version number of libadwaitamm. */
+#mesondefine LIBADWAITAMM_MAJOR_VERSION
+
+/* Minor version number of libadwaitamm. */
+#mesondefine LIBADWAITAMM_MINOR_VERSION
+
+/* Micro version number of libadwaitamm. */
+#mesondefine LIBADWAITAMM_MICRO_VERSION
+
+#endif /* !LIBADWAITAMMCONFIG_H_INCLUDED */

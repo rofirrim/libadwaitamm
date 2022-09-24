@@ -1,0 +1,336 @@
+;; From adw-animation.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_ANIMATION_IDLE,
+;;   ADW_ANIMATION_PAUSED,
+;;   ADW_ANIMATION_PLAYING,
+;;   ADW_ANIMATION_FINISHED,
+;; } AdwAnimationState;
+
+(define-enum-extended AnimationState
+  (in-module "Adw")
+  (c-name "AdwAnimationState")
+  (values
+    '("idle" "ADW_ANIMATION_IDLE" "0")
+    '("paused" "ADW_ANIMATION_PAUSED" "1")
+    '("playing" "ADW_ANIMATION_PLAYING" "2")
+    '("finished" "ADW_ANIMATION_FINISHED" "3")
+  )
+)
+
+;; From adw-easing.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_LINEAR,
+;;   ADW_EASE_IN_QUAD,
+;;   ADW_EASE_OUT_QUAD,
+;;   ADW_EASE_IN_OUT_QUAD,
+;;   ADW_EASE_IN_CUBIC,
+;;   ADW_EASE_OUT_CUBIC,
+;;   ADW_EASE_IN_OUT_CUBIC,
+;;   ADW_EASE_IN_QUART,
+;;   ADW_EASE_OUT_QUART,
+;;   ADW_EASE_IN_OUT_QUART,
+;;   ADW_EASE_IN_QUINT,
+;;   ADW_EASE_OUT_QUINT,
+;;   ADW_EASE_IN_OUT_QUINT,
+;;   ADW_EASE_IN_SINE,
+;;   ADW_EASE_OUT_SINE,
+;;   ADW_EASE_IN_OUT_SINE,
+;;   ADW_EASE_IN_EXPO,
+;;   ADW_EASE_OUT_EXPO,
+;;   ADW_EASE_IN_OUT_EXPO,
+;;   ADW_EASE_IN_CIRC,
+;;   ADW_EASE_OUT_CIRC,
+;;   ADW_EASE_IN_OUT_CIRC,
+;;   ADW_EASE_IN_ELASTIC,
+;;   ADW_EASE_OUT_ELASTIC,
+;;   ADW_EASE_IN_OUT_ELASTIC,
+;;   ADW_EASE_IN_BACK,
+;;   ADW_EASE_OUT_BACK,
+;;   ADW_EASE_IN_OUT_BACK,
+;;   ADW_EASE_IN_BOUNCE,
+;;   ADW_EASE_OUT_BOUNCE,
+;;   ADW_EASE_IN_OUT_BOUNCE,
+;; } AdwEasing;
+
+(define-enum-extended Easing
+  (in-module "Adw")
+  (c-name "AdwEasing")
+  (values
+    '("linear" "ADW_LINEAR" "0")
+    '("ease-in-quad" "ADW_EASE_IN_QUAD" "1")
+    '("ease-out-quad" "ADW_EASE_OUT_QUAD" "2")
+    '("ease-in-out-quad" "ADW_EASE_IN_OUT_QUAD" "3")
+    '("ease-in-cubic" "ADW_EASE_IN_CUBIC" "4")
+    '("ease-out-cubic" "ADW_EASE_OUT_CUBIC" "5")
+    '("ease-in-out-cubic" "ADW_EASE_IN_OUT_CUBIC" "6")
+    '("ease-in-quart" "ADW_EASE_IN_QUART" "7")
+    '("ease-out-quart" "ADW_EASE_OUT_QUART" "8")
+    '("ease-in-out-quart" "ADW_EASE_IN_OUT_QUART" "9")
+    '("ease-in-quint" "ADW_EASE_IN_QUINT" "10")
+    '("ease-out-quint" "ADW_EASE_OUT_QUINT" "11")
+    '("ease-in-out-quint" "ADW_EASE_IN_OUT_QUINT" "12")
+    '("ease-in-sine" "ADW_EASE_IN_SINE" "13")
+    '("ease-out-sine" "ADW_EASE_OUT_SINE" "14")
+    '("ease-in-out-sine" "ADW_EASE_IN_OUT_SINE" "15")
+    '("ease-in-expo" "ADW_EASE_IN_EXPO" "16")
+    '("ease-out-expo" "ADW_EASE_OUT_EXPO" "17")
+    '("ease-in-out-expo" "ADW_EASE_IN_OUT_EXPO" "18")
+    '("ease-in-circ" "ADW_EASE_IN_CIRC" "19")
+    '("ease-out-circ" "ADW_EASE_OUT_CIRC" "20")
+    '("ease-in-out-circ" "ADW_EASE_IN_OUT_CIRC" "21")
+    '("ease-in-elastic" "ADW_EASE_IN_ELASTIC" "22")
+    '("ease-out-elastic" "ADW_EASE_OUT_ELASTIC" "23")
+    '("ease-in-out-elastic" "ADW_EASE_IN_OUT_ELASTIC" "24")
+    '("ease-in-back" "ADW_EASE_IN_BACK" "25")
+    '("ease-out-back" "ADW_EASE_OUT_BACK" "26")
+    '("ease-in-out-back" "ADW_EASE_IN_OUT_BACK" "27")
+    '("ease-in-bounce" "ADW_EASE_IN_BOUNCE" "28")
+    '("ease-out-bounce" "ADW_EASE_OUT_BOUNCE" "29")
+    '("ease-in-out-bounce" "ADW_EASE_IN_OUT_BOUNCE" "30")
+  )
+)
+
+;; From adw-flap.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_FLAP_FOLD_POLICY_NEVER,
+;;   ADW_FLAP_FOLD_POLICY_ALWAYS,
+;;   ADW_FLAP_FOLD_POLICY_AUTO,
+;; } AdwFlapFoldPolicy;
+
+(define-enum-extended FlapFoldPolicy
+  (in-module "Adw")
+  (c-name "AdwFlapFoldPolicy")
+  (values
+    '("never" "ADW_FLAP_FOLD_POLICY_NEVER" "0")
+    '("always" "ADW_FLAP_FOLD_POLICY_ALWAYS" "1")
+    '("auto" "ADW_FLAP_FOLD_POLICY_AUTO" "2")
+  )
+)
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_FLAP_TRANSITION_TYPE_OVER,
+;;   ADW_FLAP_TRANSITION_TYPE_UNDER,
+;;   ADW_FLAP_TRANSITION_TYPE_SLIDE,
+;; } AdwFlapTransitionType;
+
+(define-enum-extended FlapTransitionType
+  (in-module "Adw")
+  (c-name "AdwFlapTransitionType")
+  (values
+    '("over" "ADW_FLAP_TRANSITION_TYPE_OVER" "0")
+    '("under" "ADW_FLAP_TRANSITION_TYPE_UNDER" "1")
+    '("slide" "ADW_FLAP_TRANSITION_TYPE_SLIDE" "2")
+  )
+)
+
+;; From adw-fold-threshold-policy.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_FOLD_THRESHOLD_POLICY_MINIMUM,
+;;   ADW_FOLD_THRESHOLD_POLICY_NATURAL,
+;; } AdwFoldThresholdPolicy;
+
+(define-enum-extended FoldThresholdPolicy
+  (in-module "Adw")
+  (c-name "AdwFoldThresholdPolicy")
+  (values
+    '("minimum" "ADW_FOLD_THRESHOLD_POLICY_MINIMUM" "0")
+    '("natural" "ADW_FOLD_THRESHOLD_POLICY_NATURAL" "1")
+  )
+)
+
+;; From adw-header-bar.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_CENTERING_POLICY_LOOSE,
+;;   ADW_CENTERING_POLICY_STRICT,
+;; } AdwCenteringPolicy;
+
+(define-enum-extended CenteringPolicy
+  (in-module "Adw")
+  (c-name "AdwCenteringPolicy")
+  (values
+    '("loose" "ADW_CENTERING_POLICY_LOOSE" "0")
+    '("strict" "ADW_CENTERING_POLICY_STRICT" "1")
+  )
+)
+
+;; From adw-leaflet.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_LEAFLET_TRANSITION_TYPE_OVER,
+;;   ADW_LEAFLET_TRANSITION_TYPE_UNDER,
+;;   ADW_LEAFLET_TRANSITION_TYPE_SLIDE,
+;; } AdwLeafletTransitionType;
+
+(define-enum-extended LeafletTransitionType
+  (in-module "Adw")
+  (c-name "AdwLeafletTransitionType")
+  (values
+    '("over" "ADW_LEAFLET_TRANSITION_TYPE_OVER" "0")
+    '("under" "ADW_LEAFLET_TRANSITION_TYPE_UNDER" "1")
+    '("slide" "ADW_LEAFLET_TRANSITION_TYPE_SLIDE" "2")
+  )
+)
+
+;; From adw-message-dialog.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_RESPONSE_DEFAULT,
+;;   ADW_RESPONSE_SUGGESTED,
+;;   ADW_RESPONSE_DESTRUCTIVE,
+;; } AdwResponseAppearance;
+
+(define-enum-extended ResponseAppearance
+  (in-module "Adw")
+  (c-name "AdwResponseAppearance")
+  (values
+    '("default" "ADW_RESPONSE_DEFAULT" "0")
+    '("suggested" "ADW_RESPONSE_SUGGESTED" "1")
+    '("destructive" "ADW_RESPONSE_DESTRUCTIVE" "2")
+  )
+)
+
+;; From adw-navigation-direction.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_NAVIGATION_DIRECTION_BACK,
+;;   ADW_NAVIGATION_DIRECTION_FORWARD,
+;; } AdwNavigationDirection;
+
+(define-enum-extended NavigationDirection
+  (in-module "Adw")
+  (c-name "AdwNavigationDirection")
+  (values
+    '("back" "ADW_NAVIGATION_DIRECTION_BACK" "0")
+    '("forward" "ADW_NAVIGATION_DIRECTION_FORWARD" "1")
+  )
+)
+
+;; From adw-squeezer.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_SQUEEZER_TRANSITION_TYPE_NONE,
+;;   ADW_SQUEEZER_TRANSITION_TYPE_CROSSFADE,
+;; } AdwSqueezerTransitionType;
+
+(define-enum-extended SqueezerTransitionType
+  (in-module "Adw")
+  (c-name "AdwSqueezerTransitionType")
+  (values
+    '("none" "ADW_SQUEEZER_TRANSITION_TYPE_NONE" "0")
+    '("crossfade" "ADW_SQUEEZER_TRANSITION_TYPE_CROSSFADE" "1")
+  )
+)
+
+;; From adw-style-manager.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_COLOR_SCHEME_DEFAULT,
+;;   ADW_COLOR_SCHEME_FORCE_LIGHT,
+;;   ADW_COLOR_SCHEME_PREFER_LIGHT,
+;;   ADW_COLOR_SCHEME_PREFER_DARK,
+;;   ADW_COLOR_SCHEME_FORCE_DARK,
+;; } AdwColorScheme;
+
+(define-enum-extended ColorScheme
+  (in-module "Adw")
+  (c-name "AdwColorScheme")
+  (values
+    '("default" "ADW_COLOR_SCHEME_DEFAULT" "0")
+    '("force-light" "ADW_COLOR_SCHEME_FORCE_LIGHT" "1")
+    '("prefer-light" "ADW_COLOR_SCHEME_PREFER_LIGHT" "2")
+    '("prefer-dark" "ADW_COLOR_SCHEME_PREFER_DARK" "3")
+    '("force-dark" "ADW_COLOR_SCHEME_FORCE_DARK" "4")
+  )
+)
+
+;; From adw-tab-view.h
+
+;; Original typedef:
+;; typedef enum /*< flags >*/ {
+;;   ADW_TAB_VIEW_SHORTCUT_NONE                    = 0,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_TAB             = 1 << 0,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_TAB       = 1 << 1,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_PAGE_UP         = 1 << 2,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_PAGE_DOWN       = 1 << 3,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_HOME            = 1 << 4,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_END             = 1 << 5,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_PAGE_UP   = 1 << 6,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_PAGE_DOWN = 1 << 7,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_HOME      = 1 << 8,
+;;   ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_END       = 1 << 9,
+;;   ADW_TAB_VIEW_SHORTCUT_ALT_DIGITS              = 1 << 10,
+;;   ADW_TAB_VIEW_SHORTCUT_ALT_ZERO                = 1 << 11,
+;;   ADW_TAB_VIEW_SHORTCUT_ALL_SHORTCUTS           = 0xFFF
+;; } AdwTabViewShortcuts;
+
+(define-flags-extended TabViewShortcuts
+  (in-module "Adw")
+  (c-name "AdwTabViewShortcuts")
+  (values
+    '("none" "ADW_TAB_VIEW_SHORTCUT_NONE" "0x0")
+    '("control-tab" "ADW_TAB_VIEW_SHORTCUT_CONTROL_TAB" "1 << 0")
+    '("control-shift-tab" "ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_TAB" "1 << 1")
+    '("control-page-up" "ADW_TAB_VIEW_SHORTCUT_CONTROL_PAGE_UP" "1 << 2")
+    '("control-page-down" "ADW_TAB_VIEW_SHORTCUT_CONTROL_PAGE_DOWN" "1 << 3")
+    '("control-home" "ADW_TAB_VIEW_SHORTCUT_CONTROL_HOME" "1 << 4")
+    '("control-end" "ADW_TAB_VIEW_SHORTCUT_CONTROL_END" "1 << 5")
+    '("control-shift-page-up" "ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_PAGE_UP" "1 << 6")
+    '("control-shift-page-down" "ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_PAGE_DOWN" "1 << 7")
+    '("control-shift-home" "ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_HOME" "1 << 8")
+    '("control-shift-end" "ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_END" "1 << 9")
+    '("alt-digits" "ADW_TAB_VIEW_SHORTCUT_ALT_DIGITS" "1 << 10")
+    '("alt-zero" "ADW_TAB_VIEW_SHORTCUT_ALT_ZERO" "1 << 11")
+    '("all-shortcuts" "ADW_TAB_VIEW_SHORTCUT_ALL_SHORTCUTS" "0xFFF")
+  )
+)
+
+;; From adw-toast.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_TOAST_PRIORITY_NORMAL,
+;;   ADW_TOAST_PRIORITY_HIGH,
+;; } AdwToastPriority;
+
+(define-enum-extended ToastPriority
+  (in-module "Adw")
+  (c-name "AdwToastPriority")
+  (values
+    '("normal" "ADW_TOAST_PRIORITY_NORMAL" "0")
+    '("high" "ADW_TOAST_PRIORITY_HIGH" "1")
+  )
+)
+
+;; From adw-view-switcher.h
+
+;; Original typedef:
+;; typedef enum {
+;;   ADW_VIEW_SWITCHER_POLICY_NARROW,
+;;   ADW_VIEW_SWITCHER_POLICY_WIDE,
+;; } AdwViewSwitcherPolicy;
+
+(define-enum-extended ViewSwitcherPolicy
+  (in-module "Adw")
+  (c-name "AdwViewSwitcherPolicy")
+  (values
+    '("narrow" "ADW_VIEW_SWITCHER_POLICY_NARROW" "0")
+    '("wide" "ADW_VIEW_SWITCHER_POLICY_WIDE" "1")
+  )
+)
+

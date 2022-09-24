@@ -1,0 +1,21 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@includedir@
+
+gmmprocm4dir=${libdir}/@LIBADWAITAMM_MODULE_NAME@/proc/m4
+
+docdir=${datarootdir}/doc/@LIBADWAITAMM_MODULE_NAME@
+doxytagfile=${docdir}/reference/@LIBADWAITAMM_MODULE_NAME@.tag
+htmlrefdir=${docdir}/reference/html
+htmlrefpub=http://library.gnome.org/devel/@PACKAGE_TARNAME@/unstable/
+
+Name: libadwaitamm
+Description: C++ binding for libadwaita
+Version: @PACKAGE_VERSION@
+URL: http://www.gtkmm.org/
+Requires: @LIBADWAITAMM_MODULES@
+Libs: -L${libdir} -llibadwaitamm-@LIBADWAITAMM_API_VERSION@
+Cflags: -I${includedir}/@LIBADWAITAMM_MODULE_NAME@ -I${libdir}/@LIBADWAITAMM_MODULE_NAME@/include

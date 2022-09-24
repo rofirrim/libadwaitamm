@@ -1,0 +1,5 @@
+;; Include generated API definition files
+(include libadwaita_enums.defs)
+(include libadwaita_methods.defs)
+(include libadwaita_signals.defs)
+(include libadwaita_vfuncs.defs)

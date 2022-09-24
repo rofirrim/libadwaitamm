@@ -1,0 +1,13 @@
+; Virtual functions
+; Hand-written file
+
+; SkeletonSomeType
+
+;(define-vfunc some_vfunc
+;  (of-object "SkeletonSomeType")
+;  (return-type "void")
+;  (parameters
+;    '("GObject*" "some_object")
+;    '("const-gchar*" "some_string")
+;  )
+;)
