@@ -26,6 +26,8 @@ hg_ccg_basenames = [
   'aboutwindow',
   'preferencesrow',
   'actionrow',
+  'animation',
+  'animationtarget',
 ]
 
 extra_cc_files = [

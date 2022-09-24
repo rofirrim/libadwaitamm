@@ -337,3 +337,49 @@
   (default-value "")
 )
 
+;; From AdwAnimation
+
+(define-signal done
+  (of-object "AdwAnimation")
+  (return-type "void")
+  (flags "Run Last")
+)
+
+(define-property widget
+  (of-object "AdwAnimation")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
+(define-property target
+  (of-object "AdwAnimation")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property value
+  (of-object "AdwAnimation")
+  (prop-type "GParamDouble")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property state
+  (of-object "AdwAnimation")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "ADW_ANIMATION_IDLE")
+)
+

@@ -16,25 +16,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// We always need to generate the .defs for all types because the code
-// using deprecated API is generated unconditionally and only disabled
-// at compile time.
-#undef LIBADWAITA_DISABLE_DEPRECATED
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
 
-#include <glibmm_generate_extra_defs/generate_extra_defs.h>
-#include <libadwaita-1/adwaita.h>
-#include <iostream>
+#include <glibmm.h>
 
-int main(int, char**)
+namespace Adw
 {
-  adw_init ();
 
-  std::cout << get_defs(ADW_TYPE_WINDOW);
-  std::cout << get_defs(ADW_TYPE_ABOUT_WINDOW);
-  std::cout << get_defs(ADW_TYPE_PREFERENCES_ROW);
-  std::cout << get_defs(ADW_TYPE_ACTION_ROW);
-  std::cout << get_defs(ADW_TYPE_WINDOW_TITLE);
-  std::cout << get_defs(ADW_TYPE_ANIMATION);
+class AnimationTarget : public Glib::Object {
+  _CLASS_GOBJECT(AnimationTarget, AdwAnimationTarget, ADW_ANIMATION_TARGET, Glib::Object, GObject)
 
-  return 0;
-}
+protected:
+  _CTOR_DEFAULT
+
+};
+
+} // namespace Adw
