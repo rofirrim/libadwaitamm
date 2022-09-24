@@ -315,3 +315,25 @@
   (default-value "0")
 )
 
+;; From AdwWindowTitle
+
+(define-property title
+  (of-object "AdwWindowTitle")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property subtitle
+  (of-object "AdwWindowTitle")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
