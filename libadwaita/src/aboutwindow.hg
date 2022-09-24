@@ -24,7 +24,7 @@ _PINCLUDE(libadwaitamm/private/window_p.h)
 
 // The documentation explicitly advises against this.
 // But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
-// cannot forward a struct type Foo.
+// cannot forward-declare a struct type Foo.
 #include <libadwaita-1/adwaita.h>
 
 namespace Adw

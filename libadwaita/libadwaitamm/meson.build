@@ -23,6 +23,7 @@ endforeach
 hg_ccg_basenames = [
   'window',
   'aboutwindow',
+  'preferencesrow',
 ]
 
 extra_cc_files = [
