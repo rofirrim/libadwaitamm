@@ -31,6 +31,7 @@ hg_ccg_basenames = [
   'application',
   'stylemanager',
   'applicationwindow',
+  'avatar',
 ]
 
 extra_cc_files = [
