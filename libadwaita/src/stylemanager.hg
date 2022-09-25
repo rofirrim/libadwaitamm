@@ -1,0 +1,58 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+_WRAP_ENUM(ColorScheme, AdwColorScheme)
+
+class StyleManager : public Glib::Object {
+  _CLASS_GOBJECT(StyleManager, AdwStyleManager, ADW_STYLE_MANAGER, Glib::Object, GObject)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+  _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_default(), adw_style_manager_get_default)
+  _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_for_display(const Glib::RefPtr<Gdk::Display>& display), adw_style_manager_get_for_display)
+  _WRAP_METHOD(ColorScheme get_color_scheme() const, adw_style_manager_get_color_scheme)
+  _WRAP_METHOD(bool get_system_supports_color_schemes() const, adw_style_manager_get_system_supports_color_schemes)
+  _WRAP_METHOD(bool get_dark() const, adw_style_manager_get_dark)
+  _WRAP_METHOD(bool get_high_contrast() const, adw_style_manager_get_high_contrast)
+  _WRAP_METHOD(Glib::RefPtr<Gdk::Display> get_display() const, adw_style_manager_get_display)
+  _WRAP_METHOD(void set_color_scheme(ColorScheme color_scheme), adw_style_manager_set_color_scheme)
+
+  _WRAP_PROPERTY("high_contrast", bool)
+  _WRAP_PROPERTY("color_scheme", ColorScheme)
+  _WRAP_PROPERTY("display", Glib::RefPtr<Gdk::Display>)
+  _WRAP_PROPERTY("system_supports_color_schemes", bool)
+  _WRAP_PROPERTY("dark", bool)
+};
+
+} // namespace Adw

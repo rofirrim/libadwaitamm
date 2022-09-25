@@ -28,6 +28,8 @@ hg_ccg_basenames = [
   'actionrow',
   'animation',
   'animationtarget',
+  'application',
+  'stylemanager',
 ]
 
 extra_cc_files = [

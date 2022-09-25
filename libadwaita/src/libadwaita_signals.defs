@@ -383,3 +383,65 @@
   (default-value "ADW_ANIMATION_IDLE")
 )
 
+;; From AdwApplication
+
+(define-property style-manager
+  (of-object "AdwApplication")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
+;; From AdwStyleManager
+
+(define-property display
+  (of-object "AdwStyleManager")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
+(define-property color-scheme
+  (of-object "AdwStyleManager")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_COLOR_SCHEME_DEFAULT")
+)
+
+(define-property system-supports-color-schemes
+  (of-object "AdwStyleManager")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property dark
+  (of-object "AdwStyleManager")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property high-contrast
+  (of-object "AdwStyleManager")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+

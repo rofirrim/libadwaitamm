@@ -16,27 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// We always need to generate the .defs for all types because the code
-// using deprecated API is generated unconditionally and only disabled
-// at compile time.
-#undef LIBADWAITA_DISABLE_DEPRECATED
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/application_p.h)
 
-#include <glibmm_generate_extra_defs/generate_extra_defs.h>
-#include <libadwaita-1/adwaita.h>
-#include <iostream>
+#include <gtkmm.h>
+#include <libadwaitamm/stylemanager.h>
 
-int main(int, char**)
+namespace Adw
 {
-  adw_init ();
 
-  std::cout << get_defs(ADW_TYPE_WINDOW);
-  std::cout << get_defs(ADW_TYPE_ABOUT_WINDOW);
-  std::cout << get_defs(ADW_TYPE_PREFERENCES_ROW);
-  std::cout << get_defs(ADW_TYPE_ACTION_ROW);
-  std::cout << get_defs(ADW_TYPE_WINDOW_TITLE);
-  std::cout << get_defs(ADW_TYPE_ANIMATION);
-  std::cout << get_defs(ADW_TYPE_APPLICATION);
-  std::cout << get_defs(ADW_TYPE_STYLE_MANAGER);
+class Application : public Gtk::Application {
+  _CLASS_GTKOBJECT(Application, AdwApplication, ADW_APPLICATION, Gtk::Application, GtkApplication)
 
-  return 0;
-}
+protected:
+  _CTOR_DEFAULT
+  _UNMANAGEABLE
+  _CUSTOM_DTOR
+
+public:
+  _WRAP_CREATE()
+  _WRAP_CTOR(Application(const Glib::ustring& application_id, Gio::Application::Flags flags), adw_application_new)
+
+  _WRAP_METHOD(Glib::RefPtr<StyleManager> get_style_manager() const, adw_application_get_style_manager)
+  _WRAP_PROPERTY("style-manager", Glib::RefPtr<StyleManager>)
+};
+
+} // namespace Adw
