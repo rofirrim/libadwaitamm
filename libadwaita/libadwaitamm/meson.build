@@ -34,6 +34,7 @@ hg_ccg_basenames = [
   'avatar',
   'bin',
   'buttoncontent',
+  'callbackanimationtarget',
 ]
 
 extra_cc_files = [

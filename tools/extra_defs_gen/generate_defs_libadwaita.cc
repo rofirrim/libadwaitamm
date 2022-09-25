@@ -35,12 +35,14 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_ACTION_ROW);
   std::cout << get_defs(ADW_TYPE_WINDOW_TITLE);
   std::cout << get_defs(ADW_TYPE_ANIMATION);
+  std::cout << get_defs(ADW_TYPE_ANIMATION_TARGET);
   std::cout << get_defs(ADW_TYPE_APPLICATION);
   std::cout << get_defs(ADW_TYPE_STYLE_MANAGER);
   std::cout << get_defs(ADW_TYPE_APPLICATION_WINDOW);
   std::cout << get_defs(ADW_TYPE_AVATAR);
   std::cout << get_defs(ADW_TYPE_BIN);
   std::cout << get_defs(ADW_TYPE_BUTTON_CONTENT);
+  std::cout << get_defs(ADW_TYPE_CALLBACK_ANIMATION_TARGET);
 
   return 0;
 }
