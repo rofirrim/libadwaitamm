@@ -40,6 +40,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_APPLICATION_WINDOW);
   std::cout << get_defs(ADW_TYPE_AVATAR);
   std::cout << get_defs(ADW_TYPE_BIN);
+  std::cout << get_defs(ADW_TYPE_BUTTON_CONTENT);
 
   return 0;
 }
