@@ -445,3 +445,14 @@
   (default-value "FALSE")
 )
 
+;; From AdwApplicationWindow
+
+(define-property content
+  (of-object "AdwApplicationWindow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+

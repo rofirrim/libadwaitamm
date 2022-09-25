@@ -30,6 +30,7 @@ hg_ccg_basenames = [
   'animationtarget',
   'application',
   'stylemanager',
+  'applicationwindow',
 ]
 
 extra_cc_files = [
