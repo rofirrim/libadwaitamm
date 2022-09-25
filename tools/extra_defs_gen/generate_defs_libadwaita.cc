@@ -39,6 +39,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_STYLE_MANAGER);
   std::cout << get_defs(ADW_TYPE_APPLICATION_WINDOW);
   std::cout << get_defs(ADW_TYPE_AVATAR);
+  std::cout << get_defs(ADW_TYPE_BIN);
 
   return 0;
 }

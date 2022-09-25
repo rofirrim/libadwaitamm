@@ -507,3 +507,14 @@
   (default-value "-1")
 )
 
+;; From AdwBin
+
+(define-property child
+  (of-object "AdwBin")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
