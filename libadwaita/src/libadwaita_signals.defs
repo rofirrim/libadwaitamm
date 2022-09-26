@@ -707,3 +707,25 @@
   (default-value "400")
 )
 
+;; From AdwClampLayout
+
+(define-property maximum-size
+  (of-object "AdwClampLayout")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "600")
+)
+
+(define-property tightening-threshold
+  (of-object "AdwClampLayout")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "400")
+)
+
