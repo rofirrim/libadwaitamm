@@ -760,3 +760,70 @@
   (default-value "400")
 )
 
+;; From AdwComboRow
+
+(define-property selected
+  (of-object "AdwComboRow")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "4294967295")
+)
+
+(define-property selected-item
+  (of-object "AdwComboRow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
+(define-property model
+  (of-object "AdwComboRow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property factory
+  (of-object "AdwComboRow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property list-factory
+  (of-object "AdwComboRow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property expression
+  (of-object "AdwComboRow")
+  (prop-type "GtkParamSpecExpression")
+  (docs "Expression to determine strings to search for")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property use-subtitle
+  (of-object "AdwComboRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
