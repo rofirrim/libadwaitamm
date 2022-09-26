@@ -40,7 +40,7 @@ public:
 
   _WRAP_METHOD(AnimationState get_state() const, adw_animation_get_state)
   _WRAP_METHOD(double get_value() const, adw_animation_get_value)
-  _WRAP_METHOD(Glib::RefPtr<AnimationTarget> get_target() const, adw_animation_get_target)
+  _WRAP_METHOD(Glib::RefPtr<AnimationTarget> get_target() const, adw_animation_get_target, refreturn)
   _WRAP_METHOD(Gtk::Widget* get_widget() const, adw_animation_get_widget)
   _WRAP_METHOD(void pause(), adw_animation_pause)
   _WRAP_METHOD(void play(), adw_animation_play)

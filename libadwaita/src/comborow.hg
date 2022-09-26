@@ -40,13 +40,13 @@ protected:
 public:
   _WRAP_CREATE()
 
-  _WRAP_METHOD(Glib::RefPtr<Gtk::Expression<Glib::ustring>> get_expression() const, adw_combo_row_get_expression)
-  _WRAP_METHOD(Glib::RefPtr<Gtk::ListItemFactory> get_factory() const, adw_combo_row_get_factory)
-  _WRAP_METHOD(Glib::RefPtr<Gtk::ListItemFactory> get_list_factory() const, adw_combo_row_get_list_factory)
+  _WRAP_METHOD(Glib::RefPtr<Gtk::Expression<Glib::ustring>> get_expression() const, adw_combo_row_get_expression, refreturn)
+  _WRAP_METHOD(Glib::RefPtr<Gtk::ListItemFactory> get_factory() const, adw_combo_row_get_factory, refreturn)
+  _WRAP_METHOD(Glib::RefPtr<Gtk::ListItemFactory> get_list_factory() const, adw_combo_row_get_list_factory, refreturn)
   _WRAP_METHOD(Glib::RefPtr<Gio::ListModel> get_model() const, adw_combo_row_get_model)
   _WRAP_METHOD(unsigned int get_selected() const, adw_combo_row_get_selected)
 #m4 _CONVERSION(`gpointer',`Glib::RefPtr<Glib::ObjectBase>',`Glib::make_refptr_for_instance<Glib::ObjectBase>(Glib::wrap_auto(G_OBJECT($3)))')
-  _WRAP_METHOD(Glib::RefPtr<Glib::ObjectBase> get_selected_item() const, adw_combo_row_get_selected_item)
+  _WRAP_METHOD(Glib::RefPtr<Glib::ObjectBase> get_selected_item() const, adw_combo_row_get_selected_item, refreturn)
   _WRAP_METHOD(bool get_use_subtitle() const, adw_combo_row_get_use_subtitle)
   _WRAP_METHOD(void set_factory(const Glib::RefPtr<Gtk::ListItemFactory>& factory), adw_combo_row_set_factory)
   _WRAP_METHOD(void set_list_factory(const Glib::RefPtr<Gtk::ListItemFactory>& factory), adw_combo_row_set_list_factory)

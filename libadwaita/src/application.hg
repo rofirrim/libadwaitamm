@@ -38,7 +38,7 @@ public:
   _WRAP_CREATE()
   _WRAP_CTOR(Application(const Glib::ustring& application_id, Gio::Application::Flags flags), adw_application_new)
 
-  _WRAP_METHOD(Glib::RefPtr<StyleManager> get_style_manager() const, adw_application_get_style_manager)
+  _WRAP_METHOD(Glib::RefPtr<StyleManager> get_style_manager() const, adw_application_get_style_manager, refreturn)
   _WRAP_PROPERTY("style-manager", Glib::RefPtr<StyleManager>)
 };
 

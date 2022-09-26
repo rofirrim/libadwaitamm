@@ -45,7 +45,7 @@ protected:
   _WRAP_METHOD(bool get_system_supports_color_schemes() const, adw_style_manager_get_system_supports_color_schemes)
   _WRAP_METHOD(bool get_dark() const, adw_style_manager_get_dark)
   _WRAP_METHOD(bool get_high_contrast() const, adw_style_manager_get_high_contrast)
-  _WRAP_METHOD(Glib::RefPtr<Gdk::Display> get_display() const, adw_style_manager_get_display)
+  _WRAP_METHOD(Glib::RefPtr<Gdk::Display> get_display() const, adw_style_manager_get_display, refreturn)
   _WRAP_METHOD(void set_color_scheme(ColorScheme color_scheme), adw_style_manager_set_color_scheme)
 
   _WRAP_PROPERTY("high_contrast", bool)

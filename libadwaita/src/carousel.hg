@@ -50,7 +50,7 @@ public:
   _WRAP_METHOD(Gtk::Widget* get_nth_page(unsigned int n) const, adw_carousel_get_nth_page)
   _WRAP_METHOD(double get_position() const, adw_carousel_get_position)
   _WRAP_METHOD(unsigned int get_reveal_duration() const, adw_carousel_get_reveal_duration)
-  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_scroll_params() const, adw_carousel_get_scroll_params)
+  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_scroll_params() const, adw_carousel_get_scroll_params, refreturn)
   _WRAP_METHOD(unsigned int get_spacing() const, adw_carousel_get_spacing)
   _WRAP_METHOD(void insert(Gtk::Widget *child, int position), adw_carousel_insert)
   _WRAP_METHOD(void prepend(Gtk::Widget *child), adw_carousel_prepend)

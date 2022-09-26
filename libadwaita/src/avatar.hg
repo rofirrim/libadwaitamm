@@ -42,8 +42,8 @@ public:
 
   _WRAP_CTOR(Avatar(int size, const Glib::ustring& text, bool show_initials), adw_avatar_new)
  
-  _WRAP_METHOD(Glib::RefPtr<Gdk::Texture> draw_to_texture(int scale_factor), adw_avatar_draw_to_texture)
-  _WRAP_METHOD(Glib::RefPtr<Gdk::Paintable> get_custom_image() const, adw_avatar_get_custom_image)
+  _WRAP_METHOD(Glib::RefPtr<Gdk::Texture> draw_to_texture(int scale_factor), adw_avatar_draw_to_texture, refreturn)
+  _WRAP_METHOD(Glib::RefPtr<Gdk::Paintable> get_custom_image() const, adw_avatar_get_custom_image, refreturn)
   _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_avatar_get_icon_name)
   _WRAP_METHOD(bool get_show_initials() const, adw_avatar_get_show_initials)
   _WRAP_METHOD(int get_size() const, adw_avatar_get_size)
