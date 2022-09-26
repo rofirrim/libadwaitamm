@@ -46,6 +46,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_CAROUSEL);
   std::cout << get_defs(ADW_TYPE_CAROUSEL_INDICATOR_DOTS);
   std::cout << get_defs(ADW_TYPE_CAROUSEL_INDICATOR_LINES);
+  std::cout << get_defs(ADW_TYPE_CLAMP);
 
   return 0;
 }

@@ -676,3 +676,34 @@
   (construct-only #f)
 )
 
+;; From AdwClamp
+
+(define-property child
+  (of-object "AdwClamp")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property maximum-size
+  (of-object "AdwClamp")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "600")
+)
+
+(define-property tightening-threshold
+  (of-object "AdwClamp")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "400")
+)
+

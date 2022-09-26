@@ -39,6 +39,7 @@ hg_ccg_basenames = [
   'springparams',
   'carouselindicatordots',
   'carouselindicatorlines',
+  'clamp',
 ]
 
 extra_cc_files = [
