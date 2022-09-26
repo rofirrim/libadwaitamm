@@ -21,9 +21,9 @@
 
 namespace Adw
 { 
-static void CallbackAnimationTarget::callback_function(double value,
-                                                       gpointer user_data) {
-  auto the_slot = static_cast<SlotTarget>(user_data);
+void CallbackAnimationTarget::callback_function(double value,
+                                                gpointer user_data) {
+  auto the_slot = static_cast<SlotTarget*>(user_data);
   try {
     (*the_slot)(value);
   } catch (...) {
@@ -31,14 +31,13 @@ static void CallbackAnimationTarget::callback_function(double value,
   }
 }
 
-CallbackAnimationTarget::CallbackAnimationTarget(const SlotTarget &slot_target)
-    : Glib::Object(nullptr), Adw::AnimationTarget() {
+CallbackAnimationTarget::CallbackAnimationTarget(
+    const SlotTarget &slot_target) {
 
   auto slot_copy = new SlotTarget(slot_target);
 
-  gobj()->callback = callback_function;
-  gobj()->user_data = slot_copy;
-  gobj()->destroy_notify = Glib::destroy_notify<SlotTarget>;
+  gobject_ = G_OBJECT(adw_callback_animation_target_new(
+      callback_function, slot_copy, Glib::destroy_notify_delete<SlotTarget>));
 }
 
 } // namespace Adw
