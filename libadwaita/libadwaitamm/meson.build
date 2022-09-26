@@ -35,6 +35,8 @@ hg_ccg_basenames = [
   'bin',
   'buttoncontent',
   'callbackanimationtarget',
+  'carousel',
+  'springparams',
 ]
 
 extra_cc_files = [

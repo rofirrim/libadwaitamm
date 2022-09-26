@@ -383,6 +383,8 @@
   (default-value "ADW_ANIMATION_IDLE")
 )
 
+;; From AdwAnimationTarget
+
 ;; From AdwApplication
 
 (define-property style-manager
@@ -548,5 +550,107 @@
   (writable #t)
   (construct-only #f)
   (default-value "FALSE")
+)
+
+;; From AdwCallbackAnimationTarget
+
+;; From AdwCarousel
+
+(define-signal page-changed
+  (of-object "AdwCarousel")
+  (return-type "void")
+  (flags "Run Last")
+  (parameters
+    '("guint" "p0")
+  )
+)
+
+(define-property n-pages
+  (of-object "AdwCarousel")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property position
+  (of-object "AdwCarousel")
+  (prop-type "GParamDouble")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property interactive
+  (of-object "AdwCarousel")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property spacing
+  (of-object "AdwCarousel")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property scroll-params
+  (of-object "AdwCarousel")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property allow-mouse-drag
+  (of-object "AdwCarousel")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property allow-scroll-wheel
+  (of-object "AdwCarousel")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property allow-long-swipes
+  (of-object "AdwCarousel")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property reveal-duration
+  (of-object "AdwCarousel")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
 )
 

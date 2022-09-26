@@ -43,6 +43,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_BIN);
   std::cout << get_defs(ADW_TYPE_BUTTON_CONTENT);
   std::cout << get_defs(ADW_TYPE_CALLBACK_ANIMATION_TARGET);
+  std::cout << get_defs(ADW_TYPE_CAROUSEL);
 
   return 0;
 }

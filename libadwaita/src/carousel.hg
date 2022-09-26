@@ -1,0 +1,81 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+#include <libadwaitamm/springparams.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class Carousel : public Gtk::Widget {
+  _CLASS_GTKOBJECT(Carousel, AdwCarousel, ADW_CAROUSEL, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(void append(Gtk::Widget* child), adw_carousel_append)
+  _WRAP_METHOD(bool get_allow_long_swipes() const, adw_carousel_get_allow_long_swipes)
+  _WRAP_METHOD(bool get_allow_mouse_drag() const, adw_carousel_get_allow_mouse_drag)
+  _WRAP_METHOD(bool get_allow_scroll_wheel() const, adw_carousel_get_allow_scroll_wheel)
+  _WRAP_METHOD(bool get_interactive() const, adw_carousel_get_interactive)
+  _WRAP_METHOD(unsigned int get_n_pages() const, adw_carousel_get_n_pages)
+  _WRAP_METHOD(Gtk::Widget* get_nth_page(unsigned int n) const, adw_carousel_get_nth_page)
+  _WRAP_METHOD(double get_position() const, adw_carousel_get_position)
+  _WRAP_METHOD(unsigned int get_reveal_duration() const, adw_carousel_get_reveal_duration)
+  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_scroll_params() const, adw_carousel_get_scroll_params)
+  _WRAP_METHOD(unsigned int get_spacing() const, adw_carousel_get_spacing)
+  _WRAP_METHOD(void insert(Gtk::Widget *child, int position), adw_carousel_insert)
+  _WRAP_METHOD(void prepend(Gtk::Widget *child), adw_carousel_prepend)
+  _WRAP_METHOD(void remove(Gtk::Widget *child), adw_carousel_remove)
+  _WRAP_METHOD(void reorder(Gtk::Widget *child, int position), adw_carousel_reorder)
+  _WRAP_METHOD(void scroll_to(Gtk::Widget *child, bool animate), adw_carousel_scroll_to)
+  _WRAP_METHOD(void set_allow_long_swipes(bool allow_long_swipes), adw_carousel_set_allow_long_swipes)
+  _WRAP_METHOD(void set_allow_mouse_drag(bool allow_mouse_drag), adw_carousel_set_allow_mouse_drag)
+  _WRAP_METHOD(void set_allow_scroll_wheel(bool allow_scroll_wheel), adw_carousel_set_allow_scroll_wheel)
+  _WRAP_METHOD(void set_interactive(bool interactive), adw_carousel_set_interactive)
+  _WRAP_METHOD(void set_reveal_duration(unsigned int reveal_duration), adw_carousel_set_reveal_duration)
+  _WRAP_METHOD(void set_scroll_params(const Glib::RefPtr<SpringParams>& scroll_params), adw_carousel_set_scroll_params)
+  _WRAP_METHOD(void set_spacing(unsigned int spacing), adw_carousel_set_spacing)
+
+  _WRAP_PROPERTY("interactive", bool)
+  _WRAP_PROPERTY("scroll_params", bool)
+  _WRAP_PROPERTY("allow_mouse_drag", bool)
+  _WRAP_PROPERTY("allow_scroll_wheel", bool)
+  _WRAP_PROPERTY("allow_long_swipes", bool)
+  _WRAP_PROPERTY("reveal_duration", unsigned int)
+  _WRAP_PROPERTY("position", double)
+  _WRAP_PROPERTY("n_pages", unsigned int)
+  _WRAP_PROPERTY("spacing", unsigned int)
+
+  _WRAP_SIGNAL(void page_changed(unsigned int index), "page_changed", no_default_handler)
+};
+
+} // namespace Adw
