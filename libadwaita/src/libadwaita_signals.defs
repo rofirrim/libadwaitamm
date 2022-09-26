@@ -729,3 +729,34 @@
   (default-value "400")
 )
 
+;; From AdwClampScrollable
+
+(define-property child
+  (of-object "AdwClampScrollable")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property maximum-size
+  (of-object "AdwClampScrollable")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "600")
+)
+
+(define-property tightening-threshold
+  (of-object "AdwClampScrollable")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "400")
+)
+

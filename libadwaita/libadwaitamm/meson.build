@@ -41,6 +41,7 @@ hg_ccg_basenames = [
   'carouselindicatorlines',
   'clamp',
   'clamplayout',
+  'clampscrollable',
 ]
 
 extra_cc_files = [

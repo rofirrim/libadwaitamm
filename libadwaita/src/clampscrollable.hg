@@ -1,0 +1,56 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class ClampScrollable : public Gtk::Widget, public Gtk::Scrollable {
+  _CLASS_GTKOBJECT(ClampScrollable, AdwClampScrollable, ADW_CLAMP_SCROLLABLE, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+  _IMPLEMENTS_INTERFACE(Gtk::Scrollable)
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(Gtk::Widget* get_child() const, adw_clamp_scrollable_get_child)
+  _WRAP_METHOD(int get_maximum_size() const, adw_clamp_scrollable_get_maximum_size)
+  _WRAP_METHOD(int get_tightening_threshold() const, adw_clamp_scrollable_get_tightening_threshold)
+  _WRAP_METHOD(void set_child(Gtk::Widget* child), adw_clamp_scrollable_set_child)
+  _WRAP_METHOD(void get_maximum_size(int maximum_size), adw_clamp_scrollable_set_maximum_size)
+  _WRAP_METHOD(void get_tightening_threshold(int tightening_threshold), adw_clamp_scrollable_set_tightening_threshold)
+
+  _WRAP_PROPERTY("child", Gtk::Widget*)
+  _WRAP_PROPERTY("maximum_size", int)
+  _WRAP_PROPERTY("tightening_threshold", int)
+};
+
+} // namespace Adw

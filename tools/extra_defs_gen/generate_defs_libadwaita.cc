@@ -48,6 +48,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_CAROUSEL_INDICATOR_LINES);
   std::cout << get_defs(ADW_TYPE_CLAMP);
   std::cout << get_defs(ADW_TYPE_CLAMP_LAYOUT);
+  std::cout << get_defs(ADW_TYPE_CLAMP_SCROLLABLE);
 
   return 0;
 }
