@@ -37,6 +37,8 @@ hg_ccg_basenames = [
   'callbackanimationtarget',
   'carousel',
   'springparams',
+  'carouselindicatordots',
+  'carouselindicatorlines',
 ]
 
 extra_cc_files = [

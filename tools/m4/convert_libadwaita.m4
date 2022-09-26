@@ -13,5 +13,8 @@ _CONVERSION(`const Glib::RefPtr<Gtk::Application>&',`GtkApplication*',__CONVERT_
 _CONVERSION(`AdwSpringParams*',`Glib::RefPtr<SpringParams>',__RP2P)
 _CONVERSION(`const Glib::RefPtr<SpringParams>&',`AdwSpringParams*',__CONVERT_REFPTR_TO_P($3))
 
+_CONVERSION(`AdwCarousel*',`Adw::Carousel*',__RP2P)
+_CONVERSION(`Adw::Carousel*',`AdwCarousel*',__FP2P)
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')

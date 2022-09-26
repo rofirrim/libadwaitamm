@@ -44,6 +44,8 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_BUTTON_CONTENT);
   std::cout << get_defs(ADW_TYPE_CALLBACK_ANIMATION_TARGET);
   std::cout << get_defs(ADW_TYPE_CAROUSEL);
+  std::cout << get_defs(ADW_TYPE_CAROUSEL_INDICATOR_DOTS);
+  std::cout << get_defs(ADW_TYPE_CAROUSEL_INDICATOR_LINES);
 
   return 0;
 }
