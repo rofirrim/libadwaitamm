@@ -1,0 +1,50 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class EnumListItem : public Glib::Object {
+  _CLASS_GOBJECT(EnumListItem, AdwEnumListItem, ADW_ENUM_LIST_ITEM, Glib::Object, GObject)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+  _WRAP_METHOD(Glib::ustring get_name() const, adw_enum_list_item_get_name)
+  _WRAP_METHOD(Glib::ustring get_nick() const, adw_enum_list_item_get_nick)
+  _WRAP_METHOD(int get_value() const, adw_enum_list_item_get_value)
+
+  _WRAP_PROPERTY("name", Glib::ustring)
+  _WRAP_PROPERTY("nick", Glib::ustring)
+  _WRAP_PROPERTY("value", int)
+};
+
+} // namespace Adw

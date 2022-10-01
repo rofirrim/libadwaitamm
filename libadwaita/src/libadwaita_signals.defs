@@ -900,3 +900,35 @@
   (default-value "FALSE")
 )
 
+;; From AdwEnumListItem
+
+(define-property value
+  (of-object "AdwEnumListItem")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property name
+  (of-object "AdwEnumListItem")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property nick
+  (of-object "AdwEnumListItem")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "")
+)
+
