@@ -39,6 +39,9 @@ class StyleManager : public Glib::Object {
 protected:
   _CTOR_DEFAULT
 
+public:
+  _WRAP_CREATE()
+
   _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_default(), adw_style_manager_get_default)
   _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_for_display(const Glib::RefPtr<Gdk::Display>& display), adw_style_manager_get_for_display)
   _WRAP_METHOD(ColorScheme get_color_scheme() const, adw_style_manager_get_color_scheme)

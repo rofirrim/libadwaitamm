@@ -38,6 +38,9 @@ class EnumListItem : public Glib::Object {
 protected:
   _CTOR_DEFAULT
 
+public:
+  _WRAP_CREATE()
+
   _WRAP_METHOD(Glib::ustring get_name() const, adw_enum_list_item_get_name)
   _WRAP_METHOD(Glib::ustring get_nick() const, adw_enum_list_item_get_nick)
   _WRAP_METHOD(int get_value() const, adw_enum_list_item_get_value)
