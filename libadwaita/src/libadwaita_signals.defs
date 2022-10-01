@@ -827,3 +827,76 @@
   (default-value "FALSE")
 )
 
+;; From AdwEntryRow
+
+(define-signal apply
+  (of-object "AdwEntryRow")
+  (return-type "void")
+  (flags "Run Last")
+)
+
+(define-signal entry-activated
+  (of-object "AdwEntryRow")
+  (return-type "void")
+  (flags "Run Last")
+)
+
+(define-property show-apply-button
+  (of-object "AdwEntryRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property input-hints
+  (of-object "AdwEntryRow")
+  (prop-type "GParamFlags")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "GTK_INPUT_HINT_NONE")
+)
+
+(define-property input-purpose
+  (of-object "AdwEntryRow")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "GTK_INPUT_PURPOSE_FREE_FORM")
+)
+
+(define-property attributes
+  (of-object "AdwEntryRow")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property enable-emoji-completion
+  (of-object "AdwEntryRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property activates-default
+  (of-object "AdwEntryRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+

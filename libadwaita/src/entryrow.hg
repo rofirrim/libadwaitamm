@@ -1,0 +1,73 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libadwaitamm/preferencesrow.h>
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/preferencesrow_p.h)
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class EntryRow : public Adw::PreferencesRow {
+  _CLASS_GTKOBJECT(EntryRow, AdwEntryRow, ADW_ENTRY_ROW, Adw::PreferencesRow, AdwPreferencesRow)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+// #m4 _CONVERSION(`const char* const*',`std::vector<Glib::ustring>',`Glib::ArrayHandler<Glib::ustring>::array_to_vector($3, Glib::OWNERSHIP_DEEP)')
+// #m4 _CONVERSION(`const std::vector<Glib::ustring>&',`const char**',`Glib::ArrayHandler<Glib::ustring>::vector_to_array($3).data ()')
+
+  _WRAP_METHOD(void add_prefix(Gtk::Widget* widget), adw_entry_row_add_prefix)
+  _WRAP_METHOD(void add_suffix(Gtk::Widget* widget), adw_entry_row_add_suffix)
+  _WRAP_METHOD(bool get_activates_default() const, adw_entry_row_get_activates_default)
+  _WRAP_METHOD(Pango::AttrList get_attributes() const, adw_entry_row_get_attributes)
+  _WRAP_METHOD(bool get_enable_moji_completion() const, adw_entry_row_get_enable_emoji_completion)
+  _WRAP_METHOD(Gtk::InputHints get_input_hints() const, adw_entry_row_get_input_hints)
+  _WRAP_METHOD(Gtk::InputPurpose get_input_purpose() const, adw_entry_row_get_input_purpose)
+  _WRAP_METHOD(bool get_show_apply_button() const, adw_entry_row_get_show_apply_button)
+  _WRAP_METHOD(void remove(Gtk::Widget* widget), adw_entry_row_remove)
+  _WRAP_METHOD(void set_activates_default(bool activates), adw_entry_row_set_activates_default)
+  _WRAP_METHOD(void set_attributes(Pango::AttrList& attributes), adw_entry_row_set_attributes)
+  _WRAP_METHOD(void set_enable_emoji_completion(bool activates), adw_entry_row_set_enable_emoji_completion)
+  _WRAP_METHOD(void set_input_hints(Gtk::InputHints hints), adw_entry_row_set_input_hints)
+  _WRAP_METHOD(void set_input_purpose(Gtk::InputPurpose purpose) , adw_entry_row_set_input_purpose)
+  _WRAP_METHOD(void set_show_apply_button(bool activates), adw_entry_row_set_show_apply_button)
+
+  _WRAP_PROPERTY("activates-default", bool)
+  _WRAP_PROPERTY("attributes", Pango::AttrList)
+  _WRAP_PROPERTY("enable-emoji-completion", bool)
+  _WRAP_PROPERTY("input-hints", Gtk::InputHints)
+  _WRAP_PROPERTY("input-purpose", Gtk::InputPurpose)
+  _WRAP_PROPERTY("show-apply-button", bool)
+
+  _WRAP_SIGNAL(void apply(), "apply", no_default_handler)
+  _WRAP_SIGNAL(void entry_activated(), "entry-activated", no_default_handler)
+};
+
+} // namespace Adw

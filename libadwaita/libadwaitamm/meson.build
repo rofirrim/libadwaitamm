@@ -43,6 +43,7 @@ hg_ccg_basenames = [
   'clamplayout',
   'clampscrollable',
   'comborow',
+  'entryrow'
 ]
 
 extra_cc_files = [

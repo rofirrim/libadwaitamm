@@ -50,6 +50,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_CLAMP_LAYOUT);
   std::cout << get_defs(ADW_TYPE_CLAMP_SCROLLABLE);
   std::cout << get_defs(ADW_TYPE_COMBO_ROW);
+  std::cout << get_defs(ADW_TYPE_ENTRY_ROW);
 
   return 0;
 }
