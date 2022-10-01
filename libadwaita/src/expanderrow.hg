@@ -1,0 +1,65 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libadwaitamm/preferencesrow.h>
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/preferencesrow_p.h)
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class ExpanderRow : public Adw::PreferencesRow {
+  _CLASS_GTKOBJECT(ExpanderRow, AdwExpanderRow, ADW_EXPANDER_ROW, Adw::PreferencesRow, AdwPreferencesRow)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(void add_action(Gtk::Widget* widget), adw_expander_row_add_action)
+  _WRAP_METHOD(void add_prefix(Gtk::Widget* widget), adw_expander_row_add_prefix)
+  _WRAP_METHOD(void add_row(Gtk::Widget* child), adw_expander_row_add_row)
+  _WRAP_METHOD(bool get_enable_expansion() const, adw_expander_row_get_enable_expansion)
+  _WRAP_METHOD(bool get_expanded() const, adw_expander_row_get_expanded)
+  _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_expander_row_get_icon_name)
+  _WRAP_METHOD(bool get_show_enable_switch() const, adw_expander_row_get_show_enable_switch)
+  _WRAP_METHOD(Glib::ustring get_subtitle() const, adw_expander_row_get_subtitle)
+  _WRAP_METHOD(void remove(Gtk::Widget* child), adw_expander_row_remove)
+  _WRAP_METHOD(void set_enable_expansion(bool enable_expansion), adw_expander_row_set_enable_expansion)
+  _WRAP_METHOD(void set_expanded(bool expanded), adw_expander_row_set_expanded)
+  _WRAP_METHOD(void set_icon_name(const Glib::ustring& icon_name), adw_expander_row_set_icon_name)
+  _WRAP_METHOD(void set_show_enable_switch(bool show_enable_switch), adw_expander_row_set_show_enable_switch)
+  _WRAP_METHOD(void set_subtitle(const Glib::ustring& subtitle), adw_expander_row_set_subtitle)
+
+  _WRAP_PROPERTY("enable-expansion", bool)
+  _WRAP_PROPERTY("expanded", bool)
+  _WRAP_PROPERTY("icon-name", Glib::ustring)
+  _WRAP_PROPERTY("show-enable-switch", bool)
+  _WRAP_PROPERTY("subtitle", Glib::ustring)
+};
+
+} // namespace Adw

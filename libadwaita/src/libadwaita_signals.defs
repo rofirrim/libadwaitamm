@@ -943,3 +943,55 @@
   (construct-only #t)
 )
 
+;; From AdwExpanderRow
+
+(define-property subtitle
+  (of-object "AdwExpanderRow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property icon-name
+  (of-object "AdwExpanderRow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property expanded
+  (of-object "AdwExpanderRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property enable-expansion
+  (of-object "AdwExpanderRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property show-enable-switch
+  (of-object "AdwExpanderRow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+

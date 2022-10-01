@@ -46,6 +46,7 @@ hg_ccg_basenames = [
   'entryrow',
   'enumlistitem',
   'enumlistmodel',
+  'expanderrow',
 ]
 
 extra_cc_files = [
