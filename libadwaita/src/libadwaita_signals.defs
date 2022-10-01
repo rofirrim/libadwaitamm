@@ -932,3 +932,14 @@
   (default-value "")
 )
 
+;; From AdwEnumListModel
+
+(define-property enum-type
+  (of-object "AdwEnumListModel")
+  (prop-type "GParamGType")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+

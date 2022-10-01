@@ -1,0 +1,51 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class EnumListModel : public Glib::Object {
+  _CLASS_GOBJECT(EnumListModel, AdwEnumListModel, ADW_ENUM_LIST_MODEL, Glib::Object, GObject)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+  _WRAP_CTOR(EnumListModel(GType enum_type), adw_enum_list_model_new)
+
+public:
+  _WRAP_CREATE(GType enum_type)
+
+  _WRAP_METHOD(unsigned int find_position(int value) const, adw_enum_list_model_find_position)
+  _WRAP_METHOD(GType get_enum_type() const, adw_enum_list_model_get_enum_type)
+
+  _WRAP_PROPERTY("enum-type", GType)
+};
+
+} // namespace Adw

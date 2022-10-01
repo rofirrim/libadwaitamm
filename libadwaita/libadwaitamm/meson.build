@@ -44,7 +44,8 @@ hg_ccg_basenames = [
   'clampscrollable',
   'comborow',
   'entryrow',
-  'enumlistitem'
+  'enumlistitem',
+  'enumlistmodel',
 ]
 
 extra_cc_files = [
