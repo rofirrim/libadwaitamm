@@ -24,3 +24,6 @@ _CONVERSION(`GtkListItemFactory*',`Glib::RefPtr<Gtk::ListItemFactory>',`Glib::wr
 
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
+_CONV_ENUM(`Adw',`FlapFoldPolicy')
+_CONV_ENUM(`Adw',`FlapTransitionType')
+_CONV_ENUM(`Adw',`FoldThresholdPolicy')

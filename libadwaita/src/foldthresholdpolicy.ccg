@@ -22,24 +22,3 @@ namespace Adw
 {
 
 } // namespace Adw
-
-namespace Glib {
-
-// Needed to use SpringParams in properties.
-
-GType Value<RefPtr<Adw::SpringParams> >::value_type()
-{
-  return adw_spring_params_get_type();
-}
-
-void Value<RefPtr<Adw::SpringParams> >::set(const CppType& data)
-{
-  set_boxed(Glib::unwrap(data));
-}
-
-Value<RefPtr<Adw::SpringParams> >::CppType Value<RefPtr<Adw::SpringParams> >::get() const
-{
-  return Glib::wrap(static_cast<CType>(get_boxed()), true);
-}
-
-}

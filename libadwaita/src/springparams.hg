@@ -59,3 +59,21 @@ public:
 };
 
 } // namespace Adw
+
+namespace Glib {
+
+// Needed to use SpringParams in properties.
+template <>
+class Value< Glib::RefPtr<Adw::SpringParams> > : public ValueBase_Boxed
+{
+public:
+  typedef Glib::RefPtr<Adw::SpringParams> CppType;
+  typedef AdwSpringParams* CType;
+
+  static GType value_type();
+
+  void set(const CppType& data);
+  CppType get() const;
+};
+
+}

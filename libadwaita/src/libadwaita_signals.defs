@@ -995,3 +995,161 @@
   (default-value "FALSE")
 )
 
+;; From AdwFlap
+
+(define-property content
+  (of-object "AdwFlap")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property flap
+  (of-object "AdwFlap")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property separator
+  (of-object "AdwFlap")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property flap-position
+  (of-object "AdwFlap")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "GTK_PACK_START")
+)
+
+(define-property reveal-flap
+  (of-object "AdwFlap")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property reveal-params
+  (of-object "AdwFlap")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property reveal-progress
+  (of-object "AdwFlap")
+  (prop-type "GParamDouble")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "1")
+)
+
+(define-property fold-policy
+  (of-object "AdwFlap")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_FLAP_FOLD_POLICY_AUTO")
+)
+
+(define-property fold-threshold-policy
+  (of-object "AdwFlap")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_FOLD_THRESHOLD_POLICY_MINIMUM")
+)
+
+(define-property fold-duration
+  (of-object "AdwFlap")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "250")
+)
+
+(define-property folded
+  (of-object "AdwFlap")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property locked
+  (of-object "AdwFlap")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property transition-type
+  (of-object "AdwFlap")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_FLAP_TRANSITION_TYPE_OVER")
+)
+
+(define-property modal
+  (of-object "AdwFlap")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property swipe-to-open
+  (of-object "AdwFlap")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property swipe-to-close
+  (of-object "AdwFlap")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+

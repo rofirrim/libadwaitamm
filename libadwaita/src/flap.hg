@@ -1,0 +1,98 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaitamm/foldthresholdpolicy.h>
+#include <libadwaitamm/springparams.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+_WRAP_ENUM(FlapFoldPolicy, AdwFlapFoldPolicy)
+_WRAP_ENUM(FlapTransitionType, AdwFlapTransitionType)
+
+class Flap : public Gtk::Widget {
+  _CLASS_GTKOBJECT(Flap, AdwFlap, ADW_FLAP, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(Gtk::Widget* get_content() const, adw_flap_get_content)
+  _WRAP_METHOD(Gtk::Widget* get_flap() const, adw_flap_get_flap)
+  _WRAP_METHOD(Gtk::PackType get_flap_position() const, adw_flap_get_flap_position)
+  _WRAP_METHOD(unsigned int get_fold_duration() const, adw_flap_get_fold_duration)
+  _WRAP_METHOD(FlapFoldPolicy get_fold_policy() const, adw_flap_get_fold_policy)
+  _WRAP_METHOD(FoldThresholdPolicy get_fold_threshold_policy() const, adw_flap_get_fold_threshold_policy)
+  _WRAP_METHOD(bool get_folded() const, adw_flap_get_folded)
+  _WRAP_METHOD(bool get_locked() const, adw_flap_get_locked)
+  _WRAP_METHOD(bool get_modal() const, adw_flap_get_modal)
+  _WRAP_METHOD(bool get_reveal_flap() const, adw_flap_get_reveal_flap)
+  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_reveal_params() const, adw_flap_get_reveal_params)
+  _WRAP_METHOD(double get_reveal_progress() const, adw_flap_get_reveal_progress)
+  _WRAP_METHOD(Gtk::Widget* get_separator() const, adw_flap_get_separator)
+  _WRAP_METHOD(bool get_swipe_to_close() const, adw_flap_get_swipe_to_close)
+  _WRAP_METHOD(bool get_swipe_to_open() const, adw_flap_get_swipe_to_open)
+  _WRAP_METHOD(FlapTransitionType get_transition_type() const, adw_flap_get_transition_type)
+  _WRAP_METHOD(void set_content(Gtk::Widget* widget), adw_flap_set_content)
+  _WRAP_METHOD(void set_flap(Gtk::Widget* widget), adw_flap_set_flap)
+  _WRAP_METHOD(void set_flap_position(Gtk::PackType position), adw_flap_set_flap_position)
+  _WRAP_METHOD(void set_fold_duration(unsigned int duration), adw_flap_set_fold_duration)
+  _WRAP_METHOD(void set_fold_policy(FlapFoldPolicy policy), adw_flap_set_fold_policy)
+  _WRAP_METHOD(void set_fold_threshold_policy(FoldThresholdPolicy), adw_flap_set_fold_threshold_policy)
+  _WRAP_METHOD(void set_locked(bool locked), adw_flap_set_locked)
+  _WRAP_METHOD(void set_modal(bool modal), adw_flap_set_modal)
+  _WRAP_METHOD(void set_reveal_flap(bool reveal_flap), adw_flap_set_reveal_flap)
+  _WRAP_METHOD(void set_reveal_params(const Glib::RefPtr<SpringParams>& params), adw_flap_set_reveal_params)
+  _WRAP_METHOD(void set_separator(Gtk::Widget* separator), adw_flap_set_separator)
+  _WRAP_METHOD(void set_swipe_to_close(bool locked), adw_flap_set_swipe_to_close)
+  _WRAP_METHOD(void set_swipe_to_open(bool locked), adw_flap_set_swipe_to_open)
+  _WRAP_METHOD(void set_transition_type(FlapTransitionType transition_type), adw_flap_set_transition_type)
+
+  _WRAP_PROPERTY("content", Gtk::Widget*)
+  _WRAP_PROPERTY("flap", Gtk::Widget*)
+  _WRAP_PROPERTY("flap-position", Gtk::PackType)
+  _WRAP_PROPERTY("fold-duration", unsigned int)
+  _WRAP_PROPERTY("fold-policy", FlapFoldPolicy)
+  _WRAP_PROPERTY("fold-threshold-policy", FoldThresholdPolicy)
+  _WRAP_PROPERTY("folded", bool)
+  _WRAP_PROPERTY("locked", bool)
+  _WRAP_PROPERTY("modal", bool)
+  _WRAP_PROPERTY("reveal-flap", bool)
+  _WRAP_PROPERTY("reveal-params", Glib::RefPtr<SpringParams>)
+  _WRAP_PROPERTY("reveal-progress", double)
+  _WRAP_PROPERTY("separator", Gtk::Widget*)
+  _WRAP_PROPERTY("swipe-to-close", bool)
+  _WRAP_PROPERTY("swipe-to-open", bool)
+  _WRAP_PROPERTY("transition-type", FlapTransitionType)
+
+};
+
+} // namespace Adw

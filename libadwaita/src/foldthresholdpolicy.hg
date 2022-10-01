@@ -16,30 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtkmm.h>
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
 
 namespace Adw
 {
+  _WRAP_ENUM(FoldThresholdPolicy, AdwFoldThresholdPolicy)
 
 } // namespace Adw
-
-namespace Glib {
-
-// Needed to use SpringParams in properties.
-
-GType Value<RefPtr<Adw::SpringParams> >::value_type()
-{
-  return adw_spring_params_get_type();
-}
-
-void Value<RefPtr<Adw::SpringParams> >::set(const CppType& data)
-{
-  set_boxed(Glib::unwrap(data));
-}
-
-Value<RefPtr<Adw::SpringParams> >::CppType Value<RefPtr<Adw::SpringParams> >::get() const
-{
-  return Glib::wrap(static_cast<CType>(get_boxed()), true);
-}
-
-}
