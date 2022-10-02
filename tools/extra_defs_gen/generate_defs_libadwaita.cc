@@ -55,6 +55,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_ENUM_LIST_MODEL);
   std::cout << get_defs(ADW_TYPE_EXPANDER_ROW);
   std::cout << get_defs(ADW_TYPE_FLAP);
+  std::cout << get_defs(ADW_TYPE_HEADER_BAR);
 
   return 0;
 }

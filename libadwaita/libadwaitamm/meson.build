@@ -49,6 +49,7 @@ hg_ccg_basenames = [
   'expanderrow',
   'foldthresholdpolicy',
   'flap',
+  'headerbar',
 ]
 
 extra_cc_files = [

@@ -1,0 +1,65 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+_WRAP_ENUM(CenteringPolicy, AdwCenteringPolicy)
+
+class HeaderBar : public Gtk::Widget {
+  _CLASS_GTKOBJECT(HeaderBar, AdwHeaderBar, ADW_HEADER_BAR, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(CenteringPolicy get_centering_policy() const, adw_header_bar_get_centering_policy)
+  _WRAP_METHOD(Glib::ustring get_decoration_layout() const, adw_header_bar_get_decoration_layout)
+  _WRAP_METHOD(bool get_show_end_title_buttons() const, adw_header_bar_get_show_end_title_buttons)
+  _WRAP_METHOD(bool get_show_start_title_buttons() const, adw_header_bar_get_show_start_title_buttons)
+  _WRAP_METHOD(Gtk::Widget* get_title_widget() const, adw_header_bar_get_title_widget)
+  _WRAP_METHOD(void pack_end(Gtk::Widget* child), adw_header_bar_pack_end)
+  _WRAP_METHOD(void pack_start(Gtk::Widget* child), adw_header_bar_pack_start)
+  _WRAP_METHOD(void remove(Gtk::Widget* child), adw_header_bar_remove)
+  _WRAP_METHOD(void set_centering_policy(CenteringPolicy centering_policy), adw_header_bar_set_centering_policy)
+  _WRAP_METHOD(void set_decoration_layout(const Glib::ustring& layout), adw_header_bar_set_decoration_layout)
+  _WRAP_METHOD(void set_show_end_title_buttons(bool setting), adw_header_bar_set_show_end_title_buttons)
+  _WRAP_METHOD(void set_show_start_title_buttons(bool setting), adw_header_bar_set_show_start_title_buttons)
+  _WRAP_METHOD(void set_title_widget(Gtk::Widget* title_widget), adw_header_bar_set_title_widget)
+
+  _WRAP_PROPERTY("centering-policy", CenteringPolicy)
+  _WRAP_PROPERTY("decoration-layout", Glib::ustring)
+  _WRAP_PROPERTY("show-end-title-buttons", bool)
+  _WRAP_PROPERTY("show-start-title-buttons", bool)
+  _WRAP_PROPERTY("title-widget", Gtk::Widget*)
+};
+
+} // namespace Adw

@@ -1153,3 +1153,54 @@
   (default-value "TRUE")
 )
 
+;; From AdwHeaderBar
+
+(define-property title-widget
+  (of-object "AdwHeaderBar")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property show-start-title-buttons
+  (of-object "AdwHeaderBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property show-end-title-buttons
+  (of-object "AdwHeaderBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property decoration-layout
+  (of-object "AdwHeaderBar")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property centering-policy
+  (of-object "AdwHeaderBar")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_CENTERING_POLICY_LOOSE")
+)
+
