@@ -16,27 +16,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-_DEFS(libadwaitamm,libadwaita)
-_CONFIGINCLUDE(libadwaitammconfig.h)
-_PINCLUDE(gtkmm/private/window_p.h)
-
+// Gtk::License
 #include <gtkmm.h>
 
 namespace Adw
 {
-
-class Window : public Gtk::Window {
-  _CLASS_GTKOBJECT(Window, AdwWindow, ADW_WINDOW, Gtk::Window, GtkWindow)
-  _UNMANAGEABLE
-
-protected:
-  _CTOR_DEFAULT
-
-public:
-  _WRAP_CREATE()
-  _WRAP_METHOD(Gtk::Widget* get_content() const, adw_window_get_content)
-  _WRAP_METHOD(void set_content(Gtk::Widget* content), adw_window_set_content)
-  _WRAP_PROPERTY("content", Gtk::Widget*)
-};
 
 } // namespace Adw

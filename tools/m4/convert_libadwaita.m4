@@ -34,6 +34,12 @@ _CONVERSION(`Gtk::Window*',`GtkWindow*',__FP2P)
 _CONVERSION(`AdwPreferencesGroup*',`PreferencesGroup*',__RP2P)
 _CONVERSION(`PreferencesGroup*',`AdwPreferencesGroup*',__FP2P)
 
+_CONVERSION(`AdwPreferencesPage*',`PreferencesPage*',__RP2P)
+_CONVERSION(`PreferencesPage*',`AdwPreferencesPage*',__FP2P)
+
+_CONVERSION(`AdwToast*',`Toast*',__RP2P)
+_CONVERSION(`Toast*',`AdwToast*',__FP2P)
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')
@@ -43,3 +49,4 @@ _CONV_ENUM(`Adw',`CenteringPolicy')
 _CONV_ENUM(`Adw',`NavigationDirection')
 _CONV_ENUM(`Adw',`LeafletTransitionType')
 _CONV_ENUM(`Adw',`ResponseAppearance')
+_CONV_ENUM(`Adw',`ToastPriority')

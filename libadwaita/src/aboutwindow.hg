@@ -33,6 +33,7 @@ namespace Adw
 class AboutWindow : public Adw::Window {
   _CLASS_GTKOBJECT(AboutWindow, AdwAboutWindow, ADW_ABOUT_WINDOW, Adw::Window, AdwWindow)
   _STRUCT_NOT_HIDDEN
+  _UNMANAGEABLE
 
 protected:
   _CTOR_DEFAULT

@@ -1520,3 +1520,126 @@
   (default-value "FALSE")
 )
 
+;; From AdwPreferencesWindow
+
+(define-property visible-page
+  (of-object "AdwPreferencesWindow")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property visible-page-name
+  (of-object "AdwPreferencesWindow")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property search-enabled
+  (of-object "AdwPreferencesWindow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property can-navigate-back
+  (of-object "AdwPreferencesWindow")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+;; From AdwToast
+
+(define-signal dismissed
+  (of-object "AdwToast")
+  (return-type "void")
+  (flags "Run First")
+)
+
+(define-signal button-clicked
+  (of-object "AdwToast")
+  (return-type "void")
+  (flags "Run Last")
+)
+
+(define-property title
+  (of-object "AdwToast")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property button-label
+  (of-object "AdwToast")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property action-name
+  (of-object "AdwToast")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property action-target
+  (of-object "AdwToast")
+  (prop-type "GParamVariant")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property priority
+  (of-object "AdwToast")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_TOAST_PRIORITY_NORMAL")
+)
+
+(define-property timeout
+  (of-object "AdwToast")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "5")
+)
+
+(define-property custom-title
+  (of-object "AdwToast")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+

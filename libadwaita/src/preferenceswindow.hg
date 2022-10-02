@@ -1,0 +1,66 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include <libadwaitamm/window.h>
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/window_p.h)
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaitamm/toast.h>
+#include <libadwaitamm/preferencespage.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class PreferencesWindow : public Adw::Window {
+  _CLASS_GTKOBJECT(PreferencesWindow, AdwPreferencesWindow, ADW_PREFERENCES_WINDOW, Adw::Window, AdwWindow)
+  _UNMANAGEABLE
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(void add(PreferencesPage* page), adw_preferences_window_add)
+  _WRAP_METHOD(void add_toast(Toast* toast), adw_preferences_window_add_toast)
+  _WRAP_METHOD(void close_subpage(), adw_preferences_window_close_subpage)
+  _WRAP_METHOD(bool get_can_navigate_back() const, adw_preferences_window_get_can_navigate_back)
+  _WRAP_METHOD(bool get_search_enabled() const, adw_preferences_window_get_search_enabled)
+  _WRAP_METHOD(PreferencesPage* get_visible_page() const, adw_preferences_window_get_visible_page)
+  _WRAP_METHOD(Glib::ustring get_visible_page_name() const, adw_preferences_window_get_visible_page_name)
+  _WRAP_METHOD(void present_subpage(Gtk::Widget* subpage), adw_preferences_window_present_subpage)
+  _WRAP_METHOD(void remove(PreferencesPage* page), adw_preferences_window_remove)
+  _WRAP_METHOD(void set_can_navigate_back(bool can_navigate_back), adw_preferences_window_set_can_navigate_back)
+  _WRAP_METHOD(void set_search_enabled(bool search_enabled), adw_preferences_window_set_search_enabled)
+  _WRAP_METHOD(void set_visible_page(PreferencesPage* page), adw_preferences_window_set_visible_page)
+  _WRAP_METHOD(void set_visible_page_name(const Glib::ustring &name), adw_preferences_window_set_visible_page_name)
+
+  _WRAP_PROPERTY("can_navigate_back", bool)
+  _WRAP_PROPERTY("search_enabled", bool)
+  _WRAP_PROPERTY("visible_page", PreferencesPage*)
+  _WRAP_PROPERTY("visible_page_name", Glib::ustring)
+};
+
+} // namespace Adw

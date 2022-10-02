@@ -62,6 +62,8 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_PASSWORD_ENTRY_ROW);
   std::cout << get_defs(ADW_TYPE_PREFERENCES_GROUP);
   std::cout << get_defs(ADW_TYPE_PREFERENCES_PAGE);
+  std::cout << get_defs(ADW_TYPE_PREFERENCES_WINDOW);
+  std::cout << get_defs(ADW_TYPE_TOAST);
 
   return 0;
 }
