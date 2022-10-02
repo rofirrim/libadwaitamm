@@ -1,0 +1,96 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <gtkmm/selectionmodel.h>
+#include <libadwaitamm/leafletpage.h>
+#include <libadwaitamm/navigationdirection.h>
+#include <libadwaitamm/springparams.h>
+#include <libadwaitamm/foldthresholdpolicy.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+_WRAP_ENUM(LeafletTransitionType, AdwLeafletTransitionType)
+
+class Leaflet : public Gtk::Widget {
+  _CLASS_GTKOBJECT(Leaflet, AdwLeaflet, ADW_LEAFLET, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+  _WRAP_METHOD(Glib::RefPtr<LeafletPage> append(Gtk::Widget* child), adw_leaflet_append)
+  _WRAP_METHOD(Gtk::Widget* get_adjacent_child(NavigationDirection direction) const, adw_leaflet_get_adjacent_child)
+  _WRAP_METHOD(bool get_can_navigate_back() const, adw_leaflet_get_can_navigate_back)
+  _WRAP_METHOD(bool get_can_navigate_forward() const, adw_leaflet_get_can_navigate_forward)
+  _WRAP_METHOD(bool get_can_unfold() const, adw_leaflet_get_can_unfold)
+  _WRAP_METHOD(Gtk::Widget* get_child_by_name(const Glib::ustring& name) const, adw_leaflet_get_child_by_name)
+  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_child_transition_params() const, adw_leaflet_get_child_transition_params)
+  _WRAP_METHOD(bool get_child_transition_running() const, adw_leaflet_get_child_transition_running)
+  _WRAP_METHOD(FoldThresholdPolicy get_fold_threshold_policy() const, adw_leaflet_get_fold_threshold_policy)
+  _WRAP_METHOD(bool get_folded() const, adw_leaflet_get_folded)
+  _WRAP_METHOD(bool get_homogeneous() const, adw_leaflet_get_homogeneous)
+  _WRAP_METHOD(unsigned int get_mode_transition_duration() const, adw_leaflet_get_mode_transition_duration)
+  _WRAP_METHOD(Glib::RefPtr<LeafletPage> get_page(Gtk::Widget* child) const, adw_leaflet_get_page)
+  _WRAP_METHOD(Glib::RefPtr<Gtk::SelectionModel> get_pages() const, adw_leaflet_get_pages)
+  _WRAP_METHOD(LeafletTransitionType get_transition_type() const, adw_leaflet_get_transition_type)
+  _WRAP_METHOD(Gtk::Widget* get_visible_child() const, adw_leaflet_get_visible_child)
+  _WRAP_METHOD(Glib::ustring get_visible_child_name() const, adw_leaflet_get_visible_child_name)
+  _WRAP_METHOD(Glib::RefPtr<LeafletPage> insert_child_after(Gtk::Widget* child, Gtk::Widget* sibling), adw_leaflet_insert_child_after)
+  _WRAP_METHOD(bool navigate(NavigationDirection direction), adw_leaflet_navigate)
+  _WRAP_METHOD(Glib::RefPtr<LeafletPage> prepend(Gtk::Widget* child), adw_leaflet_prepend)
+  _WRAP_METHOD(void remove(Gtk::Widget* child), adw_leaflet_remove)
+  _WRAP_METHOD(void reorder_child_after(Gtk::Widget* child, Gtk::Widget* sibling), adw_leaflet_reorder_child_after)
+  _WRAP_METHOD(void set_can_navigate_back(bool can_navigate_back), adw_leaflet_set_can_navigate_back)
+  _WRAP_METHOD(void set_can_navigate_forward(bool can_navigate_forward), adw_leaflet_set_can_navigate_forward)
+  _WRAP_METHOD(void set_can_unfold(bool can_unfold), adw_leaflet_set_can_unfold)
+  _WRAP_METHOD(void set_child_transition_params(const Glib::RefPtr<SpringParams>& params), adw_leaflet_set_child_transition_params)
+  _WRAP_METHOD(void set_fold_threshold_policy(FoldThresholdPolicy policy), adw_leaflet_set_fold_threshold_policy)
+  _WRAP_METHOD(void set_homogeneous(bool homogeneous), adw_leaflet_set_homogeneous)
+  _WRAP_METHOD(void set_mode_transition_duration(unsigned int duration), adw_leaflet_set_mode_transition_duration)
+  _WRAP_METHOD(void set_transition_type(LeafletTransitionType transition), adw_leaflet_set_transition_type)
+  _WRAP_METHOD(void set_visible_child(Gtk::Widget* child), adw_leaflet_set_visible_child)
+  _WRAP_METHOD(void set_visible_child_name(const Glib::ustring& name), adw_leaflet_set_visible_child_name)
+
+  _WRAP_PROPERTY("can-navigate-back", bool)
+  _WRAP_PROPERTY("can-navigate-forward", bool)
+  _WRAP_PROPERTY("can-unfold", bool)
+  _WRAP_PROPERTY("child-transition-params", Glib::RefPtr<SpringParams>)
+  _WRAP_PROPERTY("child-transition-running", bool)
+  _WRAP_PROPERTY("fold-threshold-policy", FoldThresholdPolicy)
+  _WRAP_PROPERTY("folded", bool)
+  _WRAP_PROPERTY("homogeneous", bool)
+  _WRAP_PROPERTY("mode-transition-duration", unsigned int)
+  _WRAP_PROPERTY("pages", Glib::RefPtr<Gtk::SelectionModel>)
+  _WRAP_PROPERTY("transition-type", LeafletTransitionType)
+  _WRAP_PROPERTY("visible-child", Gtk::Widget*)
+  _WRAP_PROPERTY("visible-child-name", Glib::ustring)
+};
+
+} // namespace Adw

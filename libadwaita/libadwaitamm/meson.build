@@ -50,6 +50,9 @@ hg_ccg_basenames = [
   'foldthresholdpolicy',
   'flap',
   'headerbar',
+  'leaflet',
+  'leafletpage',
+  'navigationdirection',
 ]
 
 extra_cc_files = [

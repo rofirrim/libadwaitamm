@@ -56,6 +56,8 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_EXPANDER_ROW);
   std::cout << get_defs(ADW_TYPE_FLAP);
   std::cout << get_defs(ADW_TYPE_HEADER_BAR);
+  std::cout << get_defs(ADW_TYPE_LEAFLET);
+  std::cout << get_defs(ADW_TYPE_LEAFLET_PAGE);
 
   return 0;
 }

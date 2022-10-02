@@ -1204,3 +1204,163 @@
   (default-value "ADW_CENTERING_POLICY_LOOSE")
 )
 
+;; From AdwLeaflet
+
+(define-property can-unfold
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property folded
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property fold-threshold-policy
+  (of-object "AdwLeaflet")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_FOLD_THRESHOLD_POLICY_MINIMUM")
+)
+
+(define-property homogeneous
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property visible-child
+  (of-object "AdwLeaflet")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property visible-child-name
+  (of-object "AdwLeaflet")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property transition-type
+  (of-object "AdwLeaflet")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_LEAFLET_TRANSITION_TYPE_OVER")
+)
+
+(define-property mode-transition-duration
+  (of-object "AdwLeaflet")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "250")
+)
+
+(define-property child-transition-params
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoxed")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property child-transition-running
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property can-navigate-back
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property can-navigate-forward
+  (of-object "AdwLeaflet")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property pages
+  (of-object "AdwLeaflet")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
+;; From AdwLeafletPage
+
+(define-property child
+  (of-object "AdwLeafletPage")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
+(define-property name
+  (of-object "AdwLeafletPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property navigatable
+  (of-object "AdwLeafletPage")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+

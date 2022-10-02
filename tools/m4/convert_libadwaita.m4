@@ -22,9 +22,17 @@ _CONVERSION(`GtkExpression*',`Glib::RefPtr<Gtk::Expression<Glib::ustring>>',`Gli
 _CONVERSION(`const Glib::RefPtr<Gtk::ListItemFactory>&', `GtkListItemFactory*', __CONVERT_REFPTR_TO_P) 
 _CONVERSION(`GtkListItemFactory*',`Glib::RefPtr<Gtk::ListItemFactory>',`Glib::wrap($3)') 
 
+_CONVERSION(`AdwLeafletPage*',`Glib::RefPtr<LeafletPage>',__RP2P)
+_CONVERSION(`const Glib::RefPtr<LeafletPage>&',`AdwLeafletPage*',__CONVERT_REFPTR_TO_P($3))
+
+_CONVERSION(`GtkSelectionModel*',`Glib::RefPtr<Gtk::SelectionModel>',__RP2P)
+_CONVERSION(`const Glib::RefPtr<Gtk::SelectionModel>&',`GtkSelectionModel*',__CONVERT_REFPTR_TO_P($3))
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')
 _CONV_ENUM(`Adw',`FlapTransitionType')
 _CONV_ENUM(`Adw',`FoldThresholdPolicy')
 _CONV_ENUM(`Adw',`CenteringPolicy')
+_CONV_ENUM(`Adw',`NavigationDirection')
+_CONV_ENUM(`Adw',`LeafletTransitionType')
