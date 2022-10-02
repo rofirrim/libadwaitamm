@@ -56,6 +56,7 @@ hg_ccg_basenames = [
   'messagedialog',
   'passwordentryrow',
   'preferencesgroup',
+  'preferencespage',
 ]
 
 extra_cc_files = [

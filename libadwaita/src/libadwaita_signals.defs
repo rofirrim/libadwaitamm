@@ -1478,3 +1478,45 @@
   (construct-only #f)
 )
 
+;; From AdwPreferencesPage
+
+(define-property icon-name
+  (of-object "AdwPreferencesPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property title
+  (of-object "AdwPreferencesPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property name
+  (of-object "AdwPreferencesPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property use-underline
+  (of-object "AdwPreferencesPage")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+

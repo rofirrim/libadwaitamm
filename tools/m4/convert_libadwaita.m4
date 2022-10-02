@@ -31,6 +31,9 @@ _CONVERSION(`const Glib::RefPtr<Gtk::SelectionModel>&',`GtkSelectionModel*',__CO
 _CONVERSION(`GtkWindow*',`Gtk::Window*',__RP2P)
 _CONVERSION(`Gtk::Window*',`GtkWindow*',__FP2P)
 
+_CONVERSION(`AdwPreferencesGroup*',`PreferencesGroup*',__RP2P)
+_CONVERSION(`PreferencesGroup*',`AdwPreferencesGroup*',__FP2P)
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')
