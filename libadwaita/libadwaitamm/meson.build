@@ -54,6 +54,7 @@ hg_ccg_basenames = [
   'leafletpage',
   'navigationdirection',
   'messagedialog',
+  'passwordentryrow',
 ]
 
 extra_cc_files = [

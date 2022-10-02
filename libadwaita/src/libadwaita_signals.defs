@@ -1445,3 +1445,5 @@
   (default-value "close")
 )
 
+;; From AdwPasswordEntryRow
+
