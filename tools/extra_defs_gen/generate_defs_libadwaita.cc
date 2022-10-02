@@ -58,6 +58,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_HEADER_BAR);
   std::cout << get_defs(ADW_TYPE_LEAFLET);
   std::cout << get_defs(ADW_TYPE_LEAFLET_PAGE);
+  std::cout << get_defs(ADW_TYPE_MESSAGE_DIALOG);
 
   return 0;
 }

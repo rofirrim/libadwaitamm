@@ -28,6 +28,9 @@ _CONVERSION(`const Glib::RefPtr<LeafletPage>&',`AdwLeafletPage*',__CONVERT_REFPT
 _CONVERSION(`GtkSelectionModel*',`Glib::RefPtr<Gtk::SelectionModel>',__RP2P)
 _CONVERSION(`const Glib::RefPtr<Gtk::SelectionModel>&',`GtkSelectionModel*',__CONVERT_REFPTR_TO_P($3))
 
+_CONVERSION(`GtkWindow*',`Gtk::Window*',__RP2P)
+_CONVERSION(`Gtk::Window*',`GtkWindow*',__FP2P)
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')
@@ -36,3 +39,4 @@ _CONV_ENUM(`Adw',`FoldThresholdPolicy')
 _CONV_ENUM(`Adw',`CenteringPolicy')
 _CONV_ENUM(`Adw',`NavigationDirection')
 _CONV_ENUM(`Adw',`LeafletTransitionType')
+_CONV_ENUM(`Adw',`ResponseAppearance')

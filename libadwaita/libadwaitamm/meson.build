@@ -53,6 +53,7 @@ hg_ccg_basenames = [
   'leaflet',
   'leafletpage',
   'navigationdirection',
+  'messagedialog',
 ]
 
 extra_cc_files = [

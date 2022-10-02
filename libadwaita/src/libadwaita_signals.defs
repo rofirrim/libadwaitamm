@@ -1364,3 +1364,84 @@
   (default-value "TRUE")
 )
 
+;; From AdwMessageDialog
+
+(define-signal response
+  (of-object "AdwMessageDialog")
+  (return-type "void")
+  (flags "Run Last")
+  (detailed #t)
+  (parameters
+    '("const-gchar*" "p0")
+  )
+)
+
+(define-property heading
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property heading-use-markup
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property body
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property body-use-markup
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property extra-child
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property default-response
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property close-response
+  (of-object "AdwMessageDialog")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "close")
+)
+
