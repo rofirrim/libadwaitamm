@@ -1447,3 +1447,34 @@
 
 ;; From AdwPasswordEntryRow
 
+;; From AdwPreferencesGroup
+
+(define-property title
+  (of-object "AdwPreferencesGroup")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property description
+  (of-object "AdwPreferencesGroup")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property header-suffix
+  (of-object "AdwPreferencesGroup")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+

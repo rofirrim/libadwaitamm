@@ -55,6 +55,7 @@ hg_ccg_basenames = [
   'navigationdirection',
   'messagedialog',
   'passwordentryrow',
+  'preferencesgroup',
 ]
 
 extra_cc_files = [
