@@ -1,0 +1,45 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/animationtarget_p.h)
+
+#include <libadwaitamm/animationtarget.h>
+
+namespace Adw
+{
+
+class PropertyAnimationTarget : public AnimationTarget {
+  _CLASS_GOBJECT(PropertyAnimationTarget, AdwPropertyAnimationTarget, ADW_PROPERTY_ANIMATION_TARGET, AnimationTarget, AdwAnimationTarget)
+  _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, const Glib::ustring& property_name), adw_property_animation_target_new)
+  _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, GParamSpec*), adw_property_animation_target_new_for_pspec)
+
+protected:
+  _CTOR_DEFAULT
+  _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, const Glib::ustring& property_name)
+  _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, GParamSpec*)
+
+  _WRAP_METHOD(Glib::RefPtr<Glib::Object> get_object() const, adw_property_animation_target_get_object)
+  _WRAP_METHOD(GParamSpec* get_pspec() const, adw_property_animation_target_get_pspec)
+
+  _WRAP_PROPERTY("object", Glib::RefPtr<Glib::Object>)
+  _WRAP_PROPERTY("pspec", GParamSpec*)
+};
+
+} // namespace Adw

@@ -54,6 +54,7 @@ hg_ccg_basenames = [
   'preferencespage',
   'preferencesrow',
   'preferenceswindow',
+  'propertyanimationtarget',
   'springparams',
   'stylemanager',
   'toast',

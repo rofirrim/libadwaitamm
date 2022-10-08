@@ -1561,6 +1561,26 @@
   (default-value "FALSE")
 )
 
+;; From AdwPropertyAnimationTarget
+
+(define-property object
+  (of-object "AdwPropertyAnimationTarget")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
+(define-property pspec
+  (of-object "AdwPropertyAnimationTarget")
+  (prop-type "GParamParam")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
 ;; From AdwToast
 
 (define-signal dismissed

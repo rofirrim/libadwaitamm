@@ -63,6 +63,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_PREFERENCES_GROUP);
   std::cout << get_defs(ADW_TYPE_PREFERENCES_PAGE);
   std::cout << get_defs(ADW_TYPE_PREFERENCES_WINDOW);
+  std::cout << get_defs(ADW_TYPE_PROPERTY_ANIMATION_TARGET);
   std::cout << get_defs(ADW_TYPE_TOAST);
 
   return 0;
