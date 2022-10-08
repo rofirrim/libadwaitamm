@@ -1,0 +1,75 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class SplitButton : public Gtk::Widget {
+  _CLASS_GTKOBJECT(SplitButton, AdwSplitButton, ADW_SPLIT_BUTTON, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(Gtk::Widget* get_child() const, adw_split_button_get_child)
+  _WRAP_METHOD(Gtk::ArrowType get_direction() const, adw_split_button_get_direction)
+  _WRAP_METHOD(Glib::ustring get_dropdown_tooltip() const, adw_split_button_get_dropdown_tooltip)
+  _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_split_button_get_icon_name)
+  _WRAP_METHOD(Glib::ustring get_label() const, adw_split_button_get_label)
+  _WRAP_METHOD(Glib::RefPtr<Gio::MenuModel> get_menu_model() const, adw_split_button_get_menu_model)
+  _WRAP_METHOD(Gtk::Popover* get_popover() const, adw_split_button_get_popover)
+  _WRAP_METHOD(bool get_use_underline() const, adw_split_button_get_use_underline)
+  _WRAP_METHOD(void popdown(), adw_split_button_popdown)
+  _WRAP_METHOD(void popup(), adw_split_button_popup)
+  _WRAP_METHOD(void set_child(Gtk::Widget* child), adw_split_button_set_child)
+  _WRAP_METHOD(void set_direction(Gtk::ArrowType direction), adw_split_button_set_direction)
+  _WRAP_METHOD(void set_dropdown_tooltip(const Glib::ustring& dropdown_tooltip), adw_split_button_set_dropdown_tooltip)
+  _WRAP_METHOD(void set_icon_name(const Glib::ustring& icon_name), adw_split_button_set_icon_name)
+  _WRAP_METHOD(void set_label(const Glib::ustring& label), adw_split_button_set_label)
+  _WRAP_METHOD(void set_menu_model(const Glib::RefPtr<Gio::MenuModel>& menu_model), adw_split_button_set_menu_model)
+  _WRAP_METHOD(void set_popover(Gtk::Popover* popover), adw_split_button_set_popover)
+  _WRAP_METHOD(void set_use_underline(bool use_underline), adw_split_button_set_use_underline)
+
+  _WRAP_PROPERTY("child", Gtk::Widget*)
+  _WRAP_PROPERTY("direction", Gtk::ArrowType)
+  _WRAP_PROPERTY("dropdown-tooltip", Glib::ustring)
+  _WRAP_PROPERTY("icon-name", Glib::ustring)
+  _WRAP_PROPERTY("label", Glib::ustring)
+  _WRAP_PROPERTY("menu-model", Glib::RefPtr<Gio::MenuModel>)
+  _WRAP_PROPERTY("popover", Gtk::Popover*)
+  _WRAP_PROPERTY("use-underline", bool)
+
+  _WRAP_SIGNAL(void activate(), "activate", no_default_handler)
+  _WRAP_SIGNAL(void clicked(), "clicked", no_default_handler)
+};
+
+} // namespace Adw

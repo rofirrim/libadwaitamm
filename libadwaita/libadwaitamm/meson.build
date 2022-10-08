@@ -58,6 +58,7 @@ hg_ccg_basenames = [
   'springparams',
   'stylemanager',
   'toast',
+  'splitbutton',
   'window',
   'windowtitle',
 ]

@@ -40,6 +40,9 @@ _CONVERSION(`PreferencesPage*',`AdwPreferencesPage*',__FP2P)
 _CONVERSION(`AdwToast*',`Toast*',__RP2P)
 _CONVERSION(`Toast*',`AdwToast*',__FP2P)
 
+_CONVERSION(`GtkPopover*',`Gtk::Popover*',__RP2P)
+_CONVERSION(`Gtk::Popover*',`GtkPopover*',__FP2P)
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')

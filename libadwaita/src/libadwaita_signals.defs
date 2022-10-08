@@ -1663,3 +1663,94 @@
   (construct-only #f)
 )
 
+;; From AdwSplitButton
+
+(define-signal activate
+  (of-object "AdwSplitButton")
+  (return-type "void")
+  (flags "Run First, Action")
+)
+
+(define-signal clicked
+  (of-object "AdwSplitButton")
+  (return-type "void")
+  (flags "Run First, Action")
+)
+
+(define-property label
+  (of-object "AdwSplitButton")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property use-underline
+  (of-object "AdwSplitButton")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property icon-name
+  (of-object "AdwSplitButton")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property child
+  (of-object "AdwSplitButton")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property menu-model
+  (of-object "AdwSplitButton")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property popover
+  (of-object "AdwSplitButton")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property direction
+  (of-object "AdwSplitButton")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "GTK_ARROW_DOWN")
+)
+
+(define-property dropdown-tooltip
+  (of-object "AdwSplitButton")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
