@@ -66,6 +66,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_PROPERTY_ANIMATION_TARGET);
   std::cout << get_defs(ADW_TYPE_TOAST);
   std::cout << get_defs(ADW_TYPE_SPLIT_BUTTON);
+  std::cout << get_defs(ADW_TYPE_SPRING_ANIMATION);
 
   return 0;
 }

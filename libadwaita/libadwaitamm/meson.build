@@ -56,6 +56,7 @@ hg_ccg_basenames = [
   'preferenceswindow',
   'propertyanimationtarget',
   'springparams',
+  'springanimation',
   'stylemanager',
   'toast',
   'splitbutton',
