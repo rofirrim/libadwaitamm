@@ -60,6 +60,7 @@ hg_ccg_basenames = [
   'springparams',
   'squeezer',
   'squeezerpage',
+  'statuspage',
   'stylemanager',
   'toast',
   'window',

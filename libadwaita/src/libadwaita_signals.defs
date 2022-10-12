@@ -1966,3 +1966,53 @@
   (default-value "TRUE")
 )
 
+;; From AdwStatusPage
+
+(define-property icon-name
+  (of-object "AdwStatusPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property paintable
+  (of-object "AdwStatusPage")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property title
+  (of-object "AdwStatusPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property description
+  (of-object "AdwStatusPage")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property child
+  (of-object "AdwStatusPage")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+

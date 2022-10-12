@@ -69,6 +69,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_SPRING_ANIMATION);
   std::cout << get_defs(ADW_TYPE_SQUEEZER);
   std::cout << get_defs(ADW_TYPE_SQUEEZER_PAGE);
+  std::cout << get_defs(ADW_TYPE_STATUS_PAGE);
 
   return 0;
 }
