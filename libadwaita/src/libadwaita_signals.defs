@@ -2686,3 +2686,24 @@
   (construct-only #f)
 )
 
+;; From AdwViewSwitcherBar
+
+(define-property stack
+  (of-object "AdwViewSwitcherBar")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property reveal
+  (of-object "AdwViewSwitcherBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+

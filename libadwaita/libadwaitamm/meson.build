@@ -73,6 +73,7 @@ hg_ccg_basenames = [
   'viewstack',
   'viewstackpage',
   'viewswitcher',
+  'viewswitcherbar',
   'window',
   'windowtitle',
 ]
