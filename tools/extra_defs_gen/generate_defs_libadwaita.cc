@@ -72,6 +72,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_STATUS_PAGE);
   std::cout << get_defs(ADW_TYPE_SWIPE_TRACKER);
   std::cout << get_defs(ADW_TYPE_SWIPEABLE);
+  std::cout << get_defs(ADW_TYPE_TAB_PAGE);
 
   return 0;
 }

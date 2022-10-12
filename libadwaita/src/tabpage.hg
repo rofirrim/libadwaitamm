@@ -1,0 +1,79 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class TabPage : public Glib::Object {
+  _CLASS_GOBJECT(TabPage, AdwTabPage, ADW_TAB_PAGE, Glib::Object, GObject)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(Gtk::Widget* get_child() const, adw_tab_page_get_child)
+  _WRAP_METHOD(Glib::RefPtr<Gio::Icon> get_icon() const, adw_tab_page_get_icon)
+  _WRAP_METHOD(bool get_indicator_activatable() const, adw_tab_page_get_indicator_activatable)
+  _WRAP_METHOD(Glib::RefPtr<Gio::Icon> get_indicator_icon() const, adw_tab_page_get_indicator_icon)
+  _WRAP_METHOD(Glib::ustring get_indicator_tooltip() const, adw_tab_page_get_indicator_tooltip)
+  _WRAP_METHOD(bool get_loading() const, adw_tab_page_get_loading)
+  _WRAP_METHOD(bool get_needs_attention() const, adw_tab_page_get_needs_attention)
+  _WRAP_METHOD(Glib::RefPtr<TabPage> get_parent() const, adw_tab_page_get_parent)
+  _WRAP_METHOD(bool get_pinned() const, adw_tab_page_get_pinned)
+  _WRAP_METHOD(bool get_selected() const, adw_tab_page_get_selected)
+  _WRAP_METHOD(Glib::ustring get_title() const, adw_tab_page_get_title)
+  _WRAP_METHOD(Glib::ustring get_tooltip() const, adw_tab_page_get_tooltip)
+  _WRAP_METHOD(void set_icon(const Glib::RefPtr<Gio::Icon>& icon), adw_tab_page_set_icon)
+  _WRAP_METHOD(void set_indicator_activatable(bool activatable), adw_tab_page_set_indicator_activatable)
+  _WRAP_METHOD(void set_indicator_icon(const Glib::RefPtr<Gio::Icon>& indicator_icon), adw_tab_page_set_indicator_icon)
+  _WRAP_METHOD(void set_indicator_tooltip(const Glib::ustring& indicator_tooltip), adw_tab_page_set_indicator_tooltip)
+  _WRAP_METHOD(void set_loading(bool loading), adw_tab_page_set_loading)
+  _WRAP_METHOD(void set_needs_attention(bool needs_attention), adw_tab_page_set_needs_attention)
+  _WRAP_METHOD(void set_title(const Glib::ustring& title), adw_tab_page_set_title)
+  _WRAP_METHOD(void set_tooltip(const Glib::ustring& tooltip), adw_tab_page_set_tooltip)
+
+  _WRAP_PROPERTY("child", Gtk::Widget*)
+  _WRAP_PROPERTY("icon", Glib::RefPtr<Gio::Icon>)
+  _WRAP_PROPERTY("indicator-activatable", bool)
+  _WRAP_PROPERTY("indicator-icon", Glib::RefPtr<Gio::Icon>)
+  _WRAP_PROPERTY("indicator-tooltip", Glib::ustring)
+  _WRAP_PROPERTY("loading", bool)
+  _WRAP_PROPERTY("needs-attention", bool)
+  _WRAP_PROPERTY("parent", Glib::RefPtr<TabPage>)
+  _WRAP_PROPERTY("pinned", bool)
+  _WRAP_PROPERTY("selected", bool)
+  _WRAP_PROPERTY("title", Glib::ustring)
+  _WRAP_PROPERTY("tooltip", Glib::ustring)
+};
+
+} // namespace Adw
