@@ -74,6 +74,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_SWIPEABLE);
   std::cout << get_defs(ADW_TYPE_TAB_PAGE);
   std::cout << get_defs(ADW_TYPE_TAB_VIEW);
+  std::cout << get_defs(ADW_TYPE_TAB_BAR);
 
   return 0;
 }

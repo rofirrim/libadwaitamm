@@ -60,6 +60,8 @@ _CONVERSION(`AdwTabPage*',`const Glib::RefPtr<TabPage>&',__RP2P)
 _CONVERSION(`const Glib::RefPtr<TabPage>&',`AdwTabPage*',__CONVERT_REFPTR_TO_P($3))
 
 _CONVERSION(`AdwTabView*',`Glib::RefPtr<TabView>',__RP2P)
+_CONVERSION(`AdwTabView*',`TabView*',__RP2P)
+_CONVERSION(`TabView*',`AdwTabView*',__FP2P)
 _CONVERSION(`Glib::RefPtr<TabView>',`AdwTabView*',__CONVERT_REFPTR_TO_P($3))
 _CONVERSION(`const Glib::RefPtr<TabView>&',`AdwTabView*',__CONVERT_REFPTR_TO_P($3))
 

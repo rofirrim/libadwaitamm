@@ -2362,3 +2362,92 @@
   (construct-only #f)
 )
 
+;; From AdwTabBar
+
+(define-signal extra-drag-drop
+  (of-object "AdwTabBar")
+  (return-type "gboolean")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+    '("GValue*" "p1")
+  )
+)
+
+(define-property view
+  (of-object "AdwTabBar")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property start-action-widget
+  (of-object "AdwTabBar")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property end-action-widget
+  (of-object "AdwTabBar")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property autohide
+  (of-object "AdwTabBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property tabs-revealed
+  (of-object "AdwTabBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property expand-tabs
+  (of-object "AdwTabBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property inverted
+  (of-object "AdwTabBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property is-overflowing
+  (of-object "AdwTabBar")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
