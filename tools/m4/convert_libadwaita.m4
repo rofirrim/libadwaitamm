@@ -52,6 +52,9 @@ _CONVERSION(`const Glib::RefPtr<AnimationTarget>&',`AdwAnimationTarget*',__CONVE
 _CONVERSION(`AdwSqueezerPage*',`Glib::RefPtr<SqueezerPage>',__RP2P)
 _CONVERSION(`const Glib::RefPtr<SqueezerPage>&',`AdwSqueezerPage*',__CONVERT_REFPTR_TO_P($3))
 
+_CONVERSION(`AdwSwipeable*',`Glib::RefPtr<Swipeable>',__RP2P)
+_CONVERSION(`const Glib::RefPtr<Swipeable>&',`AdwSwipeable*',__CONVERT_REFPTR_TO_P($3))
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')

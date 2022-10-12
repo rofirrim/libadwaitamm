@@ -70,6 +70,8 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_SQUEEZER);
   std::cout << get_defs(ADW_TYPE_SQUEEZER_PAGE);
   std::cout << get_defs(ADW_TYPE_STATUS_PAGE);
+  std::cout << get_defs(ADW_TYPE_SWIPE_TRACKER);
+  std::cout << get_defs(ADW_TYPE_SWIPEABLE);
 
   return 0;
 }

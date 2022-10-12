@@ -62,6 +62,8 @@ hg_ccg_basenames = [
   'squeezerpage',
   'statuspage',
   'stylemanager',
+  'swipeable',
+  'swipetracker',
   'toast',
   'window',
   'windowtitle',

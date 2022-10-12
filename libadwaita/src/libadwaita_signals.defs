@@ -2016,3 +2016,90 @@
   (construct-only #f)
 )
 
+;; From AdwSwipeTracker
+
+(define-signal prepare
+  (of-object "AdwSwipeTracker")
+  (return-type "void")
+  (flags "Run First")
+  (parameters
+    '("AdwNavigationDirection" "p0")
+  )
+)
+
+(define-signal begin-swipe
+  (of-object "AdwSwipeTracker")
+  (return-type "void")
+  (flags "Run First")
+)
+
+(define-signal update-swipe
+  (of-object "AdwSwipeTracker")
+  (return-type "void")
+  (flags "Run First")
+  (parameters
+    '("gdouble" "p0")
+  )
+)
+
+(define-signal end-swipe
+  (of-object "AdwSwipeTracker")
+  (return-type "void")
+  (flags "Run First")
+  (parameters
+    '("gdouble" "p0")
+    '("gdouble" "p1")
+  )
+)
+
+(define-property swipeable
+  (of-object "AdwSwipeTracker")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
+(define-property enabled
+  (of-object "AdwSwipeTracker")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property reversed
+  (of-object "AdwSwipeTracker")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property allow-mouse-drag
+  (of-object "AdwSwipeTracker")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property allow-long-swipes
+  (of-object "AdwSwipeTracker")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+;; From AdwSwipeable
+

@@ -1,0 +1,70 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaitamm/swipeable.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class SwipeTracker : public Glib::Object, public Swipeable {
+  _CLASS_GOBJECT(SwipeTracker, AdwSwipeTracker, ADW_SWIPE_TRACKER, Glib::Object, GObject)
+  _STRUCT_NOT_HIDDEN
+  _IMPLEMENTS_INTERFACE(Swipeable)
+
+protected:
+  _CTOR_DEFAULT
+  _WRAP_CTOR(SwipeTracker(const Glib::RefPtr<Swipeable>& swipeable), adw_swipe_tracker_new)
+
+public:
+  _WRAP_CREATE(const Glib::RefPtr<Swipeable>& swipeable)
+
+  _WRAP_METHOD(bool get_allow_long_swipes() const, adw_swipe_tracker_get_allow_long_swipes)
+  _WRAP_METHOD(bool get_allow_mouse_drag() const, adw_swipe_tracker_get_allow_mouse_drag)
+  _WRAP_METHOD(bool get_enabled() const, adw_swipe_tracker_get_enabled)
+  _WRAP_METHOD(bool get_reversed() const, adw_swipe_tracker_get_reversed)
+  _WRAP_METHOD(Glib::RefPtr<Swipeable> get_swipeable() const, adw_swipe_tracker_get_swipeable)
+  _WRAP_METHOD(void set_allow_long_swipes(bool allow_long_swipes), adw_swipe_tracker_set_allow_long_swipes)
+  _WRAP_METHOD(void set_allow_mouse_drag(bool allow_mouse_drag), adw_swipe_tracker_set_allow_mouse_drag)
+  _WRAP_METHOD(void set_enabled(bool enabled), adw_swipe_tracker_set_enabled)
+  _WRAP_METHOD(void set_reversed(bool enabled), adw_swipe_tracker_set_reversed)
+  _WRAP_METHOD(void shift_position(double delta), adw_swipe_tracker_shift_position)
+
+  _WRAP_PROPERTY("allow-long-swipes", bool)
+  _WRAP_PROPERTY("allow-mouse-drag", bool)
+  _WRAP_PROPERTY("enabled", bool)
+  _WRAP_PROPERTY("reversed", bool)
+  _WRAP_PROPERTY("swipeable", Glib::RefPtr<Swipeable>)
+
+  _WRAP_SIGNAL(void begin_swipe(), "begin-swipe", no_default_handler)
+  _WRAP_SIGNAL(void end_swipe(double velocity, double to), "end-swipe", no_default_handler)
+  _WRAP_SIGNAL(void prepare(NavigationDirection direction), "prepare", no_default_handler)
+  _WRAP_SIGNAL(void update_swipe(double progress), "update-swipe", no_default_handler)
+};
+
+} // namespace Adw

@@ -1,0 +1,61 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaitamm/navigationdirection.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class Swipeable : public Glib::Interface {
+
+_CLASS_INTERFACE(Swipeable, AdwSwipeable, ADW_SWIPEABLE, AdwSwipeableInterface)
+
+public:
+  _WRAP_METHOD(double get_cancel_progress() const, adw_swipeable_get_cancel_progress)
+  _WRAP_METHOD(double get_distance() const, adw_swipeable_get_distance)
+  _WRAP_METHOD(double get_progress() const, adw_swipeable_get_progress)
+
+  _IGNORE(adw_swipeable_get_snap_points)
+  std::vector<double> get_snap_points() const {
+    int snap_points;
+    double *p = adw_swipeable_get_snap_points(
+        const_cast<AdwSwipeable *>(gobj()), &snap_points);
+    if (p)
+      return Glib::ArrayHandler<double>::array_to_vector(p, (size_t)snap_points,
+                                                         Glib::OWNERSHIP_DEEP);
+    else
+      return {};
+  }
+
+#m4 _CONVERSION(`GdkRectangle*',`Gdk::Rectangle&',`Glib::wrap($3)')
+  _WRAP_METHOD(void get_swipe_area(NavigationDirection navigation_direction, bool is_drag, Gdk::Rectangle& rect) const, adw_swipeable_get_swipe_area)
+
+};
+
+} // namespace Adw
