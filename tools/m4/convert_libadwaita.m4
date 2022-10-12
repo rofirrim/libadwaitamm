@@ -56,7 +56,12 @@ _CONVERSION(`AdwSwipeable*',`Glib::RefPtr<Swipeable>',__RP2P)
 _CONVERSION(`const Glib::RefPtr<Swipeable>&',`AdwSwipeable*',__CONVERT_REFPTR_TO_P($3))
 
 _CONVERSION(`AdwTabPage*',`Glib::RefPtr<TabPage>',__RP2P)
+_CONVERSION(`AdwTabPage*',`const Glib::RefPtr<TabPage>&',__RP2P)
 _CONVERSION(`const Glib::RefPtr<TabPage>&',`AdwTabPage*',__CONVERT_REFPTR_TO_P($3))
+
+_CONVERSION(`AdwTabView*',`Glib::RefPtr<TabView>',__RP2P)
+_CONVERSION(`Glib::RefPtr<TabView>',`AdwTabView*',__CONVERT_REFPTR_TO_P($3))
+_CONVERSION(`const Glib::RefPtr<TabView>&',`AdwTabView*',__CONVERT_REFPTR_TO_P($3))
 
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
@@ -69,3 +74,4 @@ _CONV_ENUM(`Adw',`LeafletTransitionType')
 _CONV_ENUM(`Adw',`ResponseAppearance')
 _CONV_ENUM(`Adw',`ToastPriority')
 _CONV_ENUM(`Adw',`SqueezerTransitionType')
+_CONV_ENUM(`Adw',`TabViewShortcuts')

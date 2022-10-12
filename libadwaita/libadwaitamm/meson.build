@@ -65,6 +65,7 @@ hg_ccg_basenames = [
   'swipeable',
   'swipetracker',
   'tabpage',
+  'tabview',
   'toast',
   'window',
   'windowtitle',

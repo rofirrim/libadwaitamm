@@ -2221,3 +2221,144 @@
   (default-value "FALSE")
 )
 
+;; From AdwTabView
+
+(define-signal page-attached
+  (of-object "AdwTabView")
+  (return-type "void")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+    '("gint" "p1")
+  )
+)
+
+(define-signal page-detached
+  (of-object "AdwTabView")
+  (return-type "void")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+    '("gint" "p1")
+  )
+)
+
+(define-signal page-reordered
+  (of-object "AdwTabView")
+  (return-type "void")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+    '("gint" "p1")
+  )
+)
+
+(define-signal close-page
+  (of-object "AdwTabView")
+  (return-type "gboolean")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+  )
+)
+
+(define-signal setup-menu
+  (of-object "AdwTabView")
+  (return-type "void")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+  )
+)
+
+(define-signal create-window
+  (of-object "AdwTabView")
+  (return-type "AdwTabView*")
+  (flags "Run Last")
+)
+
+(define-signal indicator-activated
+  (of-object "AdwTabView")
+  (return-type "void")
+  (flags "Run Last")
+  (parameters
+    '("AdwTabPage*" "p0")
+  )
+)
+
+(define-property n-pages
+  (of-object "AdwTabView")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property n-pinned-pages
+  (of-object "AdwTabView")
+  (prop-type "GParamInt")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property is-transferring-page
+  (of-object "AdwTabView")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property selected-page
+  (of-object "AdwTabView")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property default-icon
+  (of-object "AdwTabView")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property menu-model
+  (of-object "AdwTabView")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property shortcuts
+  (of-object "AdwTabView")
+  (prop-type "GParamFlags")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_TAB_VIEW_SHORTCUT_CONTROL_TAB | ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_TAB | ADW_TAB_VIEW_SHORTCUT_CONTROL_PAGE_UP | ADW_TAB_VIEW_SHORTCUT_CONTROL_PAGE_DOWN | ADW_TAB_VIEW_SHORTCUT_CONTROL_HOME | ADW_TAB_VIEW_SHORTCUT_CONTROL_END | ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_PAGE_UP | ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_PAGE_DOWN | ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_HOME | ADW_TAB_VIEW_SHORTCUT_CONTROL_SHIFT_END | ADW_TAB_VIEW_SHORTCUT_ALT_DIGITS | ADW_TAB_VIEW_SHORTCUT_ALT_ZERO")
+)
+
+(define-property pages
+  (of-object "AdwTabView")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
