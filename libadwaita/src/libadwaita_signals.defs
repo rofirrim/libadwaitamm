@@ -2523,3 +2523,14 @@
   (default-value "FALSE")
 )
 
+;; From AdwToastOverlay
+
+(define-property child
+  (of-object "AdwToastOverlay")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+

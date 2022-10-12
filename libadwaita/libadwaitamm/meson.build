@@ -69,6 +69,7 @@ hg_ccg_basenames = [
   'tabview',
   'timedanimation',
   'toast',
+  'toastoverlay',
   'window',
   'windowtitle',
 ]
