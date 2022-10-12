@@ -1,0 +1,68 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(libadwaitamm/private/animation_p.h)
+
+#include <glibmm.h>
+#include <gtkmm.h>
+#include <libadwaitamm/animation.h>
+#include <libadwaitamm/animationtarget.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+  _WRAP_ENUM(Easing, AdwEasing)
+
+class TimedAnimation : public Animation {
+  _CLASS_GOBJECT(TimedAnimation, AdwTimedAnimation, ADW_TIMED_ANIMATION, Animation, AdwAnimation)
+
+protected:
+  _CTOR_DEFAULT
+  _WRAP_CTOR(TimedAnimation(Gtk::Widget* widget, double from, double to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target), adw_timed_animation_new)
+
+public:
+  _WRAP_CREATE(Gtk::Widget* widget, double from, double to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target)
+
+  _WRAP_METHOD(bool get_alternate() const, adw_timed_animation_get_alternate)
+  _WRAP_METHOD(unsigned int get_duration() const, adw_timed_animation_get_duration)
+  _WRAP_METHOD(Easing get_easing() const, adw_timed_animation_get_easing)
+  _WRAP_METHOD(unsigned int get_repeat_count() const, adw_timed_animation_get_repeat_count)
+  _WRAP_METHOD(bool get_reverse() const, adw_timed_animation_get_reverse)
+  _WRAP_METHOD(double get_value_from() const, adw_timed_animation_get_value_from)
+  _WRAP_METHOD(double get_value_to() const, adw_timed_animation_get_value_to)
+  _WRAP_METHOD(void set_alternate(bool alternate), adw_timed_animation_set_alternate)
+  _WRAP_METHOD(void set_duration(unsigned int duration), adw_timed_animation_set_duration)
+  _WRAP_METHOD(void set_easing(Easing easing), adw_timed_animation_set_easing)
+  _WRAP_METHOD(void set_repeat_count(unsigned int repeat_count), adw_timed_animation_set_repeat_count)
+  _WRAP_METHOD(void set_reverse(bool reverse), adw_timed_animation_set_reverse)
+  _WRAP_METHOD(void set_value_from(double from) const, adw_timed_animation_set_value_from)
+  _WRAP_METHOD(void set_value_to(double to) const, adw_timed_animation_set_value_to)
+
+  _WRAP_PROPERTY("alternate", bool)
+  _WRAP_PROPERTY("duration", unsigned int)
+  _WRAP_PROPERTY("easing", Easing)
+  _WRAP_PROPERTY("repeat-count", unsigned int)
+  _WRAP_PROPERTY("reverse", bool)
+  _WRAP_PROPERTY("value-from", double)
+  _WRAP_PROPERTY("value-to", double)
+};
+
+} // namespace Adw

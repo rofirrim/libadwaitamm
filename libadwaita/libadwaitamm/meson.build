@@ -67,6 +67,7 @@ hg_ccg_basenames = [
   'tabbar',
   'tabpage',
   'tabview',
+  'timedanimation',
   'toast',
   'window',
   'windowtitle',

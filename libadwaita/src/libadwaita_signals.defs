@@ -2451,3 +2451,75 @@
   (default-value "FALSE")
 )
 
+;; From AdwTimedAnimation
+
+(define-property value-from
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamDouble")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property value-to
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamDouble")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property duration
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0")
+)
+
+(define-property easing
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_EASE_OUT_CUBIC")
+)
+
+(define-property repeat-count
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "1")
+)
+
+(define-property reverse
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property alternate
+  (of-object "AdwTimedAnimation")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
