@@ -66,6 +66,9 @@ _CONVERSION(`TabView*',`AdwTabView*',__FP2P)
 _CONVERSION(`Glib::RefPtr<TabView>',`AdwTabView*',__CONVERT_REFPTR_TO_P($3))
 _CONVERSION(`const Glib::RefPtr<TabView>&',`AdwTabView*',__CONVERT_REFPTR_TO_P($3))
 
+_CONVERSION(`AdwViewStackPage*',`Glib::RefPtr<ViewStackPage>',__RP2P)
+_CONVERSION(`const Glib::RefPtr<ViewStackPage>&',`AdwViewStackPage*',__CONVERT_REFPTR_TO_P($3))
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')

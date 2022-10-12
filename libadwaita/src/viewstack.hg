@@ -1,0 +1,68 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaitamm/viewstackpage.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+class ViewStack : public Gtk::Widget {
+  _CLASS_GTKOBJECT(ViewStack, AdwViewStack, ADW_VIEW_STACK, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(Glib::RefPtr<ViewStackPage> add(Gtk::Widget* child), adw_view_stack_add)
+  _WRAP_METHOD(Glib::RefPtr<ViewStackPage> add_named(Gtk::Widget* child, const Glib::ustring& name), adw_view_stack_add_named)
+  _WRAP_METHOD(Glib::RefPtr<ViewStackPage> add_titled(Gtk::Widget* child, const Glib::ustring& name, const Glib::ustring& title), adw_view_stack_add_titled)
+  _WRAP_METHOD(Glib::RefPtr<ViewStackPage> add_titled_with_icon(Gtk::Widget* child, const Glib::ustring& name, const Glib::ustring& title, const Glib::ustring& icon_name), adw_view_stack_add_titled_with_icon)
+  _WRAP_METHOD(Gtk::Widget* get_child_by_name(const Glib::ustring& name) const, adw_view_stack_get_child_by_name)
+  _WRAP_METHOD(bool get_hhomogeneous() const, adw_view_stack_get_hhomogeneous)
+  _WRAP_METHOD(Glib::RefPtr<ViewStackPage> get_page(Gtk::Widget* child) const, adw_view_stack_get_page)
+  _WRAP_METHOD(Glib::RefPtr<Gtk::SelectionModel> get_pages() const, adw_view_stack_get_pages)
+  _WRAP_METHOD(bool get_vhomogeneous() const, adw_view_stack_get_vhomogeneous)
+  _WRAP_METHOD(Gtk::Widget* get_visible_child() const, adw_view_stack_get_visible_child)
+  _WRAP_METHOD(Glib::ustring get_visible_child_name() const, adw_view_stack_get_visible_child_name)
+  _WRAP_METHOD(void remove(Gtk::Widget* widget), adw_view_stack_remove)
+  _WRAP_METHOD(void set_hhomogeneous(bool hhomogeneous), adw_view_stack_set_hhomogeneous)
+  _WRAP_METHOD(void set_vhomogeneous(bool hhomogeneous), adw_view_stack_set_vhomogeneous)
+  _WRAP_METHOD(void set_visible_child(Gtk::Widget* child), adw_view_stack_set_visible_child)
+  _WRAP_METHOD(void set_visible_child_name(const Glib::ustring& name), adw_view_stack_set_visible_child_name)
+
+  _WRAP_PROPERTY("hhomogeneous", bool)
+  _WRAP_PROPERTY("pages", Glib::RefPtr<Gtk::SelectionModel>)
+  _WRAP_PROPERTY("vhomogeneous", bool)
+  _WRAP_PROPERTY("visible-child", Gtk::Widget*)
+  _WRAP_PROPERTY("visible-child-name", Glib::ustring)
+};
+
+} // namespace Adw

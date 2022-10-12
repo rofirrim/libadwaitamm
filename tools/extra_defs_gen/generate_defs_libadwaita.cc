@@ -78,6 +78,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_TIMED_ANIMATION);
   std::cout << get_defs(ADW_TYPE_TOAST_OVERLAY);
   std::cout << get_defs(ADW_TYPE_VIEW_STACK_PAGE);
+  std::cout << get_defs(ADW_TYPE_VIEW_STACK);
 
   return 0;
 }

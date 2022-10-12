@@ -2615,3 +2615,53 @@
   (default-value "TRUE")
 )
 
+;; From AdwViewStack
+
+(define-property hhomogeneous
+  (of-object "AdwViewStack")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property vhomogeneous
+  (of-object "AdwViewStack")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property visible-child
+  (of-object "AdwViewStack")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property visible-child-name
+  (of-object "AdwViewStack")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property pages
+  (of-object "AdwViewStack")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
