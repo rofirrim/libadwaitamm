@@ -49,6 +49,9 @@ _CONVERSION(`const Glib::RefPtr<SpringParams>&',`AdwSpringParams*',__CONVERT_REF
 _CONVERSION(`AdwAnimationTarget*',`Glib::RefPtr<AnimationTarget>',__RP2P)
 _CONVERSION(`const Glib::RefPtr<AnimationTarget>&',`AdwAnimationTarget*',__CONVERT_REFPTR_TO_P($3))
 
+_CONVERSION(`AdwSqueezerPage*',`Glib::RefPtr<SqueezerPage>',__RP2P)
+_CONVERSION(`const Glib::RefPtr<SqueezerPage>&',`AdwSqueezerPage*',__CONVERT_REFPTR_TO_P($3))
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')
@@ -59,3 +62,4 @@ _CONV_ENUM(`Adw',`NavigationDirection')
 _CONV_ENUM(`Adw',`LeafletTransitionType')
 _CONV_ENUM(`Adw',`ResponseAppearance')
 _CONV_ENUM(`Adw',`ToastPriority')
+_CONV_ENUM(`Adw',`SqueezerTransitionType')

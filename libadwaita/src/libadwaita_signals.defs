@@ -1835,3 +1835,134 @@
   (default-value "0")
 )
 
+;; From AdwSqueezer
+
+(define-property visible-child
+  (of-object "AdwSqueezer")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
+(define-property homogeneous
+  (of-object "AdwSqueezer")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property switch-threshold-policy
+  (of-object "AdwSqueezer")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_FOLD_THRESHOLD_POLICY_NATURAL")
+)
+
+(define-property allow-none
+  (of-object "AdwSqueezer")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property transition-duration
+  (of-object "AdwSqueezer")
+  (prop-type "GParamUInt")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "200")
+)
+
+(define-property transition-type
+  (of-object "AdwSqueezer")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_SQUEEZER_TRANSITION_TYPE_NONE")
+)
+
+(define-property transition-running
+  (of-object "AdwSqueezer")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property interpolate-size
+  (of-object "AdwSqueezer")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "FALSE")
+)
+
+(define-property xalign
+  (of-object "AdwSqueezer")
+  (prop-type "GParamFloat")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0.5")
+)
+
+(define-property yalign
+  (of-object "AdwSqueezer")
+  (prop-type "GParamFloat")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "0.5")
+)
+
+(define-property pages
+  (of-object "AdwSqueezer")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+)
+
+;; From AdwSqueezerPage
+
+(define-property child
+  (of-object "AdwSqueezerPage")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+
+(define-property enabled
+  (of-object "AdwSqueezerPage")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+

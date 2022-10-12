@@ -1,0 +1,84 @@
+/* Copyright (c) 2019  Roger Ferrer <rofirrim@gmail.com>
+ *
+ * This file is part of libadwaitamm.
+ *
+ * libadwaitamm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libadwaitamm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libadwaitamm,libadwaita)
+_CONFIGINCLUDE(libadwaitammconfig.h)
+_PINCLUDE(gtkmm/private/widget_p.h)
+
+#include <gtkmm.h>
+
+// The documentation explicitly advises against this.
+// But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
+// cannot forward-declare a struct type Foo.
+#include <libadwaitamm/squeezerpage.h>
+#include <libadwaitamm/foldthresholdpolicy.h>
+#include <libadwaita-1/adwaita.h>
+
+namespace Adw
+{
+
+_WRAP_ENUM(SqueezerTransitionType, AdwSqueezerTransitionType)
+
+
+class Squeezer : public Gtk::Widget {
+  _CLASS_GTKOBJECT(Squeezer, AdwSqueezer, ADW_SQUEEZER, Gtk::Widget, GtkWidget)
+  _STRUCT_NOT_HIDDEN
+
+protected:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_CREATE()
+
+  _WRAP_METHOD(Glib::RefPtr<SqueezerPage> add(Gtk::Widget*), adw_squeezer_add)
+  _WRAP_METHOD(bool get_allow_none() const, adw_squeezer_get_allow_none)
+  _WRAP_METHOD(bool get_homogeneous() const, adw_squeezer_get_homogeneous)
+  _WRAP_METHOD(bool get_interpolate_size() const, adw_squeezer_get_interpolate_size)
+  _WRAP_METHOD(Glib::RefPtr<SqueezerPage> get(Gtk::Widget*) const, adw_squeezer_get_page)
+  _WRAP_METHOD(Glib::RefPtr<Gtk::SelectionModel> get_pages() const, adw_squeezer_get_pages)
+  _WRAP_METHOD(FoldThresholdPolicy get_switch_threshold_policy() const, adw_squeezer_get_switch_threshold_policy)
+  _WRAP_METHOD(unsigned int get_transition_duration() const, adw_squeezer_get_transition_duration)
+  _WRAP_METHOD(bool get_transition_running() const, adw_squeezer_get_transition_running)
+  _WRAP_METHOD(SqueezerTransitionType get_transition_type() const, adw_squeezer_get_transition_type)
+  _WRAP_METHOD(Gtk::Widget* get_visible_child() const, adw_squeezer_get_visible_child)
+  _WRAP_METHOD(float get_xalign() const, adw_squeezer_get_xalign)
+  _WRAP_METHOD(float get_yalign() const, adw_squeezer_get_yalign)
+  _WRAP_METHOD(void remove(Gtk::Widget*), adw_squeezer_remove)
+  _WRAP_METHOD(void set_allow_none(bool allow_none), adw_squeezer_set_allow_none)
+  _WRAP_METHOD(void set_homogeneous(bool homogeneous), adw_squeezer_set_homogeneous)
+  _WRAP_METHOD(void set_interpolate_size(bool homogeneous), adw_squeezer_set_interpolate_size)
+  _WRAP_METHOD(void set_switch_threshold_policy(FoldThresholdPolicy policy), adw_squeezer_set_switch_threshold_policy)
+  _WRAP_METHOD(void set_transition_duration(unsigned int duration), adw_squeezer_set_transition_duration)
+  _WRAP_METHOD(void set_transition_type(SqueezerTransitionType transition), adw_squeezer_set_transition_type)
+  _WRAP_METHOD(void set_xalign(float xalign), adw_squeezer_set_xalign)
+  _WRAP_METHOD(void set_yalign(float xalign), adw_squeezer_set_yalign)
+
+  _WRAP_PROPERTY("allow-none", bool)
+  _WRAP_PROPERTY("homogeneous", bool)
+  _WRAP_PROPERTY("interpolate-size", bool)
+  _WRAP_PROPERTY("pages", Glib::RefPtr<Gtk::SelectionModel>)
+  _WRAP_PROPERTY("switch-threshold-policy", FoldThresholdPolicy)
+  _WRAP_PROPERTY("transition-duration", unsigned int)
+  _WRAP_PROPERTY("transition-running", bool)
+  _WRAP_PROPERTY("transition-type", SqueezerTransitionType)
+  _WRAP_PROPERTY("visible-child", Gtk::Widget*)
+  _WRAP_PROPERTY("xalign", float)
+  _WRAP_PROPERTY("yalign", float)
+};
+
+} // namespace Adw

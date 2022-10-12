@@ -67,6 +67,8 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_TOAST);
   std::cout << get_defs(ADW_TYPE_SPLIT_BUTTON);
   std::cout << get_defs(ADW_TYPE_SPRING_ANIMATION);
+  std::cout << get_defs(ADW_TYPE_SQUEEZER);
+  std::cout << get_defs(ADW_TYPE_SQUEEZER_PAGE);
 
   return 0;
 }
