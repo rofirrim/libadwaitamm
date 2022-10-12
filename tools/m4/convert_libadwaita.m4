@@ -69,6 +69,12 @@ _CONVERSION(`const Glib::RefPtr<TabView>&',`AdwTabView*',__CONVERT_REFPTR_TO_P($
 _CONVERSION(`AdwViewStackPage*',`Glib::RefPtr<ViewStackPage>',__RP2P)
 _CONVERSION(`const Glib::RefPtr<ViewStackPage>&',`AdwViewStackPage*',__CONVERT_REFPTR_TO_P($3))
 
+_CONVERSION(`AdwViewStack*',`ViewStack*',__RP2P)
+_CONVERSION(`ViewStack*',`AdwViewStack*',__FP2P)
+
+_CONVERSION(`AdwViewStack*',`Glib::RefPtr<ViewStack>',__RP2P)
+_CONVERSION(`const Glib::RefPtr<ViewStack>&',`AdwViewStack*',__CONVERT_REFPTR_TO_P($3))
+
 _CONV_ENUM(`Adw',`AnimationState')
 _CONV_ENUM(`Adw',`ColorScheme')
 _CONV_ENUM(`Adw',`FlapFoldPolicy')
@@ -82,3 +88,4 @@ _CONV_ENUM(`Adw',`ToastPriority')
 _CONV_ENUM(`Adw',`SqueezerTransitionType')
 _CONV_ENUM(`Adw',`TabViewShortcuts')
 _CONV_ENUM(`Adw',`Easing')
+_CONV_ENUM(`Adw',`ViewSwitcherPolicy')

@@ -79,6 +79,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_TOAST_OVERLAY);
   std::cout << get_defs(ADW_TYPE_VIEW_STACK_PAGE);
   std::cout << get_defs(ADW_TYPE_VIEW_STACK);
+  std::cout << get_defs(ADW_TYPE_VIEW_SWITCHER);
 
   return 0;
 }

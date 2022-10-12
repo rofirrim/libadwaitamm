@@ -2665,3 +2665,24 @@
   (construct-only #f)
 )
 
+;; From AdwViewSwitcher
+
+(define-property policy
+  (of-object "AdwViewSwitcher")
+  (prop-type "GParamEnum")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "ADW_VIEW_SWITCHER_POLICY_NARROW")
+)
+
+(define-property stack
+  (of-object "AdwViewSwitcher")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+

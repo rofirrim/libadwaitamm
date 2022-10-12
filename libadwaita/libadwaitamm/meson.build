@@ -72,6 +72,7 @@ hg_ccg_basenames = [
   'toastoverlay',
   'viewstack',
   'viewstackpage',
+  'viewswitcher',
   'window',
   'windowtitle',
 ]
