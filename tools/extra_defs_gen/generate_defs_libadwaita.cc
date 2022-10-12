@@ -81,6 +81,7 @@ int main(int, char**)
   std::cout << get_defs(ADW_TYPE_VIEW_STACK);
   std::cout << get_defs(ADW_TYPE_VIEW_SWITCHER);
   std::cout << get_defs(ADW_TYPE_VIEW_SWITCHER_BAR);
+  std::cout << get_defs(ADW_TYPE_VIEW_SWITCHER_TITLE);
 
   return 0;
 }

@@ -2707,3 +2707,54 @@
   (default-value "FALSE")
 )
 
+;; From AdwViewSwitcherTitle
+
+(define-property stack
+  (of-object "AdwViewSwitcherTitle")
+  (prop-type "GParamObject")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+)
+
+(define-property title
+  (of-object "AdwViewSwitcherTitle")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property subtitle
+  (of-object "AdwViewSwitcherTitle")
+  (prop-type "GParamString")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "")
+)
+
+(define-property view-switcher-enabled
+  (of-object "AdwViewSwitcherTitle")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #t)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
+(define-property title-visible
+  (of-object "AdwViewSwitcherTitle")
+  (prop-type "GParamBoolean")
+  (docs "")
+  (readable #t)
+  (writable #f)
+  (construct-only #f)
+  (default-value "TRUE")
+)
+
