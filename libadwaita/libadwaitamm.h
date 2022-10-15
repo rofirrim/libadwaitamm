@@ -38,10 +38,61 @@
  */
 
 #include <libadwaitammconfig.h>
+#include <libadwaitamm/aboutwindow.h>
+#include <libadwaitamm/actionrow.h>
+#include <libadwaitamm/animation.h>
+#include <libadwaitamm/animationtarget.h>
+#include <libadwaitamm/application.h>
+#include <libadwaitamm/applicationwindow.h>
+#include <libadwaitamm/avatar.h>
+#include <libadwaitamm/bin.h>
+#include <libadwaitamm/buttoncontent.h>
+#include <libadwaitamm/callbackanimationtarget.h>
+#include <libadwaitamm/carousel.h>
+#include <libadwaitamm/carouselindicatordots.h>
+#include <libadwaitamm/carouselindicatorlines.h>
+#include <libadwaitamm/clamp.h>
+#include <libadwaitamm/clamplayout.h>
+#include <libadwaitamm/clampscrollable.h>
+#include <libadwaitamm/comborow.h>
+#include <libadwaitamm/entryrow.h>
+#include <libadwaitamm/enumlistitem.h>
+#include <libadwaitamm/enumlistmodel.h>
+#include <libadwaitamm/expanderrow.h>
+#include <libadwaitamm/flap.h>
+#include <libadwaitamm/foldthresholdpolicy.h>
+#include <libadwaitamm/headerbar.h>
+#include <libadwaitamm/leaflet.h>
+#include <libadwaitamm/leafletpage.h>
+#include <libadwaitamm/messagedialog.h>
+#include <libadwaitamm/navigationdirection.h>
+#include <libadwaitamm/passwordentryrow.h>
+#include <libadwaitamm/preferencesgroup.h>
+#include <libadwaitamm/preferencespage.h>
+#include <libadwaitamm/preferencesrow.h>
+#include <libadwaitamm/preferenceswindow.h>
+#include <libadwaitamm/propertyanimationtarget.h>
+#include <libadwaitamm/splitbutton.h>
+#include <libadwaitamm/springanimation.h>
+#include <libadwaitamm/springparams.h>
+#include <libadwaitamm/squeezer.h>
+#include <libadwaitamm/squeezerpage.h>
+#include <libadwaitamm/statuspage.h>
+#include <libadwaitamm/stylemanager.h>
+#include <libadwaitamm/swipeable.h>
+#include <libadwaitamm/swipetracker.h>
+#include <libadwaitamm/tabbar.h>
+#include <libadwaitamm/tabpage.h>
+#include <libadwaitamm/tabview.h>
+#include <libadwaitamm/timedanimation.h>
+#include <libadwaitamm/toast.h>
+#include <libadwaitamm/toastoverlay.h>
+#include <libadwaitamm/viewstack.h>
+#include <libadwaitamm/viewstackpage.h>
+#include <libadwaitamm/viewswitcher.h>
+#include <libadwaitamm/viewswitcherbar.h>
+#include <libadwaitamm/viewswitchertitle.h>
 #include <libadwaitamm/window.h>
-
-/** @example example/example.cc
- * A libadwaitamm example program.
- */
+#include <libadwaitamm/windowtitle.h>
 
 #endif /* !LIBADWAITAMM_H_INCLUDED */
