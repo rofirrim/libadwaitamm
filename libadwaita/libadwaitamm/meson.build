@@ -80,6 +80,7 @@ hg_ccg_basenames = [
 ]
 
 extra_cc_files = [
+  'init.cc'
 ]
 
 extra_h_files = [
