@@ -33,6 +33,7 @@ namespace Adw
 
 class TimedAnimation : public Animation {
   _CLASS_GOBJECT(TimedAnimation, AdwTimedAnimation, ADW_TIMED_ANIMATION, Animation, AdwAnimation)
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

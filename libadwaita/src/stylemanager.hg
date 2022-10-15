@@ -35,6 +35,7 @@ _WRAP_ENUM(ColorScheme, AdwColorScheme)
 class StyleManager : public Glib::Object {
   _CLASS_GOBJECT(StyleManager, AdwStyleManager, ADW_STYLE_MANAGER, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

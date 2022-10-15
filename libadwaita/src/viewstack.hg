@@ -34,6 +34,7 @@ namespace Adw
 class ViewStack : public Gtk::Widget {
   _CLASS_GTKOBJECT(ViewStack, AdwViewStack, ADW_VIEW_STACK, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

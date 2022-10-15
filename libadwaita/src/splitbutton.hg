@@ -33,6 +33,7 @@ namespace Adw
 class SplitButton : public Gtk::Widget {
   _CLASS_GTKOBJECT(SplitButton, AdwSplitButton, ADW_SPLIT_BUTTON, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

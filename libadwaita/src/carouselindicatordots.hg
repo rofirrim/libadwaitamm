@@ -34,6 +34,7 @@ namespace Adw
 class CarouselIndicatorDots : public Gtk::Widget {
   _CLASS_GTKOBJECT(CarouselIndicatorDots, AdwCarouselIndicatorDots, ADW_CAROUSEL_INDICATOR_DOTS, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

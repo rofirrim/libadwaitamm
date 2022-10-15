@@ -34,6 +34,7 @@ _WRAP_ENUM(CenteringPolicy, AdwCenteringPolicy)
 class HeaderBar : public Gtk::Widget {
   _CLASS_GTKOBJECT(HeaderBar, AdwHeaderBar, ADW_HEADER_BAR, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

@@ -30,6 +30,8 @@ class CallbackAnimationTarget : public Adw::AnimationTarget {
   _CLASS_GOBJECT(CallbackAnimationTarget, AdwCallbackAnimationTarget,
                  ADW_CALLBACK_ANIMATION_TARGET, Adw::AnimationTarget,
                  AdwAnimationTarget)
+  _DO_NOT_DERIVE_GTYPE
+
   static void callback_function(double value, gpointer user_data);
 
 protected:

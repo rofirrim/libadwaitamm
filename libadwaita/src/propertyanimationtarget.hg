@@ -27,6 +27,8 @@ namespace Adw
 
 class PropertyAnimationTarget : public AnimationTarget {
   _CLASS_GOBJECT(PropertyAnimationTarget, AdwPropertyAnimationTarget, ADW_PROPERTY_ANIMATION_TARGET, AnimationTarget, AdwAnimationTarget)
+  _DO_NOT_DERIVE_GTYPE
+
   _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, const Glib::ustring& property_name), adw_property_animation_target_new)
   _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, GParamSpec*), adw_property_animation_target_new_for_pspec)
 

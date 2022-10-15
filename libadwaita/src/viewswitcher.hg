@@ -36,6 +36,7 @@ _WRAP_ENUM(ViewSwitcherPolicy, AdwViewSwitcherPolicy)
 class ViewSwitcher : public Gtk::Widget {
   _CLASS_GTKOBJECT(ViewSwitcher, AdwViewSwitcher, ADW_VIEW_SWITCHER, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

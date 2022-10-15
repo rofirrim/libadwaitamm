@@ -34,6 +34,7 @@ class ClampScrollable : public Gtk::Widget, public Gtk::Scrollable {
   _CLASS_GTKOBJECT(ClampScrollable, AdwClampScrollable, ADW_CLAMP_SCROLLABLE, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
   _IMPLEMENTS_INTERFACE(Gtk::Scrollable)
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

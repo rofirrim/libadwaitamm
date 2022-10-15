@@ -33,6 +33,7 @@ namespace Adw
 class Avatar : public Gtk::Widget {
   _CLASS_GTKOBJECT(Avatar, AdwAvatar, ADW_AVATAR, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

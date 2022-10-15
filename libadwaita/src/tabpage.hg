@@ -34,6 +34,7 @@ namespace Adw
 class TabPage : public Glib::Object {
   _CLASS_GOBJECT(TabPage, AdwTabPage, ADW_TAB_PAGE, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

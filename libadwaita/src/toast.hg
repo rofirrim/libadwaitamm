@@ -36,6 +36,7 @@ namespace Adw
 class Toast : public Glib::Object {
   _CLASS_GOBJECT(Toast, AdwToast, ADW_TOAST, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

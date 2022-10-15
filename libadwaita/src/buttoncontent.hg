@@ -33,6 +33,7 @@ namespace Adw
 class ButtonContent : public Gtk::Widget {
   _CLASS_GTKOBJECT(ButtonContent, AdwButtonContent, ADW_BUTTON_CONTENT, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

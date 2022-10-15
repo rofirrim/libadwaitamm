@@ -34,6 +34,7 @@ class ClampLayout : public Gtk::LayoutManager, public Gtk::Orientable {
   _CLASS_GOBJECT(ClampLayout, AdwClampLayout, ADW_CLAMP_LAYOUT, Gtk::LayoutManager, GtkLayoutManager)
   _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

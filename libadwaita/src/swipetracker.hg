@@ -36,6 +36,7 @@ class SwipeTracker : public Glib::Object, public Swipeable {
   _CLASS_GOBJECT(SwipeTracker, AdwSwipeTracker, ADW_SWIPE_TRACKER, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
   _IMPLEMENTS_INTERFACE(Swipeable)
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

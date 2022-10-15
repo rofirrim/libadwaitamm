@@ -34,6 +34,7 @@ namespace Adw
 class ViewStackPage : public Glib::Object {
   _CLASS_GOBJECT(ViewStackPage, AdwViewStackPage, ADW_VIEW_STACK_PAGE, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

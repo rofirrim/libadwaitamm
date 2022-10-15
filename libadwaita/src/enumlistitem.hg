@@ -34,6 +34,7 @@ namespace Adw
 class EnumListItem : public Glib::Object {
   _CLASS_GOBJECT(EnumListItem, AdwEnumListItem, ADW_ENUM_LIST_ITEM, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

@@ -38,6 +38,7 @@ _WRAP_ENUM(SqueezerTransitionType, AdwSqueezerTransitionType)
 class Squeezer : public Gtk::Widget {
   _CLASS_GTKOBJECT(Squeezer, AdwSqueezer, ADW_SQUEEZER, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT

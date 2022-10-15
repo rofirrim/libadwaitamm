@@ -39,6 +39,7 @@ _WRAP_ENUM(LeafletTransitionType, AdwLeafletTransitionType)
 class Leaflet : public Gtk::Widget {
   _CLASS_GTKOBJECT(Leaflet, AdwLeaflet, ADW_LEAFLET, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _DO_NOT_DERIVE_GTYPE
 
 protected:
   _CTOR_DEFAULT
