@@ -43,7 +43,7 @@ public:
   _WRAP_METHOD(double get_epsilon() const, adw_spring_animation_get_epsilon)
   _WRAP_METHOD(unsigned int get_estimated_duration() const, adw_spring_animation_get_estimated_duration)
   _WRAP_METHOD(double get_initial_velocity() const, adw_spring_animation_get_initial_velocity)
-  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_spring_params() const, adw_spring_animation_get_spring_params)
+  _WRAP_METHOD(Glib::RefPtr<SpringParams> get_spring_params() const, adw_spring_animation_get_spring_params, refreturn)
   _WRAP_METHOD(double get_value_from() const, adw_spring_animation_get_value_from)
   _WRAP_METHOD(double get_value_to() const, adw_spring_animation_get_value_to)
   _WRAP_METHOD(double get_velocity() const, adw_spring_animation_get_velocity)

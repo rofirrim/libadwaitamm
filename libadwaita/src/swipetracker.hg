@@ -48,7 +48,7 @@ public:
   _WRAP_METHOD(bool get_allow_mouse_drag() const, adw_swipe_tracker_get_allow_mouse_drag)
   _WRAP_METHOD(bool get_enabled() const, adw_swipe_tracker_get_enabled)
   _WRAP_METHOD(bool get_reversed() const, adw_swipe_tracker_get_reversed)
-  _WRAP_METHOD(Glib::RefPtr<Swipeable> get_swipeable() const, adw_swipe_tracker_get_swipeable)
+  _WRAP_METHOD(Glib::RefPtr<Swipeable> get_swipeable() const, adw_swipe_tracker_get_swipeable, refreturn)
   _WRAP_METHOD(void set_allow_long_swipes(bool allow_long_swipes), adw_swipe_tracker_set_allow_long_swipes)
   _WRAP_METHOD(void set_allow_mouse_drag(bool allow_mouse_drag), adw_swipe_tracker_set_allow_mouse_drag)
   _WRAP_METHOD(void set_enabled(bool enabled), adw_swipe_tracker_set_enabled)

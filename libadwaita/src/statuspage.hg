@@ -43,7 +43,7 @@ public:
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_status_page_get_child)
   _WRAP_METHOD(Glib::ustring get_description() const, adw_status_page_get_description)
   _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_status_page_get_icon_name)
-  _WRAP_METHOD(Glib::RefPtr<Gdk::Paintable> get_paintable() const, adw_status_page_get_paintable)
+  _WRAP_METHOD(Glib::RefPtr<Gdk::Paintable> get_paintable() const, adw_status_page_get_paintable, refreturn)
   _WRAP_METHOD(Glib::ustring get_title() const, adw_status_page_get_title)
   _WRAP_METHOD(void set_child(Gtk::Widget *child), adw_status_page_set_child)
   _WRAP_METHOD(void set_description(const Glib::ustring& description), adw_status_page_set_description)

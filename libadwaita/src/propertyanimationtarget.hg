@@ -35,7 +35,7 @@ protected:
   _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, const Glib::ustring& property_name)
   _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, GParamSpec*)
 
-  _WRAP_METHOD(Glib::RefPtr<Glib::Object> get_object() const, adw_property_animation_target_get_object)
+  _WRAP_METHOD(Glib::RefPtr<Glib::Object> get_object() const, adw_property_animation_target_get_object, refreturn)
   _WRAP_METHOD(GParamSpec* get_pspec() const, adw_property_animation_target_get_pspec)
 
   _WRAP_PROPERTY("object", Glib::RefPtr<Glib::Object>)

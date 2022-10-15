@@ -45,7 +45,7 @@ public:
   _WRAP_METHOD(Glib::ustring get_dropdown_tooltip() const, adw_split_button_get_dropdown_tooltip)
   _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_split_button_get_icon_name)
   _WRAP_METHOD(Glib::ustring get_label() const, adw_split_button_get_label)
-  _WRAP_METHOD(Glib::RefPtr<Gio::MenuModel> get_menu_model() const, adw_split_button_get_menu_model)
+  _WRAP_METHOD(Glib::RefPtr<Gio::MenuModel> get_menu_model() const, adw_split_button_get_menu_model, refreturn)
   _WRAP_METHOD(Gtk::Popover* get_popover() const, adw_split_button_get_popover)
   _WRAP_METHOD(bool get_use_underline() const, adw_split_button_get_use_underline)
   _WRAP_METHOD(void popdown(), adw_split_button_popdown)
