@@ -17,13 +17,34 @@
  */
 
 #include <libadwaitamm.h>
+#include <libadwaitamm/init.h>
 
-namespace
-{
+static void activate_cb(const Glib::RefPtr<Gtk::Application> &app) {
+  auto window = new Adw::ApplicationWindow(app);
 
-} // anonymous namespace
+  auto box = new Gtk::Box(Gtk::Orientation::VERTICAL, 4);
 
-int main(int, char**)
-{
+  auto hbar = new Gtk::HeaderBar();
+  box->append(*hbar);
+
+  auto button = new Gtk::Button("Click me!");
+  box->append(*button);
+
+  window->set_title("Hello");
+  window->set_default_size(200, 200);
+  window->set_content(box);
+  window->present();
+}
+
+int main(int argc, char **argv) {
+  Adw::init();
+
+  auto app = Adw::Application::create("org.example.Hello",
+                                      Gio::Application::Flags::NONE);
+
+  app->signal_activate().connect(sigc::bind(sigc::ptr_fun(&activate_cb), app));
+
+  app->run(argc, argv);
+
   return 0;
 }
