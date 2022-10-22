@@ -1,13 +1,36 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <glibmm/extraclassinit.h>
 
-G_BEGIN_DECLS
+namespace Adw
+{
 
-#define ADW_TYPE_DEMO_PREFERENCES_WINDOW (adw_demo_preferences_window_get_type())
+class DemoPreferencesWindow : public Glib::ExtraClassInit,
+                              public Adw::PreferencesWindow {
+public:
+  DemoPreferencesWindow();
+  virtual ~DemoPreferencesWindow();
 
-G_DECLARE_FINAL_TYPE (AdwDemoPreferencesWindow, adw_demo_preferences_window, ADW, DEMO_PREFERENCES_WINDOW, AdwPreferencesWindow)
+    static GType get_type() {
+    // Let's cache once the type does exist.
+    if (!gtype)
+      gtype = g_type_from_name("gtkmm__CustomObject_AdwDemoPreferencesWindow");
+    return gtype;
+  }
 
-AdwDemoPreferencesWindow *adw_demo_preferences_window_new (void);
+private:
+  static void class_init(void *g_class, void *class_data);
+  static void instance_init(GTypeInstance *instance, void *g_class);
 
-G_END_DECLS
+  Gtk::Widget *subpage1;
+  Gtk::Widget *subpage2;
+
+  void subpage1_activated();
+  void subpage2_activated();
+  void return_to_preferences();
+  void toast_show();
+
+  static GType gtype;
+};
+}

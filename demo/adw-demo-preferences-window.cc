@@ -1,64 +1,79 @@
 #include "adw-demo-preferences-window.h"
 
-struct _AdwDemoPreferencesWindow
-{
-  AdwPreferencesWindow parent_instance;
+namespace Adw {
 
-  GtkWidget *subpage1;
-  GtkWidget *subpage2;
-};
+DemoPreferencesWindow::DemoPreferencesWindow()
+    : Glib::ObjectBase("AdwDemoPreferencesWindow"), Glib::ExtraClassInit(
+                                                        class_init, nullptr,
+                                                        instance_init),
+      Adw::PreferencesWindow() {
 
-G_DEFINE_TYPE (AdwDemoPreferencesWindow, adw_demo_preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
+  subpage1 = Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
+      GTK_WIDGET(gobj()), get_type(), "subpage1")));
+  subpage2 = Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
+      GTK_WIDGET(gobj()), get_type(), "subpage2")));
 
-AdwDemoPreferencesWindow *
-adw_demo_preferences_window_new (void)
-{
-  return ADW_DEMO_PREFERENCES_WINDOW(g_object_new (ADW_TYPE_DEMO_PREFERENCES_WINDOW, NULL));
+  auto simple_action_group = Gio::SimpleActionGroup::create();
+  simple_action_group->add_action(
+      "show", sigc::mem_fun(*this, &DemoPreferencesWindow::toast_show));
+  insert_action_group("toast", simple_action_group);
 }
 
-static void
-return_to_preferences_cb (AdwDemoPreferencesWindow *self)
-{
-  adw_preferences_window_close_subpage (ADW_PREFERENCES_WINDOW (self));
+DemoPreferencesWindow::~DemoPreferencesWindow() {
+  gtk_widget_dispose_template(GTK_WIDGET(gobj()), get_type());
 }
 
-static void
-subpage1_activated_cb (AdwDemoPreferencesWindow *self)
+template <void (DemoPreferencesWindow::*P)()>
+static void adapter(GTypeInstance *instance)
 {
-  adw_preferences_window_present_subpage (ADW_PREFERENCES_WINDOW (self), self->subpage1);
+  DemoPreferencesWindow *w =
+      dynamic_cast<DemoPreferencesWindow *>(Glib::wrap(GTK_WIDGET(instance)));
+  (w->*P)();
 }
 
-static void
-subpage2_activated_cb (AdwDemoPreferencesWindow *self)
-{
-  adw_preferences_window_present_subpage (ADW_PREFERENCES_WINDOW (self), self->subpage2);
+void DemoPreferencesWindow::class_init(void *g_class, void *class_data) {
+  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(g_class);
+  gtk_widget_class_set_template_from_resource(
+      widget_class,
+      "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-preferences-window.ui");
+
+  gtk_widget_class_bind_template_child_full(widget_class, "subpage1", FALSE, 0);
+  gtk_widget_class_bind_template_child_full(widget_class, "subpage2", FALSE, 0);
+
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "subpage1_activated_cb",
+      reinterpret_cast<GCallback>(
+          adapter<&DemoPreferencesWindow::subpage1_activated>));
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "subpage2_activated_cb",
+      reinterpret_cast<GCallback>(
+          adapter<&DemoPreferencesWindow::subpage2_activated>));
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "return_to_preferences_cb",
+      reinterpret_cast<GCallback>(
+          adapter<&DemoPreferencesWindow::return_to_preferences>));
 }
 
-static void
-toast_show_cb (AdwPreferencesWindow *window)
-{
-  adw_preferences_window_add_toast (window, adw_toast_new ("Example Toast"));
+void DemoPreferencesWindow::instance_init(GTypeInstance *instance,
+                                          void *g_class) {
+  gtk_widget_init_template(GTK_WIDGET(instance));
 }
 
-static void
-adw_demo_preferences_window_class_init (AdwDemoPreferencesWindowClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-preferences-window.ui");
-
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPreferencesWindow, subpage1);
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPreferencesWindow, subpage2);
-
-  gtk_widget_class_bind_template_callback (widget_class, return_to_preferences_cb);
-  gtk_widget_class_bind_template_callback (widget_class, subpage1_activated_cb);
-  gtk_widget_class_bind_template_callback (widget_class, subpage2_activated_cb);
-
-  gtk_widget_class_install_action (widget_class, "toast.show", NULL, (GtkWidgetActionActivateFunc) toast_show_cb);
+void DemoPreferencesWindow::subpage1_activated() {
+  present_subpage(subpage1);
 }
 
-static void
-adw_demo_preferences_window_init (AdwDemoPreferencesWindow *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPreferencesWindow::subpage2_activated() {
+  present_subpage(subpage2);
 }
+
+void DemoPreferencesWindow::return_to_preferences() { close_subpage(); }
+
+void DemoPreferencesWindow::toast_show() {
+  auto toast = new Adw::Toast("Example Toast");
+  add_toast(toast);
+}
+
+GType DemoPreferencesWindow::gtype;
+
+} // namespace Adw

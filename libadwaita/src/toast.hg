@@ -40,10 +40,10 @@ class Toast : public Glib::Object {
 
 protected:
   _CTOR_DEFAULT
-  _WRAP_CTOR(Toast(const Glib::ustring& title), adw_toast_new)
   _IGNORE(adw_toast_new_format)
 
 public:
+  _WRAP_CTOR(Toast(const Glib::ustring& title), adw_toast_new)
   _WRAP_CREATE(const Glib::ustring& title)
 
   _WRAP_METHOD(void dismiss(), adw_toast_dismiss)

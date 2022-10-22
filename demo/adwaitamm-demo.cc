@@ -8,13 +8,6 @@
 
 #if 0
 
-static void
-show_inspector (GSimpleAction *action,
-                GVariant      *state,
-                gpointer       user_data)
-{
-  gtk_window_set_interactive_debugging (TRUE);
-}
 
 static void
 show_preferences (GSimpleAction *action,
@@ -29,68 +22,17 @@ show_preferences (GSimpleAction *action,
   gtk_window_present (GTK_WINDOW (preferences));
 }
 
-static void
-show_about (GSimpleAction *action,
-            GVariant      *state,
-            gpointer       user_data)
-{
-  const char *developers[] = {
-    "Adrien Plazas",
-    "Alexander Mikhaylenko",
-    "Andrei Lișiță",
-    "Guido Günther",
-    "Julian Sparber",
-    "Manuel Genovés",
-    "Zander Brown",
-    NULL
-  };
-
-  const char *designers[] = {
-    "GNOME Design Team",
-    NULL
- };
-
-  GtkApplication *app = GTK_APPLICATION (user_data);
-  GtkWindow *window = gtk_application_get_active_window (app);
-  char *debug_info;
-  GtkWidget *about;
-
-  debug_info = adw_demo_generate_debug_info ();
-
-  about = GTK_WIDGET(
-    g_object_new (ADW_TYPE_ABOUT_WINDOW,
-                  "transient-for", window,
-                  "application-icon", "org.gnome.Adwaitamm1.Demo",
-                  "application-name", _("Adwaitamm Demo"),
-                  "developer-name", _("Roger Ferrer Ibáñez"),
-                  "version", ADW_VERSION_S,
-                  "debug-info", debug_info,
-                  "copyright", "© 2017–2022 Purism SPC, © 2022 Roger Ferrer Ibáñez",
-                  "license-type", GTK_LICENSE_LGPL_2_1,
-                  "developers", developers,
-                  "designers", designers,
-                  "artists", designers,
-                  "translator-credits", _("translator-credits"),
-                  NULL) );
-
-  gtk_window_present (GTK_WINDOW (about));
-
-  g_free (debug_info);
-}
-
-static void
-show_window (GtkApplication *app)
-{
-  AdwDemoWindow *window;
-
-  window = adw_demo_window_new (app);
-
-  gtk_window_present (GTK_WINDOW (window));
-}
 #endif
+static void show_inspector() { gtk_window_set_interactive_debugging(TRUE); }
 
-static void show_inspector() {}
-static void show_preferences() {}
+static void show_preferences(const Glib::RefPtr<Gtk::Application> &app) {
+
+  Gtk::Window *window = app->get_active_window();
+
+  auto preferences = new Adw::DemoPreferencesWindow();
+  preferences->set_transient_for(*window);
+  preferences->present();
+}
 
 static void show_about(const Glib::RefPtr<Gtk::Application> &app) {
   std::vector<Glib::ustring> developers{
@@ -152,14 +94,15 @@ int main(int argc, char **argv) {
   // g_signal_connect (app, "activate", G_CALLBACK (show_window), NULL);
   // status = g_application_run (G_APPLICATION (app), argc, argv);
   // g_object_unref (app);
-  
+
   Adw::init();
 
   auto app = Adw::Application::create("org.gnome.Adwaitamm1.Demo",
                                       Gio::Application::Flags::NON_UNIQUE);
 
   app->add_action("inspector", sigc::ptr_fun(show_inspector));
-  app->add_action("preferences", sigc::ptr_fun(show_preferences));
+  app->add_action("preferences",
+                  sigc::bind(sigc::ptr_fun(show_preferences), app));
   app->add_action("about", sigc::bind(sigc::ptr_fun(show_about), app));
 
   app->signal_activate().connect(sigc::bind(sigc::ptr_fun(show_window), app));
