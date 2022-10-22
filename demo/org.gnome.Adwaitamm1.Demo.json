@@ -1,0 +1,52 @@
+{
+  "app-id": "org.gnome.Adwaitamm1.Demo",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "master",
+  "sdk": "org.gnome.Sdk",
+  "command": "adwaita-1-demo",
+  "finish-args": [
+    "--device=dri",
+    "--share=ipc",
+    "--socket=wayland",
+    "--socket=fallback-x11"
+  ],
+  "modules": [
+    {
+      "name" : "libsass",
+      "buildsystem" : "meson",
+      "sources" : [
+        {
+          "type" : "git",
+          "url" : "https://github.com/lazka/libsass.git",
+          "branch" : "meson"
+        }
+      ]
+    },
+    {
+      "name" : "sassc",
+      "buildsystem" : "meson",
+      "sources" : [
+        {
+          "type" : "git",
+          "url" : "https://github.com/lazka/sassc.git",
+          "branch" : "meson"
+        }
+      ]
+    },
+    {
+      "name": "libadwaita",
+      "buildsystem": "meson",
+      "builddir": true,
+      "post-install" : [
+          "desktop-file-edit --remove-key=NoDisplay ${FLATPAK_DEST}/share/applications/org.gnome.Adwaitamm1.Demo.desktop"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+          "branch": "main"
+        }
+      ]
+    }
+  ]
+}

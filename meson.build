@@ -88,6 +88,8 @@ install_libdir = get_option('libdir')
 install_datadir = get_option('datadir')
 install_pkgconfigdir = install_libdir / 'pkgconfig'
 
+target_system = target_machine.system()
+
 # Dependencies.
 # libadwaitamm_build_dep: Dependencies when building the libadwaitamm library.
 # libadwaitamm_own_dep (created in libadwaita/libadwaitamm/meson.build):
@@ -111,6 +113,7 @@ gmmproc_extra_m4_dirs = [pangomm_dep.get_variable(pkgconfig: 'gmmprocm4dir', int
 + [gtkmm_dep.get_variable(pkgconfig: 'gmmprocm4dir', internal: 'gmmprocm4dir')]
 
 gnome = import('gnome')
+i18n = import('i18n')
 
 # Some dependencies are required only in maintainer mode and/or if
 # reference documentation shall be built.
@@ -208,6 +211,7 @@ can_add_dist_script = not meson.is_subproject() or meson.version().version_compa
 subdir('tools/extra_defs_gen')
 subdir('libadwaita')
 subdir('examples')
+subdir('demo')
 subdir('tests')
 subdir('doc/reference')
 

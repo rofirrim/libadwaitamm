@@ -2,6 +2,8 @@
 
 # input: gnome, libadwaitamm_own_dep, build_examples
 
+if get_option('build-examples')
+
 examples = [
 # [[dir-name], exe-name, [sources]]
   [['example1'], 'example', ['main.cc']],
@@ -33,3 +35,5 @@ foreach ex : examples
     build_by_default: build_examples
   )
 endforeach
+
+endif
