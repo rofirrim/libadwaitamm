@@ -37,10 +37,8 @@ class PreferencesWindow : public Adw::Window {
   _UNMANAGEABLE
   _STRUCT_NOT_HIDDEN
 
-protected:
-  _CTOR_DEFAULT
-
 public:
+  _CTOR_DEFAULT
   _WRAP_CREATE()
 
   _WRAP_METHOD(void add(PreferencesPage* page), adw_preferences_window_add)

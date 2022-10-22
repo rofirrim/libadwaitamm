@@ -108,9 +108,7 @@ static void show_about(const Glib::RefPtr<Gtk::Application> &app) {
   char *debug_info;
   debug_info = adw_demo_generate_debug_info ();
 
-  auto about = Adw::AboutWindow::create();
-  // This is lame
-  about->reference();
+  auto about = new Adw::AboutWindow();
 
   about->set_transient_for(*window);
   about->set_application_icon("org.gnome.Adwaitamm1.Demo");
