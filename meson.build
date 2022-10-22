@@ -94,7 +94,7 @@ target_system = target_machine.system()
 # libadwaitamm_build_dep: Dependencies when building the libadwaitamm library.
 # libadwaitamm_own_dep (created in libadwaita/libadwaitamm/meson.build):
 #   Dependencies when using the libadwaitamm library.
-glibmm_req = '>= 2.68.0' # E.g. >= 2.66.0 if the dependency is glibmm-2.4
+glibmm_req = '>= 2.73.2'
 libadwaita_req = '>= 1.0.0'
 gtkmm_req = '>= 4.6.1'
 pangomm_req = '>= 2.50.0'
