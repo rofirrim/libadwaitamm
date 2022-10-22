@@ -27,6 +27,7 @@ namespace Adw
 
 class ApplicationWindow : public Gtk::ApplicationWindow {
   _CLASS_GTKOBJECT(ApplicationWindow, AdwApplicationWindow, ADW_APPLICATION_WINDOW, Gtk::ApplicationWindow, GtkApplicationWindow)
+  _UNMANAGEABLE
 
 protected:
   _CTOR_DEFAULT
