@@ -1,10 +1,9 @@
 #pragma once
 
-#include <libadwaitamm.h>
 #include <glibmm/extraclassinit.h>
+#include <libadwaitamm.h>
 
-namespace Adw
-{
+namespace Adw {
 
 class DemoPreferencesWindow : public Glib::ExtraClassInit,
                               public Adw::PreferencesWindow {
@@ -12,7 +11,7 @@ public:
   DemoPreferencesWindow();
   virtual ~DemoPreferencesWindow();
 
-    static GType get_type() {
+  static GType get_type() {
     // Let's cache once the type does exist.
     if (!gtype)
       gtype = g_type_from_name("gtkmm__CustomObject_AdwDemoPreferencesWindow");
@@ -33,4 +32,4 @@ private:
 
   static GType gtype;
 };
-}
+} // namespace Adw

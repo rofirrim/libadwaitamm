@@ -7,7 +7,6 @@ DemoPreferencesWindow::DemoPreferencesWindow()
                                                         class_init, nullptr,
                                                         instance_init),
       Adw::PreferencesWindow() {
-
   subpage1 = Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
       GTK_WIDGET(gobj()), get_type(), "subpage1")));
   subpage2 = Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
@@ -24,8 +23,7 @@ DemoPreferencesWindow::~DemoPreferencesWindow() {
 }
 
 template <void (DemoPreferencesWindow::*P)()>
-static void adapter(GTypeInstance *instance)
-{
+static void adapter(GTypeInstance *instance) {
   DemoPreferencesWindow *w =
       dynamic_cast<DemoPreferencesWindow *>(Glib::wrap(GTK_WIDGET(instance)));
   (w->*P)();
@@ -59,13 +57,9 @@ void DemoPreferencesWindow::instance_init(GTypeInstance *instance,
   gtk_widget_init_template(GTK_WIDGET(instance));
 }
 
-void DemoPreferencesWindow::subpage1_activated() {
-  present_subpage(subpage1);
-}
+void DemoPreferencesWindow::subpage1_activated() { present_subpage(subpage1); }
 
-void DemoPreferencesWindow::subpage2_activated() {
-  present_subpage(subpage2);
-}
+void DemoPreferencesWindow::subpage2_activated() { present_subpage(subpage2); }
 
 void DemoPreferencesWindow::return_to_preferences() { close_subpage(); }
 
