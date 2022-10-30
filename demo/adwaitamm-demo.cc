@@ -6,23 +6,6 @@
 #include "adw-demo-preferences-window.h"
 #include "adw-demo-window.h"
 
-#if 0
-
-
-static void
-show_preferences (GSimpleAction *action,
-                  GVariant      *state,
-                  gpointer       user_data)
-{
-  GtkApplication *app = GTK_APPLICATION (user_data);
-  GtkWindow *window = gtk_application_get_active_window (app);
-  AdwDemoPreferencesWindow *preferences = adw_demo_preferences_window_new ();
-
-  gtk_window_set_transient_for (GTK_WINDOW (preferences), window);
-  gtk_window_present (GTK_WINDOW (preferences));
-}
-
-#endif
 static void show_inspector() { gtk_window_set_interactive_debugging(TRUE); }
 
 static void show_preferences(const Glib::RefPtr<Gtk::Application> &app) {
@@ -70,11 +53,15 @@ static void show_about(const Glib::RefPtr<Gtk::Application> &app) {
 }
 
 static void show_window(const Glib::RefPtr<Gtk::Application> &app) {
+#if 0
   AdwDemoWindow *window;
 
   window = adw_demo_window_new(app->gobj());
 
   gtk_window_present(GTK_WINDOW(window));
+#endif
+  auto window = new Adw::DemoWindow(app);
+  window->present();
 }
 
 int main(int argc, char **argv) {

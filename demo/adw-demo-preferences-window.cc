@@ -68,6 +68,6 @@ void DemoPreferencesWindow::toast_show() {
   add_toast(toast);
 }
 
-GType DemoPreferencesWindow::gtype;
+GType DemoPreferencesWindow::gtype = 0;
 
 } // namespace Adw
