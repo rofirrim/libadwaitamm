@@ -43,8 +43,8 @@ protected:
 public:
   _WRAP_CREATE()
 
-  _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_default(), adw_style_manager_get_default)
-  _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_for_display(const Glib::RefPtr<Gdk::Display>& display), adw_style_manager_get_for_display)
+  _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_default(), adw_style_manager_get_default, refreturn)
+  _WRAP_METHOD(static Glib::RefPtr<StyleManager> get_for_display(const Glib::RefPtr<Gdk::Display>& display), adw_style_manager_get_for_display, refreturn)
   _WRAP_METHOD(ColorScheme get_color_scheme() const, adw_style_manager_get_color_scheme)
   _WRAP_METHOD(bool get_system_supports_color_schemes() const, adw_style_manager_get_system_supports_color_schemes)
   _WRAP_METHOD(bool get_dark() const, adw_style_manager_get_dark)
