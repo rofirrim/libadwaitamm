@@ -19,11 +19,8 @@
 #include "pages/welcome/adw-demo-page-welcome.h"
 
 // I am not sure how to wrap this in a more C++-esque way.
-static char *
-get_color_scheme_icon_name (gpointer user_data,
-                            gboolean dark)
-{
-  return g_strdup (dark ? "light-mode-symbolic" : "dark-mode-symbolic");
+static char *get_color_scheme_icon_name(gpointer user_data, gboolean dark) {
+  return g_strdup(dark ? "light-mode-symbolic" : "dark-mode-symbolic");
 }
 
 namespace Adw {
@@ -69,39 +66,37 @@ void DemoWindow::class_init(void *g_class, void *class_data) {
                                       "window.close", NULL);
 
   gtk_widget_class_set_template_from_resource(
-      widget_class,
-      "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
+      widget_class, "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
 
-  gtk_widget_class_bind_template_child_full(widget_class,
-                                            "color_scheme_button", FALSE, 0);
-  gtk_widget_class_bind_template_child_full(widget_class, "main_leaflet", FALSE, 0);
-  gtk_widget_class_bind_template_child_full(widget_class, "subpage_leaflet", FALSE, 0);
-  gtk_widget_class_bind_template_child_full(widget_class, "toasts_page", FALSE, 0);
+  gtk_widget_class_bind_template_child_full(widget_class, "color_scheme_button",
+                                            FALSE, 0);
+  gtk_widget_class_bind_template_child_full(widget_class, "main_leaflet", FALSE,
+                                            0);
+  gtk_widget_class_bind_template_child_full(widget_class, "subpage_leaflet",
+                                            FALSE, 0);
+  gtk_widget_class_bind_template_child_full(widget_class, "toasts_page", FALSE,
+                                            0);
 
-  // FIXME: This is really weird to wrap sensibly. What is user_data? A Gtk::Button?
+  // FIXME: This is really weird to wrap sensibly. What is user_data? A
+  // Gtk::Button?
   gtk_widget_class_bind_template_callback_full(
       widget_class, "get_color_scheme_icon_name",
-      reinterpret_cast<GCallback>(get_color_scheme_icon_name));
+      GCallback(get_color_scheme_icon_name));
   gtk_widget_class_bind_template_callback_full(
       widget_class, "color_scheme_button_clicked_cb",
-      reinterpret_cast<GCallback>(
-          adapter<&DemoWindow::color_scheme_button_clicked_cb>));
+      GCallback(adapter<&DemoWindow::color_scheme_button_clicked_cb>));
   gtk_widget_class_bind_template_callback_full(
       widget_class, "notify_visible_child_cb",
-      reinterpret_cast<GCallback>(
-          adapter<&DemoWindow::notify_visible_child_cb>));
+      GCallback(adapter<&DemoWindow::notify_visible_child_cb>));
   gtk_widget_class_bind_template_callback_full(
       widget_class, "back_clicked_cb",
-      reinterpret_cast<GCallback>(
-          adapter<&DemoWindow::back_clicked_cb>));
+      GCallback(adapter<&DemoWindow::back_clicked_cb>));
   gtk_widget_class_bind_template_callback_full(
       widget_class, "leaflet_back_clicked_cb",
-      reinterpret_cast<GCallback>(
-          adapter<&DemoWindow::leaflet_back_clicked_cb>));
+      GCallback(adapter<&DemoWindow::leaflet_back_clicked_cb>));
   gtk_widget_class_bind_template_callback_full(
       widget_class, "leaflet_next_page_cb",
-      reinterpret_cast<GCallback>(
-          adapter<&DemoWindow::leaflet_next_page_cb>));
+      GCallback(adapter<&DemoWindow::leaflet_next_page_cb>));
 }
 
 void DemoWindow::instance_init(GTypeInstance *instance,
