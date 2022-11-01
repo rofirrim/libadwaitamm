@@ -53,35 +53,11 @@ static void show_about(const Glib::RefPtr<Gtk::Application> &app) {
 }
 
 static void show_window(const Glib::RefPtr<Gtk::Application> &app) {
-#if 0
-  AdwDemoWindow *window;
-
-  window = adw_demo_window_new(app->gobj());
-
-  gtk_window_present(GTK_WINDOW(window));
-#endif
   auto window = new Adw::DemoWindow(app);
   window->present();
 }
 
 int main(int argc, char **argv) {
-  // AdwApplication *app;
-  // int status;
-  // static GActionEntry app_entries[] = {
-  //   { "inspector", show_inspector, NULL, NULL, NULL },
-  //   { "preferences", show_preferences, NULL, NULL, NULL },
-  //   { "about", show_about, NULL, NULL, NULL },
-  // };
-
-  // app = adw_application_new ("org.gnome.Adwaitamm1.Demo",
-  // G_APPLICATION_NON_UNIQUE); g_action_map_add_action_entries (G_ACTION_MAP
-  // (app),
-  //                                  app_entries, G_N_ELEMENTS (app_entries),
-  //                                  app);
-  // g_signal_connect (app, "activate", G_CALLBACK (show_window), NULL);
-  // status = g_application_run (G_APPLICATION (app), argc, argv);
-  // g_object_unref (app);
-
   Adw::init();
 
   auto app = Adw::Application::create("org.gnome.Adwaitamm1.Demo",
