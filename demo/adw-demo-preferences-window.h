@@ -1,6 +1,5 @@
 #pragma once
 
-#include <glibmm/extraclassinit.h>
 #include <libadwaitamm.h>
 #include "templatebuilder.h"
 
@@ -11,6 +10,7 @@ class DemoPreferencesWindow
       public Adw::PreferencesWindow {
 public:
   DemoPreferencesWindow();
+  ~DemoPreferencesWindow();
 
 private:
   Gtk::Widget *subpage1;

@@ -98,3 +98,22 @@ adw_demo_page_about_init (AdwDemoPageAbout *self)
 {
   gtk_widget_init_template (GTK_WIDGET (self));
 }
+
+////////////////////////////////////////////////////////////////////////////////
+
+namespace Adw {
+
+DemoPageAbout::DemoPageAbout()
+    : Glib::ObjectBase("AdwDemoPageAbout"),
+      TemplateBuilder<DemoPageAbout>(
+          this,
+          "/org/gnome/Adwaitamm1/Demo/ui/pages/about/adw-demo-page-about.ui",
+          {}, {}),
+      Adw::Bin() {
+  g_print("%s\n", __PRETTY_FUNCTION__);
+  init_widget_template();
+}
+
+DemoPageAbout::~DemoPageAbout() { dispose_widget_template(); }
+
+} // namespace Adw

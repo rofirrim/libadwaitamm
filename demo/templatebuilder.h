@@ -71,11 +71,6 @@ public:
                              /* instance_init */ nullptr),
         this_(this_) {}
 
-  ~TemplateBuilder() {
-    gtk_widget_dispose_template(GTK_WIDGET(this_->gobj()),
-                                G_OBJECT_TYPE(this_->gobj()));
-  }
-
   void init_widget_template() {
     gtk_widget_init_template(GTK_WIDGET(this_->gobj()));
 
@@ -86,6 +81,11 @@ public:
               GTK_WIDGET(this_->gobj()), G_OBJECT_TYPE(this_->gobj()),
               widget.first.c_str())));
     }
+  }
+
+  void dispose_widget_template() {
+    gtk_widget_dispose_template(GTK_WIDGET(this_->gobj()),
+                                G_OBJECT_TYPE(this_->gobj()));
   }
 
 private:

@@ -42,8 +42,10 @@ DemoWindow::DemoWindow(const Glib::RefPtr<Gtk::Application> &application)
             Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>()}}),
       Adw::ApplicationWindow(application) {
 
-  // FIXME: We will be able to remove this as we port these widgets.
-  g_type_ensure(ADW_TYPE_DEMO_PAGE_ABOUT);
+  // Lame way to ensure the custom gtype is registered.
+  { Adw::DemoPageAbout{}; }
+
+  // g_type_ensure(ADW_TYPE_DEMO_PAGE_ABOUT);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_ANIMATIONS);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_AVATAR);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_BUTTONS);
@@ -73,6 +75,8 @@ DemoWindow::DemoWindow(const Glib::RefPtr<Gtk::Application> &application)
 
   main_leaflet->navigate(NavigationDirection::FORWARD);
 }
+
+DemoWindow::~DemoWindow() { dispose_widget_template(); }
 
 void DemoWindow::color_scheme_button_clicked_cb() {
   auto manager = StyleManager::get_default();

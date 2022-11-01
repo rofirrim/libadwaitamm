@@ -232,7 +232,7 @@
                           <object class="GtkStackPage">
                             <property name="title" translatable="yes">About Window</property>
                             <property name="child">
-                              <object class="AdwDemoPageAbout"/>
+                              <object class="gtkmm__CustomObject_AdwDemoPageAbout"/>
                             </property>
                           </object>
                         </child>

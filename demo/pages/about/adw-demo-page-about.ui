@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="AdwDemoPageAbout" parent="AdwBin">
+  <template class="gtkmm__CustomObject_AdwDemoPageAbout" parent="AdwBin">
     <property name="child">
       <object class="AdwStatusPage">
         <property name="icon-name">widget-about-symbolic</property>

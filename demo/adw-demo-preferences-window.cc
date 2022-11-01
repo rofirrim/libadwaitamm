@@ -25,6 +25,8 @@ DemoPreferencesWindow::DemoPreferencesWindow()
   insert_action_group("toast", simple_action_group);
 }
 
+DemoPreferencesWindow::~DemoPreferencesWindow() { dispose_widget_template(); };
+
 void DemoPreferencesWindow::subpage1_activated() { present_subpage(subpage1); }
 
 void DemoPreferencesWindow::subpage2_activated() { present_subpage(subpage2); }

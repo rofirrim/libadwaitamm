@@ -1,6 +1,5 @@
 #pragma once
 
-#include <glibmm/extraclassinit.h>
 #include <libadwaitamm.h>
 #include "templatebuilder.h"
 
@@ -11,6 +10,7 @@ class DemoWindow : public Gtk::TemplateBuilder<DemoWindow>,
 
 public:
   DemoWindow(const Glib::RefPtr<Gtk::Application> &application);
+  ~DemoWindow();
 
 private:
   void color_scheme_button_clicked_cb();
