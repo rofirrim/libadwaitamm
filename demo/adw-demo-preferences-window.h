@@ -10,6 +10,7 @@ class DemoPreferencesWindow
       public Adw::PreferencesWindow {
 public:
   DemoPreferencesWindow();
+  // DemoPreferencesWindow(GTypeInstance *) { g_assert_not_reached(); }
   ~DemoPreferencesWindow();
 
 private:

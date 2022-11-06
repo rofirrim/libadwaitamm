@@ -42,9 +42,7 @@ DemoWindow::DemoWindow(const Glib::RefPtr<Gtk::Application> &application)
             Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>()}}),
       Adw::ApplicationWindow(application) {
 
-  // Lame way to ensure the custom gtype is registered.
-  { Adw::DemoPageAbout{}; }
-
+  g_type_ensure(Adw::DemoPageAbout::get_type());
   // g_type_ensure(ADW_TYPE_DEMO_PAGE_ABOUT);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_ANIMATIONS);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_AVATAR);

@@ -10,6 +10,7 @@ class DemoWindow : public Gtk::TemplateBuilder<DemoWindow>,
 
 public:
   DemoWindow(const Glib::RefPtr<Gtk::Application> &application);
+  // DemoWindow(GTypeInstance*) { g_assert_not_reached(); }
   ~DemoWindow();
 
 private:

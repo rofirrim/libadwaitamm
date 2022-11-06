@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <type_traits>
 #include <glibmm/extraclassinit.h>
 #include <gtkmm.h>
 
@@ -62,16 +63,28 @@ private:
   using UniquePtrBuilderInfo = std::unique_ptr<TemplateBuilderInfo<CppClass>>;
 
 public:
-  TemplateBuilder(CppClass *this_, const Glib::ustring &res,
-                  const BindWidgets &widgets_to_bind,
+  TemplateBuilder(GTypeInstance *cobject, CppClass *this_,
+                  const Glib::ustring &res, const BindWidgets &widgets_to_bind,
                   const BindCallbacks &callbacks_to_bind)
       : UniquePtrBuilderInfo(std::make_unique<BuilderInfo>(res, widgets_to_bind,
                                                            callbacks_to_bind)),
         Glib::ExtraClassInit(class_init, this->UniquePtrBuilderInfo::get(),
-                             /* instance_init */ nullptr),
-        this_(this_) {}
+                             instance_init),
+        cobject(cobject), this_(this_) {}
+
+  TemplateBuilder(CppClass *this_, const Glib::ustring &res,
+                  const BindWidgets &widgets_to_bind,
+                  const BindCallbacks &callbacks_to_bind)
+      : TemplateBuilder(nullptr, this_, res, widgets_to_bind,
+                        callbacks_to_bind) {}
+
+  TemplateBuilder() : Glib::ExtraClassInit(nullptr, nullptr, nullptr) {
+    g_assert_not_reached();
+  }
 
   void init_widget_template() {
+    if (!this_->gobj())
+      return;
     gtk_widget_init_template(GTK_WIDGET(this_->gobj()));
 
     auto &base = (UniquePtrBuilderInfo &)*this;
@@ -84,13 +97,17 @@ public:
   }
 
   void dispose_widget_template() {
+    if (!this_->gobj())
+      return;
     gtk_widget_dispose_template(GTK_WIDGET(this_->gobj()),
                                 G_OBJECT_TYPE(this_->gobj()));
   }
 
 private:
   static void class_init(void *g_class, void *class_data);
+  static void instance_init(GTypeInstance* instance, void* g_class);
 
+  GTypeInstance* cobject;
   CppClass *this_;
 };
 
@@ -110,6 +127,17 @@ void TemplateBuilder<CppClass>::class_init(void *g_class, void *class_data) {
     gtk_widget_class_bind_template_callback_full(widget_class, cb.first.c_str(),
                                                  cb.second);
   }
+}
+
+template <typename CppClass>
+void TemplateBuilder<CppClass>::instance_init(GTypeInstance *instance,
+                                              void *g_class) {
+  // // g_print("(1) %s\n", __PRETTY_FUNCTION__);
+
+  // if constexpr (std::is_constructible_v<CppClass, GTypeInstance *>) {
+  //   g_print("(1) %s\n", __PRETTY_FUNCTION__);
+  //   manage(new CppClass(nullptr));
+  // }
 }
 
 } // namespace Gtk
