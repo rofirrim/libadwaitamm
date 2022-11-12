@@ -5,8 +5,6 @@
 
 namespace Adw {
 
-class DemoPageAbout;
-
 class DemoPageAbout_Class : public Glib::NamedClass {
 public:
   const Glib::Class &init();

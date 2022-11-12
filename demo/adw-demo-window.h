@@ -1,17 +1,29 @@
 #pragma once
 
+#include "namedclass.h"
 #include <libadwaitamm.h>
-#include "templatebuilder.h"
 
 namespace Adw {
 
-class DemoWindow : public Gtk::TemplateBuilder<DemoWindow>,
-                   public Adw::ApplicationWindow {
+class DemoWindow_Class : public Glib::NamedClass {
+public:
+  const Glib::Class &init();
+  static void class_init_function(void *g_class, void *class_data);
+
+  static Glib::ObjectBase *wrap_new(GObject *);
+};
+
+class DemoWindow : public Adw::ApplicationWindow {
 
 public:
-  DemoWindow(const Glib::RefPtr<Gtk::Application> &application);
-  // DemoWindow(GTypeInstance*) { g_assert_not_reached(); }
+  static DemoWindow *create(const Glib::RefPtr<Gtk::Application> &application);
   ~DemoWindow();
+
+  static GType get_type() G_GNUC_CONST;
+  static DemoWindow *wrap(GObject *);
+
+protected:
+  explicit DemoWindow(GtkWidget *obj);
 
 private:
   void color_scheme_button_clicked_cb();
@@ -26,5 +38,9 @@ private:
   Adw::Leaflet *main_leaflet = nullptr;
   Adw::Leaflet *subpage_leaflet = nullptr;
   Gtk::Widget *color_scheme_button = nullptr;
+
+  static void instance_init_function(GTypeInstance *instance, void *g_class);
+  static DemoWindow_Class demo_window_class_;
+  friend class DemoWindow_Class;
 };
 } // namespace Adw

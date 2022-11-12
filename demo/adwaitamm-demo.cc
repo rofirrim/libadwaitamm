@@ -53,7 +53,7 @@ static void show_about(const Glib::RefPtr<Gtk::Application> &app) {
 }
 
 static void show_window(const Glib::RefPtr<Gtk::Application> &app) {
-  auto window = new Adw::DemoWindow(app);
+  auto window = Adw::DemoWindow::create(app);
   window->present();
 }
 

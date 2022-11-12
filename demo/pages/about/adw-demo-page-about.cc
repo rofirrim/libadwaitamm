@@ -45,7 +45,10 @@ Glib::ObjectBase *DemoPageAbout_Class::wrap_new(GObject *obj) {
 
 DemoPageAbout::DemoPageAbout(GtkWidget *obj) : Adw::Bin(ADW_BIN(obj)) {}
 
-DemoPageAbout::~DemoPageAbout() { destroy_(); }
+DemoPageAbout::~DemoPageAbout() {
+  gtk_widget_dispose_template(GTK_WIDGET(gobj()), G_OBJECT_TYPE(gobj()));
+  destroy_();
+}
 
 void DemoPageAbout::instance_init_function(GTypeInstance *instance,
                                            void *g_class) {
