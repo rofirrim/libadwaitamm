@@ -21,7 +21,7 @@
       </item>
     </section>
   </menu>
-  <template class="gtkmm__CustomObject_AdwDemoWindow" parent="AdwApplicationWindow">
+  <template class="AdwDemoWindow" parent="AdwApplicationWindow">
     <property name="title" translatable="yes">Adwaita Demo</property>
     <property name="default_width">800</property>
     <property name="default_height">576</property>
@@ -49,7 +49,7 @@
                               <closure type="gchararray" function="get_color_scheme_icon_name">
                                 <lookup name="dark" type="AdwStyleManager">
                                   <lookup name="style-manager" type="AdwApplication">
-                                    <lookup name="application">gtkmm__CustomObject_AdwDemoWindow</lookup>
+                                    <lookup name="application">AdwDemoWindow</lookup>
                                   </lookup>
                                 </lookup>
                               </closure>

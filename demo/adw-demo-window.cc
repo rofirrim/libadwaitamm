@@ -19,6 +19,9 @@
 #include "pages/view-switcher/adw-demo-page-view-switcher.h"
 #include "pages/welcome/adw-demo-page-welcome.h"
 
+// TODO: Remove
+#include "templatebuilder.h"
+
 namespace Adw {
 
 //////////////////////
@@ -39,20 +42,41 @@ const Glib::Class &DemoWindow_Class::init() {
 void DemoWindow_Class::class_init_function(void *g_class, void *class_data) {
   Adw::ApplicationWindow_Class::class_init_function(g_class, class_data);
 
-  // GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(g_class);
+  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(g_class);
 
-  // gtk_widget_class_set_template_from_resource(
-  //     widget_class,
-  //     "/org/gnome/Adwaitamm1/Demo/ui/pages/about/adw-demo-page-about.ui");
+  gtk_widget_class_set_template_from_resource(
+      widget_class, "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
 
-  // gtk_widget_class_install_action(
-  //     widget_class, "demo.run", NULL,
-  //     (GtkWidgetActionActivateFunc)DemoPageAbout::demo_run_cb);
+  gtk_widget_class_bind_template_child_full(widget_class, "color_scheme_button",
+                                            false, 0);
+  gtk_widget_class_bind_template_child_full(widget_class, "main_leaflet", false,
+                                            0);
+  gtk_widget_class_bind_template_child_full(widget_class, "subpage_leaflet",
+                                            false, 0);
+
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "get_color_scheme_icon_name",
+      Gtk::ptr_fun_to_mem_fun<&DemoWindow::get_color_scheme_icon_name>());
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "color_scheme_button_clicked_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoWindow::color_scheme_button_clicked_cb>());
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "notify_visible_child_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoWindow::notify_visible_child_cb>());
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "back_clicked_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoWindow::back_clicked_cb>());
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "leaflet_back_clicked_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_back_clicked_cb>());
+  gtk_widget_class_bind_template_callback_full(
+      widget_class, "leaflet_next_page_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>());
 }
 
 Glib::ObjectBase *DemoWindow_Class::wrap_new(GObject *obj) {
-  return manage(new DemoWindow(
-      G_TYPE_CHECK_INSTANCE_CAST(obj, DemoWindow::get_type(), GtkWidget)));
+  return new DemoWindow(
+      G_TYPE_CHECK_INSTANCE_CAST(obj, DemoWindow::get_type(), GtkWidget));
 }
 
 ////////////////
@@ -73,7 +97,7 @@ DemoWindow::DemoWindow(GtkWidget *obj)
     : Adw::ApplicationWindow(ADW_APPLICATION_WINDOW(obj)) {}
 
 DemoWindow::~DemoWindow() {
-  // gtk_widget_dispose_template(...);
+  gtk_widget_dispose_template(GTK_WIDGET(gobj()), G_OBJECT_TYPE(gobj()));
   destroy_();
 }
 
@@ -104,6 +128,30 @@ void DemoWindow::instance_init_function(GTypeInstance *instance,
   g_type_ensure(ADW_TYPE_DEMO_PAGE_WELCOME);
 
   gtk_widget_init_template(GTK_WIDGET(instance));
+
+  DemoWindow *this_ = DemoWindow::wrap(G_OBJECT(instance));
+
+  this_->color_scheme_button =
+      Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
+          GTK_WIDGET(instance), G_OBJECT_TYPE(instance),
+          "color_scheme_button")));
+  this_->main_leaflet = Glib::wrap(ADW_LEAFLET(gtk_widget_get_template_child(
+      GTK_WIDGET(instance), G_OBJECT_TYPE(instance), "main_leaflet")));
+  this_->subpage_leaflet = Glib::wrap(ADW_LEAFLET(gtk_widget_get_template_child(
+      GTK_WIDGET(instance), G_OBJECT_TYPE(instance), "subpage_leaflet")));
+
+
+  auto simple_action_group = Gio::SimpleActionGroup::create();
+  simple_action_group->add_action(
+      "undo", sigc::mem_fun(*this_, &DemoWindow::toast_undo_cb));
+  this_->insert_action_group("toast", simple_action_group);
+
+  auto manager = StyleManager::get_default();
+  manager->property_system_supports_color_schemes().signal_changed().connect(
+      sigc::mem_fun(*this_,
+                    &DemoWindow::notify_system_supports_color_schemes_cb));
+
+  this_->main_leaflet->navigate(NavigationDirection::FORWARD);
 }
 
 // DemoWindow::DemoWindow(const Glib::RefPtr<Gtk::Application> &application)
