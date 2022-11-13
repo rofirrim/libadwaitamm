@@ -295,6 +295,10 @@ public:
   }
 
   static void class_init_function(void *g_class, void *class_data) {
+    GObjectClass *const gobject_class = static_cast<GObjectClass *>(g_class);
+    gobject_class->get_property = &Glib::custom_get_property_callback;
+    gobject_class->set_property = &Glib::custom_set_property_callback;
+
     CppBaseObjectClass::CppClassType::class_init_function(g_class, class_data);
     TemplateWidgetSetup s(GTK_WIDGET_CLASS(g_class));
     CppObjectClass::setup_template(s);
