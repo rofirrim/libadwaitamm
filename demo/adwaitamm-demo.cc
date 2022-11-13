@@ -12,7 +12,7 @@ static void show_preferences(const Glib::RefPtr<Gtk::Application> &app) {
 
   Gtk::Window *window = app->get_active_window();
 
-  auto preferences = new Adw::DemoPreferencesWindow();
+  auto preferences = Adw::DemoPreferencesWindow::create();
   preferences->set_transient_for(*window);
   preferences->present();
 }

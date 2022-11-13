@@ -2,7 +2,7 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <requires lib="libadwaita" version="1.0"/>
-  <template class="gtkmm__CustomObject_AdwDemoPreferencesWindow" parent="AdwPreferencesWindow">
+  <template class="AdwDemoPreferencesWindow" parent="AdwPreferencesWindow">
     <property name="can-navigate-back">True</property>
     <child>
       <object class="AdwPreferencesPage">

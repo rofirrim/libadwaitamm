@@ -47,8 +47,7 @@ public:
 };
 
 template <typename CppTypeClass, typename CppObjectClass,
-         typename CppBaseObjectClass,
-          GType (*c_object_get_type)()>
+          typename CppBaseObjectClass, GType (*c_object_get_type)()>
 class TemplateWidgetClass : public Glib::Class {
 public:
   using Class::Class;
