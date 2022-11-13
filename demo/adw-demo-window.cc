@@ -70,8 +70,7 @@ DemoWindow::create(const Glib::RefPtr<Gtk::Application> &application) {
 
 DemoWindow::DemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-void DemoWindow::instance_init_function(GTypeInstance *instance,
-                                        void *g_class) {
+void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   g_type_ensure(Adw::DemoPageAbout::get_type());
   // g_type_ensure(ADW_TYPE_DEMO_PAGE_ABOUT);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_ANIMATIONS);
@@ -89,31 +88,23 @@ void DemoWindow::instance_init_function(GTypeInstance *instance,
   g_type_ensure(ADW_TYPE_DEMO_PAGE_VIEW_SWITCHER);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_WELCOME);
 
-  gtk_widget_init_template(GTK_WIDGET(instance));
+  i.init_template();
 
-  DemoWindow *this_ = DemoWindow::wrap(G_OBJECT(instance));
-
-  this_->color_scheme_button =
-      Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
-          GTK_WIDGET(instance), G_OBJECT_TYPE(instance),
-          "color_scheme_button")));
-  this_->main_leaflet = Glib::wrap(ADW_LEAFLET(gtk_widget_get_template_child(
-      GTK_WIDGET(instance), G_OBJECT_TYPE(instance), "main_leaflet")));
-  this_->subpage_leaflet = Glib::wrap(ADW_LEAFLET(gtk_widget_get_template_child(
-      GTK_WIDGET(instance), G_OBJECT_TYPE(instance), "subpage_leaflet")));
-
+  i.bind_widget(color_scheme_button, "color_scheme_button");
+  i.bind_widget(main_leaflet, "main_leaflet");
+  i.bind_widget(subpage_leaflet, "subpage_leaflet");
 
   auto simple_action_group = Gio::SimpleActionGroup::create();
   simple_action_group->add_action(
-      "undo", sigc::mem_fun(*this_, &DemoWindow::toast_undo_cb));
-  this_->insert_action_group("toast", simple_action_group);
+      "undo", sigc::mem_fun(*this, &DemoWindow::toast_undo_cb));
+  insert_action_group("toast", simple_action_group);
 
   auto manager = StyleManager::get_default();
   manager->property_system_supports_color_schemes().signal_changed().connect(
-      sigc::mem_fun(*this_,
+      sigc::mem_fun(*this,
                     &DemoWindow::notify_system_supports_color_schemes_cb));
 
-  this_->main_leaflet->navigate(NavigationDirection::FORWARD);
+  main_leaflet->navigate(NavigationDirection::FORWARD);
 }
 
 void DemoWindow::color_scheme_button_clicked_cb() {

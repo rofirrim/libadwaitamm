@@ -43,7 +43,7 @@ private:
   Adw::Leaflet *subpage_leaflet = nullptr;
   Gtk::Widget *color_scheme_button = nullptr;
 
-  static void instance_init_function(GTypeInstance *instance, void *g_class);
+  void init_widget(Gtk::TemplateWidgetInit& i);
 
   friend DemoWindow_Class;
   friend DemoWindow_Class::TemplateWidgetClassBase;

@@ -9,7 +9,7 @@ private:
   GtkWidgetClass *widget_class;
 
 public:
-  TemplateWidgetSetup(GtkWidgetClass *widget_class)
+  explicit TemplateWidgetSetup(GtkWidgetClass *widget_class)
       : widget_class(widget_class) {}
 
   void set_resource(const Glib::ustring &resource_name) {
@@ -25,6 +25,24 @@ public:
   void bind_callback(const Glib::ustring &name, GCallback callback) {
     gtk_widget_class_bind_template_callback_full(widget_class, name.c_str(),
                                                  callback);
+  }
+};
+
+class TemplateWidgetInit {
+private:
+  GTypeInstance *instance;
+
+public:
+
+  explicit TemplateWidgetInit(GTypeInstance *instance) : instance(instance) { }
+
+  void init_template() { gtk_widget_init_template(GTK_WIDGET(instance)); }
+
+  template <typename Widget>
+  void bind_widget(Widget *&widget, const Glib::ustring &name) {
+    widget = dynamic_cast<Widget *>(
+        Glib::wrap(GTK_WIDGET(gtk_widget_get_template_child(
+            GTK_WIDGET(instance), G_OBJECT_TYPE(instance), name.c_str()))));
   }
 };
 
@@ -111,7 +129,7 @@ public:
     if (!gtype_) {
       class_init_func_ = TemplateWidgetClass::class_init_function;
       register_derived_type(c_object_get_type(), CppTypeClass::class_name,
-                            &CppObjectClass::instance_init_function);
+                            &TemplateWidgetClass::instance_init_function);
       Glib::init();
       Glib::wrap_register(gtype_, &wrap_new);
     }
@@ -125,8 +143,14 @@ public:
 
   static void class_init_function(void *g_class, void *class_data) {
     CppBaseObjectClass::class_init_function(g_class, class_data);
-    Gtk::TemplateWidgetSetup s(GTK_WIDGET_CLASS(g_class));
+    TemplateWidgetSetup s(GTK_WIDGET_CLASS(g_class));
     CppTypeClass::setup_template(s);
+  }
+
+  static void instance_init_function(GTypeInstance *instance, void *g_class) {
+    TemplateWidgetInit i(instance);
+    CppObjectClass *self = CppObjectClass::wrap(G_OBJECT(instance));
+    self->init_widget(i);
   }
 
   using TemplateWidgetClassBase = TemplateWidgetClass;
