@@ -2,11 +2,14 @@
 
 namespace Adw {
 
-/////////////////////////////////
-// DemoPreferencesWindow_Class //
-/////////////////////////////////
+///////////////////////////
+// DemoPreferencesWindow //
+///////////////////////////
 
-void DemoPreferencesWindow_Class::setup_template(Gtk::TemplateWidgetSetup &s) {
+const char DemoPreferencesWindow::class_name[] =
+    "AdwDemoPreferencesWindow";
+
+void DemoPreferencesWindow::setup_template(Gtk::TemplateWidgetSetup &s) {
   s.set_resource(
       "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-preferences-window.ui");
 
@@ -23,13 +26,6 @@ void DemoPreferencesWindow_Class::setup_template(Gtk::TemplateWidgetSetup &s) {
       "return_to_preferences_cb",
       Gtk::ptr_fun_to_mem_fun<&DemoPreferencesWindow::return_to_preferences>());
 }
-
-const char DemoPreferencesWindow_Class::class_name[] =
-    "AdwDemoPreferencesWindow";
-
-///////////////////////////
-// DemoPreferencesWindow //
-///////////////////////////
 
 DemoPreferencesWindow *DemoPreferencesWindow::create() {
   GObject *obj = g_object_new_with_properties(DemoPreferencesWindow::get_type(),

@@ -20,11 +20,9 @@
 
 namespace Adw {
 
-//////////////////////
-// DemoWindow_Class //
-//////////////////////
+const char DemoWindow::class_name[] = "AdwDemoWindow";
 
-void DemoWindow_Class::setup_template(Gtk::TemplateWidgetSetup& s) {
+void DemoWindow::setup_template(Gtk::TemplateWidgetSetup& s) {
   s.set_resource("/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
 
   s.bind_widget("color_scheme_button");
@@ -48,12 +46,6 @@ void DemoWindow_Class::setup_template(Gtk::TemplateWidgetSetup& s) {
   s.bind_callback("leaflet_next_page_cb",
                   Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>());
 }
-
-const char DemoWindow_Class::class_name[] = "AdwDemoWindow";
-
-////////////////
-// DemoWindow //
-////////////////
 
 DemoWindow *
 DemoWindow::create(const Glib::RefPtr<Gtk::Application> &application) {

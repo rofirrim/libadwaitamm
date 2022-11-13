@@ -7,23 +7,10 @@
 
 namespace Adw {
 
-class DemoWindow_Class;
-class DemoWindow;
-
-class DemoWindow_Class
-    : public Gtk::TemplateWidgetClass<DemoWindow_Class, DemoWindow,
-                                      Adw::ApplicationWindow_Class,
-                                      adw_application_window_get_type> {
-private:
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
-  static const char class_name[];
-
-  friend TemplateWidgetClassBase;
-};
-
 class DemoWindow
-    : public Gtk::TemplateWidget<DemoWindow_Class, DemoWindow,
-                                 Adw::ApplicationWindow, AdwApplicationWindow> {
+    : public Gtk::TemplateWidget<
+          DemoWindow, Adw::ApplicationWindow, Adw::ApplicationWindow_Class,
+          AdwApplicationWindow, adw_application_window_get_type> {
 public:
   static DemoWindow *create(const Glib::RefPtr<Gtk::Application> &application);
 
@@ -43,12 +30,11 @@ private:
   Adw::Leaflet *subpage_leaflet = nullptr;
   Gtk::Widget *color_scheme_button = nullptr;
 
-  void init_widget(Gtk::TemplateWidgetInit& i);
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  static const char class_name[];
+  void init_widget(Gtk::TemplateWidgetInit &i);
 
-  friend DemoWindow_Class;
-  friend DemoWindow_Class::TemplateWidgetClassBase;
-
-  // friend TemplateWidgetBase;
+  friend TemplateWidget_Class;
 };
 
 } // namespace Adw

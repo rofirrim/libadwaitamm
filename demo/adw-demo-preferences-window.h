@@ -7,23 +7,11 @@
 
 namespace Adw {
 
-class DemoPreferencesWindow_Class;
-class DemoPreferencesWindow;
-
-class DemoPreferencesWindow_Class
-    : public Gtk::TemplateWidgetClass<
-          DemoPreferencesWindow_Class, DemoPreferencesWindow,
-          Adw::PreferencesWindow_Class, adw_preferences_window_get_type> {
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
-  static const char class_name[];
-
-  friend TemplateWidgetClassBase;
-};
-
 class DemoPreferencesWindow
-    : public Gtk::TemplateWidget<DemoPreferencesWindow_Class,
-                                 DemoPreferencesWindow, Adw::PreferencesWindow,
-                                 AdwPreferencesWindow> {
+    : public Gtk::TemplateWidget<DemoPreferencesWindow, Adw::PreferencesWindow,
+                                 Adw::PreferencesWindow_Class,
+                                 AdwPreferencesWindow,
+                                 adw_preferences_window_get_type> {
 public:
   static DemoPreferencesWindow *create();
 
@@ -35,12 +23,13 @@ private:
   void return_to_preferences();
   void toast_show();
 
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 
   Gtk::Widget *subpage1;
   Gtk::Widget *subpage2;
 
-  friend DemoPreferencesWindow_Class;
-  friend DemoPreferencesWindow_Class::TemplateWidgetClassBase;
+  friend TemplateWidget_Class;
 };
 } // namespace Adw
