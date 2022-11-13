@@ -31,36 +31,30 @@ namespace Adw {
 void DemoWindow_Class::class_init_function(void *g_class, void *class_data) {
   Adw::ApplicationWindow_Class::class_init_function(g_class, class_data);
 
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(g_class);
+  Gtk::TemplateWidgetSetup s(
+      GTK_WIDGET_CLASS(g_class),
+      "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
 
-  gtk_widget_class_set_template_from_resource(
-      widget_class, "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
+  s.bind_widget("color_scheme_button");
+  s.bind_widget("main_leaflet");
+  s.bind_widget("subpage_leaflet");
 
-  gtk_widget_class_bind_template_child_full(widget_class, "color_scheme_button",
-                                            false, 0);
-  gtk_widget_class_bind_template_child_full(widget_class, "main_leaflet", false,
-                                            0);
-  gtk_widget_class_bind_template_child_full(widget_class, "subpage_leaflet",
-                                            false, 0);
-
-  gtk_widget_class_bind_template_callback_full(
-      widget_class, "get_color_scheme_icon_name",
+  s.bind_callback(
+      "get_color_scheme_icon_name",
       Gtk::ptr_fun_to_mem_fun<&DemoWindow::get_color_scheme_icon_name>());
-  gtk_widget_class_bind_template_callback_full(
-      widget_class, "color_scheme_button_clicked_cb",
+  s.bind_callback(
+      "color_scheme_button_clicked_cb",
       Gtk::ptr_fun_to_mem_fun<&DemoWindow::color_scheme_button_clicked_cb>());
-  gtk_widget_class_bind_template_callback_full(
-      widget_class, "notify_visible_child_cb",
+  s.bind_callback(
+      "notify_visible_child_cb",
       Gtk::ptr_fun_to_mem_fun<&DemoWindow::notify_visible_child_cb>());
-  gtk_widget_class_bind_template_callback_full(
-      widget_class, "back_clicked_cb",
-      Gtk::ptr_fun_to_mem_fun<&DemoWindow::back_clicked_cb>());
-  gtk_widget_class_bind_template_callback_full(
-      widget_class, "leaflet_back_clicked_cb",
+  s.bind_callback("back_clicked_cb",
+                  Gtk::ptr_fun_to_mem_fun<&DemoWindow::back_clicked_cb>());
+  s.bind_callback(
+      "leaflet_back_clicked_cb",
       Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_back_clicked_cb>());
-  gtk_widget_class_bind_template_callback_full(
-      widget_class, "leaflet_next_page_cb",
-      Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>());
+  s.bind_callback("leaflet_next_page_cb",
+                  Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>());
 }
 
 const char DemoWindow_Class::class_name[] = "AdwDemoWindow";

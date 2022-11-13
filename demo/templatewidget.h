@@ -4,6 +4,28 @@
 
 namespace Gtk {
 
+class TemplateWidgetSetup {
+private:
+  GtkWidgetClass *widget_class;
+
+public:
+  TemplateWidgetSetup(GtkWidgetClass *widget_class,
+                      const Glib::ustring &resource)
+      : widget_class(widget_class) {
+    gtk_widget_class_set_template_from_resource(widget_class, resource.c_str());
+  };
+
+  void bind_widget(const Glib::ustring &widget_name) {
+    gtk_widget_class_bind_template_child_full(widget_class, widget_name.c_str(),
+                                              false, 0);
+  }
+
+  void bind_callback(const Glib::ustring &name, GCallback callback) {
+    gtk_widget_class_bind_template_callback_full(widget_class, name.c_str(),
+                                                 callback);
+  }
+};
+
 template <typename CppTypeClass, typename CppObjectClass,
           GType (*c_object_get_type)()>
 class TemplateWidgetClass : public Glib::Class {
