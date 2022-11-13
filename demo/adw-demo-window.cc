@@ -28,17 +28,6 @@ namespace Adw {
 // DemoWindow_Class //
 //////////////////////
 
-const Glib::Class &DemoWindow_Class::init() {
-  if (!gtype_) {
-    class_init_func_ = class_init_function;
-    register_derived_type(adw_application_window_get_type(), "AdwDemoWindow",
-                          &DemoWindow::instance_init_function);
-    Glib::init();
-    Glib::wrap_register(gtype_, &DemoWindow_Class::wrap_new);
-  }
-  return *this;
-}
-
 void DemoWindow_Class::class_init_function(void *g_class, void *class_data) {
   Adw::ApplicationWindow_Class::class_init_function(g_class, class_data);
 
@@ -74,10 +63,7 @@ void DemoWindow_Class::class_init_function(void *g_class, void *class_data) {
       Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>());
 }
 
-Glib::ObjectBase *DemoWindow_Class::wrap_new(GObject *obj) {
-  return new DemoWindow(
-      G_TYPE_CHECK_INSTANCE_CAST(obj, DemoWindow::get_type(), GtkWidget));
-}
+const char DemoWindow_Class::class_name[] = "AdwDemoWindow";
 
 ////////////////
 // DemoWindow //
@@ -85,7 +71,7 @@ Glib::ObjectBase *DemoWindow_Class::wrap_new(GObject *obj) {
 
 DemoWindow *
 DemoWindow::create(const Glib::RefPtr<Gtk::Application> &application) {
-  Glib::ConstructParams params(demo_window_class_.init(), "application",
+  Glib::ConstructParams params(type_class_.init(), "application",
                                Glib::unwrap(application), nullptr);
   GObject *obj = g_object_new_with_properties(
       DemoWindow::get_type(), params.n_parameters, params.parameter_names,
@@ -93,20 +79,7 @@ DemoWindow::create(const Glib::RefPtr<Gtk::Application> &application) {
   return DemoWindow::wrap(obj);
 }
 
-DemoWindow::DemoWindow(GtkWidget *obj)
-    : Adw::ApplicationWindow(ADW_APPLICATION_WINDOW(obj)) {}
-
-DemoWindow::~DemoWindow() {
-  gtk_widget_dispose_template(GTK_WIDGET(gobj()), G_OBJECT_TYPE(gobj()));
-  destroy_();
-}
-
-GType DemoWindow::get_type() { return demo_window_class_.init().get_type(); }
-
-DemoWindow *DemoWindow::wrap(GObject *obj) {
-  return dynamic_cast<DemoWindow *>(Glib::wrap_auto(
-      G_TYPE_CHECK_INSTANCE_CAST(obj, DemoWindow::get_type(), GObject)));
-}
+DemoWindow::DemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
 void DemoWindow::instance_init_function(GTypeInstance *instance,
                                         void *g_class) {
@@ -154,60 +127,6 @@ void DemoWindow::instance_init_function(GTypeInstance *instance,
   this_->main_leaflet->navigate(NavigationDirection::FORWARD);
 }
 
-// DemoWindow::DemoWindow(const Glib::RefPtr<Gtk::Application> &application)
-//     : Glib::ObjectBase("AdwDemoWindow"),
-//       Gtk::TemplateBuilder<DemoWindow>(
-//           this, "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui",
-//           {{"color_scheme_button", &color_scheme_button},
-//            {"main_leaflet", &main_leaflet},
-//            {"subpage_leaflet", &subpage_leaflet}},
-//           {{"get_color_scheme_icon_name",
-//             Gtk::ptr_fun_to_mem_fun<&DemoWindow::get_color_scheme_icon_name>()},
-//            {"color_scheme_button_clicked_cb",
-//             Gtk::ptr_fun_to_mem_fun<
-//                 &DemoWindow::color_scheme_button_clicked_cb>()},
-//            {"notify_visible_child_cb",
-//             Gtk::ptr_fun_to_mem_fun<&DemoWindow::notify_visible_child_cb>()},
-//            {"back_clicked_cb",
-//             Gtk::ptr_fun_to_mem_fun<&DemoWindow::back_clicked_cb>()},
-//            {"leaflet_back_clicked_cb",
-//             Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_back_clicked_cb>()},
-//            {"leaflet_next_page_cb",
-//             Gtk::ptr_fun_to_mem_fun<&DemoWindow::leaflet_next_page_cb>()}}),
-//       Adw::ApplicationWindow(application) {
-//
-//   g_type_ensure(Adw::DemoPageAbout::get_type());
-//   // g_type_ensure(ADW_TYPE_DEMO_PAGE_ABOUT);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_ANIMATIONS);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_AVATAR);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_BUTTONS);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_CAROUSEL);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_CLAMP);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_DIALOGS);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_FLAP);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_LEAFLET);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_LISTS);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_STYLES);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_TAB_VIEW);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_TOASTS);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_VIEW_SWITCHER);
-//   g_type_ensure(ADW_TYPE_DEMO_PAGE_WELCOME);
-//
-//   init_widget_template();
-//
-//   auto simple_action_group = Gio::SimpleActionGroup::create();
-//   simple_action_group->add_action(
-//       "undo", sigc::mem_fun(*this, &DemoWindow::toast_undo_cb));
-//   insert_action_group("toast", simple_action_group);
-//
-//   auto manager = StyleManager::get_default();
-//   manager->property_system_supports_color_schemes().signal_changed().connect(
-//       sigc::mem_fun(*this,
-//                     &DemoWindow::notify_system_supports_color_schemes_cb));
-//
-//   main_leaflet->navigate(NavigationDirection::FORWARD);
-// }
-
 void DemoWindow::color_scheme_button_clicked_cb() {
   auto manager = StyleManager::get_default();
 
@@ -252,7 +171,5 @@ void DemoWindow::notify_system_supports_color_schemes_cb() {
 char *DemoWindow::get_color_scheme_icon_name(gboolean dark) {
   return g_strdup(dark ? "light-mode-symbolic" : "dark-mode-symbolic");
 }
-
-DemoWindow_Class DemoWindow::demo_window_class_;
 
 } // namespace Adw
