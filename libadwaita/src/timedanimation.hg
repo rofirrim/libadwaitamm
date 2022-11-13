@@ -37,10 +37,10 @@ class TimedAnimation : public Animation {
 
 protected:
   _CTOR_DEFAULT
-  _WRAP_CTOR(TimedAnimation(Gtk::Widget* widget, double from, double to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target), adw_timed_animation_new)
+  _WRAP_CTOR(TimedAnimation(Gtk::Widget* widget, double value_from, double value_to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target), adw_timed_animation_new)
 
 public:
-  _WRAP_CREATE(Gtk::Widget* widget, double from, double to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target)
+  _WRAP_CREATE(Gtk::Widget* widget, double value_from, double value_to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target)
 
   _WRAP_METHOD(bool get_alternate() const, adw_timed_animation_get_alternate)
   _WRAP_METHOD(unsigned int get_duration() const, adw_timed_animation_get_duration)
