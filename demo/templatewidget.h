@@ -174,8 +174,9 @@ public:
             (typename CppBaseObjectClass::BaseObjectType *)(obj)) {}
 
   virtual ~TemplateWidget() {
-    gtk_widget_dispose_template(GTK_WIDGET(this->gobj()),
-                                G_OBJECT_TYPE(this->gobj()));
+    if (this->gobj())
+      gtk_widget_dispose_template(GTK_WIDGET(this->gobj()),
+                                  G_OBJECT_TYPE(this->gobj()));
     this->destroy_();
   }
 
