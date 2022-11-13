@@ -83,6 +83,10 @@ public:
         G_TYPE_CHECK_INSTANCE_CAST(obj, CppObjectClass::get_type(), GObject)));
   }
 
+  // Reintroduce this method so it returns false in classes that
+  // are not meant to be managed.
+  static bool is_managed() { return true; }
+
   using TemplateWidgetBase = TemplateWidget;
   using CppClassType = TemplateWidget::TemplateWidgetClass;
 };
@@ -178,8 +182,11 @@ public:
   }
 
   static Glib::ObjectBase *wrap_new(GObject *obj) {
-    return new CppObjectClass(
+    auto *result = new CppObjectClass(
         G_TYPE_CHECK_INSTANCE_CAST(obj, CppObjectClass::get_type(), GtkWidget));
+    if (CppObjectClass::is_managed())
+        result = manage(result);
+    return result;
   }
 
   static void class_init_function(void *g_class, void *class_data) {

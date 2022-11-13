@@ -27,6 +27,9 @@ private:
   Gtk::Widget *subpage1;
   Gtk::Widget *subpage2;
 
+  // Top level windows are not managed.
+  static bool is_managed() { return false; }
+
   friend CppClassType;
 };
 } // namespace Adw

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "namedclass.h"
 #include "templatewidget.h"
 #include <libadwaitamm.h>
 
@@ -30,6 +29,9 @@ private:
   static void setup_template(Gtk::TemplateWidgetSetup &s);
   static const char class_name[];
   void init_widget(Gtk::TemplateWidgetInit &i);
+
+  // Top level windows are not managed.
+  static bool is_managed() { return false; }
 
   friend CppClassType;
 };
