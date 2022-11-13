@@ -9,7 +9,6 @@ namespace Adw {
 
 class DemoPreferencesWindow
     : public Gtk::TemplateWidget<DemoPreferencesWindow, Adw::PreferencesWindow,
-                                 Adw::PreferencesWindow_Class,
                                  AdwPreferencesWindow,
                                  adw_preferences_window_get_type> {
 public:
@@ -30,6 +29,6 @@ private:
   Gtk::Widget *subpage1;
   Gtk::Widget *subpage2;
 
-  friend TemplateWidget_Class;
+  friend CppClassType;
 };
 } // namespace Adw

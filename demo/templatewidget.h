@@ -60,7 +60,7 @@ public:
 };
 
 template <typename CppObjectClass, typename CppBaseObjectClass,
-          typename CppBaseTypeClass, typename CBaseObjectClass,
+          typename CBaseObjectClass,
           GType (*GetGTypeFn)()>
 class TemplateWidget : public CppBaseObjectClass {
 public:
@@ -85,13 +85,13 @@ public:
   }
 
   using TemplateWidgetBase = TemplateWidget;
-  using TemplateWidget_Class = TemplateWidget::TemplateWidgetClass;
+  using CppClassType = TemplateWidget::TemplateWidgetClass;
 };
 
 template <typename CppObjectClass, typename CppBaseObjectClass,
-          typename CppBaseTypeClass, typename CBaseObjectClass,
+          typename CBaseObjectClass,
           GType (*GetGTypeFn)()>
-class TemplateWidget<CppObjectClass, CppBaseObjectClass, CppBaseTypeClass,
+class TemplateWidget<CppObjectClass, CppBaseObjectClass,
                      CBaseObjectClass, GetGTypeFn>::TemplateWidgetClass
     : public Glib::Class {
 public:
@@ -186,7 +186,7 @@ public:
   }
 
   static void class_init_function(void *g_class, void *class_data) {
-    CppBaseTypeClass::class_init_function(g_class, class_data);
+    CppBaseObjectClass::CppClassType::class_init_function(g_class, class_data);
     TemplateWidgetSetup s(GTK_WIDGET_CLASS(g_class));
     CppObjectClass::setup_template(s);
   }
@@ -199,11 +199,11 @@ public:
 };
 
 template <typename CppObjectClass, typename CppBaseObjectClass,
-          typename CppBaseTypeClass, typename CBaseObjectClass,
+          typename CBaseObjectClass,
           GType (*GetGTypeFn)()>
-typename TemplateWidget<CppObjectClass, CppBaseObjectClass, CppBaseTypeClass,
+typename TemplateWidget<CppObjectClass, CppBaseObjectClass,
                         CBaseObjectClass, GetGTypeFn>::TemplateWidgetClass
-    TemplateWidget<CppObjectClass, CppBaseObjectClass, CppBaseTypeClass,
+    TemplateWidget<CppObjectClass, CppBaseObjectClass,
                    CBaseObjectClass, GetGTypeFn>::type_class_;
 
 } // namespace Gtk
