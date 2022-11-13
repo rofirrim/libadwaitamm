@@ -3,7 +3,6 @@
 #include "namedclass.h"
 #include "templatewidget.h"
 #include <libadwaitamm.h>
-#include <libadwaitamm/private/applicationwindow_p.h>
 
 namespace Adw {
 
