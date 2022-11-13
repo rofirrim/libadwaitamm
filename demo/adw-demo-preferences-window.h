@@ -8,9 +8,8 @@
 namespace Adw {
 
 class DemoPreferencesWindow
-    : public Gtk::TemplateWidget<DemoPreferencesWindow, Adw::PreferencesWindow,
-                                 AdwPreferencesWindow,
-                                 adw_preferences_window_get_type> {
+    : public Gtk::TemplateWidget<DemoPreferencesWindow,
+                                 Adw::PreferencesWindow> {
 public:
   static DemoPreferencesWindow *create();
 

@@ -8,9 +8,7 @@
 namespace Adw {
 
 class DemoWindow
-    : public Gtk::TemplateWidget<DemoWindow, Adw::ApplicationWindow,
-                                 AdwApplicationWindow,
-                                 adw_application_window_get_type> {
+    : public Gtk::TemplateWidget<DemoWindow, Adw::ApplicationWindow> {
 public:
   static DemoWindow *create(const Glib::RefPtr<Gtk::Application> &application);
 
