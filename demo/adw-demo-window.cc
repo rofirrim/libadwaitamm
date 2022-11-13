@@ -1,7 +1,5 @@
 #include "adw-demo-window.h"
 
-#include <libadwaitamm/private/applicationwindow_p.h>
-
 #include <glib/gi18n.h>
 
 #include "pages/about/adw-demo-page-about.h"

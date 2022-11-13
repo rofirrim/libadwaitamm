@@ -2,6 +2,106 @@
 
 #include <gtkmm.h>
 
+#if 0
+
+// This defines Gtk::TemplateWidget which is a helper class to ease in the
+// best way possible to use of widget with gtkmm. Unfortunately, this has not
+// been wrapped in gtkmm which forces us to rely on C GTK APIs. It is possible,
+// though, by constraining the way we can create gtkmm objects to make widget
+// templates a bit less cumbersome.
+//
+// This approach is not perfect but covers the most common use cases when
+// using gtk templates. One downside is that you may need, due to headers
+// in templates add additional "#include private/widget_p.h".
+//
+// Assume you're inheriting from (C++) FirstWidget and you plan
+// to populate it using a resource. Then you can define a gtkmm wrapper
+// SecondWidget like this:
+
+// -------------------------
+// -- file secondwidget.h --
+// -------------------------
+
+class SecondWidget : public Gtk::TemplateWidget<SecondWidget, FirstWidget> {
+  // Due to the CRTP used, we need to access SecondWidget from
+  // Gtk::TemplateWidget. A typedef 'CppClassType' has been setup to help with
+  // this.
+  friend CppClassType;
+
+public:
+  // Constructing via a regular constructor will not work due to the machinery
+  // of gtkmm that would be invoked. Use a factory instead that returns a raw
+  // pointer. Wrap it into a Glib::RefPtr as needed but be mindful of the
+  // reference counter. Note: this factory is only needed if you plan to
+  // instantiate the widget programmatically (i.e. not just by loading the .ui
+  // file)
+  static SecondWidget *create(...);
+
+protected:
+  // This constructor will be used to wrap C instances in C++ instances. It is
+  // internally called when linking a C object with its C++ counterpart.
+  // We use a Gtk::Widget* in lack of a better option here.
+  SecondWidget(Gtk::Widget *obj);
+
+private:
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  static const char class_name[];
+  void init_widget(Gtk::TemplateWidgetInit &i);
+
+  // If your widget is a top-level windows that does not have to be managed
+  // define also this, otherwise no need to define it as it will default to
+  // true.
+  // static bool is_managed() { return false; }
+
+  // Rest of the class goes here. This is an example.
+  Gtk::Label *label_1;
+  Gtk::Button *button_1;
+
+  void button_1_on_click();
+};
+
+// --------------------------
+// -- file secondwidget.cc --
+// --------------------------
+//
+#include <nnn/private/firstwidget_p.h>
+
+// This is the name you will use in the '.ui' files
+const char SecondWidget::class_name[] = "SecondWidget";
+
+void SecondWidget::setup_template(Gtk::TemplateWidgetSetup &s) {
+  // Define your resource file
+  s.set_resource("/com/example/ui/secondwidget.ui");
+
+  // Claim the widgets mentioned in secondwidget.ui
+  // This won't bind them to the instance yet. This happens in init_widget.
+  s.bind_widget("label_1");
+  s.bind_widget("button_1");
+
+  // Bind the callbacks to their functions.
+  s.bind_callback("button_1_on_click",
+                  Gtk::ptr_fun_to_mem_fun<&DemoWindow::button_1_on_click>());
+}
+
+// Does nothing but chain up the wrapped object. TemplateWidgetBase is
+// a convenience typedef.
+SecondWidget::SecondWidget(GtkWidget *obj) : TemplateWidgetBase(obj) {}
+
+void SecondWidget::init_widget(Gtk::TemplateWidgetInit &i) {
+  // Initialize the template.
+  i.init_template();
+
+  // Now link the widgets we claimed in setup_template.
+  i.bind_widget(label_1, "label_1");
+  i.bind_widget(button_1, "button_1");
+
+  // Extra instance initalizations must happen here, like in a regular gtkmm
+  // constructor.
+  // ...
+}
+
+#endif
+
 namespace Gtk {
 
 template <auto P, typename T = decltype(P)> struct PtrFunToMemFun;
@@ -39,6 +139,11 @@ public:
   void bind_callback(const Glib::ustring &name, GCallback callback) {
     gtk_widget_class_bind_template_callback_full(widget_class, name.c_str(),
                                                  callback);
+  }
+
+  void install_action(const Glib::ustring &name, GCallback callback) {
+    gtk_widget_class_install_action(widget_class, name.c_str(), NULL,
+                                    (GtkWidgetActionActivateFunc)callback);
   }
 };
 

@@ -1,5 +1,4 @@
 #include "adw-demo-preferences-window.h"
-#include <libadwaitamm/private/preferenceswindow_p.h>
 
 namespace Adw {
 

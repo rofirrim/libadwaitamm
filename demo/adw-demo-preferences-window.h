@@ -1,6 +1,7 @@
 #pragma once
 
 #include <libadwaitamm.h>
+#include <libadwaitamm/private/preferenceswindow_p.h>
 
 #include "templatewidget.h"
 

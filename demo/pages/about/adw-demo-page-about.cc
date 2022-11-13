@@ -1,72 +1,27 @@
 #include "adw-demo-page-about.h"
-#include <libadwaitamm/private/bin_p.h>
 
 #include <glib/gi18n.h>
 
 namespace Adw {
 
-/////////////////////////
-// DemoPageAbout_Class //
-/////////////////////////
-
-const Glib::Class &DemoPageAbout_Class::init() {
-  if (!gtype_) {
-    class_init_func_ = class_init_function;
-    register_derived_type(adw_bin_get_type(), "AdwDemoPageAbout",
-                          &DemoPageAbout::instance_init_function);
-    Glib::init();
-    Glib::wrap_register(gtype_, &DemoPageAbout_Class::wrap_new);
-  }
-  return *this;
-}
-
-void DemoPageAbout_Class::class_init_function(void *g_class, void *class_data) {
-  Adw::Bin_Class::class_init_function(g_class, class_data);
-
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(g_class);
-
-  gtk_widget_class_set_template_from_resource(
-      widget_class,
-      "/org/gnome/Adwaitamm1/Demo/ui/pages/about/adw-demo-page-about.ui");
-
-  gtk_widget_class_install_action(
-      widget_class, "demo.run", NULL,
-      (GtkWidgetActionActivateFunc)DemoPageAbout::demo_run_cb);
-}
-
-Glib::ObjectBase *DemoPageAbout_Class::wrap_new(GObject *obj) {
-  return manage(new DemoPageAbout(
-      G_TYPE_CHECK_INSTANCE_CAST(obj, DemoPageAbout::get_type(), GtkWidget)));
-}
-
 ///////////////////
 // DemoPageAbout //
 ///////////////////
 
-DemoPageAbout::DemoPageAbout(GtkWidget *obj) : Adw::Bin(ADW_BIN(obj)) {}
+const char DemoPageAbout::class_name[] = "AdwDemoPageAbout";
 
-DemoPageAbout::~DemoPageAbout() {
-  gtk_widget_dispose_template(GTK_WIDGET(gobj()), G_OBJECT_TYPE(gobj()));
-  destroy_();
+void DemoPageAbout::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/about/adw-demo-page-about.ui");
+
+  s.install_action("demo.run",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageAbout::demo_run>());
 }
 
-void DemoPageAbout::instance_init_function(GTypeInstance *instance,
-                                           void *g_class) {
-  gtk_widget_init_template(GTK_WIDGET(instance));
-}
+DemoPageAbout::DemoPageAbout(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-GType DemoPageAbout::get_type() {
-  return demo_page_about_class_.init().get_type();
-}
-
-DemoPageAbout *DemoPageAbout::wrap(GObject *obj) {
-  return dynamic_cast<DemoPageAbout *>(Glib::wrap_auto(
-      G_TYPE_CHECK_INSTANCE_CAST(obj, DemoPageAbout::get_type(), GObject)));
-}
-
-void DemoPageAbout::demo_run_cb(GObject *self) {
-  DemoPageAbout *d = DemoPageAbout::wrap(self);
-  d->demo_run();
+void DemoPageAbout::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
 
 void DemoPageAbout::demo_run() {
@@ -122,7 +77,5 @@ void DemoPageAbout::demo_run() {
 
   about->present();
 }
-
-DemoPageAbout_Class DemoPageAbout::demo_page_about_class_;
 
 } // namespace Adw
