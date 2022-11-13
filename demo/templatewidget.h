@@ -9,11 +9,13 @@ private:
   GtkWidgetClass *widget_class;
 
 public:
-  TemplateWidgetSetup(GtkWidgetClass *widget_class,
-                      const Glib::ustring &resource)
-      : widget_class(widget_class) {
-    gtk_widget_class_set_template_from_resource(widget_class, resource.c_str());
-  };
+  TemplateWidgetSetup(GtkWidgetClass *widget_class)
+      : widget_class(widget_class) {}
+
+  void set_resource(const Glib::ustring &resource_name) {
+    gtk_widget_class_set_template_from_resource(widget_class,
+                                                resource_name.c_str());
+  }
 
   void bind_widget(const Glib::ustring &widget_name) {
     gtk_widget_class_bind_template_child_full(widget_class, widget_name.c_str(),
@@ -27,6 +29,7 @@ public:
 };
 
 template <typename CppTypeClass, typename CppObjectClass,
+         typename CppBaseObjectClass,
           GType (*c_object_get_type)()>
 class TemplateWidgetClass : public Glib::Class {
 public:
@@ -106,7 +109,7 @@ public:
 
   const Class &init() {
     if (!gtype_) {
-      class_init_func_ = CppTypeClass::class_init_function;
+      class_init_func_ = TemplateWidgetClass::class_init_function;
       register_derived_type(c_object_get_type(), CppTypeClass::class_name,
                             &CppObjectClass::instance_init_function);
       Glib::init();
@@ -118,6 +121,12 @@ public:
   static Glib::ObjectBase *wrap_new(GObject *obj) {
     return new CppObjectClass(
         G_TYPE_CHECK_INSTANCE_CAST(obj, CppObjectClass::get_type(), GtkWidget));
+  }
+
+  static void class_init_function(void *g_class, void *class_data) {
+    CppBaseObjectClass::class_init_function(g_class, class_data);
+    Gtk::TemplateWidgetSetup s(GTK_WIDGET_CLASS(g_class));
+    CppTypeClass::setup_template(s);
   }
 
   using TemplateWidgetClassBase = TemplateWidgetClass;

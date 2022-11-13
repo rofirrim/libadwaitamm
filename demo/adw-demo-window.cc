@@ -1,5 +1,4 @@
 #include "adw-demo-window.h"
-#include <libadwaitamm/private/applicationwindow_p.h>
 
 #include <glib/gi18n.h>
 
@@ -28,12 +27,8 @@ namespace Adw {
 // DemoWindow_Class //
 //////////////////////
 
-void DemoWindow_Class::class_init_function(void *g_class, void *class_data) {
-  Adw::ApplicationWindow_Class::class_init_function(g_class, class_data);
-
-  Gtk::TemplateWidgetSetup s(
-      GTK_WIDGET_CLASS(g_class),
-      "/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
+void DemoWindow_Class::setup_template(Gtk::TemplateWidgetSetup& s) {
+  s.set_resource("/org/gnome/Adwaitamm1/Demo/ui/adw-demo-window.ui");
 
   s.bind_widget("color_scheme_button");
   s.bind_widget("main_leaflet");
