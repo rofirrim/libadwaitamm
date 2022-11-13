@@ -18,9 +18,6 @@
 #include "pages/view-switcher/adw-demo-page-view-switcher.h"
 #include "pages/welcome/adw-demo-page-welcome.h"
 
-// TODO: Remove
-#include "templatebuilder.h"
-
 namespace Adw {
 
 //////////////////////

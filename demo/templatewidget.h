@@ -4,6 +4,20 @@
 
 namespace Gtk {
 
+template <auto P, typename T = decltype(P)> struct PtrFunToMemFun;
+
+template <auto P, typename CppClass, typename Ret, typename... Args>
+struct PtrFunToMemFun<P, Ret (CppClass::*)(Args...)> {
+  static Ret callback(GTypeInstance *instance, Args... args) {
+    CppClass *w = dynamic_cast<CppClass *>(Glib::wrap(GTK_WIDGET(instance)));
+    return (w->*P)(args...);
+  }
+};
+
+template <auto P> GCallback ptr_fun_to_mem_fun() {
+  return GCallback(PtrFunToMemFun<P>::callback);
+}
+
 class TemplateWidgetSetup {
 private:
   GtkWidgetClass *widget_class;

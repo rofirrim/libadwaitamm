@@ -5,9 +5,6 @@
 
 #include "templatewidget.h"
 
-// TODO: Remove
-#include "templatebuilder.h"
-
 namespace Adw {
 
 class DemoPreferencesWindow_Class;
