@@ -1,11 +1,21 @@
 #pragma once
 
-#include <adwaita.h>
+#include "templatewidget.h"
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/bin_p.h>
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_DEMO_PAGE_BUTTONS (adw_demo_page_buttons_get_type())
+class DemoPageButtons : public Gtk::TemplateWidget<DemoPageButtons, Adw::Bin> {
+  friend CppClassType;
 
-G_DECLARE_FINAL_TYPE (AdwDemoPageButtons, adw_demo_page_buttons, ADW, DEMO_PAGE_BUTTONS, AdwBin)
+protected:
+  explicit DemoPageButtons(GtkWidget *obj) : TemplateWidgetBase(obj) { }
 
-G_END_DECLS
+private:
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  static const char class_name[];
+  void init_widget(Gtk::TemplateWidgetInit &i);
+};
+
+} // namespace Adw
