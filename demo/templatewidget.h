@@ -43,7 +43,7 @@ protected:
   // Does nothing but chain up the wrapped object. TemplateWidgetBase is
   // a convenience typedef.
   // We use a GtkWidget* in lack of a better option here.
-  SecondWidget(GtkWidget *obj) : TemplateWidgetBase(obj) {}
+  explicit SecondWidget(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
 private:
   static const char class_name[];

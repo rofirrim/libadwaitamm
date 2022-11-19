@@ -57,8 +57,6 @@ DemoWindow::create(const Glib::RefPtr<Gtk::Application> &application) {
   return DemoWindow::wrap(obj);
 }
 
-DemoWindow::DemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
-
 void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   g_type_ensure(Adw::DemoPageAbout::get_type());
   g_type_ensure(Adw::DemoPageAnimations::get_type());

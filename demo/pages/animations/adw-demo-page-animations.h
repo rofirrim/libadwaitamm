@@ -21,11 +21,11 @@ class DemoPageAnimations
   friend CppClassType;
 
 protected:
-  DemoPageAnimations(GtkWidget *obj);
+  explicit DemoPageAnimations(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
 private:
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
   static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 
   std::unique_ptr<Glib::Property<Glib::RefPtr<Adw::Animation>>>

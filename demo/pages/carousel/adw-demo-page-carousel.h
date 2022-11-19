@@ -10,10 +10,11 @@ class DemoPageCarousel : public Gtk::TemplateWidget<DemoPageCarousel, Adw::Bin> 
   friend CppClassType;
 
 protected:
-  DemoPageCarousel(GtkWidget *obj) : TemplateWidgetBase(obj) {}
+  explicit DemoPageCarousel(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
+private:
   static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 
   void notify_orientation_cb();

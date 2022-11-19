@@ -33,9 +33,6 @@ DemoPreferencesWindow *DemoPreferencesWindow::create() {
   return DemoPreferencesWindow::wrap(obj);
 }
 
-DemoPreferencesWindow::DemoPreferencesWindow(GtkWidget *obj)
-    : TemplateWidgetBase(obj) {}
-
 void DemoPreferencesWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   i.init_template();
 

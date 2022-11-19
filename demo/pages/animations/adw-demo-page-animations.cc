@@ -47,9 +47,6 @@ void DemoPageAnimations::setup_template(Gtk::TemplateWidgetSetup &s) {
                       &DemoPageAnimations::notify_spring_params_change>());
 }
 
-DemoPageAnimations::DemoPageAnimations(GtkWidget *obj)
-    : TemplateWidgetBase(obj) {}
-
 void DemoPageAnimations::init_widget(Gtk::TemplateWidgetInit &i) {
   // Register properties.
   p_timed_animation =

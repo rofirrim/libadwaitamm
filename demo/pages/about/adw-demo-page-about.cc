@@ -18,8 +18,6 @@ void DemoPageAbout::setup_template(Gtk::TemplateWidgetSetup &s) {
                    Gtk::ptr_fun_to_mem_fun<&DemoPageAbout::demo_run>());
 }
 
-DemoPageAbout::DemoPageAbout(GtkWidget *obj) : TemplateWidgetBase(obj) {}
-
 void DemoPageAbout::init_widget(Gtk::TemplateWidgetInit &i) {
   i.init_template();
 }

@@ -10,7 +10,7 @@ class DemoPageClamp : public Gtk::TemplateWidget<DemoPageClamp, Adw::Bin> {
   friend CppClassType;
 
 protected:
-  DemoPageClamp(GtkWidget *obj) : TemplateWidgetBase(obj) {}
+  explicit DemoPageClamp(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
 private:
   static const char class_name[];

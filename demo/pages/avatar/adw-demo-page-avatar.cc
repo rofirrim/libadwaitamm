@@ -25,8 +25,6 @@ void DemoPageAvatar::setup_template(Gtk::TemplateWidgetSetup &s) {
                    Gtk::ptr_fun_to_mem_fun<&DemoPageAvatar::avatar_save>());
 }
 
-DemoPageAvatar::DemoPageAvatar(GtkWidget *obj) : TemplateWidgetBase(obj) {}
-
 void DemoPageAvatar::init_widget(Gtk::TemplateWidgetInit &i) {
   i.init_template();
 

@@ -10,13 +10,13 @@ class DemoPageAbout : public Gtk::TemplateWidget<DemoPageAbout, Adw::Bin> {
   friend CppClassType;
 
 protected:
-  explicit DemoPageAbout(GtkWidget *obj);
+  explicit DemoPageAbout(GtkWidget *obj) : TemplateWidgetBase(obj) { }
 
 private:
   void demo_run();
 
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
   static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 };
 

@@ -13,8 +13,10 @@ class DemoPreferencesWindow
 public:
   static DemoPreferencesWindow *create();
 
+protected:
+  explicit DemoPreferencesWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
+
 private:
-  explicit DemoPreferencesWindow(GtkWidget *obj);
 
   void subpage1_activated();
   void subpage2_activated();

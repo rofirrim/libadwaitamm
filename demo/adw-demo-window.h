@@ -11,9 +11,10 @@ class DemoWindow
 public:
   static DemoWindow *create(const Glib::RefPtr<Gtk::Application> &application);
 
-private:
-  explicit DemoWindow(GtkWidget *obj);
+protected:
+  explicit DemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) { }
 
+private:
   void color_scheme_button_clicked_cb();
   void notify_visible_child_cb();
   void back_clicked_cb();
@@ -27,8 +28,8 @@ private:
   Adw::Leaflet *subpage_leaflet = nullptr;
   Gtk::Widget *color_scheme_button = nullptr;
 
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
   static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 
   // Top level windows are not managed.
