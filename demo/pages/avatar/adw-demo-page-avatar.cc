@@ -1,5 +1,7 @@
 #include "adw-demo-page-avatar.h"
 
+#include <array>
+
 #include <glib/gi18n.h>
 
 struct _AdwDemoPageAvatar
@@ -213,4 +215,96 @@ adw_demo_page_avatar_init (AdwDemoPageAvatar *self)
   avatar_remove_cb (self);
 
   g_free (name);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+namespace Adw {
+
+const char DemoPageAvatar::class_name[] = "AdwDemoPageAvatar";
+
+void DemoPageAvatar::setup_template(Gtk::TemplateWidgetSetup& s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/avatar/adw-demo-page-avatar.ui");
+
+  s.bind_widget("avatar");
+  s.bind_widget("text");
+  s.bind_widget("file_chooser_label");
+  s.bind_widget("contacts");
+
+  s.install_action("avatar.open",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageAvatar::avatar_open>());
+  s.install_action("avatar.open",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageAvatar::avatar_remove>());
+  s.install_action("avatar.open",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageAvatar::avatar_save>());
+}
+
+DemoPageAvatar::DemoPageAvatar(GtkWidget *obj) : TemplateWidgetBase(obj) { }
+
+void DemoPageAvatar::init_widget(Gtk::TemplateWidgetInit& i) {
+    i.init_template();
+
+    i.bind_widget(avatar, "avatar");
+    i.bind_widget(text, "text");
+    i.bind_widget(file_chooser_label, "file_chooser_label");
+    i.bind_widget(contacts, "contacts");
+
+    Glib::ustring name = create_random_name();
+
+    text->set_text(name);
+
+    populate_contacts();
+    avatar_remove();
+}
+
+void DemoPageAvatar::populate_contacts() {
+  for (int i = 0; i < 30; i++) {
+    Glib::ustring name = create_random_name();
+    Glib::RefPtr<Adw::ActionRow> contact = Adw::ActionRow::create();
+    Gtk::Widget *avatar = Gtk::make_managed<Adw::Avatar>(40, name, true);
+
+    avatar->set_margin_top(12);
+    avatar->set_margin_bottom(12);
+
+    contact->set_title(name);
+    contact->add_prefix(*avatar);
+
+    contacts->append(*contact);
+  }
+}
+
+void DemoPageAvatar::avatar_open()
+{
+}
+
+void DemoPageAvatar::avatar_remove()
+{
+}
+
+void DemoPageAvatar::avatar_save()
+{
+}
+
+Glib::ustring DemoPageAvatar::create_random_name(void) {
+  static std::array first_names = {
+      "Adam",    "Adrian",    "Anna",     "Charlotte", "Frédérique", "Ilaria",
+      "Jakub",   "Jennyfer",  "Julia",    "Justin",    "Mario",      "Miriam",
+      "Mohamed", "Nourimane", "Owen",     "Peter",     "Petra",      "Rachid",
+      "Rebecca", "Sarah",     "Thibault", "Wolfgang",
+  };
+  static std::array last_names = {
+      "Bailey", "Berat",    "Chen",  "Farquharson", "Ferber",
+      "Franco", "Galinier", "Han",   "Lawrence",    "Lepied",
+      "Lopez",  "Mariotti", "Rossi", "Urasawa",     "Zwickelman",
+  };
+
+  Glib::ustring result = first_names[g_random_int_range(0, first_names.size())];
+  result += " ";
+  result += last_names[g_random_int_range(0, last_names.size())];
+
+  return result;
+}
 }
