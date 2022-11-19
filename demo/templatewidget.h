@@ -40,12 +40,14 @@ public:
 protected:
   // This constructor will be used to wrap C instances in C++ instances. It is
   // internally called when linking a C object with its C++ counterpart.
-  // We use a Gtk::Widget* in lack of a better option here.
-  SecondWidget(Gtk::Widget *obj);
+  // Does nothing but chain up the wrapped object. TemplateWidgetBase is
+  // a convenience typedef.
+  // We use a GtkWidget* in lack of a better option here.
+  SecondWidget(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
 private:
-  static void setup_template(Gtk::TemplateWidgetSetup &s);
   static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 
   // If your widget is a top-level windows that does not have to be managed
@@ -82,10 +84,6 @@ void SecondWidget::setup_template(Gtk::TemplateWidgetSetup &s) {
   s.bind_callback("button_1_on_click",
                   Gtk::ptr_fun_to_mem_fun<&DemoWindow::button_1_on_click>());
 }
-
-// Does nothing but chain up the wrapped object. TemplateWidgetBase is
-// a convenience typedef.
-SecondWidget::SecondWidget(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
 void SecondWidget::init_widget(Gtk::TemplateWidgetInit &i) {
   // Initialize the template.
