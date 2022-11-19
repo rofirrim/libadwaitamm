@@ -2,18 +2,7 @@
 
 #include <glib/gi18n.h>
 
-struct _AdwDemoPageCarousel
-{
-  AdwBin parent_instance;
-
-  GtkBox *box;
-  AdwCarousel *carousel;
-  GtkStack *indicators_stack;
-  AdwComboRow *orientation_row;
-  AdwComboRow *indicators_row;
-};
-
-G_DEFINE_TYPE (AdwDemoPageCarousel, adw_demo_page_carousel, ADW_TYPE_BIN)
+// FIXME - How to better wrap those?
 
 static char *
 get_orientation_name (AdwEnumListItem *item,
@@ -27,17 +16,6 @@ get_orientation_name (AdwEnumListItem *item,
   default:
     return NULL;
   }
-}
-
-static void
-notify_orientation_cb (AdwDemoPageCarousel *self)
-{
-  GtkOrientation orientation = static_cast<GtkOrientation>(adw_combo_row_get_selected (self->orientation_row));
-
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (self->box),
-                                  static_cast<GtkOrientation>(1 - orientation));
-  gtk_orientable_set_orientation (GTK_ORIENTABLE (self->carousel),
-                                  orientation);
 }
 
 static char *
@@ -58,44 +36,60 @@ get_indicators_name (GtkStringObject *value)
   return NULL;
 }
 
-static void
-notify_indicators_cb (AdwDemoPageCarousel *self)
-{
-  GtkStringObject *obj = GTK_STRING_OBJECT(adw_combo_row_get_selected_item (self->indicators_row));
+namespace Adw {
 
-  gtk_stack_set_visible_child_name (self->indicators_stack,
-                                    gtk_string_object_get_string (obj));
+const char DemoPageCarousel::class_name[] = "AdwDemoPageCarousel";
+
+void DemoPageCarousel::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/carousel/adw-demo-page-carousel.ui");
+
+  s.bind_widget("box");
+  s.bind_widget("carousel");
+  s.bind_widget("indicators_stack");
+  s.bind_widget("orientation_row");
+  s.bind_widget("indicators_row");
+
+  s.bind_callback("get_orientation_name", GCallback(get_orientation_name));
+  s.bind_callback(
+      "notify_orientation_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageCarousel::notify_orientation_cb>());
+  s.bind_callback("get_indicators_name", GCallback(get_indicators_name));
+  s.bind_callback(
+      "notify_indicators_cb",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageCarousel::notify_indicators_cb>());
+
+  s.install_action(
+      "carousel.return",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageCarousel::carousel_return_cb>());
 }
 
-static void
-carousel_return_cb (AdwDemoPageCarousel *self)
-{
-  adw_carousel_scroll_to (self->carousel,
-                          adw_carousel_get_nth_page (self->carousel, 0),
-                          TRUE);
+void DemoPageCarousel::init_widget(Gtk::TemplateWidgetInit &i) {
+    i.init_template();
+
+    i.bind_widget(box, "box");
+    i.bind_widget(carousel, "carousel");
+    i.bind_widget(indicators_stack, "indicators_stack");
+    i.bind_widget(orientation_row, "orientation_row");
+    i.bind_widget(indicators_row, "indicators_row");
 }
 
-static void
-adw_demo_page_carousel_class_init (AdwDemoPageCarouselClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+void DemoPageCarousel::notify_orientation_cb() {
+  Gtk::Orientation orientation =
+      static_cast<Gtk::Orientation>(orientation_row->get_selected());
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/carousel/adw-demo-page-carousel.ui");
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPageCarousel, box);
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPageCarousel, carousel);
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPageCarousel, indicators_stack);
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPageCarousel, orientation_row);
-  gtk_widget_class_bind_template_child (widget_class, AdwDemoPageCarousel, indicators_row);
-  gtk_widget_class_bind_template_callback (widget_class, get_orientation_name);
-  gtk_widget_class_bind_template_callback (widget_class, notify_orientation_cb);
-  gtk_widget_class_bind_template_callback (widget_class, get_indicators_name);
-  gtk_widget_class_bind_template_callback (widget_class, notify_indicators_cb);
-
-  gtk_widget_class_install_action (widget_class, "carousel.return", NULL, (GtkWidgetActionActivateFunc) carousel_return_cb);
+  box->set_orientation(static_cast<Gtk::Orientation>(1 - (int)orientation));
+  carousel->set_orientation(static_cast<Gtk::Orientation>(orientation));
 }
 
-static void
-adw_demo_page_carousel_init (AdwDemoPageCarousel *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageCarousel::notify_indicators_cb() {
+  auto obj = std::dynamic_pointer_cast<Gtk::StringObject>(indicators_row->get_selected_item());
+
+  indicators_stack->set_visible_child(obj->get_string());
 }
+
+void DemoPageCarousel::carousel_return_cb() {
+  carousel->scroll_to(carousel->get_nth_page(0), true);
+}
+
+} // namespace Adw

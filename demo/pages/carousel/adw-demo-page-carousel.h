@@ -1,11 +1,30 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/bin_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_DEMO_PAGE_CAROUSEL (adw_demo_page_carousel_get_type())
+class DemoPageCarousel : public Gtk::TemplateWidget<DemoPageCarousel, Adw::Bin> {
+  friend CppClassType;
 
-G_DECLARE_FINAL_TYPE (AdwDemoPageCarousel, adw_demo_page_carousel, ADW, DEMO_PAGE_CAROUSEL, AdwBin)
+protected:
+  DemoPageCarousel(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-G_END_DECLS
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  static const char class_name[];
+  void init_widget(Gtk::TemplateWidgetInit &i);
+
+  void notify_orientation_cb();
+  void notify_indicators_cb();
+  void carousel_return_cb();
+
+  Gtk::Box *box;
+  Adw::Carousel *carousel;
+  Gtk::Stack *indicators_stack;
+  Adw::ComboRow *orientation_row;
+  Adw::ComboRow *indicators_row;
+};
+
+} // namespace Adw
