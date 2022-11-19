@@ -30,8 +30,9 @@ _PINCLUDE(libadwaitamm/private/preferencesrow_p.h)
 namespace Adw
 {
 
-class EntryRow : public Adw::PreferencesRow {
+class EntryRow : public Adw::PreferencesRow, public Gtk::Editable {
   _CLASS_GTKOBJECT(EntryRow, AdwEntryRow, ADW_ENTRY_ROW, Adw::PreferencesRow, AdwPreferencesRow)
+  _IMPLEMENTS_INTERFACE(Gtk::Editable)
   _STRUCT_NOT_HIDDEN
 
 protected:
