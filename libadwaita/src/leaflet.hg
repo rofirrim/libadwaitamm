@@ -29,6 +29,7 @@ _PINCLUDE(gtkmm/private/widget_p.h)
 #include <libadwaitamm/leafletpage.h>
 #include <libadwaitamm/navigationdirection.h>
 #include <libadwaitamm/springparams.h>
+#include <libadwaitamm/swipeable.h>
 #include <libadwaitamm/foldthresholdpolicy.h>
 #include <libadwaita-1/adwaita.h>
 
@@ -36,8 +37,10 @@ namespace Adw
 {
 _WRAP_ENUM(LeafletTransitionType, AdwLeafletTransitionType)
 
-class Leaflet : public Gtk::Widget {
+class Leaflet : public Gtk::Widget, public Gtk::Orientable, public Adw::Swipeable {
   _CLASS_GTKOBJECT(Leaflet, AdwLeaflet, ADW_LEAFLET, Gtk::Widget, GtkWidget)
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
+  _IMPLEMENTS_INTERFACE(Adw::Swipeable)
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 

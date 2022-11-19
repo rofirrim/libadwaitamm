@@ -32,10 +32,10 @@ _PINCLUDE(glibmm/private/object_p.h)
 namespace Adw
 {
 
-class SwipeTracker : public Glib::Object, public Swipeable {
+class SwipeTracker : public Glib::Object, public Gtk::Orientable {
   _CLASS_GOBJECT(SwipeTracker, AdwSwipeTracker, ADW_SWIPE_TRACKER, Glib::Object, GObject)
   _STRUCT_NOT_HIDDEN
-  _IMPLEMENTS_INTERFACE(Swipeable)
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _DO_NOT_DERIVE_GTYPE
 
 protected:

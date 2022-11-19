@@ -31,8 +31,9 @@ _PINCLUDE(glibmm/private/object_p.h)
 namespace Adw
 {
 
-class EnumListModel : public Glib::Object {
+class EnumListModel : public Glib::Object, public Gio::ListModel {
   _CLASS_GOBJECT(EnumListModel, AdwEnumListModel, ADW_ENUM_LIST_MODEL, Glib::Object, GObject)
+  _IMPLEMENTS_INTERFACE(Gio::ListModel)
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 

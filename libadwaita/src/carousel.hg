@@ -22,6 +22,7 @@ _PINCLUDE(gtkmm/private/widget_p.h)
 
 #include <gtkmm.h>
 #include <libadwaitamm/springparams.h>
+#include <libadwaitamm/swipeable.h>
 
 // The documentation explicitly advises against this.
 // But G_DECLARE_FINAL_TYPE seems to do struct { ... } Foo; which means we
@@ -31,8 +32,10 @@ _PINCLUDE(gtkmm/private/widget_p.h)
 namespace Adw
 {
 
-class Carousel : public Gtk::Widget {
+class Carousel : public Gtk::Widget, public Gtk::Orientable, public Adw::Swipeable {
   _CLASS_GTKOBJECT(Carousel, AdwCarousel, ADW_CAROUSEL, Gtk::Widget, GtkWidget)
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
+  _IMPLEMENTS_INTERFACE(Adw::Swipeable)
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 

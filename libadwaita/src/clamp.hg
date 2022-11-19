@@ -30,9 +30,10 @@ _PINCLUDE(gtkmm/private/widget_p.h)
 namespace Adw
 {
 
-class Clamp : public Gtk::Widget {
+class Clamp : public Gtk::Widget, public Gtk::Orientable {
   _CLASS_GTKOBJECT(Clamp, AdwClamp, ADW_CLAMP, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _DO_NOT_DERIVE_GTYPE
 
 protected:

@@ -35,9 +35,10 @@ namespace Adw
 _WRAP_ENUM(SqueezerTransitionType, AdwSqueezerTransitionType)
 
 
-class Squeezer : public Gtk::Widget {
+class Squeezer : public Gtk::Widget, public Gtk::Orientable {
   _CLASS_GTKOBJECT(Squeezer, AdwSqueezer, ADW_SQUEEZER, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _DO_NOT_DERIVE_GTYPE
 
 protected:

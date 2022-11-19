@@ -31,8 +31,9 @@ _PINCLUDE(gtkmm/private/widget_p.h)
 namespace Adw
 {
 
-class CarouselIndicatorDots : public Gtk::Widget {
+class CarouselIndicatorDots : public Gtk::Widget, public Gtk::Orientable {
   _CLASS_GTKOBJECT(CarouselIndicatorDots, AdwCarouselIndicatorDots, ADW_CAROUSEL_INDICATOR_DOTS, Gtk::Widget, GtkWidget)
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 

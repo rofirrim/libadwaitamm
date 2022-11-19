@@ -27,6 +27,7 @@ _PINCLUDE(gtkmm/private/widget_p.h)
 // cannot forward-declare a struct type Foo.
 #include <libadwaitamm/foldthresholdpolicy.h>
 #include <libadwaitamm/springparams.h>
+#include <libadwaitamm/swipeable.h>
 #include <libadwaita-1/adwaita.h>
 
 namespace Adw
@@ -35,9 +36,11 @@ namespace Adw
 _WRAP_ENUM(FlapFoldPolicy, AdwFlapFoldPolicy)
 _WRAP_ENUM(FlapTransitionType, AdwFlapTransitionType)
 
-class Flap : public Gtk::Widget {
+class Flap : public Gtk::Widget, Gtk::Orientable, Adw::Swipeable {
   _CLASS_GTKOBJECT(Flap, AdwFlap, ADW_FLAP, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
+  _IMPLEMENTS_INTERFACE(Gtk::Orientable)
+  _IMPLEMENTS_INTERFACE(Adw::Swipeable)
   _DO_NOT_DERIVE_GTYPE
 
 protected:
