@@ -62,9 +62,10 @@ DemoWindow::DemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   g_type_ensure(Adw::DemoPageAbout::get_type());
   g_type_ensure(Adw::DemoPageAnimations::get_type());
+  g_type_ensure(Adw::DemoPageAvatar::get_type());
   // g_type_ensure(ADW_TYPE_DEMO_PAGE_ABOUT);
   // g_type_ensure(ADW_TYPE_DEMO_PAGE_ANIMATIONS);
-  g_type_ensure(ADW_TYPE_DEMO_PAGE_AVATAR);
+  // g_type_ensure(ADW_TYPE_DEMO_PAGE_AVATAR);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_BUTTONS);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_CAROUSEL);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_CLAMP);

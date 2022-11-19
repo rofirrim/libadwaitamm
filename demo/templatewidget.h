@@ -195,6 +195,11 @@ public:
 
   using TemplateWidgetBase = TemplateWidget;
   using CppClassType = TemplateWidget::TemplateWidgetClass;
+
+  // This is a convenience method that pairs with install_action.
+  void action_set_enabled(const Glib::ustring& name, bool enabled) {
+      gtk_widget_action_set_enabled(GTK_WIDGET(this->gobj()), name.c_str(), enabled);
+  }
 };
 
 template <typename CppObjectClass, typename CppBaseObjectClass>
