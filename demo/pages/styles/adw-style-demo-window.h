@@ -1,13 +1,42 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/window_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_STYLE_DEMO_WINDOW (adw_style_demo_window_get_type())
+class StyleDemoWindow
+    : public Gtk::TemplateWidget<StyleDemoWindow, Adw::Window> {
+  friend CppClassType;
+public:
+  static StyleDemoWindow* create();
 
-G_DECLARE_FINAL_TYPE (AdwStyleDemoWindow, adw_style_demo_window, ADW, STYLE_DEMO_WINDOW, AdwWindow)
+protected:
+  explicit StyleDemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
+  ~StyleDemoWindow() override;
 
-AdwStyleDemoWindow *adw_style_demo_window_new (void);
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  void init_widget(Gtk::TemplateWidgetInit &i);
 
-G_END_DECLS
+  void sidebar_back_cb();
+  void sidebar_forward_cb();
+
+  static void header_bar_cb(GtkWidget *sender, const char *name, GVariant *param);
+  static void status_page_cb(GtkWidget *sender, const char *name, GVariant *param);
+  static void sidebar_cb(GtkWidget *sender, const char *name, GVariant *param);
+
+  std::unique_ptr<Glib::Property<bool>> p_devel;
+  std::unique_ptr<Glib::Property<bool>> p_progress;
+
+  Gtk::Window *header_bar_window;
+  Gtk::Window *status_page_window;
+  Gtk::Window *sidebar_window;
+  Adw::Leaflet *sidebar_leaflet;
+
+  static bool is_managed() { return false; }
+};
+
+} // namespace Adw

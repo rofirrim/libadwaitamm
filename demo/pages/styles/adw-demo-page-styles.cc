@@ -18,11 +18,12 @@ void DemoPageStyles::init_widget(Gtk::TemplateWidgetInit &i) {
 }
 
 void DemoPageStyles::demo_run_cb() {
-  AdwStyleDemoWindow *window = adw_style_demo_window_new();
-  GtkRoot *root = gtk_widget_get_root(GTK_WIDGET(this->gobj()));
+  Adw::StyleDemoWindow *window = Adw::StyleDemoWindow::create();
 
-  gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(root));
-  gtk_window_present(GTK_WINDOW(window));
+  Gtk::Window *root = dynamic_cast<Gtk::Window *>(get_root());
+
+  window->set_transient_for(*root);
+  window->present();
 }
 
 } // namespace Adw
