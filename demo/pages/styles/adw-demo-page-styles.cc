@@ -4,35 +4,25 @@
 
 #include "adw-style-demo-window.h"
 
-struct _AdwDemoPageStyles
-{
-  AdwBin parent_instance;
-};
-
-G_DEFINE_TYPE (AdwDemoPageStyles, adw_demo_page_styles, ADW_TYPE_BIN)
-
-static void
-demo_run_cb (AdwDemoPageStyles *self)
-{
-  AdwStyleDemoWindow *window = adw_style_demo_window_new ();
-  GtkRoot *root = gtk_widget_get_root (GTK_WIDGET (self));
-
-  gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (root));
-  gtk_window_present (GTK_WINDOW (window));
+namespace Adw {
+const char DemoPageStyles::class_name[] = "AdwDemoPageStyles";
+void DemoPageStyles::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/styles/adw-demo-page-styles.ui");
+  s.install_action("demo.run",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageStyles::demo_run_cb>());
 }
 
-static void
-adw_demo_page_styles_class_init (AdwDemoPageStylesClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/styles/adw-demo-page-styles.ui");
-
-  gtk_widget_class_install_action (widget_class, "demo.run", NULL, (GtkWidgetActionActivateFunc) demo_run_cb);
+void DemoPageStyles::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
 
-static void
-adw_demo_page_styles_init (AdwDemoPageStyles *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageStyles::demo_run_cb() {
+  AdwStyleDemoWindow *window = adw_style_demo_window_new();
+  GtkRoot *root = gtk_widget_get_root(GTK_WIDGET(this->gobj()));
+
+  gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(root));
+  gtk_window_present(GTK_WINDOW(window));
 }
+
+} // namespace Adw
