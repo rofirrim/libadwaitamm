@@ -110,7 +110,7 @@
                                       <object class="GtkToggleButton" id="start_toggle_button">
                                         <property name="label" translatable="yes">Start</property>
                                         <property name="active">True</property>
-                                        <signal name="toggled" handler="start_toggle_button_toggled_cb"/>
+                                        <signal name="toggled" handler="start_toggle_button_toggled_cb" swapped="true"/>
                                       </object>
                                     </child>
                                     <child>

@@ -1,13 +1,34 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/window_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_FLAP_DEMO_WINDOW (adw_flap_demo_window_get_type())
+class FlapDemoWindow : public Gtk::TemplateWidget<FlapDemoWindow, Adw::Window> {
+  friend CppClassType;
 
-G_DECLARE_FINAL_TYPE (AdwFlapDemoWindow, adw_flap_demo_window, ADW, FLAP_DEMO_WINDOW, AdwWindow)
+public:
+  static FlapDemoWindow *create();
 
-AdwFlapDemoWindow *adw_flap_demo_window_new (void);
+protected:
+  explicit FlapDemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-G_END_DECLS
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  void init_widget(Gtk::TemplateWidgetInit &i);
+
+  // This is a window so it is not managed.
+  static bool is_managed() { return false; }
+
+  void stack_notify_visible_child_cb();
+  void start_toggle_button_toggled_cb(GtkToggleButton *button_);
+
+  Adw::Flap *flap;
+  Gtk::Widget *reveal_btn_start;
+  Gtk::Widget *reveal_btn_end;
+};
+
+} // namespace Adw

@@ -19,11 +19,11 @@ void DemoPageFlap::init_widget(Gtk::TemplateWidgetInit &i) {
 }
 
 void DemoPageFlap::demo_run_cb() {
-  AdwFlapDemoWindow *window = adw_flap_demo_window_new();
-  GtkRoot *root = gtk_widget_get_root(GTK_WIDGET(this->gobj()));
+  Adw::FlapDemoWindow *window = Adw::FlapDemoWindow::create();
+  Gtk::Window *root = dynamic_cast<Gtk::Window*>(this->get_root());
 
-  gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(root));
-  gtk_window_present(GTK_WINDOW(window));
+  window->set_transient_for(*root);
+  window->present();
 }
 
 } // namespace Adw
