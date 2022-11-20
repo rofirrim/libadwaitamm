@@ -1,38 +1,29 @@
 #include "adw-demo-page-flap.h"
+#include "adw-flap-demo-window.h"
 
 #include <glib/gi18n.h>
 
-#include "adw-flap-demo-window.h"
+namespace Adw {
 
-struct _AdwDemoPageFlap
-{
-  AdwBin parent_instance;
-};
+const char DemoPageFlap::class_name[] = "AdwDemoPageFlap";
 
-G_DEFINE_TYPE (AdwDemoPageFlap, adw_demo_page_flap, ADW_TYPE_BIN)
-
-static void
-demo_run_cb (AdwDemoPageFlap *self)
-{
-  AdwFlapDemoWindow *window = adw_flap_demo_window_new ();
-  GtkRoot *root = gtk_widget_get_root (GTK_WIDGET (self));
-
-  gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (root));
-  gtk_window_present (GTK_WINDOW (window));
+void DemoPageFlap::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/flap/adw-demo-page-flap.ui");
+  s.install_action("demo.run",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageFlap::demo_run_cb>());
 }
 
-static void
-adw_demo_page_flap_class_init (AdwDemoPageFlapClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/flap/adw-demo-page-flap.ui");
-
-  gtk_widget_class_install_action (widget_class, "demo.run", NULL, (GtkWidgetActionActivateFunc) demo_run_cb);
+void DemoPageFlap::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
 
-static void
-adw_demo_page_flap_init (AdwDemoPageFlap *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageFlap::demo_run_cb() {
+  AdwFlapDemoWindow *window = adw_flap_demo_window_new();
+  GtkRoot *root = gtk_widget_get_root(GTK_WIDGET(this->gobj()));
+
+  gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(root));
+  gtk_window_present(GTK_WINDOW(window));
 }
+
+} // namespace Adw

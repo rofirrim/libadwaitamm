@@ -1,11 +1,22 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/bin_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_DEMO_PAGE_FLAP (adw_demo_page_flap_get_type())
+class DemoPageFlap : public Gtk::TemplateWidget<DemoPageFlap, Adw::Bin> {
+    friend CppClassType;
+protected:
+  explicit DemoPageFlap(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-G_DECLARE_FINAL_TYPE (AdwDemoPageFlap, adw_demo_page_flap, ADW, DEMO_PAGE_FLAP, AdwBin)
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  void init_widget(Gtk::TemplateWidgetInit &i);
 
-G_END_DECLS
+  void demo_run_cb();
+};
+
+} // namespace Adw
