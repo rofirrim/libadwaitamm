@@ -66,8 +66,8 @@ void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   g_type_ensure(Adw::DemoPageClamp::get_type());
   g_type_ensure(Adw::DemoPageDialogs::get_type());
   g_type_ensure(Adw::DemoPageFlap::get_type());
+  g_type_ensure(Adw::DemoPageLeaflet::get_type());
 
-  g_type_ensure(ADW_TYPE_DEMO_PAGE_LEAFLET);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_LISTS);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_STYLES);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_TAB_VIEW);

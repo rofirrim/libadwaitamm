@@ -1,11 +1,27 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/bin_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_DEMO_PAGE_LEAFLET (adw_demo_page_leaflet_get_type())
+class DemoPageLeaflet : public Gtk::TemplateWidget<DemoPageLeaflet, Adw::Bin> {
+  friend CppClassType;
 
-G_DECLARE_FINAL_TYPE (AdwDemoPageLeaflet, adw_demo_page_leaflet, ADW, DEMO_PAGE_LEAFLET, AdwBin)
+protected:
+  DemoPageLeaflet(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-G_END_DECLS
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  static unsigned int signal_next_page;
+  void init_widget(Gtk::TemplateWidgetInit &i);
+
+  void next_row_activated_cb();
+
+  std::unique_ptr<Glib::Property<Adw::LeafletTransitionType>> p_transition_type;
+
+};
+
+} // namespace Adw
