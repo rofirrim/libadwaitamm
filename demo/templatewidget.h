@@ -143,6 +143,8 @@ public:
     gtk_widget_class_install_action(widget_class, name.c_str(), NULL,
                                     (GtkWidgetActionActivateFunc)callback);
   }
+
+  GType get_class_type() { return G_TYPE_FROM_CLASS(widget_class); }
 };
 
 class TemplateWidgetInit {

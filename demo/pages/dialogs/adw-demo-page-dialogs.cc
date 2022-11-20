@@ -2,77 +2,59 @@
 
 #include <glib/gi18n.h>
 
-struct _AdwDemoPageDialogs
-{
-  AdwBin parent_instance;
-};
+namespace Adw {
 
-G_DEFINE_TYPE (AdwDemoPageDialogs, adw_demo_page_dialogs, ADW_TYPE_BIN)
+const char DemoPageDialogs::class_name[] = "AdwDemoPageDialogs";
+unsigned int DemoPageDialogs::signal_add_toast;
 
-enum {
-  SIGNAL_ADD_TOAST,
-  SIGNAL_LAST_SIGNAL,
-};
+void DemoPageDialogs::setup_template(Gtk::TemplateWidgetSetup &s) {
+  // Creation of signals should be somehow wrapped, although this hasn't
+  // typically needed.
+  signal_add_toast =
+      g_signal_new("add-toast", s.get_class_type(), G_SIGNAL_RUN_FIRST, 0, NULL,
+                   NULL, NULL, G_TYPE_NONE, 1, ADW_TYPE_TOAST);
 
-static guint signals[SIGNAL_LAST_SIGNAL];
-
-static void
-message_response_cb (AdwDemoPageDialogs *self,
-                     const char         *response)
-{
-  AdwToast *toast = adw_toast_new_format (_("Dialog response: %s"), response);
-
-  g_signal_emit (self, signals[SIGNAL_ADD_TOAST], 0, toast);
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/dialogs/adw-demo-page-dialogs.ui");
+  s.install_action(
+      "demo.message-dialog",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageDialogs::demo_message_dialog_cb>());
 }
 
-static void
-demo_message_dialog_cb (AdwDemoPageDialogs *self)
-{
-  GtkWindow *parent = GTK_WINDOW (gtk_widget_get_root (GTK_WIDGET (self)));
-  GtkWidget *dialog;
-
-  dialog = adw_message_dialog_new (parent,
-                                   _("Save Changes?"),
-                                   _("Open document contains unsaved changes. Changes which are not saved will be permanently lost."));
-
-  adw_message_dialog_add_responses (ADW_MESSAGE_DIALOG (dialog),
-                                    "cancel",  _("_Cancel"),
-                                    "discard", _("_Discard"),
-                                    "save",    _("_Save"),
-                                    NULL);
-
-  adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (dialog), "discard", ADW_RESPONSE_DESTRUCTIVE);
-  adw_message_dialog_set_response_appearance (ADW_MESSAGE_DIALOG (dialog), "save", ADW_RESPONSE_SUGGESTED);
-
-  adw_message_dialog_set_default_response (ADW_MESSAGE_DIALOG (dialog), "save");
-  adw_message_dialog_set_close_response (ADW_MESSAGE_DIALOG (dialog), "cancel");
-
-  g_signal_connect_swapped (dialog, "response", G_CALLBACK (message_response_cb), self);
-
-  gtk_window_present (GTK_WINDOW (dialog));
+void DemoPageDialogs::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
 
-static void
-adw_demo_page_dialogs_class_init (AdwDemoPageDialogsClass *klass)
+void DemoPageDialogs::demo_message_dialog_cb()
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  Gtk::Window *parent = dynamic_cast<Gtk::Window*>(get_root());
 
-  signals[SIGNAL_ADD_TOAST] =
-    g_signal_new ("add-toast",
-                  G_TYPE_FROM_CLASS (klass),
-                  G_SIGNAL_RUN_FIRST,
-                  0,
-                  NULL, NULL, NULL,
-                  G_TYPE_NONE, 1,
-                  ADW_TYPE_TOAST);
+  Adw::MessageDialog *dialog = new Adw::MessageDialog(
+      parent, _("Save Changes?"),
+      _("Open document contains unsaved changes. Changes which are not saved "
+        "will be permanently lost."));
 
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/dialogs/adw-demo-page-dialogs.ui");
+  dialog->add_response("cancel",  _("_Cancel"));
+  dialog->set_close_response("cancel");
 
-  gtk_widget_class_install_action (widget_class, "demo.message-dialog", NULL, (GtkWidgetActionActivateFunc) demo_message_dialog_cb);
+  dialog->add_response("discard", _("_Discard"));
+  dialog->set_response_appearance("discard",
+                                  Adw::ResponseAppearance::DESTRUCTIVE);
+
+  dialog->add_response("save",    _("_Save"));
+  dialog->set_response_appearance("save", Adw::ResponseAppearance::SUGGESTED);
+  dialog->set_default_response("save");
+
+  dialog->signal_response().connect([this](const Glib::ustring &response) {
+    auto toast = Adw::Toast::create(
+        Glib::ustring::sprintf(_("Dialog response: %s"), response));
+    toast->reference();
+
+    // FIXME: Wrap this.
+    g_signal_emit(gobj(), signal_add_toast, 0, toast->gobj());
+  });
+
+  dialog->present();
 }
 
-static void
-adw_demo_page_dialogs_init (AdwDemoPageDialogs *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
 }
