@@ -31,7 +31,7 @@ class MessageDialog : public Gtk::Window {
   _UNMANAGEABLE
 
 public:
-  _WRAP_CTOR(MessageDialog(Gtk::Window* parent, const Glib::ustring& heading, const Glib::ustring& body), adw_message_dialog_new)
+  _WRAP_CTOR(MessageDialog(Gtk::Window* transient_for, const Glib::ustring& heading, const Glib::ustring& body), adw_message_dialog_new)
 
   _WRAP_METHOD(void add_response(const Glib::ustring& id, const Glib::ustring& label), adw_message_dialog_add_response)
   _WRAP_METHOD(Glib::ustring get_body() const, adw_message_dialog_get_body)
