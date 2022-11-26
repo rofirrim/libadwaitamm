@@ -4,11 +4,11 @@
 
 #if 0
 
-// This defines Gtk::TemplateWidget which is a helper class to ease in the
-// best way possible to use of widget with gtkmm. Unfortunately, this has not
-// been wrapped in gtkmm which forces us to rely on C GTK APIs. It is possible,
-// though, by constraining the way we can create gtkmm objects to make widget
-// templates a bit less cumbersome.
+// This defines Gtk::TemplateWidget which is a helper class to ease in the best
+// way possible the use of template widget with gtkmm. Unfortunately, this has
+// not been wrapped in gtkmm which forces us to rely on C GTK APIs. It is
+// possible, though, by constraining the way we can create gtkmm objects to
+// make widget templates a bit less cumbersome.
 //
 // This approach is not perfect but covers the most common use cases when
 // using gtk templates. One downside is that you may need, due to headers
