@@ -4,37 +4,28 @@
 
 #include "adw-tab-view-demo-window.h"
 
-struct _AdwDemoPageTabView
-{
-  AdwBin parent_instance;
-};
+namespace Adw {
 
-G_DEFINE_TYPE (AdwDemoPageTabView, adw_demo_page_tab_view, ADW_TYPE_BIN)
+const char DemoPageTabView::class_name[] = "AdwDemoPageTabView";
 
-static void
-demo_run_cb (AdwDemoPageTabView *self)
-{
-  AdwTabViewDemoWindow *window = adw_tab_view_demo_window_new ();
-  GtkRoot *root = gtk_widget_get_root (GTK_WIDGET (self));
+void DemoPageTabView::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/tab-view/adw-demo-page-tab-view.ui");
 
-  adw_tab_view_demo_window_prepopulate (window);
-
-  gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (root));
-  gtk_window_present (GTK_WINDOW (window));
+  s.install_action("demo.run",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageTabView::demo_run_cb>());
 }
 
-static void
-adw_demo_page_tab_view_class_init (AdwDemoPageTabViewClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/tab-view/adw-demo-page-tab-view.ui");
-
-  gtk_widget_class_install_action (widget_class, "demo.run", NULL, (GtkWidgetActionActivateFunc) demo_run_cb);
+void DemoPageTabView::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
 
-static void
-adw_demo_page_tab_view_init (AdwDemoPageTabView *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageTabView::demo_run_cb() {
+  Gtk::Window *root = dynamic_cast<Gtk::Window*>(get_root());
+  TabViewDemoWindow *window = TabViewDemoWindow::create();
+  window->prepopulate();
+  window->set_transient_for(*root);
+  window->present();
 }
+
+} // namespace Adw

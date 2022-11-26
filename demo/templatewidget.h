@@ -144,7 +144,9 @@ public:
                                     (GtkWidgetActionActivateFunc)callback);
   }
 
-  GType get_class_type() { return G_TYPE_FROM_CLASS(widget_class); }
+  GType get_class_type() const { return G_TYPE_FROM_CLASS(widget_class); }
+
+  GtkWidgetClass *get_class() const { return widget_class; }
 };
 
 class TemplateWidgetInit {
