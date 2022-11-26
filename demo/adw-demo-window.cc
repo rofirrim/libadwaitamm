@@ -28,6 +28,7 @@ void DemoWindow::setup_template(Gtk::TemplateWidgetSetup& s) {
   s.bind_widget("color_scheme_button");
   s.bind_widget("main_leaflet");
   s.bind_widget("subpage_leaflet");
+  s.bind_widget("toasts_page");
 
   s.bind_callback(
       "get_color_scheme_icon_name",
@@ -70,8 +71,8 @@ void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   g_type_ensure(Adw::DemoPageLists::get_type());
   g_type_ensure(Adw::DemoPageStyles::get_type());
   g_type_ensure(Adw::DemoPageTabView::get_type());
+  g_type_ensure(Adw::DemoPageToasts::get_type());
 
-  g_type_ensure(ADW_TYPE_DEMO_PAGE_TOASTS);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_VIEW_SWITCHER);
   g_type_ensure(ADW_TYPE_DEMO_PAGE_WELCOME);
 
@@ -80,6 +81,7 @@ void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   i.bind_widget(color_scheme_button, "color_scheme_button");
   i.bind_widget(main_leaflet, "main_leaflet");
   i.bind_widget(subpage_leaflet, "subpage_leaflet");
+  i.bind_widget(toasts_page, "toasts_page");
 
   auto simple_action_group = Gio::SimpleActionGroup::create();
   simple_action_group->add_action(
@@ -120,10 +122,7 @@ void DemoWindow::leaflet_next_page_cb() {
   subpage_leaflet->navigate(NavigationDirection::FORWARD);
 }
 
-void DemoWindow::toast_undo_cb() {
-  g_warning("Not implemented yet");
-  // adw_demo_page_toasts_undo(self->toasts_page->gobj());
-}
+void DemoWindow::toast_undo_cb() { toasts_page->undo(); }
 
 void DemoWindow::notify_system_supports_color_schemes_cb() {
   auto manager = StyleManager::get_default();

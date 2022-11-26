@@ -3,6 +3,7 @@
 #include "templatewidget.h"
 #include <libadwaitamm.h>
 #include <libadwaitamm/private/applicationwindow_p.h>
+#include "pages/toasts/adw-demo-page-toasts.h"
 
 namespace Adw {
 
@@ -27,6 +28,7 @@ private:
   Adw::Leaflet *main_leaflet = nullptr;
   Adw::Leaflet *subpage_leaflet = nullptr;
   Gtk::Widget *color_scheme_button = nullptr;
+  Adw::DemoPageToasts* toasts_page = nullptr;
 
   static const char class_name[];
   static void setup_template(Gtk::TemplateWidgetSetup &s);

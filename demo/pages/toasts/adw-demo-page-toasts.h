@@ -1,13 +1,35 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/bin_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_DEMO_PAGE_TOASTS (adw_demo_page_toasts_get_type())
+class DemoPageToasts : public Gtk::TemplateWidget<DemoPageToasts, Adw::Bin> {
+  friend CppClassType;
 
-G_DECLARE_FINAL_TYPE (AdwDemoPageToasts, adw_demo_page_toasts, ADW, DEMO_PAGE_TOASTS, AdwBin)
+public:
+  void undo();
 
-void adw_demo_page_toasts_undo (AdwDemoPageToasts *self);
+protected:
+  explicit DemoPageToasts(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-G_END_DECLS
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  void init_widget(Gtk::TemplateWidgetInit &i);
+
+  void add_toast(const Glib::RefPtr<Adw::Toast> &toast);
+  void toast_add_cb();
+  void toast_add_with_button_cb();
+  void toast_add_with_long_title_cb();
+  void toast_dismiss_cb();
+
+  static unsigned int signal_add_toast;
+
+  Glib::RefPtr<Adw::Toast> undo_toast;
+  int toast_undo_items = 0;
+};
+
+} // namespace Adw

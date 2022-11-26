@@ -2,136 +2,115 @@
 
 #include <glib/gi18n.h>
 
-struct _AdwDemoPageToasts
-{
-  AdwBin parent_instance;
+namespace Adw {
 
-  AdwToast *undo_toast;
-  int toast_undo_items;
-};
+const char DemoPageToasts::class_name[] = "AdwDemoPageToasts";
+unsigned int DemoPageToasts::signal_add_toast;
 
-enum {
-  SIGNAL_ADD_TOAST,
-  SIGNAL_LAST_SIGNAL,
-};
+void DemoPageToasts::setup_template(Gtk::TemplateWidgetSetup &s) {
 
-static guint signals[SIGNAL_LAST_SIGNAL];
+  signal_add_toast =
+      g_signal_new("add-toast", s.get_class_type(), G_SIGNAL_RUN_FIRST, 0, NULL,
+                   NULL, NULL, G_TYPE_NONE, 1, ADW_TYPE_TOAST);
 
-G_DEFINE_TYPE (AdwDemoPageToasts, adw_demo_page_toasts, ADW_TYPE_BIN)
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/toasts/adw-demo-page-toasts.ui");
 
-static void
-add_toast (AdwDemoPageToasts *self,
-           AdwToast          *toast)
-{
-  g_signal_emit (self, signals[SIGNAL_ADD_TOAST], 0, toast);
+  s.install_action("toast.add",
+                   Gtk::ptr_fun_to_mem_fun<&DemoPageToasts::toast_add_cb>());
+  s.install_action(
+      "toast.add-with-button",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageToasts::toast_add_with_button_cb>());
+  s.install_action(
+      "toast.add-with-long-title",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageToasts::toast_add_with_long_title_cb>());
+  s.install_action(
+      "toast.dismiss",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageToasts::toast_dismiss_cb>());
 }
 
-static void
-dismissed_cb (AdwDemoPageToasts *self)
-{
-  self->undo_toast = NULL;
-  self->toast_undo_items = 0;
-
-  gtk_widget_action_set_enabled (GTK_WIDGET (self), "toast.dismiss", FALSE);
+void DemoPageToasts::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
+  action_set_enabled("toast.dismiss", false);
 }
 
-static void
-toast_add_cb (AdwDemoPageToasts *self)
-{
-  add_toast (self, adw_toast_new (_("Simple Toast")));
+void DemoPageToasts::toast_add_cb() {
+  Glib::RefPtr<Adw::Toast> toast = Adw::Toast::create(_("Simple Toast"));
+  toast->reference();
+
+  add_toast(toast);
 }
 
-static void
-toast_add_with_button_cb (AdwDemoPageToasts *self)
-{
-  self->toast_undo_items++;
+void DemoPageToasts::toast_add_with_button_cb() {
+  toast_undo_items++;
 
-  if (self->undo_toast) {
-    char *title =
-      g_strdup_printf (ngettext ("<span font_features='tnum=1'>%d</span> item deleted",
-                                 "<span font_features='tnum=1'>%d</span> items deleted",
-                                 self->toast_undo_items), self->toast_undo_items);
+  if (undo_toast) {
+    Glib::ustring title = Glib::ustring::sprintf(
+        ngettext("<span font_features='tnum=1'>%d</span> item deleted",
+                 "<span font_features='tnum=1'>%d</span> items deleted",
+                 toast_undo_items),
+        toast_undo_items);
 
-    adw_toast_set_title (self->undo_toast, title);
+    undo_toast->set_title(title);
 
     /* Bump the toast timeout */
-    add_toast (self, g_object_ref (self->undo_toast));
-
-    g_free (title);
+    undo_toast->reference();
+    add_toast(undo_toast);
   } else {
-    self->undo_toast = adw_toast_new_format (_("‘%s’ deleted"), "Lorem Ipsum");
+    undo_toast = Adw::Toast::create(
+        Glib::ustring::sprintf(_("‘%s’ deleted"), "Lorem Ipsum"));
+    undo_toast->reference();
 
-    adw_toast_set_priority (self->undo_toast, ADW_TOAST_PRIORITY_HIGH);
-    adw_toast_set_button_label (self->undo_toast, _("_Undo"));
-    adw_toast_set_action_name (self->undo_toast, "toast.undo");
+    undo_toast->set_priority(Adw::ToastPriority::HIGH);
+    undo_toast->set_button_label(_("_Undo"));
+    undo_toast->set_action_name("toast.undo");
 
-    g_signal_connect_swapped (self->undo_toast, "dismissed", G_CALLBACK (dismissed_cb), self);
+    undo_toast->signal_dismissed().connect([this]() {
+      undo_toast.reset();
+      toast_undo_items = 0;
+      action_set_enabled("toast.dismiss", false);
+    });
 
-    add_toast (self, self->undo_toast);
+    add_toast(undo_toast);
 
-    gtk_widget_action_set_enabled (GTK_WIDGET (self), "toast.dismiss", TRUE);
+    action_set_enabled("toast.dismiss", true);
   }
 }
 
-static void
-toast_add_with_long_title_cb (AdwDemoPageToasts *self)
-{
-  add_toast (self, adw_toast_new (_("Lorem ipsum dolor sit amet, "
-                                    "consectetur adipiscing elit, "
-                                    "sed do eiusmod tempor incididunt "
-                                    "ut labore et dolore magnam aliquam "
-                                    "quaerat voluptatem.")));
+void DemoPageToasts::toast_add_with_long_title_cb() {
+  Glib::RefPtr<Adw::Toast> toast =
+      Adw::Toast::create(_("Lorem ipsum dolor sit amet, "
+                           "consectetur adipiscing elit, "
+                           "sed do eiusmod tempor incididunt "
+                           "ut labore et dolore magnam aliquam "
+                           "quaerat voluptatem."));
+  toast->reference();
+
+  add_toast(toast);
 }
 
-static void
-toast_dismiss_cb (AdwDemoPageToasts *self)
-{
-  if (self->undo_toast)
-    adw_toast_dismiss (self->undo_toast);
+void DemoPageToasts::add_toast(const Glib::RefPtr<Adw::Toast> &toast) {
+  g_signal_emit(gobj(), signal_add_toast, 0, toast->gobj());
 }
 
-static void
-adw_demo_page_toasts_class_init (AdwDemoPageToastsClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  signals[SIGNAL_ADD_TOAST] =
-    g_signal_new ("add-toast",
-                  G_TYPE_FROM_CLASS (klass),
-                  G_SIGNAL_RUN_FIRST,
-                  0,
-                  NULL, NULL, NULL,
-                  G_TYPE_NONE, 1,
-                  ADW_TYPE_TOAST);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/toasts/adw-demo-page-toasts.ui");
-
-  gtk_widget_class_install_action (widget_class, "toast.add", NULL, (GtkWidgetActionActivateFunc) toast_add_cb);
-  gtk_widget_class_install_action (widget_class, "toast.add-with-button", NULL, (GtkWidgetActionActivateFunc) toast_add_with_button_cb);
-  gtk_widget_class_install_action (widget_class, "toast.add-with-long-title", NULL, (GtkWidgetActionActivateFunc) toast_add_with_long_title_cb);
-  gtk_widget_class_install_action (widget_class, "toast.dismiss", NULL, (GtkWidgetActionActivateFunc) toast_dismiss_cb);
+void DemoPageToasts::toast_dismiss_cb() {
+  if (undo_toast)
+    undo_toast->dismiss();
 }
 
-static void
-adw_demo_page_toasts_init (AdwDemoPageToasts *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageToasts::undo() {
+  Glib::ustring title = Glib::ustring::sprintf(
+      ngettext("Undoing deleting <span font_features='tnum=1'>%d</span> item…",
+               "Undoing deleting <span font_features='tnum=1'>%d</span> items…",
+               toast_undo_items),
+      toast_undo_items);
 
-  gtk_widget_action_set_enabled (GTK_WIDGET (self), "toast.dismiss", FALSE);
+  Glib::RefPtr<Adw::Toast> toast = Adw::Toast::create(title);
+  toast->reference();
+
+  toast->set_priority(Adw::ToastPriority::HIGH);
+
+  add_toast(toast);
 }
 
-void
-adw_demo_page_toasts_undo (AdwDemoPageToasts *self)
-{
-  char *title =
-    g_strdup_printf (ngettext ("Undoing deleting <span font_features='tnum=1'>%d</span> item…",
-                               "Undoing deleting <span font_features='tnum=1'>%d</span> items…",
-                               self->toast_undo_items), self->toast_undo_items);
-  AdwToast *toast = adw_toast_new (title);
-
-  adw_toast_set_priority (toast, ADW_TOAST_PRIORITY_HIGH);
-
-  add_toast (self, toast);
-
-  g_free (title);
-}
+} // namespace Adw
