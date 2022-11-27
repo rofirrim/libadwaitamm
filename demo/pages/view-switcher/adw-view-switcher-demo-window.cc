@@ -2,30 +2,23 @@
 
 #include <glib/gi18n.h>
 
-struct _AdwViewSwitcherDemoWindow
-{
-  AdwWindow parent_instance;
-};
+namespace Adw {
 
-G_DEFINE_TYPE (AdwViewSwitcherDemoWindow, adw_view_switcher_demo_window, ADW_TYPE_WINDOW)
+const char ViewSwitcherDemoWindow::class_name[] = "AdwViewSwitcherDemoWindow";
 
-static void
-adw_view_switcher_demo_window_class_init (AdwViewSwitcherDemoWindowClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/view-switcher/adw-view-switcher-demo-window.ui");
+ViewSwitcherDemoWindow *ViewSwitcherDemoWindow::create() {
+  GObject *obj = g_object_new_with_properties(
+      ViewSwitcherDemoWindow::get_type(), 0, nullptr, nullptr);
+  return ViewSwitcherDemoWindow::wrap(obj);
 }
 
-static void
-adw_view_switcher_demo_window_init (AdwViewSwitcherDemoWindow *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void ViewSwitcherDemoWindow::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource("/org/gnome/Adwaitamm1/Demo/ui/pages/view-switcher/"
+                 "adw-view-switcher-demo-window.ui");
 }
 
-AdwViewSwitcherDemoWindow *
-adw_view_switcher_demo_window_new (void)
-{
-  return ADW_VIEW_SWITCHER_DEMO_WINDOW(
-      g_object_new(ADW_TYPE_VIEW_SWITCHER_DEMO_WINDOW, NULL));
+void ViewSwitcherDemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
+
+} // namespace Adw

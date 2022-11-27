@@ -98,6 +98,15 @@ void SecondWidget::init_widget(Gtk::TemplateWidgetInit &i) {
   // ...
 }
 
+// If you have to expose a constructor, you can do something like this.
+
+SecondWidget *SecondWidget::create() {
+  // Pass any construct time property you may need.
+  GObject *obj = g_object_new_with_properties(
+      SecondWidget::get_type(), 0, nullptr, nullptr);
+  return SecondWidget::wrap(obj);
+}
+
 #endif
 
 namespace Gtk {

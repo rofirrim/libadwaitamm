@@ -4,35 +4,27 @@
 
 #include "adw-view-switcher-demo-window.h"
 
-struct _AdwDemoPageViewSwitcher
-{
-  AdwBin parent_instance;
-};
+namespace Adw {
 
-G_DEFINE_TYPE (AdwDemoPageViewSwitcher, adw_demo_page_view_switcher, ADW_TYPE_BIN)
+const char DemoPageViewSwitcher::class_name[] = "AdwDemoPageViewSwitcher";
 
-static void
-demo_run_cb (AdwDemoPageViewSwitcher *self)
-{
-  AdwViewSwitcherDemoWindow *window = adw_view_switcher_demo_window_new ();
-  GtkRoot *root = gtk_widget_get_root (GTK_WIDGET (self));
-
-  gtk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (root));
-  gtk_window_present (GTK_WINDOW (window));
+void DemoPageViewSwitcher::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource("/org/gnome/Adwaitamm1/Demo/ui/pages/view-switcher/"
+                 "adw-demo-page-view-switcher.ui");
+  s.install_action(
+      "demo.run",
+      Gtk::ptr_fun_to_mem_fun<&DemoPageViewSwitcher::demo_run_cb>());
 }
 
-static void
-adw_demo_page_view_switcher_class_init (AdwDemoPageViewSwitcherClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/view-switcher/adw-demo-page-view-switcher.ui");
-
-  gtk_widget_class_install_action (widget_class, "demo.run", NULL, (GtkWidgetActionActivateFunc) demo_run_cb);
+void DemoPageViewSwitcher::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
 
-static void
-adw_demo_page_view_switcher_init (AdwDemoPageViewSwitcher *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageViewSwitcher::demo_run_cb() {
+  Gtk::Window &root = *dynamic_cast<Gtk::Window *>(get_root());
+
+  ViewSwitcherDemoWindow *window = ViewSwitcherDemoWindow::create();
+  window->set_transient_for(root);
+  window->present();
 }
+} // namespace Adw

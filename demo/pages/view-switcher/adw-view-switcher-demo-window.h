@@ -1,13 +1,26 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/window_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_VIEW_SWITCHER_DEMO_WINDOW (adw_view_switcher_demo_window_get_type())
+class ViewSwitcherDemoWindow
+    : public Gtk::TemplateWidget<ViewSwitcherDemoWindow, Adw::Window> {
+  friend CppClassType;
+public:
+  static ViewSwitcherDemoWindow* create();
 
-G_DECLARE_FINAL_TYPE (AdwViewSwitcherDemoWindow, adw_view_switcher_demo_window, ADW, VIEW_SWITCHER_DEMO_WINDOW, AdwWindow)
+protected:
+  explicit ViewSwitcherDemoWindow(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-AdwViewSwitcherDemoWindow *adw_view_switcher_demo_window_new (void);
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  void init_widget(Gtk::TemplateWidgetInit &i);
 
-G_END_DECLS
+  static bool is_managed() { return false; }
+};
+
+} // namespace Adw

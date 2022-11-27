@@ -1,11 +1,24 @@
 #pragma once
 
-#include <adwaita.h>
+#include <libadwaitamm.h>
+#include <libadwaitamm/private/bin_p.h>
+#include "templatewidget.h"
 
-G_BEGIN_DECLS
+namespace Adw {
 
-#define ADW_TYPE_DEMO_PAGE_VIEW_SWITCHER (adw_demo_page_view_switcher_get_type())
+class DemoPageViewSwitcher
+    : public Gtk::TemplateWidget<DemoPageViewSwitcher, Adw::Bin> {
+  friend CppClassType;
 
-G_DECLARE_FINAL_TYPE (AdwDemoPageViewSwitcher, adw_demo_page_view_switcher, ADW, DEMO_PAGE_VIEW_SWITCHER, AdwBin)
+protected:
+  DemoPageViewSwitcher(GtkWidget *obj) : TemplateWidgetBase(obj) {}
 
-G_END_DECLS
+private:
+  static const char class_name[];
+  static void setup_template(Gtk::TemplateWidgetSetup &s);
+  void init_widget(Gtk::TemplateWidgetInit &i);
+
+  void demo_run_cb();
+};
+
+} // namespace Adw
