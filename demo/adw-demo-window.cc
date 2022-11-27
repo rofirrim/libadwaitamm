@@ -73,8 +73,7 @@ void DemoWindow::init_widget(Gtk::TemplateWidgetInit &i) {
   g_type_ensure(Adw::DemoPageTabView::get_type());
   g_type_ensure(Adw::DemoPageToasts::get_type());
   g_type_ensure(Adw::DemoPageViewSwitcher::get_type());
-
-  g_type_ensure(ADW_TYPE_DEMO_PAGE_WELCOME);
+  g_type_ensure(Adw::DemoPageWelcome::get_type());
 
   i.init_template();
 

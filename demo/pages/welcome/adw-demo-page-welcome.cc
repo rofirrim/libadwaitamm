@@ -2,23 +2,17 @@
 
 #include <glib/gi18n.h>
 
-struct _AdwDemoPageWelcome
-{
-  AdwBin parent_instance;
-};
+namespace Adw {
 
-G_DEFINE_TYPE (AdwDemoPageWelcome, adw_demo_page_welcome, ADW_TYPE_BIN)
+const char DemoPageWelcome::class_name[] = "AdwDemoPageWelcome";
 
-static void
-adw_demo_page_welcome_class_init (AdwDemoPageWelcomeClass *klass)
-{
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  gtk_widget_class_set_template_from_resource (widget_class, "/org/gnome/Adwaitamm1/Demo/ui/pages/welcome/adw-demo-page-welcome.ui");
+void DemoPageWelcome::setup_template(Gtk::TemplateWidgetSetup &s) {
+  s.set_resource(
+      "/org/gnome/Adwaitamm1/Demo/ui/pages/welcome/adw-demo-page-welcome.ui");
 }
 
-static void
-adw_demo_page_welcome_init (AdwDemoPageWelcome *self)
-{
-  gtk_widget_init_template (GTK_WIDGET (self));
+void DemoPageWelcome::init_widget(Gtk::TemplateWidgetInit &i) {
+  i.init_template();
 }
+
+} // namespace Adw
