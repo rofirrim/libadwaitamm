@@ -47,13 +47,13 @@ void DemoPageAvatar::populate_contacts() {
     Glib::RefPtr<Adw::ActionRow> contact = Adw::ActionRow::create();
     contact->reference();
 
-    Gtk::Widget *avatar = Gtk::make_managed<Adw::Avatar>(40, name, true);
+    Gtk::Widget *new_avatar = Gtk::make_managed<Adw::Avatar>(40, name, true);
 
     avatar->set_margin_top(12);
     avatar->set_margin_bottom(12);
 
     contact->set_title(name);
-    contact->add_prefix(*avatar);
+    contact->add_prefix(*new_avatar);
 
     contacts->append(*contact);
   }

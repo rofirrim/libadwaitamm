@@ -130,8 +130,8 @@ private:
   GtkWidgetClass *widget_class;
 
 public:
-  explicit TemplateWidgetSetup(GtkWidgetClass *widget_class)
-      : widget_class(widget_class) {}
+  explicit TemplateWidgetSetup(GtkWidgetClass *widget_class_)
+      : widget_class(widget_class_) {}
 
   void set_resource(const Glib::ustring &resource_name) {
     gtk_widget_class_set_template_from_resource(widget_class,
@@ -321,7 +321,8 @@ public:
     CppObjectClass::setup_template(s);
   }
 
-  static void instance_init_function(GTypeInstance *instance, void *g_class) {
+  static void instance_init_function(GTypeInstance *instance,
+                                     void * /*g_class*/) {
     TemplateWidgetInit i(instance);
     CppObjectClass *self = CppObjectClass::wrap(G_OBJECT(instance));
     self->init_widget(i);

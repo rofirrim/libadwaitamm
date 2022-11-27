@@ -276,11 +276,11 @@ void TabViewDemoWindow::setup_menu_cb(AdwTabPage *page_, AdwTabView *view_) {
   Glib::RefPtr<Adw::TabPage> page = Glib::wrap(page_);
   if (page) page->reference();
 
-  Adw::TabView *view = Glib::wrap(view_);
+  Adw::TabView *tab_view = Glib::wrap(view_);
 
   menu_page = page;
 
-  unsigned int n_pages = view->get_n_pages();
+  unsigned int n_pages = tab_view->get_n_pages();
 
   bool can_close_before = true, can_close_after = true;
   bool pinned = false;
@@ -288,10 +288,10 @@ void TabViewDemoWindow::setup_menu_cb(AdwTabPage *page_, AdwTabView *view_) {
 
   if (page) {
     Glib::RefPtr<Adw::TabPage> prev;
-    unsigned int pos = view->get_page_position(page);
+    unsigned int pos = tab_view->get_page_position(page);
 
     if (pos > 0) {
-      prev = view->get_nth_page(pos - 1);
+      prev = tab_view->get_nth_page(pos - 1);
     }
 
     pinned = page->get_pinned();

@@ -4,34 +4,30 @@
 
 // FIXME - How to better wrap those?
 
-static char *
-get_orientation_name (AdwEnumListItem *item,
-                      gpointer         user_data)
-{
-  switch (adw_enum_list_item_get_value (item)) {
+static char *get_orientation_name(AdwEnumListItem *item,
+                                  gpointer /*user_data*/) {
+  switch (adw_enum_list_item_get_value(item)) {
   case GTK_ORIENTATION_HORIZONTAL:
-    return g_strdup (_("Horizontal"));
+    return g_strdup(_("Horizontal"));
   case GTK_ORIENTATION_VERTICAL:
-    return g_strdup (_("Vertical"));
+    return g_strdup(_("Vertical"));
   default:
     return NULL;
   }
 }
 
-static char *
-get_indicators_name (GtkStringObject *value)
-{
+static char *get_indicators_name(GtkStringObject *value) {
   const char *style;
 
-  g_assert (GTK_IS_STRING_OBJECT (value));
+  g_assert(GTK_IS_STRING_OBJECT(value));
 
-  style = gtk_string_object_get_string (value);
+  style = gtk_string_object_get_string(value);
 
-  if (!g_strcmp0 (style, "dots"))
-    return g_strdup (_("Dots"));
+  if (!g_strcmp0(style, "dots"))
+    return g_strdup(_("Dots"));
 
-  if (!g_strcmp0 (style, "lines"))
-    return g_strdup (_("Lines"));
+  if (!g_strcmp0(style, "lines"))
+    return g_strdup(_("Lines"));
 
   return NULL;
 }

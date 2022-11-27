@@ -2,17 +2,15 @@
 
 #include <glib/gi18n.h>
 
-static char *
-get_transition_name (AdwEnumListItem *item,
-                     gpointer         user_data)
-{
-  switch (adw_enum_list_item_get_value (item)) {
+static char *get_transition_name(AdwEnumListItem *item,
+                                 gpointer /*user_data*/) {
+  switch (adw_enum_list_item_get_value(item)) {
   case ADW_LEAFLET_TRANSITION_TYPE_OVER:
-    return g_strdup (_("Over"));
+    return g_strdup(_("Over"));
   case ADW_LEAFLET_TRANSITION_TYPE_UNDER:
-    return g_strdup (_("Under"));
+    return g_strdup(_("Under"));
   case ADW_LEAFLET_TRANSITION_TYPE_SLIDE:
-    return g_strdup (_("Slide"));
+    return g_strdup(_("Slide"));
   default:
     return NULL;
   }

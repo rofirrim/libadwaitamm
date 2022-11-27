@@ -2,7 +2,7 @@
 
 #include <glib/gi18n.h>
 
-static char *fold_policy_name(AdwEnumListItem *item, gpointer user_data) {
+static char *fold_policy_name(AdwEnumListItem *item, gpointer /*user_data*/) {
   switch (adw_enum_list_item_get_value(item)) {
   case ADW_FLAP_FOLD_POLICY_NEVER:
     return g_strdup(_("Never"));
@@ -15,7 +15,8 @@ static char *fold_policy_name(AdwEnumListItem *item, gpointer user_data) {
   }
 }
 
-static char *transition_type_name(AdwEnumListItem *item, gpointer user_data) {
+static char *transition_type_name(AdwEnumListItem *item,
+                                  gpointer /*user_data*/) {
   switch (adw_enum_list_item_get_value(item)) {
   case ADW_FLAP_TRANSITION_TYPE_OVER:
     return g_strdup(_("Over"));

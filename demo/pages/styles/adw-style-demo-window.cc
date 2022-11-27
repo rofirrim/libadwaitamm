@@ -2,9 +2,10 @@
 
 #include <glib/gi18n.h>
 
-static void dummy_cb(GtkWidget *sender, const char *name, GVariant *param) {}
+static void dummy_cb(GtkWidget * /*sender*/, const char * /*name*/,
+                     GVariant * /*param*/) {}
 
-static GtkSelectionMode selection_mode_for_folded(gpointer data,
+static GtkSelectionMode selection_mode_for_folded(gpointer /*data*/,
                                                   gboolean folded) {
   return folded ? GTK_SELECTION_NONE : GTK_SELECTION_BROWSE;
 }
@@ -88,20 +89,20 @@ void StyleDemoWindow::sidebar_forward_cb() {
   sidebar_leaflet->navigate(Adw::NavigationDirection::FORWARD);
 }
 
-void StyleDemoWindow::header_bar_cb(GtkWidget *sender, const char *name,
-                                    GVariant *param) {
+void StyleDemoWindow::header_bar_cb(GtkWidget *sender, const char * /*name*/,
+                                    GVariant * /*param*/) {
   Adw::StyleDemoWindow *self = Adw::StyleDemoWindow::wrap(G_OBJECT(sender));
   self->header_bar_window->present();
 }
 
-void StyleDemoWindow::status_page_cb(GtkWidget *sender, const char *name,
-                                     GVariant *param) {
+void StyleDemoWindow::status_page_cb(GtkWidget *sender, const char * /*name*/,
+                                     GVariant * /*param*/) {
   Adw::StyleDemoWindow *self = Adw::StyleDemoWindow::wrap(G_OBJECT(sender));
   self->status_page_window->present();
 }
 
-void StyleDemoWindow::sidebar_cb(GtkWidget *sender, const char *name,
-                                 GVariant *param) {
+void StyleDemoWindow::sidebar_cb(GtkWidget *sender, const char * /*name*/,
+                                 GVariant * /*param*/) {
   Adw::StyleDemoWindow *self = Adw::StyleDemoWindow::wrap(G_OBJECT(sender));
   self->sidebar_window->present();
 }

@@ -185,7 +185,7 @@ void DemoPageAnimations::notify_spring_params_change() {
 }
 
 char *DemoPageAnimations::animations_easing_name(AdwEnumListItem *value,
-                                                 gpointer user_data) {
+                                                 gpointer /*user_data*/) {
   switch (adw_enum_list_item_get_value(value)) {
   case ADW_LINEAR:
     return g_strdup(_("Linear"));
@@ -295,14 +295,14 @@ void DemoPageAnimations::timed_animation_allocate(GtkWidget *widget_, int width,
 
   int offset = (int)((width - child_width) * (progress - 0.5));
 
-  graphene_point_t p = GRAPHENE_POINT_INIT((float)offset, 0);
+  graphene_point_t p = {(float)offset, 0};
 
   gtk_widget_allocate(Glib::unwrap(child), width, height, baseline,
                       gsk_transform_translate(NULL, &p));
 }
 
 char *
-DemoPageAnimations::get_play_pause_icon_name(gpointer user_data,
+DemoPageAnimations::get_play_pause_icon_name(gpointer /*user_data*/,
                                              AdwAnimationState timed_state,
                                              AdwAnimationState spring_state) {
   gboolean playing = timed_state == ADW_ANIMATION_PLAYING ||
@@ -313,7 +313,7 @@ DemoPageAnimations::get_play_pause_icon_name(gpointer user_data,
 }
 
 gboolean
-DemoPageAnimations::timed_animation_can_reset(gpointer user_data,
+DemoPageAnimations::timed_animation_can_reset(gpointer /*user_data*/,
                                               AdwAnimationState timed_state,
                                               AdwAnimationState spring_state) {
   return timed_state != ADW_ANIMATION_IDLE ||
@@ -321,14 +321,14 @@ DemoPageAnimations::timed_animation_can_reset(gpointer user_data,
 }
 
 gboolean
-DemoPageAnimations::timed_animation_can_skip(gpointer user_data,
+DemoPageAnimations::timed_animation_can_skip(gpointer /*user_data*/,
                                              AdwAnimationState timed_state,
                                              AdwAnimationState spring_state) {
   return timed_state != ADW_ANIMATION_FINISHED &&
          spring_state != ADW_ANIMATION_FINISHED;
 }
 
-void DemoPageAnimations::timed_animation_cb(double value, GtkWidget *self) {
+void DemoPageAnimations::timed_animation_cb(double /*value*/, GtkWidget *self) {
   gtk_widget_queue_allocate(self);
 }
 
