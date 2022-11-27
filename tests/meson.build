@@ -5,7 +5,6 @@
 tests = [
 # [[dir-name], exe-name, [sources]]
   [['test1'], 'test', ['main.cc']],
-  [['test2'], 'test', ['main.cc']],
 ]
 
 foreach ex : tests
