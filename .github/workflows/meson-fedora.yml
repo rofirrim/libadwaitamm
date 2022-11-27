@@ -1,0 +1,44 @@
+name: C/C++ CI Fedora 37
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: fedora:37
+      options: --security-opt seccomp=unconfined
+    steps:
+    - name: Setup git
+      run: |
+        id
+        ls -la
+        dnf -y install git
+    - uses: actions/checkout@v3
+      with:
+        path: 'libadwaitamm-src'
+    - name: Setup dependencies
+      run: |
+        ls -la libadwaitamm-src
+        adduser -m -U -d /home/user  user
+        mv libadwaitamm-src /home/user
+        chown -R user:user /home/user/libadwaitamm-src
+        dnf -y install gcc-c++ gtkmm4.0-devel meson itstool libadwaita-devel mm-common
+    - name: Configure
+      working-directory: /home/user/libadwaitamm-src
+      run: |
+        sudo -u user -- meson setup builddir
+    - name: Build
+      working-directory: /home/user/libadwaitamm-src/builddir
+      run: |
+        sudo -u user -- meson compile
+    - name: Dist
+      working-directory: /home/user/libadwaitamm-src/builddir
+      run: |
+        sudo -u user -- git status
+        sudo -u user -- meson dist
