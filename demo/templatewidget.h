@@ -163,7 +163,7 @@ private:
   GTypeInstance *instance;
 
 public:
-  explicit TemplateWidgetInit(GTypeInstance *instance) : instance(instance) {}
+  explicit TemplateWidgetInit(GTypeInstance *insn) : instance(insn) {}
 
   void init_template() { gtk_widget_init_template(GTK_WIDGET(instance)); }
 
