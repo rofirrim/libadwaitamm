@@ -6,7 +6,7 @@ if get_option('build-examples')
 
 examples = [
 # [[dir-name], exe-name, [sources]]
-  [['example1'], 'example', ['main.cc']],
+  [['hello-world'], 'hello', ['hello.cc']],
 ]
 
 foreach ex : examples

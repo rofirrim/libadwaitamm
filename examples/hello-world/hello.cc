@@ -20,19 +20,12 @@
 #include <libadwaitamm/init.h>
 
 static void activate_cb(const Glib::RefPtr<Gtk::Application> &app) {
-  auto window = new Adw::ApplicationWindow(app);
-
-  auto box = new Gtk::Box(Gtk::Orientation::VERTICAL, 4);
-
-  auto hbar = new Gtk::HeaderBar();
-  box->append(*hbar);
-
-  auto button = new Gtk::Button("Click me!");
-  box->append(*button);
+  auto window = new Gtk::ApplicationWindow(app);
+  auto label = new Gtk::Label("Hello World");
 
   window->set_title("Hello");
   window->set_default_size(200, 200);
-  window->set_content(box);
+  window->set_child(*label);
   window->present();
 }
 
