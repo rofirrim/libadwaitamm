@@ -2,7 +2,7 @@
 
 ## About
 
-libadwaitamm is a C++ binding for the libadwaita library.
+`libadwaitamm` is a C++ binding for the [GNOME Adwaita](https://gnome.pages.gitlab.gnome.org/libadwaita/) library.
 
 ## How to build
 
