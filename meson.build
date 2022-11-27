@@ -1,7 +1,7 @@
 # This file is part of libadwaitamm.
 
 project('libadwaitamm', 'cpp',
-  version: '1.2.0',
+  version: '1.2.0-beta1',
   license: 'LGPLv2.1+',
   default_options: [
     'cpp_std=c++17',
@@ -10,23 +10,26 @@ project('libadwaitamm', 'cpp',
   meson_version: '>= 0.56.0', # required for executable(..., win_subsystem: ...)
 )
 
-libadwaitamm_api_version = '1.0'
-libadwaitamm_pcname = meson.project_name() + '-' + libadwaitamm_api_version
+libadwaitamm_version_array = meson.project_version().split('-')[0].split('.')
 
-libadwaitamm_version_array = meson.project_version().split('.')
 libadwaitamm_major_version = libadwaitamm_version_array[0].to_int()
 libadwaitamm_minor_version = libadwaitamm_version_array[1].to_int()
 libadwaitamm_micro_version = libadwaitamm_version_array[2].to_int()
 
-# http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
-# The relation between libtool's current:revison:age interface versioning
-# and the .so filename, .so.x.y.z, is
-# x = current - age
-# y = age
-# z = revision
-# If libtool_soversion is updated as described in libtool's documentation,
-# x.y.z will usually *not* be equal to meson.project_version().
+libadwaitamm_api_version = libadwaitamm_major_version.to_string()
+libadwaitamm_pcname = meson.project_name() + '-' + libadwaitamm_api_version
+
+# (Taken from libadwaita meson.build)
+# Before making a release, libtool_soversion must be updated
+#
+#  * Bump the first component if binary compatibility has been broken; or
+#  * Bump the second component if new APIs are added; or
+#  * Bump the third component otherwise.
+#
+# When bumping the first component version, set the second and third components
+# to 0. When bumping the second version, set the third one to zero.
 libtool_soversion = [0, 0, 0]
+
 libadwaitamm_libversion = '@0@.@1@.@2@'.format(
   libtool_soversion[0] - libtool_soversion[2],
   libtool_soversion[2],
