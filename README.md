@@ -8,12 +8,12 @@ libadwaitamm is a C++ binding for the libadwaita library.
 
 Make sure you fulfill the following dependences:
 
- - >=meson-0.56
- - >=glibmm-2.73.2
- - >=pangomm-2.50.0
- - >=gtkmm-4.6.1
- - >=libadwaita-1.2.0
- - >=mm-common-get-1.0.0
+ - `>=meson-0.56`
+ - `>=glibmm-2.73.2`
+ - `>=pangomm-2.50.0`
+ - `>=gtkmm-4.6.1`
+ - `>=libadwaita-1.2.0`
+ - `>=mm-common-get-1.0.0`
    - This is only needed when building in maintainer mode which is the default when not building from a tarball.
 
 If you need a reference environment, Fedora 37 has all the required components
