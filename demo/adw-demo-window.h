@@ -1,9 +1,9 @@
 #pragma once
 
-#include "templatewidget.h"
 #include <libadwaitamm.h>
 #include <libadwaitamm/private/applicationwindow_p.h>
 #include "pages/toasts/adw-demo-page-toasts.h"
+#include "templatewidget.h"
 
 namespace Adw {
 

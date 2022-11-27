@@ -10,9 +10,9 @@
 // 
 // G_END_DECLS
 
-#include "templatewidget.h"
 #include <libadwaitamm.h>
 #include <libadwaitamm/private/bin_p.h>
+#include "templatewidget.h"
 
 namespace Adw {
 
