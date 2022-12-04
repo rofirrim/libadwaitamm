@@ -37,6 +37,10 @@ jobs:
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
         sudo -u user -- meson compile
+    - name: Test
+      working-directory: /home/user/libadwaitamm-src/builddir
+      run: |
+        sudo -u user -- meson test
     - name: Dist
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
