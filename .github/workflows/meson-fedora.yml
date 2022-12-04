@@ -50,4 +50,4 @@ jobs:
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
         sudo -u user -- git status
-        sudo -u user -- meson dist
+        sudo -u user -- meson dist --no-tests
