@@ -41,6 +41,11 @@ jobs:
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
         sudo -u user -- meson test
+    - uses: actions/upload-artifact@v3
+      if: failure()
+      with:
+        name: testlog.txt
+        path: /home/user/libadwaitamm-src/builddir/meson-logs/testlog.txt
     - name: Dist
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
