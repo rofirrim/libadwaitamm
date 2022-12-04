@@ -34,12 +34,14 @@ class CallbackAnimationTarget : public Adw::AnimationTarget {
 
   static void callback_function(double value, gpointer user_data);
 
-protected:
-  _CTOR_DEFAULT
-
 public:
   using SlotTarget = sigc::slot<void(double)>;
+protected:
+  _CTOR_DEFAULT
   CallbackAnimationTarget(const SlotTarget &slot_target);
+
+public:
+  _WRAP_CREATE(const SlotTarget &slot_target)
 };
 
 } // namespace Adw

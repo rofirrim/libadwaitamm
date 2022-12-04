@@ -73,9 +73,8 @@ void DemoPageAnimations::init_widget(Gtk::TemplateWidgetInit &i) {
   i.bind_widget(spring_animation_epsilon, "spring_animation_epsilon");
   i.bind_widget(spring_animation_clamp_switch, "spring_animation_clamp_switch");
 
-  auto target = std::make_shared<Adw::CallbackAnimationTarget>(sigc::bind(
+  auto target = Adw::CallbackAnimationTarget::create(sigc::bind(
       sigc::ptr_fun(timed_animation_cb), Glib::unwrap(timed_animation_sample)));
-  target->reference();
 
   timed_animation =
       Adw::TimedAnimation::create(timed_animation_sample, 0, 1, 100, target);

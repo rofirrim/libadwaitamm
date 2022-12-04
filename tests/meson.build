@@ -27,7 +27,7 @@ endif
 test_names = [
   'test-about-window',
   'test-action-row',
-  # 'test-animation',
+  'test-animation',
   # 'test-animation-target',
   # 'test-application-window',
   # 'test-avatar',
