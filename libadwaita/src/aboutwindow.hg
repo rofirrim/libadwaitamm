@@ -40,7 +40,7 @@ public:
   _CTOR_DEFAULT
   _WRAP_CREATE()
 
-#m4 _CONVERSION(`const char* const*',`std::vector<Glib::ustring>',`Glib::ArrayHandler<Glib::ustring>::array_to_vector($3, Glib::OWNERSHIP_DEEP)')
+#m4 _CONVERSION(`const char* const*',`std::vector<Glib::ustring>',`Glib::ArrayHandler<Glib::ustring>::array_to_vector($3, Glib::OWNERSHIP_NONE)')
 #m4 _CONVERSION(`const std::vector<Glib::ustring>&',`const char**',`Glib::ArrayHandler<Glib::ustring>::vector_to_array($3).data ()')
 
   _WRAP_METHOD(Glib::ustring get_application_icon() const, adw_about_window_get_application_icon)
