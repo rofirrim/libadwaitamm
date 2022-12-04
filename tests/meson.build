@@ -11,7 +11,7 @@ test_env = [
 ]
 
 test_cppflags = [
-  '-DADW_LOG_DOMAIN="Adwaitamm"',
+  '-DADW_LOG_DOMAIN="Adwaita"',
   '-DTEST_DATA_DIR="@0@/data"'.format(meson.current_source_dir()),
 ]
 
