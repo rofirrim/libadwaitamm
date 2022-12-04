@@ -28,7 +28,7 @@ jobs:
         adduser -m -U -d /home/user  user
         mv libadwaitamm-src /home/user
         chown -R user:user /home/user/libadwaitamm-src
-        dnf -y install gcc-c++ gtkmm4.0-devel meson itstool libadwaita-devel mm-common
+        dnf -y install gcc-c++ gtkmm4.0-devel meson itstool libadwaita-devel mm-common weston
     - name: Configure
       working-directory: /home/user/libadwaitamm-src
       run: |
@@ -40,7 +40,7 @@ jobs:
     - name: Test
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
-        sudo -u user -- meson test
+        sudo -u user --  /home/user/libadwaitamm-src/.github/scripts/run-tests.sh
     - uses: actions/upload-artifact@v3
       if: failure()
       with:
