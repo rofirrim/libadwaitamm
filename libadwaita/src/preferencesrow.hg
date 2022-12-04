@@ -28,11 +28,8 @@ namespace Adw
 class PreferencesRow : public Gtk::ListBoxRow {
   _CLASS_GTKOBJECT(PreferencesRow, AdwPreferencesRow, ADW_PREFERENCES_ROW, Gtk::ListBoxRow, GtkListBoxRow)
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Glib::ustring get_title() const, adw_preferences_row_get_title)
   _WRAP_METHOD(bool get_title_selectable() const, adw_preferences_row_get_title_selectable)

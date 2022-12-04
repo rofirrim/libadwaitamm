@@ -36,11 +36,8 @@ class SplitButton : public Gtk::Widget, public Gtk::Actionable {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_split_button_get_child)
   _WRAP_METHOD(Gtk::ArrowType get_direction() const, adw_split_button_get_direction)

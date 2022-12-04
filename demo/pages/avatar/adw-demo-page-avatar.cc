@@ -44,9 +44,7 @@ void DemoPageAvatar::init_widget(Gtk::TemplateWidgetInit &i) {
 void DemoPageAvatar::populate_contacts() {
   for (int i = 0; i < 30; i++) {
     Glib::ustring name = create_random_name();
-    Glib::RefPtr<Adw::ActionRow> contact = Adw::ActionRow::create();
-    contact->reference();
-
+    Adw::ActionRow* contact = Gtk::make_managed<Adw::ActionRow>();
     Gtk::Widget *new_avatar = Gtk::make_managed<Adw::Avatar>(40, name, true);
 
     avatar->set_margin_top(12);

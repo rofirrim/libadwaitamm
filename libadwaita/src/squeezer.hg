@@ -41,11 +41,8 @@ class Squeezer : public Gtk::Widget, public Gtk::Orientable {
   _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Glib::RefPtr<SqueezerPage> add(Gtk::Widget*), adw_squeezer_add, refreturn)
   _WRAP_METHOD(bool get_allow_none() const, adw_squeezer_get_allow_none)

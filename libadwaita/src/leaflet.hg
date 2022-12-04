@@ -44,11 +44,9 @@ class Leaflet : public Gtk::Widget, public Gtk::Orientable, public Adw::Swipeabl
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
+public:
   _CTOR_DEFAULT
 
-public:
-  _WRAP_CREATE()
   _WRAP_METHOD(Glib::RefPtr<LeafletPage> append(Gtk::Widget* child), adw_leaflet_append, refreturn)
   _WRAP_METHOD(Gtk::Widget* get_adjacent_child(NavigationDirection direction) const, adw_leaflet_get_adjacent_child)
   _WRAP_METHOD(bool get_can_navigate_back() const, adw_leaflet_get_can_navigate_back)

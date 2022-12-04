@@ -34,11 +34,8 @@ class ComboRow : public Adw::ActionRow {
   _CLASS_GTKOBJECT(ComboRow, AdwComboRow, ADW_COMBO_ROW, Adw::ActionRow, AdwActionRow)
   _STRUCT_NOT_HIDDEN
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Glib::RefPtr<Gtk::Expression<Glib::ustring>> get_expression() const, adw_combo_row_get_expression, refreturn)
   _WRAP_METHOD(Glib::RefPtr<Gtk::ListItemFactory> get_factory() const, adw_combo_row_get_factory, refreturn)

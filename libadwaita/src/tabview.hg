@@ -38,11 +38,8 @@ class TabView : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Glib::RefPtr<TabPage> add_page(Gtk::Widget* child, const Glib::RefPtr<TabPage>& parent), adw_tab_view_add_page, refreturn)
   _WRAP_METHOD(void add_shortcuts(TabViewShortcuts shortcuts), adw_tab_view_add_shortcuts)

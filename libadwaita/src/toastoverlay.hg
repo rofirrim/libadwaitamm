@@ -36,11 +36,8 @@ class ToastOverlay : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(void add_toast(const Glib::RefPtr<Toast>& toast), adw_toast_overlay_add_toast)
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_toast_overlay_get_child)

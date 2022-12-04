@@ -33,7 +33,6 @@ protected:
   _CTOR_DEFAULT
 
 public:
-  _WRAP_CREATE()
   _WRAP_CTOR(ApplicationWindow(const Glib::RefPtr<Gtk::Application>& application), adw_application_window_new)
   _WRAP_METHOD(Gtk::Widget* get_content() const, adw_application_window_get_content)
   _WRAP_METHOD(void set_content(Gtk::Widget* content), adw_application_window_set_content)

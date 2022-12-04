@@ -38,11 +38,8 @@ class ViewSwitcher : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(ViewSwitcherPolicy get_policy() const, adw_view_switcher_get_policy)
   _WRAP_METHOD(ViewStack* get_stack() const, adw_view_switcher_get_stack)

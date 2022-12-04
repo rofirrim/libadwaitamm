@@ -35,11 +35,9 @@ class WindowTitle : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
+public:
   _CTOR_DEFAULT
 
-public:
-  _WRAP_CREATE()
   _WRAP_METHOD(Glib::ustring get_subtitle() const, adw_window_title_get_subtitle)
   _WRAP_METHOD(Glib::ustring get_title() const, adw_window_title_get_title)
   _WRAP_METHOD(void set_subtitle(const Glib::ustring& str), adw_window_title_set_subtitle)

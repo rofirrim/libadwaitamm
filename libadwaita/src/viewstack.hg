@@ -36,11 +36,8 @@ class ViewStack : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Glib::RefPtr<ViewStackPage> add(Gtk::Widget* child), adw_view_stack_add, refreturn)
   _WRAP_METHOD(Glib::RefPtr<ViewStackPage> add_named(Gtk::Widget* child, const Glib::ustring& name), adw_view_stack_add_named, refreturn)

@@ -36,11 +36,8 @@ class Clamp : public Gtk::Widget, public Gtk::Orientable {
   _IMPLEMENTS_INTERFACE(Gtk::Orientable)
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_clamp_get_child)
   _WRAP_METHOD(int get_maximum_size() const, adw_clamp_get_maximum_size)

@@ -36,11 +36,8 @@ class TabBar : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(bool get_autohide() const, adw_tab_bar_get_autohide)
   _WRAP_METHOD(Gtk::Widget* get_end_action_widget() const, adw_tab_bar_get_end_action_widget)

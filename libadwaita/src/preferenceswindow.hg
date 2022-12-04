@@ -39,7 +39,6 @@ class PreferencesWindow : public Adw::Window {
 
 public:
   _CTOR_DEFAULT
-  _WRAP_CREATE()
 
   _WRAP_METHOD(void add(PreferencesPage* page), adw_preferences_window_add)
   _WRAP_METHOD(void add_toast(Toast* toast), adw_preferences_window_add_toast)

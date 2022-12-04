@@ -27,7 +27,7 @@ namespace Adw
 {
 
 class Application : public Gtk::Application {
-  _CLASS_GTKOBJECT(Application, AdwApplication, ADW_APPLICATION, Gtk::Application, GtkApplication)
+  _CLASS_GOBJECT(Application, AdwApplication, ADW_APPLICATION, Gtk::Application, GtkApplication)
 
 protected:
   _CTOR_DEFAULT

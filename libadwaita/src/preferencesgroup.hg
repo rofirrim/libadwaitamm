@@ -34,11 +34,8 @@ class PreferencesGroup : public Gtk::Widget {
   _CLASS_GTKOBJECT(PreferencesGroup, AdwPreferencesGroup, ADW_PREFERENCES_GROUP, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(void add(Gtk::Widget* child), adw_preferences_group_add)
   _WRAP_METHOD(Glib::ustring get_description() const, adw_preferences_group_get_description)

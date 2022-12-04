@@ -34,11 +34,8 @@ class Bin : public Gtk::Widget {
   _CLASS_GTKOBJECT(Bin, AdwBin, ADW_BIN, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_bin_get_child)
   _WRAP_METHOD(void set_child(Gtk::Widget* widget), adw_bin_set_child)

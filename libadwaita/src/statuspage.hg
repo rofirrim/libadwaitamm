@@ -35,11 +35,8 @@ class StatusPage : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_status_page_get_child)
   _WRAP_METHOD(Glib::ustring get_description() const, adw_status_page_get_description)

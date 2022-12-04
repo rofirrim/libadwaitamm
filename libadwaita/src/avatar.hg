@@ -35,12 +35,8 @@ class Avatar : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
-
+  _CTOR_DEFAULT
   _WRAP_CTOR(Avatar(int size, const Glib::ustring& text, bool show_initials), adw_avatar_new)
  
   _WRAP_METHOD(Glib::RefPtr<Gdk::Texture> draw_to_texture(int scale_factor), adw_avatar_draw_to_texture, refreturn)

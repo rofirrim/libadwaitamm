@@ -11,7 +11,7 @@
 #include <vector>
 
 static void test_adw_about_window_create(void) {
-  Glib::RefPtr<Adw::AboutWindow> window = Adw::AboutWindow::create();
+  Adw::AboutWindow *window = new Adw::AboutWindow();
   g_assert_nonnull(window);
 
   std::vector<Glib::ustring> developers{"Angela Avery"};
@@ -71,6 +71,8 @@ static void test_adw_about_window_create(void) {
                             "");
   window->add_legal_section("Example", "© 2022 Example", Gtk::License::GPL_3_0,
                             "License");
+
+  delete window;
 }
 
 int main(int argc, char *argv[]) {

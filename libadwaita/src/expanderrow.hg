@@ -34,11 +34,8 @@ class ExpanderRow : public Adw::PreferencesRow {
   _CLASS_GTKOBJECT(ExpanderRow, AdwExpanderRow, ADW_EXPANDER_ROW, Adw::PreferencesRow, AdwPreferencesRow)
   _STRUCT_NOT_HIDDEN
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(void add_action(Gtk::Widget* widget), adw_expander_row_add_action)
   _WRAP_METHOD(void add_prefix(Gtk::Widget* widget), adw_expander_row_add_prefix)

@@ -35,11 +35,8 @@ class ButtonContent : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_button_content_get_icon_name)
   _WRAP_METHOD(Glib::ustring get_label() const, adw_button_content_get_label)

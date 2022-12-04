@@ -36,11 +36,8 @@ class HeaderBar : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(CenteringPolicy get_centering_policy() const, adw_header_bar_get_centering_policy)
   _WRAP_METHOD(Glib::ustring get_decoration_layout() const, adw_header_bar_get_decoration_layout)

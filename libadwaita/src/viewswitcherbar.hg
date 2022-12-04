@@ -36,11 +36,9 @@ class ViewSwitcherBar : public Gtk::Widget {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
+public:
   _CTOR_DEFAULT
 
-public:
-  _WRAP_CREATE()
   _WRAP_METHOD(bool get_reveal() const, adw_view_switcher_bar_get_reveal)
   _WRAP_METHOD(ViewStack* get_stack() const, adw_view_switcher_bar_get_stack)
   _WRAP_METHOD(void set_reveal(bool reveal), adw_view_switcher_bar_set_reveal)

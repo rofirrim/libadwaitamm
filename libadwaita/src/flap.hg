@@ -43,11 +43,8 @@ class Flap : public Gtk::Widget, Gtk::Orientable, Adw::Swipeable {
   _IMPLEMENTS_INTERFACE(Adw::Swipeable)
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(Gtk::Widget* get_content() const, adw_flap_get_content)
   _WRAP_METHOD(Gtk::Widget* get_flap() const, adw_flap_get_flap)

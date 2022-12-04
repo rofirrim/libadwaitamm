@@ -35,11 +35,8 @@ class PreferencesPage : public Gtk::Widget {
   _CLASS_GTKOBJECT(PreferencesPage, AdwPreferencesPage, ADW_PREFERENCES_PAGE, Gtk::Widget, GtkWidget)
   _STRUCT_NOT_HIDDEN
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
 
   _WRAP_METHOD(void add(PreferencesGroup* group), adw_preferences_page_add)
   _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_preferences_page_get_icon_name)

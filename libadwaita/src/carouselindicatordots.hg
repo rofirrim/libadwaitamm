@@ -37,11 +37,8 @@ class CarouselIndicatorDots : public Gtk::Widget, public Gtk::Orientable {
   _STRUCT_NOT_HIDDEN
   _DO_NOT_DERIVE_GTYPE
 
-protected:
-  _CTOR_DEFAULT
-
 public:
-  _WRAP_CREATE()
+  _CTOR_DEFAULT
   _WRAP_METHOD(Adw::Carousel* get_carousel() const, adw_carousel_indicator_dots_get_carousel)
   _WRAP_METHOD(void set_carousel(Adw::Carousel* carousel), adw_carousel_indicator_dots_set_carousel)
 
