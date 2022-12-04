@@ -29,13 +29,13 @@ class PropertyAnimationTarget : public AnimationTarget {
   _CLASS_GOBJECT(PropertyAnimationTarget, AdwPropertyAnimationTarget, ADW_PROPERTY_ANIMATION_TARGET, AnimationTarget, AdwAnimationTarget)
   _DO_NOT_DERIVE_GTYPE
 
-  _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, const Glib::ustring& property_name), adw_property_animation_target_new)
-  _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, GParamSpec*), adw_property_animation_target_new_for_pspec)
+   PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, const Glib::ustring& property_name);
+  _WRAP_CTOR(PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, GParamSpec* pspec), adw_property_animation_target_new_for_pspec)
 
-protected:
+public:
   _CTOR_DEFAULT
   _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, const Glib::ustring& property_name)
-  _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, GParamSpec*)
+  _WRAP_CREATE(const Glib::RefPtr<Glib::Object> &object, GParamSpec* pspec)
 
   _WRAP_METHOD(Glib::RefPtr<Glib::Object> get_object() const, adw_property_animation_target_get_object, refreturn)
   _WRAP_METHOD(GParamSpec* get_pspec() const, adw_property_animation_target_get_pspec)

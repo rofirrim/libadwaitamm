@@ -22,4 +22,10 @@
 namespace Adw
 {
 
+PropertyAnimationTarget::PropertyAnimationTarget(const Glib::RefPtr<Glib::Object>& object, const Glib::ustring& property_name)
+    : _CONSTRUCT("object", Glib::unwrap(object),
+                 "pspec", g_object_class_find_property(G_OBJECT_GET_CLASS (object->gobj()), property_name.c_str()))
+{
+}
+
 } // namespace Adw
