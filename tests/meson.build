@@ -29,7 +29,7 @@ test_names = [
   'test-action-row',
   'test-animation',
   'test-animation-target',
-  # 'test-application-window',
+  'test-application-window',
   # 'test-avatar',
   # 'test-bin',
   # 'test-button-content',
