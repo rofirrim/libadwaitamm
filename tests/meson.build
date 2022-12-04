@@ -30,7 +30,7 @@ test_names = [
   'test-animation',
   'test-animation-target',
   'test-application-window',
-  # 'test-avatar',
+  'test-avatar',
   # 'test-bin',
   # 'test-button-content',
   # 'test-carousel',
