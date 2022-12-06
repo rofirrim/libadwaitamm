@@ -22,14 +22,13 @@ _PINCLUDE(libadwaitamm/private/animation_p.h)
 
 #include <glibmm.h>
 #include <gtkmm.h>
+#include <libadwaitamm/easing.h>
 #include <libadwaitamm/animation.h>
 #include <libadwaitamm/animationtarget.h>
 #include <libadwaita-1/adwaita.h>
 
 namespace Adw
 {
-
-  _WRAP_ENUM(Easing, AdwEasing)
 
 class TimedAnimation : public Animation {
   _CLASS_GOBJECT(TimedAnimation, AdwTimedAnimation, ADW_TIMED_ANIMATION, Animation, AdwAnimation)

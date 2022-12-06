@@ -38,6 +38,7 @@ hg_ccg_basenames = [
   'clamplayout',
   'clampscrollable',
   'comborow',
+  'easing',
   'entryrow',
   'enumlistitem',
   'enumlistmodel',

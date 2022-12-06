@@ -55,6 +55,7 @@
 #include <libadwaitamm/clamplayout.h>
 #include <libadwaitamm/clampscrollable.h>
 #include <libadwaitamm/comborow.h>
+#include <libadwaitamm/easing.h>
 #include <libadwaitamm/entryrow.h>
 #include <libadwaitamm/enumlistitem.h>
 #include <libadwaitamm/enumlistmodel.h>
