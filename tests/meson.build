@@ -34,7 +34,7 @@ test_names = [
   'test-bin',
   'test-button-content',
   'test-carousel',
-  # 'test-carousel-indicator-dots',
+  'test-carousel-indicator-dots',
   # 'test-carousel-indicator-lines',
   # 'test-combo-row',
   # 'test-easing',
