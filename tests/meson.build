@@ -33,7 +33,7 @@ test_names = [
   'test-avatar',
   'test-bin',
   'test-button-content',
-  # 'test-carousel',
+  'test-carousel',
   # 'test-carousel-indicator-dots',
   # 'test-carousel-indicator-lines',
   # 'test-combo-row',
