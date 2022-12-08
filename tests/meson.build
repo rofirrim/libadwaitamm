@@ -40,7 +40,7 @@ test_names = [
   'test-easing',
   'test-entry-row',
   'test-expander-row',
-  # 'test-flap',
+  'test-flap',
   # 'test-header-bar',
   # 'test-leaflet',
   # 'test-message-dialog',
