@@ -41,7 +41,7 @@ test_names = [
   'test-entry-row',
   'test-expander-row',
   'test-flap',
-  # 'test-header-bar',
+  'test-header-bar',
   # 'test-leaflet',
   # 'test-message-dialog',
   # 'test-password-entry-row',
