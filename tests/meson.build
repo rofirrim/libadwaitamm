@@ -38,7 +38,7 @@ test_names = [
   'test-carousel-indicator-lines',
   'test-combo-row',
   'test-easing',
-  # 'test-entry-row',
+  'test-entry-row',
   # 'test-expander-row',
   # 'test-flap',
   # 'test-header-bar',
