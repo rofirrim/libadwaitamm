@@ -42,7 +42,7 @@ test_names = [
   'test-expander-row',
   'test-flap',
   'test-header-bar',
-  # 'test-leaflet',
+  'test-leaflet',
   # 'test-message-dialog',
   # 'test-password-entry-row',
   # 'test-preferences-group',
