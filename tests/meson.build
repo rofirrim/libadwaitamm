@@ -51,7 +51,7 @@ test_names = [
   'test-preferences-window',
   'test-split-button',
   'test-squeezer',
-  # 'test-status-page',
+  'test-status-page',
   # 'test-style-manager',
   # 'test-tab-bar',
   # 'test-tab-view',

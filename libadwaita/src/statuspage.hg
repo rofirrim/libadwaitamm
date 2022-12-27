@@ -45,7 +45,7 @@ public:
   _WRAP_METHOD(Glib::ustring get_title() const, adw_status_page_get_title)
   _WRAP_METHOD(void set_child(Gtk::Widget *child), adw_status_page_set_child)
   _WRAP_METHOD(void set_description(const Glib::ustring& description), adw_status_page_set_description)
-  _WRAP_METHOD(void set_icon_name(const Glib::ustring& description), adw_status_page_set_icon_name)
+  _WRAP_METHOD(void set_icon_name(const Glib::ustring& description{NULL}), adw_status_page_set_icon_name)
   _WRAP_METHOD(void set_paintable(const Glib::RefPtr<Gdk::Paintable>& paintable), adw_status_page_set_paintable)
   _WRAP_METHOD(void set_title(const Glib::ustring& title), adw_status_page_set_title)
 
