@@ -50,7 +50,7 @@ test_names = [
   'test-preferences-row',
   'test-preferences-window',
   'test-split-button',
-  # 'test-squeezer',
+  'test-squeezer',
   # 'test-status-page',
   # 'test-style-manager',
   # 'test-tab-bar',
