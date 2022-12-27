@@ -47,7 +47,7 @@ test_names = [
   'test-password-entry-row',
   'test-preferences-group',
   'test-preferences-page',
-  # 'test-preferences-row',
+  'test-preferences-row',
   # 'test-preferences-window',
   # 'test-split-button',
   # 'test-squeezer',
