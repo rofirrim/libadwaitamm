@@ -20,7 +20,7 @@ private:
   static void setup_template(Gtk::TemplateWidgetSetup &s);
   void init_widget(Gtk::TemplateWidgetInit &i);
 
-  void add_toast(const Glib::RefPtr<Adw::Toast> &toast);
+  void add_toast(const Adw::Toast* toast);
   void toast_add_cb();
   void toast_add_with_button_cb();
   void toast_add_with_long_title_cb();
@@ -28,7 +28,7 @@ private:
 
   static unsigned int signal_add_toast;
 
-  Glib::RefPtr<Adw::Toast> undo_toast;
+  Adw::Toast* undo_toast = nullptr;
   int toast_undo_items = 0;
 };
 

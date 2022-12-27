@@ -46,9 +46,8 @@ void DemoPageDialogs::demo_message_dialog_cb()
   dialog->set_default_response("save");
 
   dialog->signal_response().connect([this](const Glib::ustring &response) {
-    auto toast = Adw::Toast::create(
+    auto toast = new Adw::Toast(
         Glib::ustring::sprintf(_("Dialog response: %s"), response));
-    toast->reference();
 
     // FIXME: Wrap this.
     g_signal_emit(gobj(), signal_add_toast, 0, toast->gobj());

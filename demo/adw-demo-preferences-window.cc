@@ -52,7 +52,7 @@ void DemoPreferencesWindow::subpage2_activated() { present_subpage(subpage2); }
 void DemoPreferencesWindow::return_to_preferences() { close_subpage(); }
 
 void DemoPreferencesWindow::toast_show() {
-  auto toast = new Adw::Toast("Example Toast");
+  Adw::Toast *toast = new Adw::Toast("Example Toast");
   add_toast(toast);
 }
 

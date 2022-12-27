@@ -24,8 +24,7 @@ void DemoPageLists::init_widget(Gtk::TemplateWidgetInit &i) {
 }
 
 void DemoPageLists::entry_apply_cb() {
-  auto toast = Adw::Toast::create("Changes applied");
-  toast->reference();
+  auto toast = new Adw::Toast("Changes applied");
 
   g_signal_emit(gobj(), signal_add_toast, 0, toast->gobj());
 }

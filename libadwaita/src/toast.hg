@@ -44,7 +44,6 @@ protected:
 
 public:
   _WRAP_CTOR(Toast(const Glib::ustring& title), adw_toast_new)
-  _WRAP_CREATE(const Glib::ustring& title)
 
   _WRAP_METHOD(void dismiss(), adw_toast_dismiss)
   _WRAP_METHOD(Glib::ustring get_action_name() const, adw_toast_get_action_name)

@@ -35,9 +35,7 @@ void DemoPageToasts::init_widget(Gtk::TemplateWidgetInit &i) {
 }
 
 void DemoPageToasts::toast_add_cb() {
-  Glib::RefPtr<Adw::Toast> toast = Adw::Toast::create(_("Simple Toast"));
-  toast->reference();
-
+  Toast* toast = new Adw::Toast(_("Simple Toast"));
   add_toast(toast);
 }
 
@@ -54,19 +52,17 @@ void DemoPageToasts::toast_add_with_button_cb() {
     undo_toast->set_title(title);
 
     /* Bump the toast timeout */
-    undo_toast->reference();
     add_toast(undo_toast);
   } else {
-    undo_toast = Adw::Toast::create(
+    undo_toast = new Adw::Toast(
         Glib::ustring::sprintf(_("‘%s’ deleted"), "Lorem Ipsum"));
-    undo_toast->reference();
 
     undo_toast->set_priority(Adw::ToastPriority::HIGH);
     undo_toast->set_button_label(_("_Undo"));
     undo_toast->set_action_name("toast.undo");
 
     undo_toast->signal_dismissed().connect([this]() {
-      undo_toast.reset();
+      undo_toast = nullptr;
       toast_undo_items = 0;
       action_set_enabled("toast.dismiss", false);
     });
@@ -78,18 +74,16 @@ void DemoPageToasts::toast_add_with_button_cb() {
 }
 
 void DemoPageToasts::toast_add_with_long_title_cb() {
-  Glib::RefPtr<Adw::Toast> toast =
-      Adw::Toast::create(_("Lorem ipsum dolor sit amet, "
+  Toast* toast =
+      new Adw::Toast(_("Lorem ipsum dolor sit amet, "
                            "consectetur adipiscing elit, "
                            "sed do eiusmod tempor incididunt "
                            "ut labore et dolore magnam aliquam "
                            "quaerat voluptatem."));
-  toast->reference();
-
   add_toast(toast);
 }
 
-void DemoPageToasts::add_toast(const Glib::RefPtr<Adw::Toast> &toast) {
+void DemoPageToasts::add_toast(const Toast* toast) {
   g_signal_emit(gobj(), signal_add_toast, 0, toast->gobj());
 }
 
@@ -105,8 +99,7 @@ void DemoPageToasts::undo() {
                toast_undo_items),
       toast_undo_items);
 
-  Glib::RefPtr<Adw::Toast> toast = Adw::Toast::create(title);
-  toast->reference();
+  Toast* toast = new Adw::Toast(title);
 
   toast->set_priority(Adw::ToastPriority::HIGH);
 

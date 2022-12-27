@@ -39,7 +39,6 @@ _CONVERSION(`PreferencesPage*',`AdwPreferencesPage*',__FP2P)
 
 _CONVERSION(`AdwToast*',`Toast*',__RP2P)
 _CONVERSION(`Toast*',`AdwToast*',__FP2P)
-_CONVERSION(`const Glib::RefPtr<Toast>&',`AdwToast*',__CONVERT_REFPTR_TO_P($3))
 
 _CONVERSION(`GtkPopover*',`Gtk::Popover*',__RP2P)
 _CONVERSION(`Gtk::Popover*',`GtkPopover*',__FP2P)
