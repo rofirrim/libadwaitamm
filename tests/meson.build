@@ -53,7 +53,7 @@ test_names = [
   'test-squeezer',
   'test-status-page',
   'test-style-manager',
-  # 'test-tab-bar',
+  'test-tab-bar',
   # 'test-tab-view',
   # 'test-timed-animation',
   # 'test-toast',
