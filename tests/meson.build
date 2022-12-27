@@ -52,7 +52,7 @@ test_names = [
   'test-split-button',
   'test-squeezer',
   'test-status-page',
-  # 'test-style-manager',
+  'test-style-manager',
   # 'test-tab-bar',
   # 'test-tab-view',
   # 'test-timed-animation',
