@@ -41,7 +41,7 @@ class TabView : public Gtk::Widget {
 public:
   _CTOR_DEFAULT
 
-  _WRAP_METHOD(Glib::RefPtr<TabPage> add_page(Gtk::Widget* child, const Glib::RefPtr<TabPage>& parent), adw_tab_view_add_page, refreturn)
+  _WRAP_METHOD(Glib::RefPtr<TabPage> add_page(Gtk::Widget* child, const Glib::RefPtr<TabPage>& parent{:?}), adw_tab_view_add_page, refreturn)
   _WRAP_METHOD(void add_shortcuts(TabViewShortcuts shortcuts), adw_tab_view_add_shortcuts)
   _WRAP_METHOD(Glib::RefPtr<TabPage> append(Gtk::Widget* child), adw_tab_view_append, refreturn)
   _WRAP_METHOD(Glib::RefPtr<TabPage> append_pinned(Gtk::Widget* child), adw_tab_view_append_pinned, refreturn)
@@ -79,7 +79,7 @@ public:
   _WRAP_METHOD(void set_page_pinned(const Glib::RefPtr<TabPage>& page, bool pinned), adw_tab_view_set_page_pinned)
   _WRAP_METHOD(void set_selected_page(const Glib::RefPtr<TabPage>& selected_page), adw_tab_view_set_selected_page)
   _WRAP_METHOD(void set_shortcuts(TabViewShortcuts shortcuts), adw_tab_view_set_shortcuts)
-  _WRAP_METHOD(void transfer_page(const Glib::RefPtr<TabPage>& page, const TabView* other_view, int position), adw_tab_view_transfer_page)
+  _WRAP_METHOD(void transfer_page(const Glib::RefPtr<TabPage>& page, TabView* other_view, int position), adw_tab_view_transfer_page)
 
   _WRAP_PROPERTY("default-icon", Glib::RefPtr<Gio::Icon>)
   _WRAP_PROPERTY("is-transferring-page", bool)
@@ -90,6 +90,7 @@ public:
   _WRAP_PROPERTY("selected-page", Glib::RefPtr<TabPage>)
   _WRAP_PROPERTY("shortcuts", TabViewShortcuts)
 
+#m4 _CONVERSION(`AdwTabPage*',`const Glib::RefPtr<TabPage>&', `Glib::wrap($3, true)')
   _WRAP_SIGNAL(bool close_page(const Glib::RefPtr<TabPage>& page), "close-page", no_default_handler)
   _WRAP_SIGNAL(TabView* create_window(), "create-window", no_default_handler)
   _WRAP_SIGNAL(void indicator_activated(const Glib::RefPtr<TabPage>& page), "indicator-activated", no_default_handler)

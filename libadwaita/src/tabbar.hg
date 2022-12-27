@@ -71,6 +71,7 @@ public:
   _WRAP_PROPERTY("tabs-revealed", bool)
   _WRAP_PROPERTY("view", TabView*)
 
+#m4 _CONVERSION(`AdwTabPage*',`const Glib::RefPtr<TabPage>&', `Glib::wrap($3, true)')
   _WRAP_SIGNAL(bool extra_drag_drop(const Glib::RefPtr<TabPage>& page, Glib::ValueBase& value), "extra-drag-drop", no_default_handler)
 };
 
