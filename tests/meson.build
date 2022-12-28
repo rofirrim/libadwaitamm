@@ -55,7 +55,7 @@ test_names = [
   'test-style-manager',
   'test-tab-bar',
   'test-tab-view',
-  # 'test-timed-animation',
+  'test-timed-animation',
   # 'test-toast',
   # 'test-toast-overlay',
   # 'test-view-switcher',
