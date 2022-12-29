@@ -81,11 +81,13 @@ hg_ccg_basenames = [
 ]
 
 extra_cc_files = [
-  'init.cc'
+  'init.cc',
+  'selectionlistmodelimpl.cc',
 ]
 
 extra_h_files = [
   'wrap_init.h',
+  'selectionlistmodelimpl.h',
 ]
 
 install_headers('..' / 'libadwaitamm.h', subdir: libadwaitamm_pcname)

@@ -9,10 +9,14 @@
 
 static void assert_page_position(Glib::RefPtr<Gtk::SelectionModel> pages,
                                  Gtk::Widget *widget, int position) {
-  // I'm not sure I understand why SelectionModel does not inherit from
-  // Glib::ListModel so we can access the virtual functions.
-  Glib::RefPtr<Adw::LeafletPage> page = Glib::wrap(ADW_LEAFLET_PAGE(
-      g_list_model_get_item(G_LIST_MODEL(pages->gobj()), position)));
+  Glib::RefPtr<Gio::ListModel> list_model =
+      std::dynamic_pointer_cast<Gio::ListModel>(pages);
+  g_assert_true(list_model != nullptr);
+
+  Glib::RefPtr<Adw::LeafletPage> page =
+      std::dynamic_pointer_cast<Adw::LeafletPage>(
+          list_model->get_object(position));
+  g_assert_true(page != nullptr);
 
   g_assert_true(widget->gobj() == page->get_child()->gobj());
 }

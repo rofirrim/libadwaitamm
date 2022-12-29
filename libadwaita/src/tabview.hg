@@ -58,8 +58,10 @@ public:
   _WRAP_METHOD(Glib::RefPtr<TabPage> get_nth_page(int position) const, adw_tab_view_get_nth_page, refreturn)
   _WRAP_METHOD(Glib::RefPtr<TabPage> get_page(Gtk::Widget *child) const, adw_tab_view_get_page, refreturn)
   _WRAP_METHOD(int get_page_position(const Glib::RefPtr<TabPage>& page) const, adw_tab_view_get_page_position)
-  // No refreturn
-  _WRAP_METHOD(Glib::RefPtr<Gtk::SelectionModel> get_pages() const, adw_tab_view_get_pages)
+
+  _IGNORE(adw_tab_view_get_pages)
+  Glib::RefPtr<Gtk::SelectionModel> get_pages() const;
+
   _WRAP_METHOD(Glib::RefPtr<TabPage> get_selected_page() const, adw_tab_view_get_selected_page, refreturn)
   _WRAP_METHOD(TabViewShortcuts get_shortcuts() const, adw_tab_view_get_shortcuts)
   _WRAP_METHOD(Glib::RefPtr<TabPage> insert(Gtk::Widget* child, int position), adw_tab_view_insert, refreturn)

@@ -49,8 +49,10 @@ public:
   _WRAP_METHOD(bool get_homogeneous() const, adw_squeezer_get_homogeneous)
   _WRAP_METHOD(bool get_interpolate_size() const, adw_squeezer_get_interpolate_size)
   _WRAP_METHOD(Glib::RefPtr<SqueezerPage> get(Gtk::Widget*) const, adw_squeezer_get_page, refreturn)
-  // No refreturn
-  _WRAP_METHOD(Glib::RefPtr<Gtk::SelectionModel> get_pages() const, adw_squeezer_get_pages)
+
+  _IGNORE(adw_squeezer_get_pages)
+  Glib::RefPtr<Gtk::SelectionModel> get_pages() const;
+
   _WRAP_METHOD(FoldThresholdPolicy get_switch_threshold_policy() const, adw_squeezer_get_switch_threshold_policy)
   _WRAP_METHOD(guint get_transition_duration() const, adw_squeezer_get_transition_duration)
   _WRAP_METHOD(bool get_transition_running() const, adw_squeezer_get_transition_running)

@@ -61,8 +61,10 @@ public:
   _WRAP_METHOD(bool get_homogeneous() const, adw_leaflet_get_homogeneous)
   _WRAP_METHOD(guint get_mode_transition_duration() const, adw_leaflet_get_mode_transition_duration)
   _WRAP_METHOD(Glib::RefPtr<LeafletPage> get_page(Gtk::Widget* child) const, adw_leaflet_get_page, refreturn)
-  // No refreturn
-  _WRAP_METHOD(Glib::RefPtr<Gtk::SelectionModel> get_pages() const, adw_leaflet_get_pages)
+
+  _IGNORE(adw_leaflet_get_pages)
+  Glib::RefPtr<Gtk::SelectionModel> get_pages() const;
+
   _WRAP_METHOD(LeafletTransitionType get_transition_type() const, adw_leaflet_get_transition_type)
   _WRAP_METHOD(Gtk::Widget* get_visible_child() const, adw_leaflet_get_visible_child)
   _WRAP_METHOD(Glib::ustring get_visible_child_name() const, adw_leaflet_get_visible_child_name)

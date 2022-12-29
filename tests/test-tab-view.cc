@@ -734,9 +734,12 @@ test_adw_tab_view_pages (void)
   Glib::RefPtr<Gtk::SelectionModel> pages_model = view.get_pages();
   g_assert_true(pages_model != nullptr);
 
-  // I am still unable to correctly access the Gio.ListModel from a Gtk.SelectionModel
-  // sigc::connection conn1 = list_model->signal_items_changed().connect(
-  //     sigc::bind(sigc::ptr_fun(check_selection_non_null<guint, guint, guint>), std::ref(view)));
+  Glib::RefPtr<Gio::ListModel> list_model =
+      std::dynamic_pointer_cast<Gio::ListModel>(pages_model);
+  g_assert_true(list_model != nullptr);
+
+  sigc::connection conn1 = list_model->signal_items_changed().connect(
+      sigc::bind(sigc::ptr_fun(check_selection_non_null<guint, guint, guint>), std::ref(view)));
   sigc::connection conn2 = pages_model->signal_selection_changed().connect(
       sigc::bind(sigc::ptr_fun(check_selection_non_null<guint, guint>), std::ref(view)));
 
@@ -745,11 +748,11 @@ test_adw_tab_view_pages (void)
 
   view.close_page(pages[0]);
 
-  // conn1.disconnect();
+  conn1.disconnect();
   conn2.disconnect();
 
-  // list_model->signal_items_changed().connect(
-  //      sigc::bind(sigc::ptr_fun(check_selection_null<guint, guint, guint>), std::ref(view)));
+  list_model->signal_items_changed().connect(
+       sigc::bind(sigc::ptr_fun(check_selection_null<guint, guint, guint>), std::ref(view)));
   pages_model->signal_selection_changed().connect(
       sigc::bind(sigc::ptr_fun(check_selection_null<guint, guint>), std::ref(view)));
 
