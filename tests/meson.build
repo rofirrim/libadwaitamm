@@ -59,7 +59,7 @@ test_names = [
   'test-toast',
   'test-toast-overlay',
   # 'test-view-switcher',
-  # 'test-view-switcher-bar',
+  'test-view-switcher-bar',
   # 'test-window',
   # 'test-window-title',
 ]
