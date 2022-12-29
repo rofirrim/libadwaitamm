@@ -36,30 +36,30 @@ class TimedAnimation : public Animation {
 
 protected:
   _CTOR_DEFAULT
-  _WRAP_CTOR(TimedAnimation(Gtk::Widget* widget, double value_from, double value_to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target), adw_timed_animation_new)
+  _WRAP_CTOR(TimedAnimation(Gtk::Widget* widget, double value_from, double value_to, guint duration, const Glib::RefPtr<AnimationTarget> &target), adw_timed_animation_new)
 
 public:
-  _WRAP_CREATE(Gtk::Widget* widget, double value_from, double value_to, unsigned int duration, const Glib::RefPtr<AnimationTarget> &target)
+  _WRAP_CREATE(Gtk::Widget* widget, double value_from, double value_to, guint duration, const Glib::RefPtr<AnimationTarget> &target)
 
   _WRAP_METHOD(bool get_alternate() const, adw_timed_animation_get_alternate)
-  _WRAP_METHOD(unsigned int get_duration() const, adw_timed_animation_get_duration)
+  _WRAP_METHOD(guint get_duration() const, adw_timed_animation_get_duration)
   _WRAP_METHOD(Easing get_easing() const, adw_timed_animation_get_easing)
-  _WRAP_METHOD(unsigned int get_repeat_count() const, adw_timed_animation_get_repeat_count)
+  _WRAP_METHOD(guint get_repeat_count() const, adw_timed_animation_get_repeat_count)
   _WRAP_METHOD(bool get_reverse() const, adw_timed_animation_get_reverse)
   _WRAP_METHOD(double get_value_from() const, adw_timed_animation_get_value_from)
   _WRAP_METHOD(double get_value_to() const, adw_timed_animation_get_value_to)
   _WRAP_METHOD(void set_alternate(bool alternate), adw_timed_animation_set_alternate)
-  _WRAP_METHOD(void set_duration(unsigned int duration), adw_timed_animation_set_duration)
+  _WRAP_METHOD(void set_duration(guint duration), adw_timed_animation_set_duration)
   _WRAP_METHOD(void set_easing(Easing easing), adw_timed_animation_set_easing)
-  _WRAP_METHOD(void set_repeat_count(unsigned int repeat_count), adw_timed_animation_set_repeat_count)
+  _WRAP_METHOD(void set_repeat_count(guint repeat_count), adw_timed_animation_set_repeat_count)
   _WRAP_METHOD(void set_reverse(bool reverse), adw_timed_animation_set_reverse)
   _WRAP_METHOD(void set_value_from(double from) const, adw_timed_animation_set_value_from)
   _WRAP_METHOD(void set_value_to(double to) const, adw_timed_animation_set_value_to)
 
   _WRAP_PROPERTY("alternate", bool)
-  _WRAP_PROPERTY("duration", unsigned int)
+  _WRAP_PROPERTY("duration", guint)
   _WRAP_PROPERTY("easing", Easing)
-  _WRAP_PROPERTY("repeat-count", unsigned int)
+  _WRAP_PROPERTY("repeat-count", guint)
   _WRAP_PROPERTY("reverse", bool)
   _WRAP_PROPERTY("value-from", double)
   _WRAP_PROPERTY("value-to", double)

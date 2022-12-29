@@ -155,7 +155,7 @@ static void test_adw_flap_fold_duration(void) {
   flap.property_fold_duration().signal_changed().connect(
       sigc::ptr_fun(notify_cb));
 
-  unsigned int duration = flap.get_property<unsigned int>("fold-duration");
+  guint duration = flap.get_property<guint>("fold-duration");
   g_assert(duration == 250);
 
   flap.set_fold_duration(250);
@@ -165,7 +165,7 @@ static void test_adw_flap_fold_duration(void) {
   g_assert(flap.get_fold_duration() == 500);
   g_assert(notified == 1);
 
-  flap.set_property<unsigned int>("fold-duration", 100);
+  flap.set_property<guint>("fold-duration", 100);
   g_assert(flap.get_fold_duration() == 100);
   g_assert(notified == 2);
 }

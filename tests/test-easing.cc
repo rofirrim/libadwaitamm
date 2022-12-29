@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   // This does not seem wrapped at all in gtkmm.
   GEnumClass *enum_class = (GEnumClass*)g_type_class_ref(ADW_TYPE_EASING);
 
-  for (unsigned int i = 0; i < enum_class->n_values; i++) {
+  for (guint i = 0; i < enum_class->n_values; i++) {
     GEnumValue *value = &enum_class->values[i];
     char *path = g_strdup_printf("/Adwaita/Easing/%s", value->value_nick);
 

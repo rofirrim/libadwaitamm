@@ -78,16 +78,16 @@ static void test_adw_animation_duration(void) {
   animation->property_duration().signal_changed().connect(
       sigc::ptr_fun(notify_cb));
 
-  unsigned int duration = animation->get_property<unsigned int>("duration");
+  guint duration = animation->get_property<guint>("duration");
   g_assert(duration == 100);
   g_assert(notified == 0);
 
   animation->set_duration(200);
-  duration = animation->get_property<unsigned int>("duration");
+  duration = animation->get_property<guint>("duration");
   g_assert(duration == 200);
   g_assert(notified == 1);
 
-  animation->set_property<unsigned int>("duration", 300u);
+  animation->set_property<guint>("duration", 300u);
   g_assert(animation->get_duration() == 300);
   g_assert(notified == 2);
 }
@@ -129,17 +129,17 @@ static void test_adw_animation_repeat_count(void) {
   animation->property_repeat_count().signal_changed().connect(
       sigc::ptr_fun(notify_cb));
 
-  unsigned int repeat_count =
-      animation->get_property<unsigned int>("repeat-count");
+  guint repeat_count =
+      animation->get_property<guint>("repeat-count");
   g_assert(repeat_count == 1);
   g_assert(notified == 0);
 
   animation->set_repeat_count(2);
-  repeat_count = animation->get_property<unsigned int>("repeat-count");
+  repeat_count = animation->get_property<guint>("repeat-count");
   g_assert(repeat_count == 2);
   g_assert(notified == 1);
 
-  animation->set_property<unsigned int>("repeat-count", 3u);
+  animation->set_property<guint>("repeat-count", 3u);
   g_assert(animation->get_repeat_count() == 3);
   g_assert(notified == 2);
 }

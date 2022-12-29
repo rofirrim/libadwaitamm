@@ -181,8 +181,8 @@ static void test_adw_carousel_spacing(void) {
   g_assert(notified == 1);
 
   /* Property */
-  carousel.set_property<unsigned int>("spacing", 6);
-  unsigned int spacing = carousel.get_property<unsigned int>("spacing");
+  carousel.set_property<guint>("spacing", 6);
+  guint spacing = carousel.get_property<guint>("spacing");
   g_assert(spacing == 6);
   g_assert(notified == 2);
 
@@ -254,9 +254,9 @@ static void test_adw_carousel_reveal_duration(void) {
   g_assert(notified == 1);
 
   /* Property */
-  carousel.set_property<unsigned int>("reveal-duration", 500);
-  unsigned int duration =
-      carousel.get_property<unsigned int>("reveal-duration");
+  carousel.set_property<guint>("reveal-duration", 500);
+  guint duration =
+      carousel.get_property<guint>("reveal-duration");
   g_assert(duration == 500);
   g_assert(notified == 2);
 

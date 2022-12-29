@@ -137,14 +137,14 @@ static void test_adw_toast_timeout(void) {
   notified = 0;
   toast->property_timeout().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
-  unsigned int timeout = toast->get_property<unsigned int>("timeout");
+  guint timeout = toast->get_property<guint>("timeout");
   g_assert(timeout == 5);
 
   toast->set_timeout(10);
   g_assert(toast->get_timeout() == 10);
   g_assert(notified == 1);
 
-  toast->set_property<unsigned int>("timeout", 5);
+  toast->set_property<guint>("timeout", 5);
   g_assert(toast->get_timeout() == 5);
   g_assert(notified == 2);
 }

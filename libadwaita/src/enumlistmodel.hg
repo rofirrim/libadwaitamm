@@ -44,7 +44,7 @@ protected:
 public:
   _WRAP_CREATE(GType enum_type)
 
-  _WRAP_METHOD(unsigned int find_position(int value) const, adw_enum_list_model_find_position)
+  _WRAP_METHOD(guint find_position(int value) const, adw_enum_list_model_find_position)
   _WRAP_METHOD(GType get_enum_type() const, adw_enum_list_model_get_enum_type)
 
   _WRAP_PROPERTY("enum-type", GType)

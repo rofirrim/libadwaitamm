@@ -42,7 +42,7 @@ protected:
 public:
   _WRAP_CREATE()
 
-  _WRAP_METHOD(unsigned int get_badge_number() const, adw_view_stack_page_get_badge_number)
+  _WRAP_METHOD(guint get_badge_number() const, adw_view_stack_page_get_badge_number)
   _WRAP_METHOD(Gtk::Widget* get_child() const, adw_view_stack_page_get_child)
   _WRAP_METHOD(Glib::ustring get_icon_name() const, adw_view_stack_page_get_icon_name)
   _WRAP_METHOD(Glib::ustring get_name() const, adw_view_stack_page_get_name)
@@ -50,7 +50,7 @@ public:
   _WRAP_METHOD(Glib::ustring get_title() const, adw_view_stack_page_get_title)
   _WRAP_METHOD(bool get_use_underline() const, adw_view_stack_page_get_use_underline)
   _WRAP_METHOD(bool get_visible() const, adw_view_stack_page_get_visible)
-  _WRAP_METHOD(void set_badge_number(unsigned int badge_number), adw_view_stack_page_set_badge_number)
+  _WRAP_METHOD(void set_badge_number(guint badge_number), adw_view_stack_page_set_badge_number)
   _WRAP_METHOD(void set_icon_name(const Glib::ustring& icon_name), adw_view_stack_page_set_icon_name)
   _WRAP_METHOD(void set_name(const Glib::ustring& name), adw_view_stack_page_set_name)
   _WRAP_METHOD(void set_needs_attention(bool needs_attention), adw_view_stack_page_set_needs_attention)
@@ -58,7 +58,7 @@ public:
   _WRAP_METHOD(void set_use_underline(bool use_underline), adw_view_stack_page_set_use_underline)
   _WRAP_METHOD(void set_visible(bool visible), adw_view_stack_page_set_visible)
 
-  _WRAP_PROPERTY("badge-number", unsigned int)
+  _WRAP_PROPERTY("badge-number", guint)
   _WRAP_PROPERTY("child", Gtk::Widget*)
   _WRAP_PROPERTY("icon-name", Glib::ustring)
   _WRAP_PROPERTY("name", Glib::ustring)

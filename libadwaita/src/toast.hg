@@ -50,7 +50,7 @@ public:
   _WRAP_METHOD(Glib::ustring get_button_label() const, adw_toast_get_button_label)
   _WRAP_METHOD(Gtk::Widget* get_custom_title() const, adw_toast_get_custom_title)
   _WRAP_METHOD(ToastPriority get_priority() const, adw_toast_get_priority)
-  _WRAP_METHOD(unsigned int get_timeout() const, adw_toast_get_timeout)
+  _WRAP_METHOD(guint get_timeout() const, adw_toast_get_timeout)
   _WRAP_METHOD(Glib::ustring get_title() const, adw_toast_get_title)
 
   _WRAP_METHOD(void set_action_name(const Glib::ustring &action_name), adw_toast_set_action_name)
@@ -58,7 +58,7 @@ public:
   _WRAP_METHOD(void set_custom_title(Gtk::Widget *widget), adw_toast_set_custom_title)
   _WRAP_METHOD(void set_detailed_action_name(const Glib::ustring& detailed_action_name), adw_toast_set_detailed_action_name)
   _WRAP_METHOD(void set_priority(ToastPriority priority), adw_toast_set_priority)
-  _WRAP_METHOD(void set_timeout(unsigned int timeout), adw_toast_set_timeout)
+  _WRAP_METHOD(void set_timeout(guint timeout), adw_toast_set_timeout)
   _WRAP_METHOD(void set_title(const Glib::ustring& title), adw_toast_set_title)
 
 #m4 _CONVERSION(`GVariant*',`Glib::VariantBase',`Glib::wrap($3,true)')
@@ -70,7 +70,7 @@ public:
   _WRAP_PROPERTY("button-label", Glib::ustring)
   _WRAP_PROPERTY("custom-title", Gtk::Widget*)
   _WRAP_PROPERTY("priority", ToastPriority)
-  _WRAP_PROPERTY("timeout", unsigned int)
+  _WRAP_PROPERTY("timeout", guint)
   _WRAP_PROPERTY("title", Glib::ustring)
 
   _WRAP_SIGNAL(void button_clicked(), "button-clicked", no_default_handler)
