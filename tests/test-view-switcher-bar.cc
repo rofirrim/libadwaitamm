@@ -12,10 +12,10 @@ static void test_adw_view_switcher_bar_stack(void) {
   Adw::ViewStack *stack = Gtk::make_managed<Adw::ViewStack>();
 
   bar.set_stack(stack);
-  g_assert(bar.get_stack() == stack);
+  g_assert_true(bar.get_stack() == stack);
 
   bar.set_stack(nullptr);
-  g_assert(bar.get_stack() == nullptr);
+  g_assert_true(bar.get_stack() == nullptr);
 }
 
 static void test_adw_view_switcher_bar_reveal(void) {

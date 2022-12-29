@@ -17,22 +17,22 @@ static void test_adw_expander_row_add_remove(void) {
 
 static void test_adw_expander_row_subtitle(void) {
   Adw::ExpanderRow row;
-  g_assert(row.get_subtitle() == "");
+  g_assert_true(row.get_subtitle() == "");
 
   row.set_subtitle("Dummy subtitle");
-  g_assert(row.get_subtitle() == "Dummy subtitle");
+  g_assert_true(row.get_subtitle() == "Dummy subtitle");
 
   row.set_use_markup(false);
   row.set_subtitle("Invalid <b>markup");
-  g_assert(row.get_subtitle() == "Invalid <b>markup");
+  g_assert_true(row.get_subtitle() == "Invalid <b>markup");
 }
 
 static void test_adw_expander_row_icon_name(void) {
   Adw::ExpanderRow row;
-  g_assert(row.get_icon_name() == "");
+  g_assert_true(row.get_icon_name() == "");
 
   row.set_icon_name("dummy-icon-name");
-  g_assert(row.get_icon_name() == "dummy-icon-name");
+  g_assert_true(row.get_icon_name() == "dummy-icon-name");
 }
 
 static void test_adw_expander_row_expanded(void) {

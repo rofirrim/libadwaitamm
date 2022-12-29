@@ -19,19 +19,19 @@ static void test_adw_toast_overlay_child(void) {
       sigc::ptr_fun(notify_cb));
 
   Gtk::Widget *widget = toast_overlay.get_property<Gtk::Widget *>("child");
-  g_assert(widget == nullptr);
+  g_assert_true(widget == nullptr);
 
   toast_overlay.set_child(nullptr);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   widget = Gtk::make_managed<Gtk::Button>();
   toast_overlay.set_child(widget);
   g_assert_true(toast_overlay.get_child() == widget);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   toast_overlay.set_property<Gtk::Widget*>("child", nullptr);
-  g_assert(toast_overlay.get_child() == nullptr);
-  g_assert(notified == 2);
+  g_assert_true(toast_overlay.get_child() == nullptr);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_overlay_add_toast(void) {

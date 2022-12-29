@@ -41,28 +41,28 @@ static void test_adw_about_window_create(void) {
   window->set_copyright("© 2022 Angela Avery");
   window->set_license_type(Gtk::License::GPL_3_0);
 
-  g_assert(window->get_application_name() == "Example");
-  g_assert(window->get_application_icon() == "org.gnome.Example");
-  g_assert(window->get_developer_name() == "Angela Avery");
-  g_assert(window->get_version() == "1.2.3");
-  g_assert(window->get_release_notes_version() == "1.2.0");
-  g_assert(window->get_release_notes() == "<p>Example</p>");
+  g_assert_true(window->get_application_name() == "Example");
+  g_assert_true(window->get_application_icon() == "org.gnome.Example");
+  g_assert_true(window->get_developer_name() == "Angela Avery");
+  g_assert_true(window->get_version() == "1.2.3");
+  g_assert_true(window->get_release_notes_version() == "1.2.0");
+  g_assert_true(window->get_release_notes() == "<p>Example</p>");
 
-  g_assert(window->get_comments() == "Comments");
-  g_assert(window->get_website() == "https://example.org");
-  g_assert(window->get_issue_url() == "https://example.org");
-  g_assert(window->get_support_url() == "https://example.org");
-  g_assert(window->get_debug_info() == "Debug");
-  g_assert(window->get_debug_info_filename() == "debug.txt");
+  g_assert_true(window->get_comments() == "Comments");
+  g_assert_true(window->get_website() == "https://example.org");
+  g_assert_true(window->get_issue_url() == "https://example.org");
+  g_assert_true(window->get_support_url() == "https://example.org");
+  g_assert_true(window->get_debug_info() == "Debug");
+  g_assert_true(window->get_debug_info_filename() == "debug.txt");
 
-  g_assert(window->get_developers() == developers);
-  g_assert(window->get_designers() == designers);
-  g_assert(window->get_artists() == artists);
-  g_assert(window->get_documenters() == documenters);
+  g_assert_true(window->get_developers() == developers);
+  g_assert_true(window->get_designers() == designers);
+  g_assert_true(window->get_artists() == artists);
+  g_assert_true(window->get_documenters() == documenters);
 
-  g_assert(window->get_translator_credits() == "translator-credits");
-  g_assert(window->get_copyright() == "© 2022 Angela Avery");
-  g_assert(window->get_license_type() == Gtk::License::GPL_3_0);
+  g_assert_true(window->get_translator_credits() == "translator-credits");
+  g_assert_true(window->get_copyright() == "© 2022 Angela Avery");
+  g_assert_true(window->get_license_type() == Gtk::License::GPL_3_0);
 
   window->add_link("Example", "https://example.org");
   window->add_credit_section("Example", credits);

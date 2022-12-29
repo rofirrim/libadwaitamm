@@ -18,25 +18,25 @@ static void test_adw_preferences_page_add_remove(void) {
 static void test_adw_preferences_page_title(void) {
   Adw::PreferencesPage page;
 
-  g_assert(page.get_title() == "");
+  g_assert_true(page.get_title() == "");
 
   page.set_title("Dummy title");
-  g_assert(page.get_title() == "Dummy title");
+  g_assert_true(page.get_title() == "Dummy title");
 
   page.set_title("");
-  g_assert(page.get_title() == "");
+  g_assert_true(page.get_title() == "");
 }
 
 static void test_adw_preferences_page_icon_name(void) {
   Adw::PreferencesPage page;
 
-  g_assert(page.get_icon_name() == "");
+  g_assert_true(page.get_icon_name() == "");
 
   page.set_icon_name("dummy-icon-name");
-  g_assert(page.get_icon_name() == "dummy-icon-name");
+  g_assert_true(page.get_icon_name() == "dummy-icon-name");
 
   page.set_icon_name("");
-  g_assert(page.get_icon_name() == "");
+  g_assert_true(page.get_icon_name() == "");
 }
 
 static void test_adw_preferences_page_use_underline(void) {

@@ -23,15 +23,15 @@ static void test_adw_bin_child(void) {
   g_assert_null(widget);
 
   bin.set_child(nullptr);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   widget = Gtk::make_managed<Gtk::Button>();
   bin.set_child(widget);
-  g_assert(bin.get_child() == widget);
-  g_assert(notified == 1);
+  g_assert_true(bin.get_child() == widget);
+  g_assert_true(notified == 1);
 
   bin.set_property<Gtk::Widget *>("child", nullptr);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 int main(int argc, char *argv[]) {

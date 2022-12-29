@@ -31,10 +31,10 @@ assert_page_positions(Adw::TabView &view,
                       std::array<Glib::RefPtr<Adw::TabPage>, N> &pages, int n,
                       int n_pinned, std::initializer_list<int> indices) {
 
-  g_assert(view.get_n_pages() == n);
-  g_assert(view.get_n_pinned_pages() == n_pinned);
+  g_assert_true(view.get_n_pages() == n);
+  g_assert_true(view.get_n_pinned_pages() == n_pinned);
 
-  g_assert(indices.end() - indices.begin() == n);
+  g_assert_true(indices.end() - indices.begin() == n);
   std::initializer_list<int>::iterator it = indices.begin();
   for (int i = 0; i < n; i++, it++) {
     int index = *it;
@@ -51,13 +51,13 @@ static bool close_noop(const Glib::RefPtr<Adw::TabPage> &) {
 template <typename ...T>
 static void check_selection_non_null(T...,
                                      Adw::TabView &view) {
-  g_assert(view.get_selected_page() != nullptr);
+  g_assert_true(view.get_selected_page() != nullptr);
 }
 
 template <typename ...T>
 static void check_selection_null(T...,
                                  Adw::TabView &view) {
-  g_assert(view.get_selected_page() == nullptr);
+  g_assert_true(view.get_selected_page() == nullptr);
 }
 
 static void test_adw_tab_view_n_pages(void) {
@@ -67,30 +67,30 @@ static void test_adw_tab_view_n_pages(void) {
   view.property_n_pages().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   int n_pages = view.get_property<int>("n-pages");
-  g_assert(n_pages == 0);
+  g_assert_true(n_pages == 0);
 
   Glib::RefPtr<Adw::TabPage> page =
       view.append(Gtk::make_managed<Gtk::Button>());
   n_pages = view.get_property<int>("n-pages");
-  g_assert(n_pages == 1);
-  g_assert(view.get_n_pages() == 1);
-  g_assert(notified == 1);
+  g_assert_true(n_pages == 1);
+  g_assert_true(view.get_n_pages() == 1);
+  g_assert_true(notified == 1);
 
   view.append(Gtk::make_managed<Gtk::Button>());
-  g_assert(view.get_n_pages() == 2);
-  g_assert(notified == 2);
+  g_assert_true(view.get_n_pages() == 2);
+  g_assert_true(notified == 2);
 
   view.append_pinned(Gtk::make_managed<Gtk::Button>());
-  g_assert(view.get_n_pages() == 3);
-  g_assert(notified == 3);
+  g_assert_true(view.get_n_pages() == 3);
+  g_assert_true(notified == 3);
 
   view.reorder_forward(page);
-  g_assert(view.get_n_pages() == 3);
-  g_assert(notified == 3);
+  g_assert_true(view.get_n_pages() == 3);
+  g_assert_true(notified == 3);
 
   view.close_page(page);
-  g_assert(view.get_n_pages() == 2);
-  g_assert(notified == 4);
+  g_assert_true(view.get_n_pages() == 2);
+  g_assert_true(notified == 4);
 }
 
 static void test_adw_tab_view_n_pinned_pages(void) {
@@ -101,30 +101,30 @@ static void test_adw_tab_view_n_pinned_pages(void) {
       sigc::ptr_fun(notify_cb));
 
   int n_pages = view.get_property<int>("n-pinned-pages");
-  g_assert(n_pages == 0);
+  g_assert_true(n_pages == 0);
 
   view.append_pinned(Gtk::make_managed<Gtk::Button>());
   n_pages = view.get_property<int>("n-pinned-pages");
-  g_assert(n_pages == 1);
-  g_assert(view.get_n_pinned_pages() == 1);
-  g_assert(notified == 1);
+  g_assert_true(n_pages == 1);
+  g_assert_true(view.get_n_pinned_pages() == 1);
+  g_assert_true(notified == 1);
 
   Glib::RefPtr<Adw::TabPage> page =
       view.append(Gtk::make_managed<Gtk::Button>());
-  g_assert(view.get_n_pinned_pages() == 1);
-  g_assert(notified == 1);
+  g_assert_true(view.get_n_pinned_pages() == 1);
+  g_assert_true(notified == 1);
 
   view.set_page_pinned(page, true);
-  g_assert(view.get_n_pinned_pages() == 2);
-  g_assert(notified == 2);
+  g_assert_true(view.get_n_pinned_pages() == 2);
+  g_assert_true(notified == 2);
 
   view.reorder_backward(page);
-  g_assert(view.get_n_pinned_pages() == 2);
-  g_assert(notified == 2);
+  g_assert_true(view.get_n_pinned_pages() == 2);
+  g_assert_true(notified == 2);
 
   view.set_page_pinned(page, false);
-  g_assert(view.get_n_pinned_pages() == 1);
-  g_assert(notified == 3);
+  g_assert_true(view.get_n_pinned_pages() == 1);
+  g_assert_true(notified == 3);
 }
 
 static void test_adw_tab_view_default_icon(void) {
@@ -138,16 +138,16 @@ static void test_adw_tab_view_default_icon(void) {
       sigc::ptr_fun(notify_cb));
 
   Glib::ustring icon_str = view.get_default_icon()->to_string();
-  g_assert(icon_str == "adw-tab-icon-missing-symbolic");
-  g_assert(notified == 0);
+  g_assert_true(icon_str == "adw-tab-icon-missing-symbolic");
+  g_assert_true(notified == 0);
 
   view.set_default_icon(icon1);
   g_assert_true(view.get_default_icon() == icon1);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   view.set_property<Glib::RefPtr<Gio::Icon>>("default-icon", icon2);
   g_assert_true(view.get_default_icon() == icon2);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_view_menu_model(void) {
@@ -161,16 +161,16 @@ static void test_adw_tab_view_menu_model(void) {
 
   Glib::RefPtr<Gio::MenuModel> model =
       view.get_property<Glib::RefPtr<Gio::MenuModel>>("menu-model");
-  g_assert(model == nullptr);
-  g_assert(notified == 0);
+  g_assert_true(model == nullptr);
+  g_assert_true(notified == 0);
 
   view.set_menu_model(model1);
   g_assert_true(view.get_menu_model() == model1);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   view.set_property<Glib::RefPtr<Gio::MenuModel>>("menu-model", model2);
   g_assert_true(view.get_menu_model() == model2);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_view_shortcuts(void) {
@@ -181,26 +181,26 @@ static void test_adw_tab_view_shortcuts(void) {
 
   Adw::TabViewShortcuts shortcuts =
       view.get_property<Adw::TabViewShortcuts>("shortcuts");
-  g_assert(shortcuts == Adw::TabViewShortcuts::ALL_SHORTCUTS);
-  g_assert(notified == 0);
+  g_assert_true(shortcuts == Adw::TabViewShortcuts::ALL_SHORTCUTS);
+  g_assert_true(notified == 0);
 
   view.set_shortcuts(Adw::TabViewShortcuts::CONTROL_PAGE_UP);
-  g_assert(view.get_shortcuts() == Adw::TabViewShortcuts::CONTROL_PAGE_UP);
-  g_assert(notified == 1);
+  g_assert_true(view.get_shortcuts() == Adw::TabViewShortcuts::CONTROL_PAGE_UP);
+  g_assert_true(notified == 1);
 
   view.set_property<Adw::TabViewShortcuts>(
       "shortcuts", Adw::TabViewShortcuts::CONTROL_PAGE_DOWN);
-  g_assert(view.get_shortcuts() == Adw::TabViewShortcuts::CONTROL_PAGE_DOWN);
-  g_assert(notified == 2);
+  g_assert_true(view.get_shortcuts() == Adw::TabViewShortcuts::CONTROL_PAGE_DOWN);
+  g_assert_true(notified == 2);
 
   view.add_shortcuts(Adw::TabViewShortcuts::CONTROL_HOME);
-  g_assert(view.get_shortcuts() == (Adw::TabViewShortcuts::CONTROL_PAGE_DOWN |
+  g_assert_true(view.get_shortcuts() == (Adw::TabViewShortcuts::CONTROL_PAGE_DOWN |
                                     Adw::TabViewShortcuts::CONTROL_HOME));
-  g_assert(notified == 3);
+  g_assert_true(notified == 3);
 
   view.remove_shortcuts(Adw::TabViewShortcuts::CONTROL_PAGE_DOWN);
-  g_assert(view.get_shortcuts() == Adw::TabViewShortcuts::CONTROL_HOME);
-  g_assert(notified == 4);
+  g_assert_true(view.get_shortcuts() == Adw::TabViewShortcuts::CONTROL_HOME);
+  g_assert_true(notified == 4);
 }
 
 static void test_adw_tab_view_get_page(void) {
@@ -240,48 +240,48 @@ static void test_adw_tab_view_select(void) {
 
   Glib::RefPtr<Adw::TabPage> selected_page =
       view.get_property<Glib::RefPtr<Adw::TabPage>>("selected-page");
-  g_assert(selected_page == nullptr);
+  g_assert_true(selected_page == nullptr);
 
   Glib::RefPtr<Adw::TabPage> page1 =
       view.append(Gtk::make_managed<Gtk::Button>());
   g_assert_true(view.get_selected_page() == page1);
   g_assert_true(page1->get_selected());
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   Glib::RefPtr<Adw::TabPage> page2 =
       view.append(Gtk::make_managed<Gtk::Button>());
   g_assert_true(view.get_selected_page() == page1);
   g_assert_true(page1->get_selected());
   g_assert_false(page2->get_selected());
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   view.set_selected_page(page2);
   g_assert_true(view.get_selected_page() == page2);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 
   view.set_property<Glib::RefPtr<Adw::TabPage>>("selected-page", page1);
   g_assert_true(view.get_selected_page() == page1);
-  g_assert(notified == 3);
+  g_assert_true(notified == 3);
 
   bool ret = view.select_previous_page();
   g_assert_true(view.get_selected_page() == page1);
   g_assert_false(ret);
-  g_assert(notified == 3);
+  g_assert_true(notified == 3);
 
   ret = view.select_next_page();
   g_assert_true(view.get_selected_page() == page2);
   g_assert_true(ret);
-  g_assert(notified == 4);
+  g_assert_true(notified == 4);
 
   ret = view.select_next_page();
   g_assert_true(view.get_selected_page() == page2);
   g_assert_false(ret);
-  g_assert(notified == 4);
+  g_assert_true(notified == 4);
 
   ret = view.select_previous_page();
   g_assert_true(view.get_selected_page() == page1);
   g_assert_true(ret);
-  g_assert(notified == 5);
+  g_assert_true(notified == 5);
 }
 
 static void test_adw_tab_view_add_basic(void) {
@@ -317,15 +317,15 @@ static void test_adw_tab_view_add_auto(void) {
   /* No parent */
 
   pages[3] = view.add_page(Gtk::make_managed<Gtk::Button>());
-  g_assert(pages[3]->get_parent() == nullptr);
+  g_assert_true(pages[3]->get_parent() == nullptr);
   assert_page_positions(view, pages, 4, 3, {0, 1, 2, 3});
 
   pages[4] = view.add_page(Gtk::make_managed<Gtk::Button>());
-  g_assert(pages[4]->get_parent() == nullptr);
+  g_assert_true(pages[4]->get_parent() == nullptr);
   assert_page_positions(view, pages, 5, 3, {0, 1, 2, 3, 4});
 
   pages[5] = view.add_page(Gtk::make_managed<Gtk::Button>());
-  g_assert(pages[5]->get_parent() == nullptr);
+  g_assert_true(pages[5]->get_parent() == nullptr);
   assert_page_positions(view, pages, 6, 3, {0, 1, 2, 3, 4, 5});
 
   /* Parent is a regular page */
@@ -555,7 +555,7 @@ static void test_adw_tab_view_close(void) {
 
   view.close_page(pages[0]);
   assert_page_positions(view, pages, 0, 0, {});
-  g_assert(view.get_selected_page() == nullptr);
+  g_assert_true(view.get_selected_page() == nullptr);
 }
 
 static void test_adw_tab_view_close_other(void) {
@@ -732,7 +732,7 @@ test_adw_tab_view_pages (void)
   std::array<Glib::RefPtr<Adw::TabPage>, 2> pages;
 
   Glib::RefPtr<Gtk::SelectionModel> pages_model = view.get_pages();
-  g_assert(pages_model != nullptr);
+  g_assert_true(pages_model != nullptr);
 
   // I am still unable to correctly access the Gio.ListModel from a Gtk.SelectionModel
   // sigc::connection conn1 = list_model->signal_items_changed().connect(
@@ -766,16 +766,16 @@ static void test_adw_tab_page_title(void) {
   page->property_title().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   Glib::ustring title = page->get_property<Glib::ustring>("title");
-  g_assert(title == "");
-  g_assert(notified == 0);
+  g_assert_true(title == "");
+  g_assert_true(notified == 0);
 
   page->set_title("Some title");
-  g_assert(page->get_title() == "Some title");
-  g_assert(notified == 1);
+  g_assert_true(page->get_title() == "Some title");
+  g_assert_true(notified == 1);
 
   page->set_property<Glib::ustring>("title", "Some other title");
-  g_assert(page->get_title() == "Some other title");
-  g_assert(notified == 2);
+  g_assert_true(page->get_title() == "Some other title");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_tooltip(void) {
@@ -788,16 +788,16 @@ static void test_adw_tab_page_tooltip(void) {
   page->property_tooltip().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   Glib::ustring tooltip = page->get_property<Glib::ustring>("tooltip");
-  g_assert(tooltip == "");
-  g_assert(notified == 0);
+  g_assert_true(tooltip == "");
+  g_assert_true(notified == 0);
 
   page->set_tooltip("Some tooltip");
-  g_assert(page->get_tooltip() == "Some tooltip");
-  g_assert(notified == 1);
+  g_assert_true(page->get_tooltip() == "Some tooltip");
+  g_assert_true(notified == 1);
 
   page->set_property<Glib::ustring>("tooltip", "Some other tooltip");
-  g_assert(page->get_tooltip() == "Some other tooltip");
-  g_assert(notified == 2);
+  g_assert_true(page->get_tooltip() == "Some other tooltip");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_icon(void) {
@@ -814,16 +814,16 @@ static void test_adw_tab_page_icon(void) {
 
   Glib::RefPtr<Gio::Icon> icon =
       page->get_property<Glib::RefPtr<Gio::Icon>>("icon");
-  g_assert(icon == nullptr);
-  g_assert(notified == 0);
+  g_assert_true(icon == nullptr);
+  g_assert_true(notified == 0);
 
   page->set_icon(icon1);
   g_assert_true(page->get_icon() == icon1);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   page->set_property<Glib::RefPtr<Gio::Icon>>("icon", icon2);
   g_assert_true(page->get_icon() == icon2);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_loading(void) {
@@ -837,16 +837,16 @@ static void test_adw_tab_page_loading(void) {
 
   bool loading = page->get_property<bool>("loading");
   g_assert_false(loading);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   page->set_loading(true);
   loading = page->get_property<bool>("loading");
   g_assert_true(loading);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   page->set_property<bool>("loading", false);
   g_assert_false(page->get_loading());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_indicator_icon(void) {
@@ -864,16 +864,16 @@ static void test_adw_tab_page_indicator_icon(void) {
 
   Glib::RefPtr<Gio::Icon> icon =
       page->get_property<Glib::RefPtr<Gio::Icon>>("indicator-icon");
-  g_assert(icon == nullptr);
-  g_assert(notified == 0);
+  g_assert_true(icon == nullptr);
+  g_assert_true(notified == 0);
 
   page->set_indicator_icon(icon1);
   g_assert_true(page->get_indicator_icon() == icon1);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   page->set_property<Glib::RefPtr<Gio::Icon>>("indicator-icon", icon2);
   g_assert_true(page->get_indicator_icon() == icon2);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_indicator_tooltip(void) {
@@ -888,16 +888,16 @@ static void test_adw_tab_page_indicator_tooltip(void) {
 
   Glib::ustring tooltip =
       page->get_property<Glib::ustring>("indicator-tooltip");
-  g_assert(tooltip == "");
-  g_assert(notified == 0);
+  g_assert_true(tooltip == "");
+  g_assert_true(notified == 0);
 
   page->set_indicator_tooltip("Some tooltip");
-  g_assert(page->get_indicator_tooltip() == "Some tooltip");
-  g_assert(notified == 1);
+  g_assert_true(page->get_indicator_tooltip() == "Some tooltip");
+  g_assert_true(notified == 1);
 
   page->set_property<Glib::ustring>("indicator-tooltip", "Some other tooltip");
-  g_assert(page->get_indicator_tooltip() == "Some other tooltip");
-  g_assert(notified == 2);
+  g_assert_true(page->get_indicator_tooltip() == "Some other tooltip");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_indicator_activatable(void) {
@@ -913,16 +913,16 @@ static void test_adw_tab_page_indicator_activatable(void) {
   bool indicator_activatable =
       page->get_property<bool>("indicator-activatable");
   g_assert_false(indicator_activatable);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   page->set_indicator_activatable(true);
   indicator_activatable = page->get_property<bool>("indicator-activatable");
   g_assert_true(indicator_activatable);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   page->set_property<bool>("indicator-activatable", false);
   g_assert_false(page->get_indicator_activatable());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_page_needs_attention(void) {
@@ -937,16 +937,16 @@ static void test_adw_tab_page_needs_attention(void) {
 
   bool needs_attention = page->get_property<bool>("needs-attention");
   g_assert_false(needs_attention);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   page->set_needs_attention(true);
   needs_attention = page->get_property<bool>("needs-attention");
   g_assert_true(needs_attention);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   page->set_property<bool>("needs-attention", false);
   g_assert_false(page->get_needs_attention());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_tab_view_pages_to_list_view_setup(
@@ -958,10 +958,10 @@ static void test_adw_tab_view_pages_to_list_view_bind(
     const Glib::RefPtr<Gtk::ListItem> &list_item) {
   Glib::RefPtr<Gtk::Label> item =
       std::dynamic_pointer_cast<Gtk::Label>(list_item->get_item());
-  g_assert(item != nullptr);
+  g_assert_true(item != nullptr);
 
   Gtk::Label *row = dynamic_cast<Gtk::Label *>(list_item->get_child());
-  g_assert(row != nullptr);
+  g_assert_true(row != nullptr);
 
   Glib::RefPtr<Glib::Binding> binding = Glib::Binding::bind_property(
       item->property_label(), row->property_label(),
@@ -985,7 +985,7 @@ static void test_adw_tab_view_pages_to_list_view(void) {
   Gtk::ListView list_view;
 
   Glib::RefPtr<Gtk::SelectionModel> pages = view.get_pages();
-  g_assert(pages != nullptr);
+  g_assert_true(pages != nullptr);
 
   Glib::RefPtr<Gtk::SignalListItemFactory> factory =
       Gtk::SignalListItemFactory::create();

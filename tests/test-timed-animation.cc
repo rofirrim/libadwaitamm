@@ -27,17 +27,17 @@ static void test_adw_animation_value_from(void) {
       sigc::ptr_fun(notify_cb));
 
   double value = animation->get_property<double>("value-from");
-  g_assert(value == 10);
-  g_assert(notified == 0);
+  g_assert_true(value == 10);
+  g_assert_true(notified == 0);
 
   animation->set_value_from(20);
   value = animation->get_property<double>("value-from");
-  g_assert(value == 20);
-  g_assert(notified == 1);
+  g_assert_true(value == 20);
+  g_assert_true(notified == 1);
 
   animation->set_property<double>("value-from", 30.0);
-  g_assert(animation->get_value_from() == 30);
-  g_assert(notified == 2);
+  g_assert_true(animation->get_value_from() == 30);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_animation_value_to(void) {
@@ -54,17 +54,17 @@ static void test_adw_animation_value_to(void) {
       sigc::ptr_fun(notify_cb));
 
   double value = animation->get_property<double>("value-to");
-  g_assert(value == 20);
-  g_assert(notified == 0);
+  g_assert_true(value == 20);
+  g_assert_true(notified == 0);
 
   animation->set_value_to(10);
   value = animation->get_property<double>("value-to");
-  g_assert(value == 10);
-  g_assert(notified == 1);
+  g_assert_true(value == 10);
+  g_assert_true(notified == 1);
 
   animation->set_property<double>("value-to", 30.0);
-  g_assert(animation->get_value_to() == 30);
-  g_assert(notified == 2);
+  g_assert_true(animation->get_value_to() == 30);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_animation_duration(void) {
@@ -79,17 +79,17 @@ static void test_adw_animation_duration(void) {
       sigc::ptr_fun(notify_cb));
 
   guint duration = animation->get_property<guint>("duration");
-  g_assert(duration == 100);
-  g_assert(notified == 0);
+  g_assert_true(duration == 100);
+  g_assert_true(notified == 0);
 
   animation->set_duration(200);
   duration = animation->get_property<guint>("duration");
-  g_assert(duration == 200);
-  g_assert(notified == 1);
+  g_assert_true(duration == 200);
+  g_assert_true(notified == 1);
 
   animation->set_property<guint>("duration", 300u);
-  g_assert(animation->get_duration() == 300);
-  g_assert(notified == 2);
+  g_assert_true(animation->get_duration() == 300);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_animation_easing(void) {
@@ -104,18 +104,18 @@ static void test_adw_animation_easing(void) {
       sigc::ptr_fun(notify_cb));
 
   Adw::Easing easing = animation->get_property<Adw::Easing>("easing");
-  g_assert(easing == Adw::Easing::EASE_OUT_CUBIC);
-  g_assert(notified == 0);
+  g_assert_true(easing == Adw::Easing::EASE_OUT_CUBIC);
+  g_assert_true(notified == 0);
 
   animation->set_easing(Adw::Easing::EASE_IN_CUBIC);
   easing = animation->get_property<Adw::Easing>("easing");
-  g_assert(easing == Adw::Easing::EASE_IN_CUBIC);
-  g_assert(notified == 1);
+  g_assert_true(easing == Adw::Easing::EASE_IN_CUBIC);
+  g_assert_true(notified == 1);
 
   animation->set_property<Adw::Easing>("easing",
                                        Adw::Easing::EASE_IN_OUT_CUBIC);
-  g_assert(animation->get_easing() == Adw::Easing::EASE_IN_OUT_CUBIC);
-  g_assert(notified == 2);
+  g_assert_true(animation->get_easing() == Adw::Easing::EASE_IN_OUT_CUBIC);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_animation_repeat_count(void) {
@@ -131,17 +131,17 @@ static void test_adw_animation_repeat_count(void) {
 
   guint repeat_count =
       animation->get_property<guint>("repeat-count");
-  g_assert(repeat_count == 1);
-  g_assert(notified == 0);
+  g_assert_true(repeat_count == 1);
+  g_assert_true(notified == 0);
 
   animation->set_repeat_count(2);
   repeat_count = animation->get_property<guint>("repeat-count");
-  g_assert(repeat_count == 2);
-  g_assert(notified == 1);
+  g_assert_true(repeat_count == 2);
+  g_assert_true(notified == 1);
 
   animation->set_property<guint>("repeat-count", 3u);
-  g_assert(animation->get_repeat_count() == 3);
-  g_assert(notified == 2);
+  g_assert_true(animation->get_repeat_count() == 3);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_animation_reverse(void) {
@@ -157,16 +157,16 @@ static void test_adw_animation_reverse(void) {
 
   bool reverse = animation->get_property<bool>("reverse");
   g_assert_false(reverse);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   animation->set_reverse(true);
   reverse = animation->get_property<bool>("reverse");
   g_assert_true(reverse);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   animation->set_property<bool>("reverse", false);
   g_assert_false(animation->get_reverse());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_animation_alternate(void) {
@@ -182,16 +182,16 @@ static void test_adw_animation_alternate(void) {
 
   bool alternate = animation->get_property<bool>("alternate");
   g_assert_false(alternate);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   animation->set_alternate(true);
   alternate = animation->get_property<bool>("alternate");
   g_assert_true(alternate);
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   animation->set_property<bool>("alternate", false);
   g_assert_false(animation->get_alternate());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 int main(int argc, char *argv[]) {

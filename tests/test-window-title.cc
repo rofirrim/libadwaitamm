@@ -21,18 +21,18 @@ static void test_adw_window_title_title(void) {
       sigc::ptr_fun(notify_cb));
 
   Glib::ustring title = window_title.get_property<Glib::ustring>("title");
-  g_assert(title == "Some title");
+  g_assert_true(title == "Some title");
 
   window_title.set_title("Some title");
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   window_title.set_title("Another title");
-  g_assert(window_title.get_title() == "Another title");
-  g_assert(notified == 1);
+  g_assert_true(window_title.get_title() == "Another title");
+  g_assert_true(notified == 1);
 
   window_title.set_property<Glib::ustring>("title", "Yet another title");
-  g_assert(window_title.get_title() == "Yet another title");
-  g_assert(notified == 2);
+  g_assert_true(window_title.get_title() == "Yet another title");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_window_title_subtitle(void) {
@@ -43,18 +43,18 @@ static void test_adw_window_title_subtitle(void) {
       sigc::ptr_fun(notify_cb));
 
   Glib::ustring subtitle = window_title.get_property<Glib::ustring>("subtitle");
-  g_assert(subtitle == "Some subtitle");
+  g_assert_true(subtitle == "Some subtitle");
 
   window_title.set_subtitle("Some subtitle");
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   window_title.set_subtitle("Another subtitle");
-  g_assert(window_title.get_subtitle() == "Another subtitle");
-  g_assert(notified == 1);
+  g_assert_true(window_title.get_subtitle() == "Another subtitle");
+  g_assert_true(notified == 1);
 
   window_title.set_property<Glib::ustring>("subtitle", "Yet another subtitle");
-  g_assert(window_title.get_subtitle() == "Yet another subtitle");
-  g_assert(notified == 2);
+  g_assert_true(window_title.get_subtitle() == "Yet another subtitle");
+  g_assert_true(notified == 2);
 }
 
 int main(int argc, char *argv[]) {

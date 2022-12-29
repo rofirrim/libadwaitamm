@@ -23,21 +23,21 @@ static void test_adw_style_manager_color_scheme(void) {
           sigc::ptr_fun(notify_cb));
 
   color_scheme = manager->get_property<Adw::ColorScheme>("color-scheme");
-  g_assert(color_scheme == Adw::ColorScheme::DEFAULT);
-  g_assert(notified == 0);
+  g_assert_true(color_scheme == Adw::ColorScheme::DEFAULT);
+  g_assert_true(notified == 0);
 
   manager->set_color_scheme(Adw::ColorScheme::DEFAULT);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   manager->set_color_scheme(Adw::ColorScheme::PREFER_DARK);
   color_scheme = manager->get_property<Adw::ColorScheme>("color-scheme");
-  g_assert(color_scheme == Adw::ColorScheme::PREFER_DARK);
-  g_assert(notified == 1);
+  g_assert_true(color_scheme == Adw::ColorScheme::PREFER_DARK);
+  g_assert_true(notified == 1);
 
   manager->set_property<Adw::ColorScheme>("color-scheme",
                                           Adw::ColorScheme::PREFER_LIGHT);
-  g_assert(manager->get_color_scheme() == Adw::ColorScheme::PREFER_LIGHT);
-  g_assert(notified == 2);
+  g_assert_true(manager->get_color_scheme() == Adw::ColorScheme::PREFER_LIGHT);
+  g_assert_true(notified == 2);
 
   conn.disconnect();
   manager->set_color_scheme(Adw::ColorScheme::DEFAULT);

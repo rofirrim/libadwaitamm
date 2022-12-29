@@ -17,7 +17,7 @@ static void test_adw_combo_row_set_for_enum(void) {
   Glib::RefPtr<Gio::ListModel> model;
   Glib::RefPtr<Adw::EnumListItem> item;
 
-  g_assert(row.get_model() == nullptr);
+  g_assert_true(row.get_model() == nullptr);
 
   expr = Gtk::PropertyExpression<Glib::ustring>::create(
       Adw::EnumListItem::get_type(), "nick");
@@ -28,17 +28,17 @@ static void test_adw_combo_row_set_for_enum(void) {
   row.set_model(model);
 
   model = row.get_model();
-  g_assert(model != nullptr);
+  g_assert_true(model != nullptr);
 
-  g_assert(model->get_n_items() == 2);
+  g_assert_true(model->get_n_items() == 2);
 
   item = std::dynamic_pointer_cast<Adw::EnumListItem>(model->get_object(0));
-  g_assert(item != nullptr);
-  g_assert(item->get_nick() == "horizontal");
+  g_assert_true(item != nullptr);
+  g_assert_true(item->get_nick() == "horizontal");
 
   item = std::dynamic_pointer_cast<Adw::EnumListItem>(model->get_object(1));
-  g_assert(item != nullptr);
-  g_assert(item->get_nick() == "vertical");
+  g_assert_true(item != nullptr);
+  g_assert_true(item->get_nick() == "vertical");
 }
 
 static void test_adw_combo_row_selected(void) {
@@ -50,25 +50,25 @@ static void test_adw_combo_row_selected(void) {
   row.property_selected().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   selected = row.get_property<int>("selected");
-  g_assert(selected == -1);
+  g_assert_true(selected == -1);
 
   row.set_selected(-1);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   // Enums don't have a way to retrieve its GType in gtkmm.
   model = Adw::EnumListModel::create(GTK_TYPE_SELECTION_MODE);
   row.set_model(model);
 
-  g_assert(row.get_selected() == 0);
-  g_assert(notified == 1);
+  g_assert_true(row.get_selected() == 0);
+  g_assert_true(notified == 1);
 
   row.set_selected(3);
-  g_assert(row.get_selected() == 3);
-  g_assert(notified == 2);
+  g_assert_true(row.get_selected() == 3);
+  g_assert_true(notified == 2);
 
   row.set_property<int>("selected", 1);
-  g_assert(row.get_selected() == 1);
-  g_assert(notified == 3);
+  g_assert_true(row.get_selected() == 1);
+  g_assert_true(notified == 3);
 }
 
 static void test_adw_combo_row_use_subtitle(void) {
@@ -81,16 +81,16 @@ static void test_adw_combo_row_use_subtitle(void) {
   g_assert_false(row.get_use_subtitle());
 
   row.set_use_subtitle(false);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   row.set_use_subtitle(true);
   g_assert_true(row.get_use_subtitle());
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   row.set_property<bool>("use-subtitle", false);
   bool use_subtitle = row.get_property<bool>("use-subtitle");
   g_assert_false(use_subtitle);
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 int main(int argc, char *argv[]) {

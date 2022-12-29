@@ -13,26 +13,26 @@
 
 static void test_adw_avatar_icon_name(void) {
   Adw::Avatar avatar(128, "", true);
-  g_assert(avatar.get_icon_name() == "");
+  g_assert_true(avatar.get_icon_name() == "");
 
   avatar.set_icon_name(TEST_ICON_NAME);
-  g_assert(avatar.get_icon_name() == TEST_ICON_NAME);
+  g_assert_true(avatar.get_icon_name() == TEST_ICON_NAME);
 }
 
 static void test_adw_avatar_text(void) {
   Adw::Avatar avatar(128, "", true);
-  g_assert(avatar.get_text() == "");
+  g_assert_true(avatar.get_text() == "");
 
   avatar.set_text(TEST_STRING);
-  g_assert(avatar.get_text() == TEST_STRING);
+  g_assert_true(avatar.get_text() == TEST_STRING);
 }
 
 static void test_adw_avatar_size(void) {
   Adw::Avatar avatar(TEST_SIZE, "", true);
 
-  g_assert(avatar.get_size() == TEST_SIZE);
+  g_assert_true(avatar.get_size() == TEST_SIZE);
   avatar.set_size(TEST_SIZE / 2);
-  g_assert(avatar.get_size() == TEST_SIZE / 2);
+  g_assert_true(avatar.get_size() == TEST_SIZE / 2);
 }
 
 int main(int argc, char *argv[]) {

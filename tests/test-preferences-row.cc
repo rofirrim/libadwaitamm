@@ -10,17 +10,17 @@
 static void test_adw_preferences_row_title(void) {
   Adw::PreferencesRow row;
 
-  g_assert(row.get_title() == "");
+  g_assert_true(row.get_title() == "");
 
   row.set_title("Dummy title");
-  g_assert(row.get_title() == "Dummy title");
+  g_assert_true(row.get_title() == "Dummy title");
 
   row.set_title("");
-  g_assert(row.get_title() == "");
+  g_assert_true(row.get_title() == "");
 
   row.set_use_markup(false);
   row.set_title("Invalid <b>markup");
-  g_assert(row.get_title() == "Invalid <b>markup");
+  g_assert_true(row.get_title() == "Invalid <b>markup");
 }
 
 static void test_adw_preferences_row_use_underline(void) {

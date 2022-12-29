@@ -16,9 +16,9 @@ static void test_adw_preferences_group_add_remove(void) {
   Gtk::Switch *widget = Gtk::make_managed<Gtk::Switch>();
   group.add(widget);
 
-  g_assert(G_TYPE_CHECK_INSTANCE_TYPE(
+  g_assert_true(G_TYPE_CHECK_INSTANCE_TYPE(
       gtk_widget_get_parent(GTK_WIDGET(row->gobj())), GTK_TYPE_LIST_BOX));
-  g_assert(G_TYPE_CHECK_INSTANCE_TYPE(
+  g_assert_true(G_TYPE_CHECK_INSTANCE_TYPE(
       gtk_widget_get_parent(GTK_WIDGET(widget->gobj())), GTK_TYPE_BOX));
 
   group.remove(row);
@@ -28,25 +28,25 @@ static void test_adw_preferences_group_add_remove(void) {
 static void test_adw_preferences_group_title(void) {
   Adw::PreferencesGroup group;
 
-  g_assert(group.get_title() == "");
+  g_assert_true(group.get_title() == "");
 
   group.set_title("Dummy title");
-  g_assert(group.get_title() == "Dummy title");
+  g_assert_true(group.get_title() == "Dummy title");
 
   group.set_title("");
-  g_assert(group.get_title() == "");
+  g_assert_true(group.get_title() == "");
 }
 
 static void test_adw_preferences_group_description(void) {
   Adw::PreferencesGroup group;
 
-  g_assert(group.get_description() == "");
+  g_assert_true(group.get_description() == "");
 
   group.set_description("Dummy description");
-  g_assert(group.get_description() == "Dummy description");
+  g_assert_true(group.get_description() == "Dummy description");
 
   group.set_description("");
-  g_assert(group.get_description() == "");
+  g_assert_true(group.get_description() == "");
 }
 
 int main(int argc, char *argv[]) {

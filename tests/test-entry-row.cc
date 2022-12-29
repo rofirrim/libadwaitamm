@@ -36,15 +36,15 @@ static void test_adw_entry_row_show_apply_button(void) {
   g_assert_false(show_apply_button);
 
   row.set_show_apply_button(false);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   row.set_show_apply_button(true);
   g_assert_true(row.get_show_apply_button());
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   row.set_property<bool>("show-apply-button", false);
   g_assert_false(row.get_show_apply_button());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 int main(int argc, char *argv[]) {

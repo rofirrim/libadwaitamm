@@ -22,18 +22,18 @@ static void test_adw_button_content_icon_name(void) {
   Glib::ustring icon_name;
 
   icon_name = content.get_property<Glib::ustring>("icon-name");
-  g_assert(icon_name == "");
+  g_assert_true(icon_name == "");
 
   content.set_icon_name("");
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   content.set_icon_name("document-open-symbolic");
-  g_assert(content.get_icon_name() == "document-open-symbolic");
-  g_assert(notified == 1);
+  g_assert_true(content.get_icon_name() == "document-open-symbolic");
+  g_assert_true(notified == 1);
 
   content.set_property<Glib::ustring>("icon-name", "");
-  g_assert(content.get_icon_name() == "");
-  g_assert(notified == 2);
+  g_assert_true(content.get_icon_name() == "");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_button_content_label(void) {
@@ -45,18 +45,18 @@ static void test_adw_button_content_label(void) {
   Glib::ustring label;
 
   label = content.get_property<Glib::ustring>("label");
-  g_assert(label == "");
+  g_assert_true(label == "");
 
   content.set_label("");
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   content.set_label("Open");
-  g_assert(content.get_label() == "Open");
-  g_assert(notified == 1);
+  g_assert_true(content.get_label() == "Open");
+  g_assert_true(notified == 1);
 
   content.set_property<Glib::ustring>("label", "");
-  g_assert(content.get_label() == "");
-  g_assert(notified == 2);
+  g_assert_true(content.get_label() == "");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_button_content_use_underline(void) {
@@ -71,15 +71,15 @@ static void test_adw_button_content_use_underline(void) {
   g_assert_false(use_underline);
 
   content.set_use_underline(false);
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   content.set_use_underline(true);
   g_assert_true(content.get_use_underline());
-  g_assert(notified == 1);
+  g_assert_true(notified == 1);
 
   content.set_property<bool>("use-underline", false);
   g_assert_false(content.get_use_underline());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_button_content_style_class_button(void) {

@@ -25,7 +25,7 @@ static void test_adw_header_bar_title_widget(void) {
   Gtk::Switch widget;
   bar.set_title_widget(&widget);
 
-  g_assert(bar.get_title_widget()->gobj() == (GtkWidget *)widget.gobj());
+  g_assert_true(bar.get_title_widget()->gobj() == (GtkWidget *)widget.gobj());
 
   bar.set_title_widget(nullptr);
   g_assert_null(bar.get_title_widget());
@@ -58,26 +58,26 @@ static void test_adw_header_bar_show_end_title_buttons(void) {
 static void test_adw_header_bar_decoration_layout(void) {
   Adw::HeaderBar bar;
 
-  g_assert(bar.get_decoration_layout() == "");
+  g_assert_true(bar.get_decoration_layout() == "");
 
   bar.set_decoration_layout(":");
 
-  g_assert(bar.get_decoration_layout() == ":");
+  g_assert_true(bar.get_decoration_layout() == ":");
 
   bar.set_decoration_layout("");
-  g_assert(bar.get_decoration_layout() == "");
+  g_assert_true(bar.get_decoration_layout() == "");
 }
 
 static void test_adw_header_bar_centering_policy(void) {
   Adw::HeaderBar bar;
 
-  g_assert(bar.get_centering_policy() == Adw::CenteringPolicy::LOOSE);
+  g_assert_true(bar.get_centering_policy() == Adw::CenteringPolicy::LOOSE);
 
   bar.set_centering_policy(Adw::CenteringPolicy::STRICT);
-  g_assert(bar.get_centering_policy() == Adw::CenteringPolicy::STRICT);
+  g_assert_true(bar.get_centering_policy() == Adw::CenteringPolicy::STRICT);
 
   bar.set_centering_policy(Adw::CenteringPolicy::LOOSE);
-  g_assert(bar.get_centering_policy() == Adw::CenteringPolicy::LOOSE);
+  g_assert_true(bar.get_centering_policy() == Adw::CenteringPolicy::LOOSE);
 }
 
 int main(int argc, char *argv[]) {

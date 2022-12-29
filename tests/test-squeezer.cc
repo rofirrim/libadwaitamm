@@ -34,26 +34,26 @@ static void test_adw_squeezer_allow_none(void) {
 static void test_adw_squeezer_transition_duration(void) {
   Adw::Squeezer squeezer;
 
-  g_assert(squeezer.get_transition_duration() == 200);
+  g_assert_true(squeezer.get_transition_duration() == 200);
 
   squeezer.set_transition_duration(400);
-  g_assert(squeezer.get_transition_duration() == 400);
+  g_assert_true(squeezer.get_transition_duration() == 400);
 
   squeezer.set_transition_duration(-1);
-  g_assert(squeezer.get_transition_duration() == G_MAXUINT);
+  g_assert_true(squeezer.get_transition_duration() == G_MAXUINT);
 }
 
 static void test_adw_squeezer_transition_type(void) {
   Adw::Squeezer squeezer;
 
-  g_assert(squeezer.get_transition_type() == Adw::SqueezerTransitionType::NONE);
+  g_assert_true(squeezer.get_transition_type() == Adw::SqueezerTransitionType::NONE);
 
   squeezer.set_transition_type(Adw::SqueezerTransitionType::CROSSFADE);
-  g_assert(squeezer.get_transition_type() ==
+  g_assert_true(squeezer.get_transition_type() ==
            Adw::SqueezerTransitionType::CROSSFADE);
 
   squeezer.set_transition_type(Adw::SqueezerTransitionType::NONE);
-  g_assert(squeezer.get_transition_type() == Adw::SqueezerTransitionType::NONE);
+  g_assert_true(squeezer.get_transition_type() == Adw::SqueezerTransitionType::NONE);
 }
 
 static void test_adw_squeezer_transition_running(void) {
@@ -65,21 +65,21 @@ static void test_adw_squeezer_transition_running(void) {
 static void test_adw_squeezer_show_hide_child(void) {
   Adw::Squeezer squeezer;
 
-  g_assert(squeezer.get_visible_child() == nullptr);
+  g_assert_true(squeezer.get_visible_child() == nullptr);
 
   Gtk::Label *child = Gtk::make_managed<Gtk::Label>("");
 
   squeezer.add(child);
-  g_assert(squeezer.get_visible_child() == child);
+  g_assert_true(squeezer.get_visible_child() == child);
 
   child->hide();
-  g_assert(squeezer.get_visible_child() == nullptr);
+  g_assert_true(squeezer.get_visible_child() == nullptr);
 
   child->show();
-  g_assert(squeezer.get_visible_child() == child);
+  g_assert_true(squeezer.get_visible_child() == child);
 
   squeezer.remove(child);
-  g_assert(squeezer.get_visible_child() == nullptr);
+  g_assert_true(squeezer.get_visible_child() == nullptr);
 }
 
 static void test_adw_squeezer_interpolate_size(void) {

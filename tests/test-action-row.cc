@@ -23,28 +23,28 @@ static void test_adw_action_row_add_remove(void) {
 static void test_adw_action_row_subtitle(void) {
   Adw::ActionRow row;
 
-  g_assert(row.get_subtitle() == "");
+  g_assert_true(row.get_subtitle() == "");
 
   row.set_subtitle("Dummy subtitle");
-  g_assert(row.get_subtitle() == "Dummy subtitle");
+  g_assert_true(row.get_subtitle() == "Dummy subtitle");
 
   row.set_use_markup(false);
   row.set_subtitle("Invalid <b>markup");
-  g_assert(row.get_subtitle() == "Invalid <b>markup");
+  g_assert_true(row.get_subtitle() == "Invalid <b>markup");
 }
 
 static void test_adw_action_row_icon_name(void) {
   Adw::ActionRow row;
 
-  g_assert(row.get_icon_name() == "");
+  g_assert_true(row.get_icon_name() == "");
 
   row.set_icon_name("dummy-icon-name");
-  g_assert(row.get_icon_name() == "dummy-icon-name");
+  g_assert_true(row.get_icon_name() == "dummy-icon-name");
 }
 
 static void test_adw_action_row_title_lines(void) {
   Adw::ActionRow row;
-  g_assert(row.get_title_lines() == 0);
+  g_assert_true(row.get_title_lines() == 0);
 
   g_test_expect_message(
       ADW_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL,
@@ -52,16 +52,16 @@ static void test_adw_action_row_title_lines(void) {
   row.set_title_lines(-1);
   g_test_assert_expected_messages();
 
-  g_assert(row.get_title_lines() == 0);
+  g_assert_true(row.get_title_lines() == 0);
 
   row.set_title_lines(1);
-  g_assert(row.get_title_lines() == 1);
+  g_assert_true(row.get_title_lines() == 1);
 }
 
 static void test_adw_action_row_subtitle_lines(void) {
   Adw::ActionRow row;
 
-  g_assert(row.get_subtitle_lines() == 0);
+  g_assert_true(row.get_subtitle_lines() == 0);
 
   g_test_expect_message(ADW_LOG_DOMAIN, G_LOG_LEVEL_CRITICAL,
                         "adw_action_row_set_subtitle_lines: assertion "
@@ -69,10 +69,10 @@ static void test_adw_action_row_subtitle_lines(void) {
   row.set_subtitle_lines(-1);
   g_test_assert_expected_messages();
 
-  g_assert(row.get_subtitle_lines() == 0);
+  g_assert_true(row.get_subtitle_lines() == 0);
 
   row.set_subtitle_lines(1);
-  g_assert(row.get_subtitle_lines() == 1);
+  g_assert_true(row.get_subtitle_lines() == 1);
 }
 
 static void test_adw_action_row_activate(void) {

@@ -20,15 +20,15 @@ static void test_adw_toast_title(void) {
   toast->property_title().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   Glib::ustring title = toast->get_property<Glib::ustring>("title");
-  g_assert(title == "Title");
+  g_assert_true(title == "Title");
 
   toast->set_title("Another title");
-  g_assert(toast->get_title() == "Another title");
-  g_assert(notified == 1);
+  g_assert_true(toast->get_title() == "Another title");
+  g_assert_true(notified == 1);
 
   toast->set_property<Glib::ustring>("title", "Title");
-  g_assert(toast->get_title() == "Title");
-  g_assert(notified == 2);
+  g_assert_true(toast->get_title() == "Title");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_button_label(void) {
@@ -42,15 +42,15 @@ static void test_adw_toast_button_label(void) {
 
   Glib::ustring button_label =
       toast->get_property<Glib::ustring>("button-label");
-  g_assert(button_label == "");
+  g_assert_true(button_label == "");
 
   toast->set_button_label("Button");
-  g_assert(toast->get_button_label() == "Button");
-  g_assert(notified == 1);
+  g_assert_true(toast->get_button_label() == "Button");
+  g_assert_true(notified == 1);
 
   toast->set_property<Glib::ustring>("button-label", "Button 2");
-  g_assert(toast->get_button_label() == "Button 2");
-  g_assert(notified == 2);
+  g_assert_true(toast->get_button_label() == "Button 2");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_action_name(void) {
@@ -61,15 +61,15 @@ static void test_adw_toast_action_name(void) {
       sigc::ptr_fun(notify_cb));
 
   Glib::ustring action_name = toast->get_property<Glib::ustring>("action-name");
-  g_assert(action_name == "");
+  g_assert_true(action_name == "");
 
   toast->set_action_name("win.something");
-  g_assert(toast->get_action_name() == "win.something");
-  g_assert(notified == 1);
+  g_assert_true(toast->get_action_name() == "win.something");
+  g_assert_true(notified == 1);
 
   toast->set_property<Glib::ustring>("action-name", "win.something-else");
-  g_assert(toast->get_action_name() == "win.something-else");
-  g_assert(notified == 2);
+  g_assert_true(toast->get_action_name() == "win.something-else");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_action_target(void) {
@@ -85,30 +85,30 @@ static void test_adw_toast_action_target(void) {
 
   Glib::VariantBase variant = Glib::Variant<gint32>::create(1);
   toast->set_action_target_value(Glib::Variant<gint32>::create(1));
-  g_assert(toast->get_action_target_value() == variant);
-  g_assert(notified == 1);
+  g_assert_true(toast->get_action_target_value() == variant);
+  g_assert_true(notified == 1);
 
   variant = Glib::Variant<gint32>::create(2);
   toast->set_property<Glib::VariantBase>("action-target",
                                          Glib::Variant<gint32>::create(2));
-  g_assert(toast->get_action_target_value() == variant);
-  g_assert(notified == 2);
+  g_assert_true(toast->get_action_target_value() == variant);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_detailed_action_name(void) {
   std::unique_ptr<Adw::Toast> toast = std::make_unique<Adw::Toast>("Title");
 
-  g_assert(toast->get_action_name() == "");
+  g_assert_true(toast->get_action_name() == "");
   g_assert_false(toast->get_action_target_value());
 
   toast->set_detailed_action_name("win.something");
-  g_assert(toast->get_action_name() == "win.something");
+  g_assert_true(toast->get_action_name() == "win.something");
   g_assert_false(toast->get_action_target_value());
 
   toast->set_detailed_action_name("win.something(2)");
-  g_assert(toast->get_action_name() == "win.something");
+  g_assert_true(toast->get_action_name() == "win.something");
   Glib::VariantBase variant = Glib::Variant<gint32>::create(2);
-  g_assert(toast->get_action_target_value() == variant);
+  g_assert_true(toast->get_action_target_value() == variant);
 }
 
 static void test_adw_toast_priority(void) {
@@ -119,16 +119,16 @@ static void test_adw_toast_priority(void) {
 
   Adw::ToastPriority priority =
       toast->get_property<Adw::ToastPriority>("priority");
-  g_assert(priority == Adw::ToastPriority::NORMAL);
+  g_assert_true(priority == Adw::ToastPriority::NORMAL);
 
   toast->set_priority(Adw::ToastPriority::HIGH);
-  g_assert(toast->get_priority() == Adw::ToastPriority::HIGH);
-  g_assert(notified == 1);
+  g_assert_true(toast->get_priority() == Adw::ToastPriority::HIGH);
+  g_assert_true(notified == 1);
 
   toast->set_property<Adw::ToastPriority>("priority",
                                           Adw::ToastPriority::NORMAL);
-  g_assert(toast->get_priority() == Adw::ToastPriority::NORMAL);
-  g_assert(notified == 2);
+  g_assert_true(toast->get_priority() == Adw::ToastPriority::NORMAL);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_timeout(void) {
@@ -138,15 +138,15 @@ static void test_adw_toast_timeout(void) {
   toast->property_timeout().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   guint timeout = toast->get_property<guint>("timeout");
-  g_assert(timeout == 5);
+  g_assert_true(timeout == 5);
 
   toast->set_timeout(10);
-  g_assert(toast->get_timeout() == 10);
-  g_assert(notified == 1);
+  g_assert_true(toast->get_timeout() == 10);
+  g_assert_true(notified == 1);
 
   toast->set_property<guint>("timeout", 5);
-  g_assert(toast->get_timeout() == 5);
-  g_assert(notified == 2);
+  g_assert_true(toast->get_timeout() == 5);
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_dismiss(void) {
@@ -178,23 +178,23 @@ static void test_adw_toast_custom_title(void) {
       sigc::ptr_fun(notify_cb));
 
   Glib::ustring title = toast->get_property<Glib::ustring>("title");
-  g_assert(title == "Title");
+  g_assert_true(title == "Title");
   Gtk::Widget *widget = toast->get_property<Gtk::Widget *>("custom-title");
-  g_assert(widget == nullptr);
+  g_assert_true(widget == nullptr);
 
   toast->set_title("Another title");
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   widget = Gtk::make_managed<Gtk::Button>("Custom title");
   toast->set_custom_title(widget);
   g_assert_true(toast->get_custom_title() == widget);
-  g_assert(toast->get_title() == "");
-  g_assert(notified == 1);
+  g_assert_true(toast->get_title() == "");
+  g_assert_true(notified == 1);
 
   toast->set_title("Final title");
-  g_assert(toast->get_custom_title() == nullptr);
-  g_assert(toast->get_title() == "Final title");
-  g_assert(notified == 2);
+  g_assert_true(toast->get_custom_title() == nullptr);
+  g_assert_true(toast->get_title() == "Final title");
+  g_assert_true(notified == 2);
 }
 
 static void test_adw_toast_custom_title_overlay(void) {

@@ -37,20 +37,20 @@ static void test_adw_leaflet_adjacent_child(void) {
   g_assert_null(result);
 
   result = leaflet.get_adjacent_child(Adw::NavigationDirection::FORWARD);
-  g_assert(result->gobj() == children[2]->gobj());
+  g_assert_true(result->gobj() == children[2]->gobj());
 
   leaflet.set_visible_child(children[1]);
 
   result = leaflet.get_adjacent_child(Adw::NavigationDirection::BACK);
-  g_assert(result->gobj() == children[0]->gobj());
+  g_assert_true(result->gobj() == children[0]->gobj());
 
   result = leaflet.get_adjacent_child(Adw::NavigationDirection::FORWARD);
-  g_assert(result->gobj() == children[2]->gobj());
+  g_assert_true(result->gobj() == children[2]->gobj());
 
   leaflet.set_visible_child(children[2]);
 
   result = leaflet.get_adjacent_child(Adw::NavigationDirection::BACK);
-  g_assert(result->gobj() == children[0]->gobj());
+  g_assert_true(result->gobj() == children[0]->gobj());
 
   result = leaflet.get_adjacent_child(Adw::NavigationDirection::FORWARD);
   g_assert_null(result);

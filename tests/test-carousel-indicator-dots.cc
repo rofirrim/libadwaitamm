@@ -18,15 +18,15 @@ static void test_adw_carousel_indicator_dots_carousel(void) {
   dots.property_carousel().signal_changed().connect(sigc::ptr_fun(notify_cb));
 
   g_assert_null(dots.get_carousel());
-  g_assert(notified == 0);
+  g_assert_true(notified == 0);
 
   dots.set_carousel(&carousel);
-  g_assert(dots.get_carousel()->gobj() == carousel.gobj());
-  g_assert(notified == 1);
+  g_assert_true(dots.get_carousel()->gobj() == carousel.gobj());
+  g_assert_true(notified == 1);
 
   dots.set_carousel(nullptr);
   g_assert_null(dots.get_carousel());
-  g_assert(notified == 2);
+  g_assert_true(notified == 2);
 }
 
 int main(int argc, char *argv[]) {

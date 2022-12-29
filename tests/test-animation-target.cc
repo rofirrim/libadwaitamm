@@ -13,15 +13,15 @@ static void test_adw_property_animation_target_construct(void) {
   auto named_target = Adw::PropertyAnimationTarget::create(widget, "opacity");
 
   GParamSpec *target_pspec = named_target->get_pspec();
-  g_assert(target_pspec);
-  g_assert(Glib::ustring(target_pspec->name) == "opacity");
+  g_assert_true(target_pspec);
+  g_assert_true(Glib::ustring(target_pspec->name) == "opacity");
 
   auto pspec_target = Adw::PropertyAnimationTarget::create(widget, target_pspec);
-  g_assert(pspec_target->get_pspec() == target_pspec);
+  g_assert_true(pspec_target->get_pspec() == target_pspec);
 
   target_pspec = pspec_target->get_pspec();
-  g_assert(target_pspec);
-  g_assert(Glib::ustring(target_pspec->name) == "opacity");
+  g_assert_true(target_pspec);
+  g_assert_true(Glib::ustring(target_pspec->name) == "opacity");
 }
 
 static void test_adw_property_animation_target_basic(void) {
@@ -30,10 +30,10 @@ static void test_adw_property_animation_target_basic(void) {
   auto target = Adw::PropertyAnimationTarget::create(widget, "opacity");
   auto animation = Adw::TimedAnimation::create(widget.get(), 1, 0, 0, target);
 
-  g_assert(widget->get_opacity() == 1);
+  g_assert_true(widget->get_opacity() == 1);
 
   animation->play();
-  g_assert(widget->get_opacity() == 0);
+  g_assert_true(widget->get_opacity() == 0);
 }
 
 int main(int argc, char *argv[]) {
