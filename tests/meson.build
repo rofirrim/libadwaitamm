@@ -60,8 +60,8 @@ test_names = [
   'test-toast-overlay',
   'test-view-switcher',
   'test-view-switcher-bar',
-  # 'test-window',
-  # 'test-window-title',
+  'test-window',
+  'test-window-title',
 ]
 
 foreach test_name : test_names
