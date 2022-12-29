@@ -23,7 +23,6 @@ already packaged.
 
 Known issues:
  - **The API is not stable yet. There are no immediate plans to stabilise it yet.**
- - We probably want to port libadwaita's tests.
  - The documentation may be a bit "iffy" as it has not been reviewed yet.
 
 Feel free to raise issues to keep track of problems and improvements in the
