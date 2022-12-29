@@ -58,7 +58,7 @@ test_names = [
   'test-timed-animation',
   'test-toast',
   'test-toast-overlay',
-  # 'test-view-switcher',
+  'test-view-switcher',
   'test-view-switcher-bar',
   # 'test-window',
   # 'test-window-title',
