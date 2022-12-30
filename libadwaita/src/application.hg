@@ -29,12 +29,15 @@ namespace Adw
 class Application : public Gtk::Application {
   _CLASS_GOBJECT(Application, AdwApplication, ADW_APPLICATION, Gtk::Application, GtkApplication)
 
+private:
+   const Glib::Class& custom_class_init();
+
 protected:
-  _CTOR_DEFAULT
   _UNMANAGEABLE
   _CUSTOM_DTOR
 
-  _WRAP_CTOR(Application(const Glib::ustring& application_id, Gio::Application::Flags flags), adw_application_new)
+  _IGNORE(adw_application_new)
+  Application(const Glib::ustring& application_id, Gio::Application::Flags flags);
 public:
   _WRAP_CREATE(const Glib::ustring& application_id, Gio::Application::Flags flags)
 
