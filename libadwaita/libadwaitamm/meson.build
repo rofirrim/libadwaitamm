@@ -86,6 +86,7 @@ extra_cc_files = [
 ]
 
 extra_h_files = [
+  'init.h',
   'wrap_init.h',
   'selectionlistmodelimpl.h',
 ]
