@@ -41,7 +41,7 @@ jobs:
       working-directory: /home/user/libadwaitamm-src/builddir
       run: |
         sudo -u user --  /home/user/libadwaitamm-src/.github/scripts/run-tests.sh
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: testlog.txt
