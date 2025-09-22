@@ -1,5 +1,9 @@
 [![C/C++ CI Fedora 37](https://github.com/rofirrim/libadwaitamm/actions/workflows/meson-fedora.yml/badge.svg)](https://github.com/rofirrim/libadwaitamm/actions/workflows/meson-fedora.yml)
 
+## Alternative
+
+Please, consider [Peel](https://gitlab.gnome.org/bugaevc/peel) as a more modern approach to C++ bindings for GObject-based libraries, including Gtk and Adwaita.
+
 ## About
 
 `libadwaitamm` is a C++ binding for the [GNOME Adwaita](https://gnome.pages.gitlab.gnome.org/libadwaita/) library.
@@ -32,3 +36,6 @@ Please, be mindful that this is free software that may be developed on
 contributors' free time and as such it does not come with any sort of
 guaranteed support of any kind. This development is made available in the hope
 it can be useful to the community.
+
+As this is an unofficial effort, feel free to fork and extend the work
+if this is valuable for you.
